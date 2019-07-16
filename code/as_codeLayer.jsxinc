@@ -1,0 +1,135 @@
+/**
+ * as_codeLayer.jsxinc
+ * version: 1.0.2
+ * author: Alexander Semeniuk
+ * date: Jul 16 2019
+ * 
+ * @param comp 
+ * @param layer 
+ * @param addComments 
+ * @param linesCollector 
+ * @param errorsCollector 
+ */
+function as_codeLayer(comp, layer, addComments, linesCollector, errorsCollector) {
+
+    if (!linesCollector) {
+        linesCollector = [];
+    }
+
+    // VARS
+    var varNameLayer = "layer" + layer.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "").substr(0, 20);
+    var varNameComp = "comp" + layer.containingComp.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "");
+    // + LAYER STEP
+    linesCollector.push("\t");
+    // + ADD LAYER
+    if (addComments) {
+        linesCollector.push("\n// LAYER: " + layer.name);
+    }
+    if (layer.matchName === "ADBE Vector Layer") {
+        // SHAPE
+        linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addShape();");
+    }
+    else if (layer.matchName === "ADBE Text Layer") {
+        // TEXT
+        var textDoc = layer.property("ADBE Text Properties")("ADBE Text Document").valueAtTime(comp.time, true);
+        if (textDoc.pointText) {
+            linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addText(\"" + textDoc.text + "\");");
+        }
+        else if (textDoc.boxText) {
+            linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addBoxText(\"" + textDoc.text + "\");");
+            linesCollector.push(varNameLayer + ".boxTextSize = " + as_toString(textDoc.boxTextSize) + ";");
+        }
+    }
+    else if (layer.matchName === "ADBE Camera Layer") {
+        // CAMERA
+        linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addCamera(\"" + layer.name + "\", " + as_toString(layer("ADBE Transform Group").property("ADBE Anchor Point").valueAtTime(comp.time, true).slice(0, 2)) + ");");
+    }
+    else if (layer.matchName === "ADBE Light Layer") {
+        // LIGHT
+        linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addLight(\"" + layer.name + "\", " + as_toString(layer("ADBE Transform Group").property("ADBE Anchor Point").valueAtTime(comp.time, true).slice(0, 2)) + ");");
+        linesCollector.push(varNameLayer + ".lightType = LightType." + as_getConstName(layer.lightType, LightType) + ";");
+    }
+    else if (layer.matchName === "ADBE AV Layer") {
+        if (layer.nullLayer === true) {
+            // NULL
+            linesCollector.push("var " + varNameLayer + " = " + varNameComp + ".layers.addNull();");
+        }
+        else if (layer.source instanceof CompItem) {
+            // PRECOMP
+            errorsCollector.push("Warning: Precomp layers not supported yet! (layer: \"" + layer.name + "\")");
+            return linesCollector;
+        }
+        else if (layer.source.mainSource instanceof SolidSource) {
+            // SOLID
+            errorsCollector.push("Warning: Solid layers not supported yet! (layer: \"" + layer.name + "\")");
+            return linesCollector;
+            // varSolidIndex = getIndex(solidsObj.rememberedSolidsArray, getCompByID(layer.source, solidsObj.rememberedSolidsArray));
+            // varSolidName = solidsObj.uniqSolidsNamesArray[varSolidIndex];
+            // myLayer = newComp.layers.add(solidsObj.myCreatedSolidsArray[varSolidIndex]);
+        }
+        else if (layer.source.mainSource instanceof PlaceholderSource) {
+            // PLACEHOLDER
+            errorsCollector.push("Warning: Placeholder layers not supported yet! (layer: \"" + layer.name + "\")");
+            return linesCollector;
+        }
+        else if (layer.source.mainSource instanceof FileSource) {
+            // FOOTAGE
+            errorsCollector.push("Warning: Footage layers not supported yet! (layer: \"" + layer.name + "\")");
+            return linesCollector;
+            if (layer.source.footageMissing == true) {
+                //
+            }
+            else {
+                // footageIndex = getIndex(footageObj.rememberedFootageArray, getCompByID(layer.source, footageObj.rememberedFootageArray));
+                // varFootageName = footageObj.uniqFootageNamesArray[footageIndex];
+                // myLayer = newComp.layers.add(footageObj.myImportedFootageArray[footageIndex]);
+            }
+        }
+    }
+    // + LAYER COMMENT
+    if (layer.comment != "") {
+        linesCollector.push(varNameLayer + ".comment = \"" + as_toCodeString(layer.comment) + "\";");
+    }
+    // + RENAME
+    linesCollector.push(varNameLayer + ".name = \"" + layer.name + "\";");
+    linesCollector.push(varNameLayer + ".moveToEnd();");
+    // + ADD LAYER PROPS
+    if (!layer.enabled) {
+        linesCollector.push(varNameLayer + ".enabled = " + layer.enabled + ";");
+    }
+    if (layer.shy) {
+        linesCollector.push(varNameLayer + ".shy = " + layer.shy + ";");
+    }
+    if (layer.guideLayer) {
+        linesCollector.push(varNameLayer + ".guideLayer = " + layer.guideLayer + ";");
+    }
+    linesCollector.push(varNameLayer + ".label = " + layer.label + ";");
+    if (layer.motionBlur) {
+        linesCollector.push(varNameLayer + ".motionBlur = " + layer.motionBlur + ";");
+    }
+    if (layer.threeDLayer) {
+        linesCollector.push(varNameLayer + ".threeDLayer = " + layer.threeDLayer + ";");
+    }
+    if (layer.adjustmentLayer) {
+        linesCollector.push(varNameLayer + ".adjustmentLayer = " + layer.adjustmentLayer + ";");
+    }
+    if (layer.frameBlending) {
+        linesCollector.push(varNameLayer + ".frameBlendingType = FrameBlendingType." + as_getConstName(layer.frameBlendingType, FrameBlendingType) + ";");
+    }
+    if (layer.canSetCollapseTransformation && layer.collapseTransformation) {
+        linesCollector.push(varNameLayer + ".collapseTransformation = " + layer.collapseTransformation + ";");
+    }
+    if (layer.blendingMode && (layer.blendingMode != BlendingMode.NORMAL)) {
+        linesCollector.push(varNameLayer + ".blendingMode = BlendingMode." + as_getConstName(layer.blendingMode, BlendingMode) + ";");
+    }
+    if (layer.isTrackMatte) {
+        linesCollector.push(varNameLayer + ".trackMatteType = TrackMatteType." + as_getConstName(layer.trackMatteType, TrackMatteType) + ";");
+    }
+    linesCollector.push(varNameLayer + ".locked = " + layer.locked + ";");
+    
+    // + ADD PROPS
+    as_codeProperties(comp, layer, addComments, linesCollector, errorsCollector);
+    
+    // RETURN
+    return linesCollector;
+}

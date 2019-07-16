@@ -1,0 +1,42 @@
+ /**
+ * as_codeGetPropPath.jsxinc
+ * version: 1.0.2
+ * author: Alexander Semeniuk
+ * date: Jul 16 2019
+ * 
+ * @param {Property}    prop            ...
+ * @return {array}                      ...
+ * 
+ */
+function as_codeGetPropPath(prop) {
+
+    var propPath = "";
+
+    while (prop) {
+        if (as_isEffect(prop)) {
+            // IF VAR IS EFFECT
+            propPath = "effect" + prop.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "").substr(0, 20) + propPath;
+            break;
+        } else if (as_isLayer(prop)) {
+            // IF VAR LAYER
+            propPath = "layer" + prop.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "").substr(0, 20) + propPath;
+            break;
+        } else if (prop.parentProperty && (prop.parentProperty.propertyType == PropertyType.INDEXED_GROUP)) {
+            // IF CREATE
+            if (prop.propertyType == PropertyType.PROPERTY) {
+                // IF VAR PROP
+                propPath = "prop" + prop.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "").substr(0, 20) + propPath;
+                break;
+            }
+            else {
+                // IF VAR GROUP
+                propPath = "group" + prop.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "").substr(0, 20) + propPath;
+                break;
+            }
+        } else {
+            propPath = "(\"" + prop.matchName + "\")" + propPath;
+        }
+        prop = prop.parentProperty;
+    }
+    return propPath;
+}
