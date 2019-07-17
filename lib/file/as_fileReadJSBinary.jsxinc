@@ -1,0 +1,12 @@
+/**
+ * 
+ * @param {File} file 
+ */
+function as_fileReadJSBinary(file) {
+	
+	if (!file.exists) {
+		return null;
+	} else {
+		return $.evalFile(file.fsName);
+	}
+}

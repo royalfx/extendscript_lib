@@ -1,0 +1,44 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param comp {CompItem}
+ * @param propSource {Property}
+ * @param propTarget {Property}
+ */
+function as_shapeToSpatial(comp, propSource, propTarget) {
+
+	// CHECK ARGS
+	if ((propSource.matchName !== "ADBE Vector Shape") && (propSource.matchName !== "ADBE Mask Shape")) {
+		throw new Error("Property type mismatch! propSource.matchName: " + propSource.matchName);
+	}
+	if ((propTarget.propertyValueType !== PropertyValueType.TwoD_SPATIAL) && (propTarget.propertyValueType !== PropertyValueType.ThreeD_SPATIAL)) {
+		throw new Error("Property type mismatch! propTarget.propertyValueType: " + propTarget.propertyValueType);
+	}
+
+	// OPEN COMP
+	comp.openInViewer();
+
+	// SELECT TEMP PATH LAYER
+	as_compDeselectAll(comp);
+	propSource.selected = true;
+
+	// EXECUTE COPY
+	app.executeCommand(19);
+
+	// SELECT TEMP POSITION PROP
+	as_compDeselectAll(comp);
+	propTarget.selected = true;
+
+	// EXECUTE PASTE
+	app.executeCommand(20);
+
+	// RETURN
+	if (propTarget.numKeys == 0) {
+		alert("as_shapeToSpatial: " + "Something wrong! > propTarget.numKeys = 0");
+		return false;
+	} else {
+		return true;
+	}
+}

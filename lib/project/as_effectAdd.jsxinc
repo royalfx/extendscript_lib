@@ -1,0 +1,19 @@
+/**
+ * 
+ * @param {Layer} layer 
+ * @param {string} matchName 
+ * @param {string} effectName 
+ * @param {*} value01 
+ * @param {boolean} enabled 
+ */
+function as_effectAdd(layer, matchName, effectName, value01, enabled) {
+	var effect = layer("ADBE Effect Parade").addProperty(matchName);
+	effect.name = effectName;
+	if (value01 !== undefined) {
+		effect(1).setValue(value01);
+	}
+	if (enabled !== undefined) {
+		effect.enabled = enabled;
+	}
+	return effect;
+}

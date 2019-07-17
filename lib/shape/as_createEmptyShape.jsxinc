@@ -1,0 +1,18 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ */
+function as_createEmptyShape() {
+
+	// CREATE
+	var shape = new Shape();
+	shape.vertices = [[0, 0]];
+	shape.inTangents = [[0, 0]];
+	shape.outTangents = [[0, 0]];
+	shape.closed = false;
+
+	// RETURN
+	return shape;
+}

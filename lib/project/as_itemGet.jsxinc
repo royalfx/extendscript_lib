@@ -1,0 +1,36 @@
+/**
+ * @description FIND ITEM
+ * @param {string} itemName 
+ * @param {*} itemType CompItem / FolderItem / FootageItem
+ * @param {Folder} folder 
+ * @param {boolean} searchInSubfolders 
+ */
+function as_itemGet(itemName, itemType, folder, searchInSubfolders) {
+	
+	// CHECK ARGS
+	itemType = (itemType === undefined) ? CompItem : itemType;
+	folder = (folder === undefined) ? app.project.rootFolder : folder;
+
+	try {
+		for (var item, i = 1, len = folder.numItems; i <= len; i++) {
+			item = folder.item(i);
+			if (item.name === itemName) {
+				if (item instanceof itemType || ((item.mainSource !== undefined) && (item.mainSource instanceof itemType))) {
+					// alert("SUCCESS | itemName: " + itemName + ", folder: " + as_toString(folder), false);
+					return item;
+				}
+			}
+			if ((item instanceof FolderItem) && searchInSubfolders) {
+				item = as_itemGet(itemName, itemType, item, true);
+				if (item !== null) {
+					// alert("SUCCESS | itemName: " + itemName + ", folder: " + as_toString(folder), false);
+					return item;
+				}
+			}
+		}
+	} catch (err) {
+		alert(err.message + "\n" + "itemName:" + itemName);
+	}
+	// alert("NULL | itemName: " + itemName + ", folder: " + as_toString(folder), false);
+	return null;
+}

@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+function as_checkSecurityPrefSet() {
+	var securitySetting = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
+	if (securitySetting == 1) {
+		return true;
+	} else {
+		return "This script requires the scripting security preference to be set. Go to the \"General\" panel of the application preferences and make sure \"Allow Scripts to Write Files and Access Network\" is checked.";
+	}
+}

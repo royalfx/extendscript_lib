@@ -1,0 +1,20 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param prop {Property}
+ * @param keyStart {number}
+ * @param numKeyframes {number}
+ */
+function as_keysRemove(prop, keyStart, numKeyframes) {
+
+	// CHECK ARGS
+	keyStart = (keyStart === undefined) ? 1 : keyStart;
+	numKeyframes = (numKeyframes === undefined) ? prop.numKeys : numKeyframes;
+
+	// DO
+	for (var k = 0; k < numKeyframes; k++) {
+		prop.removeKey(keyStart);
+	}
+}

@@ -1,0 +1,15 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 19 Nov 2017
+ */
+
+var as_RegExpPattern = {};
+as_RegExpPattern.NUMBERS = /[^0-9]/g;
+as_RegExpPattern.NUMBERS_MINUS = /[^0-9\-]/g;
+as_RegExpPattern.NUMBERS_DOT = /[^0-9\.]/g;
+as_RegExpPattern.NUMBERS_DOT_MINUS = /[^0-9\.-]/g;
+as_RegExpPattern.NUMBERS_DOT_AUTO = /[^0-9\.auto]/g;
+as_RegExpPattern.NUMBERS_CHARS = /[^a-zA-Z0-9]/g;
+as_RegExpPattern.NUMBERS_CHARS_HASH = /[^a-zA-Z0-9+\#]/g;
+as_RegExpPattern.NUMBERS_CHARS_SPACE = /[^a-zA-Z0-9\ ]/g;

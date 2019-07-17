@@ -1,0 +1,9 @@
+/**
+ * @description Select comp layer
+ * @param {AVLayer} layer 
+ */
+function as_compSelectLayer(layer) {
+	var comp = layer.containingComp;
+	as_compDeselectAll(comp);
+	layer.selected = true;
+}

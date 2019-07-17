@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+function as_osName() {
+	
+	// DO
+	var os = system.osName;
+	if (!os.length) {
+		os = $.os;
+	}
+	var app_os = (os.indexOf("Win") != -1) ? "Win" : "Mac";
+
+	// RETUEN
+	return app_os;
+}

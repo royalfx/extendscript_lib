@@ -1,0 +1,22 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @description
+ * @param propMarker {Marker}
+ * @return {Array}
+ */
+function as_getMarkersChars(propMarker) {
+
+	// VARS
+	var arr = [];
+
+	// GET
+	for (var k = 1; k <= propMarker.numKeys; k++) {
+		arr.push(propMarker.keyValue(k).comment);
+	}
+
+	// RETURN
+	return arr;
+}

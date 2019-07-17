@@ -1,0 +1,13 @@
+/**
+ * @description GET LAYER PARENTS DEPTH
+ * @param {AVLayer} layer 
+ */
+function as_layerGetParentsDepth(layer) {
+	var depth = 0;
+	var layerParent = layer.parent;
+	while (layerParent) {
+		depth++;
+		layerParent = layerParent.parent;
+	}
+	return depth;
+}

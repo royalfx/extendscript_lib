@@ -1,0 +1,17 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description
+ * @param obj {Object}
+ */
+function as_objectsGetLength(obj) {
+	var len = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			len++;
+		}
+	}
+	return len;
+}

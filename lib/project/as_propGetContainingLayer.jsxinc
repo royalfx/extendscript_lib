@@ -1,0 +1,21 @@
+/**
+ * @description GET PROP LAYER
+ * @param {*} prop 
+ */
+function as_propGetContainingLayer(prop) {
+	if (!isValid(prop)) {
+		return null;
+	}
+	if (!prop) {
+		return null;
+	}
+	var layer;
+	while (prop) {
+		if (as_propIsLayer(prop)) {
+			layer = prop;
+			break;
+		}
+		prop = prop.parentProperty;
+	}
+	return layer;
+}

@@ -1,0 +1,21 @@
+﻿/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: 23 Oct 2018
+ */
+
+var as_FileFilter = {};
+as_FileFilter.PNG = "PNG:*.png";
+as_FileFilter.JPEG = "JPEG:*.jpg;*.jpeg";
+as_FileFilter.AEP = "After Effects Project File:*.aep";
+as_FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
+as_FileFilter.TXT = "Plain Text:*.txt";
+as_FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
+as_FileFilter.JSX = "Adobe JavaScript:*.jsx";
+as_FileFilter.JS = "JavaScript files:*.js";
+as_FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
+as_FileFilter.JSXBIN = "Adobe JavaScript Binary files:*.jsxbin";
+as_FileFilter.JSON = "JavaScript JSON:*.json";
+as_FileFilter.ALL = "All files:*.*";
+as_FileFilter.CSV = "CSV (Comma delimited):*.csv";
+as_FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";

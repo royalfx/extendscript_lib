@@ -1,0 +1,38 @@
+/**
+ * 
+ * @param {AVLayer} layer
+ * @return {string} as_LayerType
+ */
+function as_layerGetType(layer) {
+    if (layer instanceof TextLayer) {
+        return as_LayerType.TEXT;
+    }
+    
+    if (layer instanceof LightLayer) {
+        return as_LayerType.LIGHT;
+    }
+
+    if (layer instanceof CameraLayer) {
+        return as_LayerType.CAMERA;
+    }
+
+    if (layer instanceof ShapeLayer) {
+        return as_LayerType.SHAPE;
+    }
+
+    if (layer.source instanceof CompItem) {
+        return as_LayerType.PRECOMP;
+    }
+
+    if (layer.source instanceof FootageItem) {
+        if (layer.source.mainSource instanceof SolidSource) {
+            return as_LayerType.SOLID;
+        }
+        if (!layer.hasVideo) {
+            return as_LayerType.AUDIO;
+        }
+        return as_LayerType.FOOTAGE;
+    }
+
+    return null;
+}

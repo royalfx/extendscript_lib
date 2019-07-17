@@ -1,0 +1,18 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description
+ * @param val {any}
+ * @param arr {Array}
+ * @returns {number} Index
+ */
+function as_arrayCheckValue(val, arr) {
+	for (var i = 0, len = arr.length; i < len; i++) {
+		if (val == arr[i]) {
+			return i;
+		}
+	}
+	return -1;
+}

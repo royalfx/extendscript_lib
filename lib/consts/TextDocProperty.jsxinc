@@ -1,0 +1,12 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: Jan 31 2018
+ */
+var as_TextDocProperty = {};
+as_TextDocProperty.FONT = "as_TextDocProperty.FONT";
+as_TextDocProperty.FONT_SIZE = "as_TextDocProperty.FONT_SIZE";
+as_TextDocProperty.TRACKING = "as_TextDocProperty.TRACKING";
+as_TextDocProperty.COLOR = "as_TextDocProperty.COLOR";
+as_TextDocProperty.JUSTIFICATION = "as_TextDocProperty.JUSTIFICATION";
+as_TextDocProperty.TEXT = "as_TextDocProperty.TEXT";

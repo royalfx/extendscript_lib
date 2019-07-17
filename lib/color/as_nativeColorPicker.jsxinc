@@ -1,0 +1,18 @@
+/**
+ * @description NATIVE COLOR PICKER
+ * @param
+ */
+function as_nativeColorPicker() {
+	var picker = $.colorPicker();
+	if (picker >= 0) {
+		var bigint = parseInt(picker.toString(16), 16);
+		var r = ((bigint >> 16) & 255) / 255;
+		var g = ((bigint >> 8) & 255) / 255;
+		var b = (bigint & 255) / 255;
+		// stopFocusHandling = false;
+		return [r, g, b, 1];
+	} else {
+		// stopFocusHandling = false;
+		return null;
+	}
+}

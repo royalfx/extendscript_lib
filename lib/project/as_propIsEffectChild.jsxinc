@@ -1,0 +1,20 @@
+/**
+ * 
+ * @description IS EFFECT PROP
+ * @param {*} prop 
+ */
+function as_propIsEffectChild(prop) {
+	if (!isValid(prop) || !prop) {
+		return false;
+	}
+	if (as_propIsEffect(prop)) {
+		return true;
+	}
+	while (prop.parentProperty) {
+		if (prop.parentProperty.matchName == "ADBE Effect Parade") {
+			return prop;
+		}
+		prop = prop.parentProperty;
+	}
+	return false;
+}

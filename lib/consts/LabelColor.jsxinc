@@ -1,0 +1,24 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 19 Nov 2017
+ */
+
+var as_LabelColor = {};
+as_LabelColor.NONE = 0;
+as_LabelColor.RED = 1;
+as_LabelColor.YELLOW = 2;
+as_LabelColor.AQUA = 3;
+as_LabelColor.PINK = 4;
+as_LabelColor.LAVENDER = 5;
+as_LabelColor.PEACH = 6;
+as_LabelColor.SEAFORM = 7;
+as_LabelColor.BLUE = 8;
+as_LabelColor.GREEN = 9;
+as_LabelColor.PURPLE = 10;
+as_LabelColor.ORANGE = 11;
+as_LabelColor.BROWN = 12;
+as_LabelColor.FUCHSIA = 13;
+as_LabelColor.CYAN = 14;
+as_LabelColor.SANDSTONE = 15;
+as_LabelColor.DARKGREEN = 16;

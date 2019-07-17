@@ -1,0 +1,12 @@
+/**
+ * @description GET PROP COMP
+ * @param {*} prop 
+ */
+function as_propGetContainingComp(prop) {
+	var layer = as_propGetContainingLayer(prop);
+	if (layer) {
+		return layer.containingComp;
+	} else {
+		return null;
+	}
+}

@@ -1,0 +1,10 @@
+/**
+ * @description CLEAR RENDER QUEUE
+ * @param
+ */
+function as_clearRenderQueue() {
+	while (app.project.renderQueue.numItems > 0) {
+		var rqi = app.project.renderQueue.item(1);
+		rqi.remove();
+	}
+}

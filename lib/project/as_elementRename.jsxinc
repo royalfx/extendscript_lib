@@ -1,0 +1,11 @@
+/**
+ * 
+ * @description RENAME ELEMENT
+ * @param {*} element Item / Layer / Effect
+ * @param {*} nameOld 
+ * @param {*} nameNew 
+ */
+function as_elementRename(element, nameOld, nameNew) {
+	element.name = nameNew;
+	app.project.autoFixExpressions(nameOld, nameNew);
+}

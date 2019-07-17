@@ -1,0 +1,11 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description CLEAR CARRIAGE RETURN
+ * @param str {string}
+ */
+function as_stringClearLineBreaks(str) {
+	return str.replace(new RegExp("\r", "g"), "\n");
+}

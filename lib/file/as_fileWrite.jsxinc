@@ -1,0 +1,34 @@
+/**
+ * 
+ * @param {File} file 
+ * @param {object} fileData 
+ * @param {boolean} isBinary 
+ */
+function as_fileWrite(file, fileData, isBinary) {
+	
+	// ENCODING
+	file.encoding = isBinary ? "BINARY" : "UTF-8";
+
+	// OPEN
+	if (!file.open("w")) {
+		alert("Could not open file: " + file.fsName + "\nmessage: " + file.error, true);
+		return null;
+	}
+
+	// WRITE
+	if (!file.write(fileData)) {
+		alert("Could not write file: " + file.fsName + "\nmessage: " + file.error, true);
+		file.close();
+		return null;
+	}
+	file.close();
+
+	// CHECK ERROR
+	if (file.error != "") {
+		alert(file.error, true);
+		return null;
+	}
+	
+	// RETURN
+	return file;
+}

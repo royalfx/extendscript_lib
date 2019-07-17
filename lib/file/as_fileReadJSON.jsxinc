@@ -1,0 +1,7 @@
+/**
+ * 
+ * @param {File} file 
+ */
+function as_fileReadJSON(file) {
+	return JSON.parse(as_fileRead(file));
+}

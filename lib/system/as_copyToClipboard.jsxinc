@@ -1,0 +1,10 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param str {string} String to copy
+ */
+function as_copyToClipboard(str) {
+	system.callSystem("cmd.exe /c cmd.exe /c \"echo " + str + " | clip\""); 
+}

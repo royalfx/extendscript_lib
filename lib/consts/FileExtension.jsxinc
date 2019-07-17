@@ -1,0 +1,16 @@
+﻿/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 19 Nov 2017
+ */
+
+var as_FileExtension = {};
+as_FileExtension.PNG = ".png";
+as_FileExtension.JPEG = ".jpg";
+as_FileExtension.AEP = ".aep";
+as_FileExtension.FFX = ".ffx";
+as_FileExtension.TXT = ".txt";
+as_FileExtension.JSX = ".jsx";
+as_FileExtension.JS = ".js";
+as_FileExtension.JSXINC = ".jsxinc";
+as_FileExtension.CSV = ".csv";

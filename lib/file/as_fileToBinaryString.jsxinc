@@ -1,0 +1,17 @@
+/**
+ * 
+ * @param {File} file
+ * @returns {string}
+ */
+function as_fileToBinaryString(file) {
+	try {
+		file.open("r");
+		file.encoding = "BINARY";
+		var bin = file.read();
+		file.close();
+		return bin.toSource().replace(/^\(new String\(/, "").replace(/\)\)$/, ""); //.substr(1, bin.length-2)
+	} catch (err) {
+		alert(err.name + " at line " + err.line + " : " + err.message);
+		return null;
+	}
+}

@@ -1,0 +1,28 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param shape {Shape}
+ * @param delta {array} Two-dimensional array
+ */
+function as_shapeTranslate(shape, delta) {
+	
+	// VARS
+	var verticesNew = [];
+
+	// TRANSLATE
+	for (var v = 0; v < shape.vertices.length; v++) {
+		verticesNew.push(shape.vertices[v] + delta);
+	}
+
+	// CREATE NEW
+	var shapeNew = new Shape();
+	shapeNew.vertices = verticesNew;
+	shapeNew.inTangents = shape.inTangents;
+	shapeNew.outTangents = shape.outTangents;
+	shapeNew.closed = shape.closed;
+
+	// RETURN
+	return shapeNew;
+}

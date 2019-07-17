@@ -1,0 +1,10 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @param {string} str 
+ */
+function as_stringCleanName(str) {
+	return str.replace(RegExp("[^a-z 0-9]", "gi"), "");
+}

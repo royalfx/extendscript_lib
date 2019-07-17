@@ -1,0 +1,19 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param url  {string} Url to open
+ */
+function as_openURL(url) {
+	var isPrefSet = as_checkSecurityPrefSet();
+	if (isPrefSet === true) {
+		if (as_osName() == "Win") {
+			system.callSystem("cmd.exe /c\"start " + url + "\"");
+		} else {
+			system.callSystem("open \"" + url + "\"");
+		}
+	} else {
+		alert(isPrefSet);
+	}
+}

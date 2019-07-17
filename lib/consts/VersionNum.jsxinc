@@ -1,0 +1,10 @@
+/*
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 06 Dec 2017
+ */
+
+var as_VersionNum = {};
+as_VersionNum.MAJOR = 0;
+as_VersionNum.MINOR = 1;
+as_VersionNum.PATCH = 2;

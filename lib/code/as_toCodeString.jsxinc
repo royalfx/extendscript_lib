@@ -1,0 +1,13 @@
+/**
+ * version: 1.0.2
+ * author: Alexander Semeniuk
+ * date: Jul 16 2019
+ * 
+ * @param str 
+ */
+function as_toCodeString(str) {
+    str = str.replace(new RegExp("\n", "g"), "\\n");
+    str = str.replace(new RegExp("\"", "g"), "\\\"");
+    str = str.replace(new RegExp("\t", "g"), "\\t");
+    return str;
+}

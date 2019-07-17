@@ -1,0 +1,20 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description Convert Justification to Align
+ * @param justification {Number}
+ */
+function as_justifyToAlign(justification) {
+	switch (justification) {
+		case ParagraphJustification.LEFT_JUSTIFY: //7013
+			return 0;
+		case ParagraphJustification.CENTER_JUSTIFY: //7015
+			return 1;
+		case ParagraphJustification.RIGHT_JUSTIFY: //7014
+			return 2;
+		default:
+			return null;
+	}
+}

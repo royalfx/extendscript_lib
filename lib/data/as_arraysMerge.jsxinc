@@ -1,0 +1,59 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description
+ * 
+ * @param arrMain {array}
+ * @param arrNew {array}
+ */
+function as_arraysMerge(arrMain, arrNew) {
+	
+	// CHECLK ARGS
+	if (!(arrMain instanceof Array)) {
+		throw new Error("Property \"arrMain\" is not an Array");
+	}
+	if (!(arrNew instanceof Array)) {
+		return arrMain;
+	}
+
+	// CLONE
+	var margedArr = as_objectClone(arrMain);
+	for (var v = 0, val1, val2, vlen = arrNew.length; v < vlen; v++) {
+		val1 = margedArr[v];
+		val2 = arrNew[v];
+		if (val2 !== undefined) {
+			// SAME TYPE
+			if (typeof (val2) == typeof (val1)) {
+				// OBEJCTS
+				if (typeof (val2) == "object") {
+					if (val1 instanceof Array) {
+						//ARRAYS
+						if ((val2 instanceof Array)) {
+							margedArr[v] = as_arraysMerge(val1, val2);
+						}
+						else {
+							margedArr[v] = val2;
+						}
+					}
+					else if (val1 === null) {
+						// NULL
+						margedArr[v] = val2;
+					}
+					else {
+						// OBJECTS
+						margedArr[v] = as_objectsMerge(val1, val2);
+					}
+				}
+				else {
+					margedArr[v] = val2;
+				}
+			}
+			else {
+				margedArr[v] = val2;
+			}
+		}
+	}
+	return margedArr;
+}

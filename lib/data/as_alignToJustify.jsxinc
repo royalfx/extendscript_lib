@@ -1,0 +1,11 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description
+ * @param align {Number} 0-2
+ */
+function as_alignToJustify(align) {
+	return [ParagraphJustification.LEFT_JUSTIFY, ParagraphJustification.CENTER_JUSTIFY, ParagraphJustification.RIGHT_JUSTIFY][align];
+}

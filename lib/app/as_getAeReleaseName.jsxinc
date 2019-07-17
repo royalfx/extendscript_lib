@@ -1,0 +1,17 @@
+/**
+ * @description GET AE RELEASE NAME
+ * @param version {string}
+ */
+function as_getAeReleaseName(version) {
+	var verRelease = as_getAeReleaseVersion(version);
+	for (var n in as_AEVersion) {
+		if (as_AEVersion.hasOwnProperty(n)) {
+			if (as_compareVersions(verRelease, as_AEVersion[n]) >= 0) {
+				return n;
+			}
+		} else {
+			//
+		}
+	}
+	return null;
+}

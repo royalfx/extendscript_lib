@@ -1,0 +1,12 @@
+/**
+ * 
+ * @param folder {FolderItem}
+ * @param subFolders {boolean}
+ * @param func {Function}
+ * @param args {array}
+ * @param filterItemsNames {array} strings
+ * @param filterItemsTypes {array} FolderItem / CompItem / FootageItem
+ */
+function as_loopItems(folder, subFolders, func, args, filterItemsNames, filterItemsTypes) {
+    // TODO
+}

@@ -1,0 +1,37 @@
+/**
+ * @description PNG files to JSON
+ * @param {string} fileOfFolderPath
+ * 
+ * @returns {object}
+ */
+function as_PNGFilesToJSON(fileOfFolderPath) {
+	
+	var filesList;
+	var imgFile = Folder(fileOfFolderPath);
+	if (!imgFile.exists) {
+		alert("File of Folder \"" + fileOfFolderPath + "\" does not exist!", true);
+		return null;
+	}
+	if (imgFile instanceof File) {
+		filesList = [imgFile];
+	} else if (imgFile instanceof Folder) {
+		filesList = imgFile.getFiles("*.png");
+	}
+	
+	var jsonObj = {};
+	if (filesList) {
+
+		// LOOP FILES
+		for (var i = 0, file, fileBin; i < filesList.length; i++) {
+			file = filesList[i];
+
+			fileBin = as_fileToBinaryString(file);
+			if(fileBin !== null) {
+				jsonObj[file.displayName] = [fileBin];
+			}
+		}
+	}
+
+	// RETURN
+	return jsonObj;
+}

@@ -1,0 +1,11 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description CLAER SPACES
+ * @param str {string}
+ */
+function as_stringClearSpaces(str) {
+	return as_stringToSingleLine(str).replace(new RegExp(" ", "g"), "");
+}

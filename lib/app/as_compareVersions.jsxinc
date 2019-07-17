@@ -1,0 +1,24 @@
+/**
+ * @description COMPARE VERSIONS
+ * @param ver1 {string}
+ * @param ver2 {string}
+ * @param threshold {number} as_VersionNum.MAJOR | as_VersionNum.MINOR | as_VersionNum.PATCH (start from 0)
+ * @return 1 (ver2 > ver1) | -1 (ver2 < ver1) | 0 (ver2 == ver1)
+ */
+function as_compareVersions(ver1, ver2, threshold) {
+	if (ver1 == ver2) {
+		return 0;
+	}
+	var ver1Arr = ver1.split(".");
+	var ver2Arr = ver2.split(".");
+	threshold = (threshold === undefined) ? Math.max(ver1Arr.length, ver2Arr.length) - 1 : threshold;
+	for (var i = 0, v1, v2; i <= threshold; i++) {
+		v1 = parseInt(ver1Arr[i]) || 0;
+		v2 = parseInt(ver2Arr[i]) || 0;
+		if (v1 == v2) {
+			continue;
+		}
+		return (v2 > v1) ? 1 : -1;
+	}
+	return 0;
+}

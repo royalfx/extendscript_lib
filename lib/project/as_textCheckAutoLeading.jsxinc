@@ -1,0 +1,10 @@
+/**
+ * 
+ * @description CHECK IS LEADING AUTO
+ * @param {number} leading 
+ * @param {number} fontSize 
+ */
+function as_textCheckAutoLeading(leading, fontSize) {
+	var threshold = 0.1;
+	return Math.abs(fontSize * 1.2 - leading) <= threshold;
+}

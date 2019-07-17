@@ -1,0 +1,13 @@
+/**
+ * @description DESELECT ALL IN COMP
+ * @param {CompItem} comp
+ */
+function as_compDeselectAll(comp) {
+	for (var i = 1; i <= comp.numLayers; i++) {
+		comp.layer(i).selected = false;
+	}
+	var props = comp.selectedProperties;
+	for (var i = 0; i < props.length; i++) {
+		props[i].selected = false;
+	}
+}

@@ -1,0 +1,11 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description REMOVE LINE BREAKS
+ * @param str {string}
+ */
+function as_stringRemoveLineBreaks(str) {
+	return str.replace(/[\n|\r]/g, "");
+}

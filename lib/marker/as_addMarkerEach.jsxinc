@@ -1,0 +1,39 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @description Adds or replace characters to the Marker property
+ * @param propMarker {Marker}
+ * @param comment {String} marker comment!
+ * @param step {Number}
+ * @param from {Number}
+ * @param count {Number}
+ * @param replaceAll {Boolean}
+ */
+function as_addMarkerEach(propMarker, comment, step, count, fromTime, replaceAll) {
+	
+	// VARS
+	var t;
+
+	// PRE
+	if (replaceAll) {
+		t = fromTime;
+
+		// CLEAR
+		while (propMarker.numKeys > 0) {
+			propMarker.removeKey(propMarker.numKeys);
+		}
+	} else {
+		if (propMarker.numKeys > 0) {
+			t = propMarker.keyTime(propMarker.numKeys) + step;
+		} else {
+			t = fromTime;
+		}
+	}
+
+	// ADD MARKERS
+	for (var c = 0; c < count; c++) {
+		propMarker.setValueAtTime(t + c * step, new MarkerValue(comment));
+	}
+}

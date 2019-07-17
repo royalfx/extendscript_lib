@@ -1,0 +1,17 @@
+/**
+ * @description GET ITEM PATH
+ * @param {*} item
+ */
+function as_itemGetPath(item) {
+	var folder = item.parentFolder;
+	var itemPath = "";
+	while (folder != app.project.rootFolder) {
+		if (itemPath == "") {
+			itemPath = folder.name;
+		} else {
+			itemPath = folder.name + "/" + itemPath;
+		}
+		folder = folder.parentFolder;
+	}
+	return itemPath;
+}

@@ -1,0 +1,8 @@
+/**
+ * 
+ * @param {File} file 
+ */
+function as_getFileExtension(file) {
+	var i = file.displayName.lastIndexOf(".");
+	return i < 0 ? "" : file.displayName.substring(i + 1);
+}

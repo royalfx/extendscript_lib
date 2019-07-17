@@ -1,0 +1,14 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: Fri Jul 20 2018
+ */
+
+var as_ControlType = {};
+as_ControlType.SLIDER = "Slider";
+as_ControlType.ANGLE = "Angle";
+as_ControlType.POINT = "Point";
+as_ControlType.POINT3D = "Point3D";
+as_ControlType.CHECKBOX = "Checkbox";
+as_ControlType.COLOR = "Color";
+as_ControlType.LAYER = "Layer";

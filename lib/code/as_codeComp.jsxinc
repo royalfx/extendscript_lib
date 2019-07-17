@@ -1,0 +1,76 @@
+ /**
+ * version: 1.0.2
+ * author: Alexander Semeniuk
+ * date: Jul 16 2019
+ * 
+ * @param {CompItem}    comp            Target composition.
+ * @param {boolean}     addComments     Add comments to code blocks.
+ * @param {array}       linesCollector  Array to collect lines of result code.
+ * @param {array}       errorsCollector Array to collect errors.
+ * @return {array}                      Return linesCollector array.
+ * 
+ */
+function as_codeComp(comp, addComments, linesCollector, errorsCollector) {
+
+    if (!linesCollector) {
+        linesCollector = [];
+    }
+
+    // VARS
+    var varNameComp = "comp" + comp.name.replace(new RegExp("[^a-zA-Z0-9]", "g"), "");
+
+    // + COMP STEP
+    linesCollector.push("\t");
+
+    // + ADD COMP
+    if (addComments) {
+        linesCollector.push("// COMP: " + comp.name);
+    }
+    linesCollector.push("var " + varNameComp + " = app.project.items.addComp(\"" + comp.name + "\", " + comp.width + ", " + comp.height + ", " + comp.pixelAspect + ", " + comp.duration + ", " + comp.frameRate + ");");
+    
+    // + SET COMP PROPS
+    linesCollector.push(varNameComp + ".time = " + Math.max(0, comp.time) + ";");
+    linesCollector.push(varNameComp + ".bgColor = " + as_toString(comp.bgColor) + ";");
+    if (comp.comment != "") {
+        linesCollector.push(varNameComp + ".comment = \"" + as_toCodeString(comp.comment) + "\";");
+    }
+    if ((parseInt(comp.frameRate) === 29) || (parseInt(comp.frameRate) === 59)) {
+        linesCollector.push(varNameComp + ".dropFrame = " + comp.dropFrame + ";");
+    }
+    linesCollector.push(varNameComp + ".shutterAngle = " + comp.shutterAngle + ";");
+    linesCollector.push(varNameComp + ".shutterPhase = " + comp.shutterPhase + ";");
+    linesCollector.push(varNameComp + ".motionBlurSamplesPerFrame = " + comp.motionBlurSamplesPerFrame + ";");
+    linesCollector.push(varNameComp + ".motionBlurAdaptiveSampleLimit = " + comp.motionBlurAdaptiveSampleLimit + ";");
+    linesCollector.push(varNameComp + ".label = " + comp.label + ";");
+    linesCollector.push(varNameComp + ".workAreaStart = " + comp.workAreaStart + ";");
+    linesCollector.push(varNameComp + ".workAreaDuration = " + comp.workAreaDuration + ";");
+    linesCollector.push(varNameComp + ".displayStartTime = " + comp.displayStartTime + ";");
+    linesCollector.push(varNameComp + ".resolutionFactor = " + as_toString(comp.resolutionFactor) + ";");
+    if (comp.hideShyLayers) {
+        linesCollector.push(varNameComp + ".hideShyLayers = " + comp.hideShyLayers + ";");
+    }
+    if (comp.motionBlur) {
+        linesCollector.push(varNameComp + ".motionBlur = " + comp.motionBlur + ";");
+    }
+    if (comp.draft3d) {
+        linesCollector.push(varNameComp + ".draft3d = " + comp.draft3d + ";");
+    }
+    if (comp.frameBlending) {
+        linesCollector.push(varNameComp + ".frameBlending = " + comp.frameBlending + ";");
+    }
+    
+    // + MOVE TO FOLDER
+    // TODO
+    errorsCollector.push("Warning: Composition will be created in project root folder.");
+    
+    // + ADD LAYERS
+    for (var l = 1; l <= comp.numLayers; l++) {
+        as_codeLayer(comp, comp.layer(l), addComments, linesCollector, errorsCollector);
+    }
+    
+    // + OPEN IN VIEWER
+    linesCollector.push(varNameComp + ".openInViewer();");
+    
+    // RETURN
+    return linesCollector;
+}

@@ -1,0 +1,37 @@
+/**
+ * 
+ * @param {CompItem} comp 
+ * @param {array} filterLayerNames 
+ * @param {array} filterLayerTypes as_LayerType
+ */
+function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
+
+    // CHECK ARGS
+    if(args === undefined) {
+        args = [];
+    }
+
+    // VARS
+    var results = [];
+
+    // LOOP LAYERS
+    for (var l = 1, layer; l <= comp.numLayers; l++) {
+        layer = comp.layer(l);
+
+        // CHECK NAMES
+        if((filterLayerNames !== undefined) && (filterLayerNames.length > 0) && (as_arrayCheckValue(layer.name, filterLayerNames) == -1)) {
+            continue;
+        }
+
+        // CHECK TYPES
+        if((filterLayerTypes !== undefined) && (filterLayerTypes.length > 0) && (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) == -1)) {
+            continue;
+        }
+
+        // DO
+        results.push(func.apply(undefined, [layer].concat(args)));
+    }
+
+    // RETURN
+    return results;
+}

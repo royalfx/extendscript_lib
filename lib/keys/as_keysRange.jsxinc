@@ -1,0 +1,56 @@
+/**
+ * version: 1.0.1
+ * author: Alexander Semeniuk
+ * date: Jul 17 2019
+ * 
+ * @param prop {Property}
+ * @param timeStart {number}
+ * @param timeEnd {number}
+ * @param threshold {number}
+ * @param alertIfNoKeys {boolean}
+ * 
+ * @return [key index, num keys]
+ */
+function as_keysRange(prop, timeStart, timeEnd, threshold, alertIfNoKeys) {
+	
+	// CHEK ARGS
+	threshold = threshold || 0.00005;
+
+	// IF NO KEYS
+	if (prop.numKeys == 0) {
+		// alert("Error. No keyframes found in property: " + as_toString(prop), alertIfNoKeys === true);
+		return null;
+	}
+	
+	// IF WRONG TIME RANGE
+	if (timeStart > timeEnd) {
+		// alert("Error. Wrong time range! timeStart more than timeEnd. Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, true);
+		return null;
+	}
+
+	// IF SAME TIME
+	if (Math.abs(timeStart - timeEnd) <= threshold) {
+		// alert("Error. Time range is less than threshold! Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, true);
+		// return null;
+		var inxMid = prop.nearestKeyIndex(timeStart + (timeEnd - timeStart) * 0.5);
+		if (Math.abs(prop.keyTime(inxMid) - timeStart) > threshold) {
+			// alert("Error. No keyframes in time range! Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, true);
+			return null;
+		}
+		else {
+			return [inxMid, 1];
+		}
+	}
+
+	// IF NO KEYS IN RANGE
+	var inxMid = prop.nearestKeyIndex(timeStart + (timeEnd - timeStart) * 0.5);
+	if ((prop.keyTime(inxMid) < timeStart) || (prop.keyTime(inxMid) > timeEnd)) {
+		// alert("Error. No keyframes in time range! Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, alertIfNoKeys === true);
+		return null;
+	}
+	var inxStart = as_keyNearestRight(prop, timeStart, threshold);
+	var inxEnd = as_keyNearestLeft(prop, timeEnd, threshold);
+
+	// RETURN
+	return [inxStart, inxEnd - inxStart + 1];
+}

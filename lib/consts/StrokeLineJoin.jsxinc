@@ -1,0 +1,10 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 11 Mar 2018
+ */
+
+var as_StrokeLineJoin = {};
+as_StrokeLineJoin.MITER_JOIN = 1;
+as_StrokeLineJoin.ROUND_JOIN = 2;
+as_StrokeLineJoin.BEVEL_JOIN = 3;

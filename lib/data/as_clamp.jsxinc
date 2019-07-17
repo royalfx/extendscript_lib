@@ -1,0 +1,14 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * @description Clamp value
+ * 
+ * @param value {number}
+ * @param min {number}
+ * @param max {number}
+ */
+function as_clamp(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}

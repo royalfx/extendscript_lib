@@ -1,0 +1,11 @@
+/**
+ * 
+ * @description SELECT PROJECT ITEM
+ * @param {*} item 
+ */
+function as_projectSelectItem(item) {
+	while (app.project.selection.length > 0) {
+		app.project.selection[0].selected = false;
+	}
+	item.selected = true;
+}

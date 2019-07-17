@@ -1,0 +1,11 @@
+/**
+ * @description NORMALIZE RGB
+ * @param rgb {array}
+ */
+function as_normalizeRGB(rgb) {
+	for (var i = 0; i < rgb.length; i++) {
+		rgb[i] = as_clamp(rgb[i], 0, 1);
+	}
+	rgb[3] = 1;
+	return rgb;
+}

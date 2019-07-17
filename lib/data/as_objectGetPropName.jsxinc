@@ -1,0 +1,22 @@
+/**
+ * version: 1.0.3
+ * author: Alexander Semeniuk
+ * date: Mon Feb 05 2018
+ * 
+ * version: 1.0.2
+ * author: Alexander Semeniuk
+ * date: Jul 16 2019
+ * 
+ * @param propValue 
+ * @param obj 
+ */
+function as_objectGetPropName(propValue, obj) {
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            if (obj[p] == propValue) {
+                return p;
+            }
+        }
+    }
+    return null;
+}

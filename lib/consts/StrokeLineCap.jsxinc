@@ -1,0 +1,10 @@
+/**
+ * version: 1.0.0
+ * author: Alexander Semeniuk
+ * date: 11 Mar 2018
+ */
+
+var as_StrokeLineCap = {};
+as_StrokeLineCap.BUTT_CAP = 1;
+as_StrokeLineCap.ROUND_CAP = 2;
+as_StrokeLineCap.PROJECTING_CAP = 3;

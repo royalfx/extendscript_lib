@@ -1,0 +1,17 @@
+/**
+ * @description COPY EFFECT PROPS
+ * Only one level
+ * @param {effect} effectFrom 
+ * @param {effect} effectTo 
+ */
+function as_effectCopyProps(effectFrom, effectTo) {
+	var errs = [];
+	var err = "";
+	for (var prop, propNext, i = 1, len = effectFrom.numProperties; i <= len; i++) {
+		err = as_propCopy(effectFrom(i), effectTo(i));
+		if (err.length > 0) {
+			errs[errs.length] = err;
+		}
+	}
+	return errs;
+}

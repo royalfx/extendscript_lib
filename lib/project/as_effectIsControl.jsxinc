@@ -1,0 +1,13 @@
+/**
+ * @description IS CONTROL EFFECT
+ * @param {Effect} effect 
+ */
+function as_effectIsControl(effect) {
+	if (!effect.isEffect) {
+		return false;
+	}
+	if (("ADBE Slider Control, ADBE Point Control, ADBE Angle Control, ADBE Checkbox Control, ADBE Layer Control, ADBE Point3D Control, ADBE Color Control").indexOf(effect.matchName) >= 0) {
+		return true;
+	}
+	return false;
+}
