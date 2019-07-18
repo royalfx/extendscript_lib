@@ -1,0 +1,11 @@
+#include "AEVersion.jsxinc";
+#include "ControlType.jsxinc";
+#include "FileExtension.jsxinc";
+#include "FileFilter.jsxinc";
+#include "LabelColor.jsxinc";
+#include "LayerType.jsxinc";
+#include "RegExpPattern.jsxinc";
+#include "StrokeLineCap.jsxinc";
+#include "StrokeLineJoin.jsxinc";
+#include "TextDocProperty.jsxinc";
+#include "VersionNum.jsxinc";
