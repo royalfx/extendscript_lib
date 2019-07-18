@@ -1,3 +1,4 @@
+#includepath "/d/Google Drive/Adobe Scripting/as_snippets/lib/project";
 #include "as_clearRenderQueue.jsxinc";
 #include "as_compDeselectAll.jsxinc";
 #include "as_compSelectLayer.jsxinc";

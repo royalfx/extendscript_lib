@@ -1,3 +1,4 @@
+#includepath "/d/Google Drive/Adobe Scripting/as_snippets/lib/keys";
 #include "as_applyEasing.jsxinc";
 #include "as_fixInfluenceValue.jsxinc";
 #include "as_keyNearestLeft.jsxinc";

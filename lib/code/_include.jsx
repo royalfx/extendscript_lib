@@ -1,3 +1,4 @@
+#includepath "/d/Google Drive/Adobe Scripting/as_snippets/lib/code";
 #include "as_codeComp.jsxinc";
 #include "as_codeGetPropPath.jsxinc";
 #include "as_codeLayer.jsxinc";

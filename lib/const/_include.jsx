@@ -1,3 +1,4 @@
+#includepath "/d/Google Drive/Adobe Scripting/as_snippets/lib/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
 #include "FileExtension.jsxinc";

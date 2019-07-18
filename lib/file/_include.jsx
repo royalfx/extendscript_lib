@@ -1,3 +1,4 @@
+#includepath "/d/Google Drive/Adobe Scripting/as_snippets/lib/file";
 #include "as_checkSecurityPrefSet.jsxinc";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
