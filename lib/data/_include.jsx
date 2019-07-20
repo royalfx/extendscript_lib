@@ -26,3 +26,6 @@
 #include "as_stringToSingleLine.jsxinc";
 #include "as_stringUniqChars.jsxinc";
 #include "as_timeMillisecToString.jsxinc";
+#include "as_toString.jsxinc";
+#include "as_toStringArray.jsxinc";
+#include "as_toStringObject.jsxinc";
