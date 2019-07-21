@@ -1,0 +1,81 @@
+/**
+ * 
+ * @param {File} fileCSV 
+ */
+function as_uiCSVToJSON(fileCSV) {
+
+	if(fileCSV == null) {
+		return null;
+	}
+	// GET FILE
+	if (!fileCSV.exists) {
+		alert("File \"" + fileCSV.fsName + "\" does not exist!", true);
+		return null;
+	}
+	
+	// RAED FILE
+	fileCSV.open("r");
+	var csvData = fileCSV.read();
+	fileCSV.close();
+
+	// VARS
+	var dataUI = {};
+
+	// PARSE
+	var arrLines = csvData.split("\n");
+	var arrPropNames = arrLines[0].split(";");
+	var arrPropTypes = arrLines[1].split(";");
+
+	// LOOP ELEMENTS
+	var elementProps, dataElement, elementName, propType, propName;
+	for (var l = 2; l < arrLines.length; l++) {
+
+		// SKIP IF EMPTY LINE
+		if ((arrLines[l].indexOf(";") == -1) || (arrLines[l].split(";").length == 0)) {
+			continue;
+		}
+
+		// VARS
+		elementProps = arrLines[l].split(";");
+		elementName = elementProps[0];
+		dataElement = dataUI[elementName] = {};
+
+		// LOOP PROPS
+		for (var p = 1; p < elementProps.length; p++) {
+
+			// VARS
+			propType = arrPropTypes[p];
+			propName = arrPropNames[p];
+
+			// SKIP EMPTY PROP
+			if (elementProps[p] == "") {
+				continue;
+			}
+
+			// ADD PROPS
+			switch (propType) {
+				case "string":
+					dataElement[propName] = elementProps[p];
+					break;
+				case "array_string":
+					dataElement[propName] = elementProps[p].split(",");
+					break;
+				case "array_number":
+					dataElement[propName] = eval("[" + elementProps[p] + "]");
+					break;
+				case "number":
+					dataElement[propName] = parseFloat(elementProps[p]);
+					break;
+				case "boolean":
+					dataElement[propName] = (elementProps[p] == "true");
+					break;
+				default:
+					alert(arguments.callee.name + " --> " + "Unrecognized property type : " + propType + ", propName: " + propName + ", arrLines[l]: " + arrLines[l] + ", l: " + l, true);
+					break;
+			}
+		}
+	}
+
+	// RETURN
+	return dataUI;
+}

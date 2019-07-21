@@ -1,0 +1,20 @@
+/**
+ * 
+ * @param {object} elementContainer 
+ * @param {string} elementName 
+ */
+function as_uiFindElement(elementContainer, elementName) {
+	var children = elementContainer.children;
+	for (var i = 0, c, c2; i < children.length; i++) {
+		c = children[i];
+		if (c.properties && (c.properties.name == elementName)) {
+			return c;
+		} else if (c.children) {
+			c2 = as_uiFindElement(c, elementName);
+			if (c2) {
+				return c2;
+			}
+		}
+	}
+	return null;
+}

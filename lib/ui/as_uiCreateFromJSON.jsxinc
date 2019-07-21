@@ -1,0 +1,203 @@
+/**
+ * 
+ * @param {Window} windowObj 
+ * @param {object} dataUI 
+ * @param {object} dataImages 
+ * @param {object} folderImages 
+ * @param {boolean} rewritefileImages 
+ */
+function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewritefileImages) {
+	
+	// VARS
+	if (dataImages) {
+		var readyImages = {};
+	}
+
+	try {
+
+		// VARS
+		var uiElement, dataElement, elementContainer, fileImage, imageBinary, fileName;
+
+		// LOOP JSON
+		for (var elementName in dataUI) {
+			if (dataUI.hasOwnProperty(elementName)) {
+				dataElement = dataUI[elementName];
+
+				// GET CONTAINER
+				// If parent container is Window/Panel leave empty field in spreadsheet.
+				if (dataElement.container === undefined) {
+					elementContainer = windowObj;
+				} else {
+					elementContainer = as_uiFindElement(windowObj, dataElement.container);
+				}
+
+				// CHECK CONTAINER
+				if (!elementContainer) {
+					alert(arguments.callee.name + " --> " + "Container " + dataElement.container + " not found!" + "\nElement: " + elementName);
+					continue;
+				}
+
+				// CREATE UI ELEMENT
+				switch (dataElement.type) {
+					case "image":
+						uiElement = elementContainer.add("image", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "iconbutton":
+						uiElement = elementContainer.add("iconbutton", dataElement.bounds, undefined, {
+							name: (elementName),
+							style: (dataElement.style || "toolbutton")
+						});
+						break;
+					case "button":
+						uiElement = elementContainer.add("button", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "statictext":
+						uiElement = elementContainer.add("statictext", dataElement.bounds, undefined, {
+							name: (elementName),
+							multiline: (dataElement.multiline || false),
+							justify: (dataElement.justify || "left")
+						});
+						if (dataElement.justify !== undefined) {
+							uiElement.justify = dataElement.justify;
+						}
+						break;
+					case "edittext":
+						uiElement = elementContainer.add("edittext", dataElement.bounds, undefined, {
+							name: (elementName),
+							multiline: (dataElement.multiline || false),
+							readonly: (dataElement.readonly || false),
+							justify: (dataElement.justify || "left")
+						});
+						if (dataElement.justify !== undefined) {
+							uiElement.justify = dataElement.justify;
+						}
+						break;
+					case "custombutton":
+						uiElement = elementContainer.add("custombutton", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "group":
+						uiElement = elementContainer.add("group", dataElement.bounds, {
+							name: (elementName)
+						});
+						break;
+					case "dropdownlist":
+						uiElement = elementContainer.add("dropdownlist", dataElement.bounds, dataElement.items, { name: (elementName) });
+						uiElement.selection = 0;
+						break;
+					case "scrollbar":
+						//add (“scrollbar” [, bounds, value, minvalue, maxvalue,{creation_properties}]);
+						uiElement = elementContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "progressbar":
+						//add (progressbar [, bounds, value, minvalue, maxvalue,{creation_properties}]);
+						uiElement = elementContainer.add("progressbar", dataElement.bounds, undefined, undefined, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "listbox":
+						uiElement = elementContainer.add("listbox", dataElement.bounds, undefined, {
+							name: (elementName),
+							numberOfColumns: (dataElement.numberOfColumns),
+							showHeaders: (dataElement.showHeaders),
+							columnTitles: (dataElement.columnTitles),
+							columnWidths: (dataElement.columnWidths)
+						});
+						break;
+					case "checkbox":
+						uiElement = elementContainer.add("checkbox", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "tabbedpanel":
+						uiElement = elementContainer.add("tabbedpanel", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "panel":
+						uiElement = elementContainer.add("panel", dataElement.bounds, undefined, { name: (elementName), borderStyle: "etched" });
+						break;
+						// borderStyle: 
+						// black, etched, gray, raised, sunken. Default is etched
+					case "tab":
+						uiElement = elementContainer.add("tab", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "radiobutton":
+						uiElement = elementContainer.add("radiobutton", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					default:
+						alert(arguments.callee.name + " --> " + "unaccounted type .." + dataElement.type);
+						break;
+				}
+
+				// STORE ELEMENT LINK IN WONDOW OBJ
+				if (elementContainer != windowObj) {
+					if (windowObj[elementName] !== undefined) {
+						alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
+					} else {
+						windowObj[elementName] = uiElement;
+					}
+				}
+
+				// PREPARE IMAGES
+				if (dataElement.icon !== undefined) {
+					fileName = dataElement.icon;
+
+					// CREATE IMAGE FILE FROM BINARY
+					if (readyImages[fileName] === undefined) {
+
+						// GET IMAGE FILE
+						imageBinary = dataImages[dataElement.icon];
+						fileImage = File(folderImages.fsName + "/" + dataElement.icon);
+						if (!fileImage.exists || rewritefileImages) {
+							fileImage = as_fileWrite(fileImage, imageBinary, true);
+						}
+
+						// TRY SET
+						try {
+							readyImages[fileName] = ScriptUI.newImage(fileImage);
+						} catch (err) {
+							alert("ERROR | fileName : " + fileName + ", details: " + err.message);
+						}
+					}
+					dataElement.icon = readyImages[fileName];
+				}
+
+				// SET PROPERTIES
+				// Creation properties
+				var skipProps = ["name", "type", "bounds", "style", "multiline", "justify", "readonly", "items", "columnWidths", "columnTitles", "showHeaders", "numberOfColumns", "borderStyle"];
+				for (var propName in dataElement) {
+					if(dataElement.hasOwnProperty(propName)) {
+						if (as_arrayCheckValue(propName, skipProps) >= 0) {
+							// SKIP CREATION PROPERTIES
+						} else {
+							try {
+								uiElement[propName] = dataElement[propName];
+							} catch (err) {
+								alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message, false);
+							}
+						}
+					} else {
+						alert(arguments.callee.name + " --> Inherited property in dataElement : " + propName, false);
+					}
+				}
+
+			} else {
+				alert(arguments.callee.name + " --> Inherited property in dataUI : " + elementName, false);
+			}
+		}
+	} catch (err) {
+		alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message);
+	}
+}
