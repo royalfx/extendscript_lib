@@ -7,35 +7,11 @@
 
 /**
  * 
- * @param {Function} func 
- * @param {array} args 
- * @param {array} filterItemsNames 
- * @param {array} filterItemsTypes as_ItemType
+ * @param func {Function}
+ * @param args {array}
+ * @param filterItemsNames {array} strings
+ * @param filterItemsTypes {array} FolderItem / CompItem / FootageItem
  */
 function as_loopItems(func, args, filterItemsNames, filterItemsTypes) {
-
-    // CHECK ARGS
-    if(args === undefined) {
-        args = [];
-    }
-
-    // VARS
-    var results = [];
-
-    // LOOP ITEMS
-    for (var i = 0, item; i < app.project.selection.length; i++) {
-        item = app.project.selection[i];
-
-        // CHECK
-        var nameMatch = (filterItemsNames === undefined) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
-        var typeMatch = (filterItemsTypes === undefined) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
-        
-        // DO
-        if(nameMatch && typeMatch) {
-            results.push(func.apply(undefined, [item].concat(args)));
-        }
-    }
-
-    // RETURN
-    return results;
+    // TODO
 }

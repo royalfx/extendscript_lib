@@ -7,7 +7,7 @@
 
 /**
  * 
- * @param {*} layer
+ * @param {AVLayer} layer
  * @return {string} as_LayerType
  */
 function as_layerGetType(layer) {
