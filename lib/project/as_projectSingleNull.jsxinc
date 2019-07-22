@@ -1,0 +1,41 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.0
+// date: Jul 22 2019
+
+/**
+ * 
+ * @description Single null
+ * @param {array} items 
+ */
+function as_projectSingleNull() {
+
+
+    
+    
+    for (var comp, c = 0; c < comps.length; c++) {
+        comp = comps[c];
+
+        // LOOP LAYERS
+        for (var lr, i = 1; i <= comp.numLayers; i++) {
+            lr = comp.layer(i);
+
+            // REPLACE NULL SOURCE
+            if (lr.nullLayer && (lr.source != nullSolid)) {
+                // SKIP Essential Graphics Panel BUG
+                //if(lr.name == "Controller")
+                //{
+                //	continue;
+                //}
+                var prevNull = lr.source;
+                lr.replaceSource(nullSolid, false);
+                if (prevNull.usedIn.length == 0) {
+                    prevNull.remove();
+                    countOperations++;
+                }
+            }
+        }
+    }
+}

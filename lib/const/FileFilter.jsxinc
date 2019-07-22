@@ -2,11 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-/**
- * version: 1.0.2
- * author: Alexander Semeniuk
- * date: 22 Jul 2019
- */
+// version: 1.0.2
+// date: 22 Jul 2019
 
 var as_FileFilter = {};
 as_FileFilter.PNG = "PNG:*.png";

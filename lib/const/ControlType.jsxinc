@@ -2,11 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-/**
- * version: 1.0.0
- * author: Alexander Semeniuk
- * date: Fri Jul 20 2018
- */
+// version: 1.0.0
+// date: Fri Jul 20 2018
 
 var as_ControlType = {};
 as_ControlType.SLIDER = "Slider";

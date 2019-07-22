@@ -2,10 +2,10 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
+// version: 1.0.1
+// date: Jul 17 2019
+
 /**
- * version: 1.0.1
- * author: Alexander Semeniuk
- * date: Jul 17 2019
  * 
  * @param prop {Property}
  * @param t {number} Time

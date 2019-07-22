@@ -2,11 +2,9 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-/**
- * version: 1.0.0
- * author: Alexander Semeniuk
- * date: Jan 31 2018
- */
+// version: 1.0.0
+// date: Jan 31 2018
+
 var as_TextDocProperty = {};
 as_TextDocProperty.FONT = "as_TextDocProperty.FONT";
 as_TextDocProperty.FONT_SIZE = "as_TextDocProperty.FONT_SIZE";

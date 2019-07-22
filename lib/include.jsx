@@ -1,19 +1,19 @@
 
 // APP
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/app";
 #include "as_compareVersions.jsxinc";
 #include "as_getAeReleaseName.jsxinc";
 #include "as_getAeReleaseVersion.jsxinc";
 
 // BATCH
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/batch";
 #include "as_loopItems.jsxinc";
 #include "as_loopItemsSelection.jsxinc";
 #include "as_loopLayers.jsxinc";
 #include "as_recursiveEachProp.jsxinc";
 
 // COLOR
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/color";
 #include "as_hexToRgb.jsxinc";
 #include "as_hslToRgb.jsxinc";
 #include "as_nativeColorPicker.jsxinc";
@@ -22,11 +22,12 @@
 #include "as_rgbToHsl.jsxinc";
 
 // CONST
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
 #include "FileExtension.jsxinc";
 #include "FileFilter.jsxinc";
+#include "ItemType.jsxinc";
 #include "LabelColor.jsxinc";
 #include "LayerType.jsxinc";
 #include "RegExpPattern.jsxinc";
@@ -36,7 +37,7 @@
 #include "VersionNum.jsxinc";
 
 // DATA
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/data";
 #include "as_alignToJustify.jsxinc";
 #include "as_arrayCheckValue.jsxinc";
 #include "as_arrayClone.jsxinc";
@@ -69,11 +70,11 @@
 #include "as_toStringObject.jsxinc";
 
 // EXPR
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/expr";
 #include "as_exprGetPropPath.jsxinc";
 
 // FILE
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
 #include "as_checkSecurityPrefSet.jsxinc";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
@@ -89,7 +90,7 @@
 #include "as_PNGFilesToJSON.jsxinc";
 
 // KEYS
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/keys";
 #include "as_applyEasing.jsxinc";
 #include "as_fixInfluenceValue.jsxinc";
 #include "as_keyNearestLeft.jsxinc";
@@ -101,13 +102,13 @@
 #include "as_keysRemove.jsxinc";
 
 // MARKER
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/marker";
 #include "as_addMarkerEach.jsxinc";
 #include "as_addMarkersChars.jsxinc";
 #include "as_getMarkersChars.jsxinc";
 
 // PROJECT
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/project";
 #include "as_clearRenderQueue.jsxinc";
 #include "as_compDeselectAll.jsxinc";
 #include "as_compSelectLayer.jsxinc";
@@ -121,12 +122,14 @@
 #include "as_itemByID.jsxinc";
 #include "as_itemGet.jsxinc";
 #include "as_itemGetPath.jsxinc";
+#include "as_itemGetType.jsxinc";
 #include "as_layerGetParentsDepth.jsxinc";
 #include "as_layerGetRealScale.jsxinc";
 #include "as_layerGetType.jsxinc";
 #include "as_layerSetState.jsxinc";
 #include "as_projectSelectItem.jsxinc";
 #include "as_projectSelectItems.jsxinc";
+#include "as_projectSingleNull.jsxinc";
 #include "as_propCopy.jsxinc";
 #include "as_propGetContainingComp.jsxinc";
 #include "as_propGetContainingLayer.jsxinc";
@@ -139,20 +142,22 @@
 #include "as_textSetProperties.jsxinc";
 
 // SHAPE
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/shape";
 #include "as_createEmptyShape.jsxinc";
 #include "as_shapeScale.jsxinc";
 #include "as_shapeToSpatial.jsxinc";
 #include "as_shapeTranslate.jsxinc";
 
 // SYSTEM
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/system";
 #include "as_copyToClipboard.jsxinc";
 #include "as_openURL.jsxinc";
 #include "as_osName.jsxinc";
 
 // UI
-#includepath "/d/Google%20Drive/Adobe%20Scripting/ae_scripts/lib";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/ui";
 #include "as_uiCreateFromJSON.jsxinc";
 #include "as_uiCSVToJSON.jsxinc";
 #include "as_uiFindElement.jsxinc";
+#include "as_uiPrefsApply.jsxinc";
+#include "as_uiPrefsGet.jsxinc";

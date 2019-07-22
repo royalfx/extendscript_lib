@@ -8,7 +8,7 @@ for (var d = 0, dir; d < dirs.length; d++) {
     dir = dirs[d];
     if(dir instanceof Folder) {
         lines.push("\n// " + dir.displayName.toUpperCase());
-        lines.push("#includepath \"" + dir.path + "\";");
+        lines.push("#includepath \"" + dir.fullName + "\";");
         var files = dir.getFiles("*.jsxinc");
         for (var f = 0, file; f < files.length; f++) {
             file = files[f];
@@ -16,6 +16,6 @@ for (var d = 0, dir; d < dirs.length; d++) {
         }
     }
 };
-var fileInclude = File(dirLib.fsName + "/" + "include.jsx");
+var fileInclude = File(dirLib.fullName + "/" + "include.jsx");
 as_fileWrite(fileInclude, lines.join("\n"), false);
 fileInclude.execute();

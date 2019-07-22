@@ -2,11 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-/*
- * version: 1.0.0
- * author: Alexander Semeniuk
- * date: 06 Dec 2017
- */
+// version: 1.0.0
+// date: 06 Dec 2017
 
 var as_VersionNum = {};
 as_VersionNum.MAJOR = 0;

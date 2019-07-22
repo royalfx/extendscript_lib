@@ -2,14 +2,13 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
+// version: 1.0.0
+// date: 17 Jul 2019
+
 /**
- * version: 1.0.0
- * author: Alexander Semeniuk
- * date: 17 Jul 2019
  * 
  * @description Use as_layerGetType
  */
-
 var as_LayerType = {};
 as_LayerType.CAMERA = "as_LayerType.CameraLayer";
 as_LayerType.LIGHT = "as_LayerType.LightLayer";

@@ -2,6 +2,9 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
+// version: 1.0.0
+// date: Jul 22 2019
+
 /**
  * 
  * @param {Window} windowObj 
@@ -95,7 +98,7 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 						uiElement.selection = 0;
 						break;
 					case "scrollbar":
-						//add (вЂњscrollbarвЂќ [, bounds, value, minvalue, maxvalue,{creation_properties}]);
+						//add (Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В Р вЂ№Р В Р вЂ Р Р†Р вЂљРЎвЂєР РЋРЎвЂєscrollbarР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В Р вЂ№Р В Р Р‹Р Р†РІР‚С›РЎС› [, bounds, value, minvalue, maxvalue,{creation_properties}]);
 						uiElement = elementContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
