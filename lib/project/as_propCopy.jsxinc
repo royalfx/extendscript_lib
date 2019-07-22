@@ -1,3 +1,7 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
 /**
  * @description COPY PROPERTY
  * @param {Property} propOriginal 

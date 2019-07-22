@@ -1,3 +1,7 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
 /**
  * 
  * @param {Window} windowObj 
@@ -91,7 +95,7 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 						uiElement.selection = 0;
 						break;
 					case "scrollbar":
-						//add (“scrollbar” [, bounds, value, minvalue, maxvalue,{creation_properties}]);
+						//add (вЂњscrollbarвЂќ [, bounds, value, minvalue, maxvalue,{creation_properties}]);
 						uiElement = elementContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
