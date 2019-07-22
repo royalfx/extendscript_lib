@@ -13,7 +13,7 @@
   * @param filterMatchNames {array}
   * @returns Array with results
   */
-function as_recursiveLoopProp(propGroup, func, args, filterMatchNames) {
+function as_loopIPropsRecursive(propGroup, func, args, filterMatchNames) {
 
 	// CHECK ARGS
 	if(args === undefined) {
@@ -35,7 +35,7 @@ function as_recursiveLoopProp(propGroup, func, args, filterMatchNames) {
 	} else /*if ((propGroup.propertyType === PropertyType.INDEXED_GROUP) || (propGroup.propertyType === PropertyType.NAMED_GROUP))*/ {
 		for (var p = 1, prop; p <= propGroup.numProperties; p++) {
 			prop = propGroup.property(p);
-			results = results.concat(as_recursiveLoopProp(prop, func, args));
+			results = results.concat(as_loopIPropsRecursive(prop, func, args));
 		}
 	}
 

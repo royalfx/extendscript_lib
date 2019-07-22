@@ -10,7 +10,7 @@
 #include "as_loopItems.jsxinc";
 #include "as_loopItemsSelection.jsxinc";
 #include "as_loopLayers.jsxinc";
-#include "as_recursiveLoopProp.jsxinc";
+#include "as_loopIPropsRecursive.jsxinc";
 
 // COLOR
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/color";
