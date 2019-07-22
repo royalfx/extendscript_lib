@@ -1,7 +1,7 @@
 ﻿/**
- * version: 1.0.1
+ * version: 1.0.2
  * author: Alexander Semeniuk
- * date: 23 Oct 2018
+ * date: 22 Jul 2019
  */
 
 var as_FileFilter = {};
@@ -11,6 +11,7 @@ as_FileFilter.AEP = "After Effects Project File:*.aep";
 as_FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
 as_FileFilter.TXT = "Plain Text:*.txt";
 as_FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
+as_FileFilter.JSXFILES = "Adobe JavaScript files:*.jsx;*jsxbin";
 as_FileFilter.JSX = "Adobe JavaScript:*.jsx";
 as_FileFilter.JS = "JavaScript files:*.js";
 as_FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
