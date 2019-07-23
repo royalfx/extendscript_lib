@@ -1,21 +1,28 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.0
+// date: 22 Jul 2019
+
 /**
  * 
  * @description GET UNIQUE ITEM NAME
  * @param {*} item 
  * @param {string} itemName 
- * @param {FolderItem} locationObject 
+ * @param {FolderItem} folder 
  * @param {number} startIndex 
  * @param {number} suffixLen 
- * @param {*} itemType CompItem / FolderItem / FootageItem
- * @param {boolean} searchInSubfolders 
+ * @param {string} itemType as_ItemType
+ * @param {boolean} intoSubfolders 
  * @param {string} separator 
  */
-function as_getUniqItemName(item, itemName, locationObject, startIndex, suffixLen, itemType, searchInSubfolders, separator) {
+function as_getUniqItemName(item, itemName, folder, startIndex, suffixLen, itemType, intoSubfolders, separator) {
 
 	// CHECK ARGS
 	startIndex = startIndex || 1;
 	suffixLen = suffixLen || 2;
-	itemType = itemType || CompItem;
+	itemType = itemType || as_ItemType.COMPITEM;
 	separator = separator || " ";
 
 	// VARS
@@ -33,7 +40,7 @@ function as_getUniqItemName(item, itemName, locationObject, startIndex, suffixLe
 			i++;
 		}
 		// CHECK
-		foundItem = as_itemGet(newName, itemType, locationObject, searchInSubfolders);
+		foundItem = as_findItem(newName, itemType, folder, intoSubfolders);
 		exist = (foundItem != null) && ((item == undefined) || (foundItem != item));
 	}
 	return newName;

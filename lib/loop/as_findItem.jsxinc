@@ -1,0 +1,35 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.1
+// date: Jul 23 2019
+
+/**
+ * @description FIND ITEM
+ * @param {string} itemName 
+ * @param {string} itemType as_ItemType
+ * @param {Folder} folder 
+ * @param {boolean} intoSubfolders 
+ */
+function as_findItem(itemName, itemType, folder, intoSubfolders) {
+	
+	// CHECK ARGS
+	itemType = (itemType === undefined) ? as_ItemType.COMPITEM : itemType;
+	folder = (folder === undefined) ? app.project.rootFolder : folder;
+
+	for (var item, i = 1, len = folder.numItems; i <= len; i++) {
+		item = folder.item(i);
+		if ((item.name == itemName) && (as_itemGetType(item) == itemType)) {
+			return item;
+		}
+		if ((item instanceof FolderItem) && intoSubfolders) {
+			item = as_findItem(itemName, itemType, item, true);
+			if (item !== null) {
+				return item;
+			}
+		}
+	}
+
+	return null;
+}

@@ -11,5 +11,5 @@
  */
 var as_ItemType = {};
 as_ItemType.COMPITEM = "as_ItemType.COMPITEM";
-as_ItemType.FOLDERITEM = "as_ItemType.FOLDERITEM";
 as_ItemType.FOOTAGEITEM = "as_ItemType.FOOTAGEITEM";
+as_ItemType.FOLDERITEM = "as_ItemType.FOLDERITEM";

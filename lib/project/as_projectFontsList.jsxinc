@@ -16,7 +16,7 @@ function as_projectFontsList() {
     var arrFonts = [];
 
     // DO
-    as_loopItemsRecursive(app.project.rootFolder, true, handleComp, [arrFonts], undefined, [as_ItemType.COMPITEM]);
+    as_loopItems(app.project.rootFolder, true, handleComp, [arrFonts], undefined, [as_ItemType.COMPITEM]);
 
     // FUNC FOR HANDLE COMPS
     function handleComp(comp, arrFonts) {
