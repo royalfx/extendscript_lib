@@ -1,0 +1,27 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.0
+// date: Jul 22 2019
+
+/**
+ * 
+ * @param {*} item
+ * @return {string} as_ItemType
+ */
+function as_itemGetType(item) {
+    if (item instanceof CompItem) {
+        return as_ItemType.COMPITEM;
+    }
+    
+    if (item instanceof FolderItem) {
+        return as_ItemType.FOLDERITEM;
+    }
+
+    if (item instanceof FootageItem) {
+        return as_ItemType.FOOTAGEITEM;
+    }
+
+    return null;
+}
