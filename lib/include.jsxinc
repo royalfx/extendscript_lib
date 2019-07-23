@@ -68,6 +68,7 @@
 #include "as_effectNameUniversalized.jsxinc";
 #include "as_exprGetPropPath.jsxinc";
 #include "as_exprIsDisabled.jsxinc";
+#include "as_exprSet.jsxinc";
 
 // FILE
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
