@@ -100,10 +100,10 @@
 
 // LOOP
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/loop";
-#include "as_loopItemsRecursive.jsxinc";
+#include "as_loopItems.jsxinc";
 #include "as_loopItemsSelection.jsxinc";
 #include "as_loopLayers.jsxinc";
-#include "as_loopPropsRecursive.jsxinc";
+#include "as_loopProps.jsxinc";
 
 // MARKER
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/marker";
@@ -124,7 +124,7 @@
 #include "as_effectIsControl.jsxinc";
 #include "as_elementRename.jsxinc";
 #include "as_itemByID.jsxinc";
-#include "as_itemGet.jsxinc";
+#include "as_findItem.jsxinc";
 #include "as_itemGetPath.jsxinc";
 #include "as_itemGetType.jsxinc";
 #include "as_layerGetParentsDepth.jsxinc";
