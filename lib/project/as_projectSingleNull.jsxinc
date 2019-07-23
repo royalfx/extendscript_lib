@@ -7,34 +7,38 @@
 
 /**
  * 
- * @description Single null
- * @param {array} items 
+ * @description Single null item in project
+ * @param
  */
 function as_projectSingleNull() {
 
+    // GET NULL MASTER
+    var nullMaster = as_itemGet("Null", FootageItem, app.project.rootFolder, true);
+    if(!nullMaster) {
+        var compTemp = app.project.items.addComp("temp", 100, 100, 1, 1, 30);
+        var layerNull = compTemp.addNull(1);
+        nullMaster = layerNull.source;
+        nullMaster.name = "Null";
+        compTemp.remove();
+    }
 
-    
-    
-    for (var comp, c = 0; c < comps.length; c++) {
-        comp = comps[c];
+    // DO
+    as_loopItemsRecursive(app.project.rootFolder, true, handleComp, [nullMaster], undefined, [as_ItemType.COMPITEM]);
 
-        // LOOP LAYERS
-        for (var lr, i = 1; i <= comp.numLayers; i++) {
-            lr = comp.layer(i);
+    // FUNC FOR HANDLE COMPS
+    function handleComp(comp, nullMaster) {
+        as_loopLayers(comp, handleLayer, [nullMaster], undefined, [as_LayerType.SOLID]);
+    }
 
-            // REPLACE NULL SOURCE
-            if (lr.nullLayer && (lr.source != nullSolid)) {
-                // SKIP Essential Graphics Panel BUG
-                //if(lr.name == "Controller")
-                //{
-                //	continue;
-                //}
-                var prevNull = lr.source;
-                lr.replaceSource(nullSolid, false);
-                if (prevNull.usedIn.length == 0) {
-                    prevNull.remove();
-                    countOperations++;
-                }
+    // FUNC FOR HANDLE LAYERS
+    function handleLayer(layer, nullMaster) {
+        if (layer.nullLayer && (layer.source != nullMaster)) {
+            var sourceOld = layer.source;
+            layer.replaceSource(nullMaster, false);
+
+            // REMOVE
+            if(sourceOld.usedIn == 0) {
+                sourceOld.remove();
             }
         }
     }

@@ -25,18 +25,14 @@ function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
     for (var l = 1, layer; l <= comp.numLayers; l++) {
         layer = comp.layer(l);
 
-        // CHECK NAMES
-        if((filterLayerNames !== undefined) && (filterLayerNames.length > 0) && (as_arrayCheckValue(layer.name, filterLayerNames) == -1)) {
-            continue;
-        }
-
-        // CHECK TYPES
-        if((filterLayerTypes !== undefined) && (filterLayerTypes.length > 0) && (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) == -1)) {
-            continue;
-        }
-
+        // CHECK
+        var nameMatch = (filterLayerNames === undefined) || (as_arrayCheckValue(layer.name, filterLayerNames) >= 0);
+        var typeMatch = (filterLayerTypes === undefined) || (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) >= 0);
+        
         // DO
-        results.push(func.apply(undefined, [layer].concat(args)));
+        if(nameMatch && typeMatch) {
+            results.push(func.apply(undefined, [layer].concat(args)));
+        }
     }
 
     // RETURN

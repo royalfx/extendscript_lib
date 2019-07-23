@@ -10,9 +10,9 @@
  * @param {string} itemName 
  * @param {*} itemType CompItem / FolderItem / FootageItem
  * @param {Folder} folder 
- * @param {boolean} searchInSubfolders 
+ * @param {boolean} intoSubfolders 
  */
-function as_itemGet(itemName, itemType, folder, searchInSubfolders) {
+function as_itemGet(itemName, itemType, folder, intoSubfolders) {
 	
 	// CHECK ARGS
 	itemType = (itemType === undefined) ? CompItem : itemType;
@@ -27,7 +27,7 @@ function as_itemGet(itemName, itemType, folder, searchInSubfolders) {
 					return item;
 				}
 			}
-			if ((item instanceof FolderItem) && searchInSubfolders) {
+			if ((item instanceof FolderItem) && intoSubfolders) {
 				item = as_itemGet(itemName, itemType, item, true);
 				if (item !== null) {
 					// alert("SUCCESS | itemName: " + itemName + ", folder: " + as_toString(folder), false);

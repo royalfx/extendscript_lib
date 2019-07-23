@@ -7,13 +7,15 @@
 
 /**
  * 
+ * @param {FolderItem} folder 
+ * @param {boolean} intoSubfolders 
  * @param {Function} func 
  * @param {array} args 
  * @param {array} filterItemsNames 
  * @param {array} filterItemsTypes as_ItemType
  */
-function as_loopItems(func, args, filterItemsNames, filterItemsTypes) {
-
+function as_loopItemsRecursive(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
+    
     // CHECK ARGS
     if(args === undefined) {
         args = [];
@@ -23,8 +25,8 @@ function as_loopItems(func, args, filterItemsNames, filterItemsTypes) {
     var results = [];
 
     // LOOP ITEMS
-    for (var i = 0, item; i < app.project.selection.length; i++) {
-        item = app.project.selection[i];
+    for (var i = 1, item; i <= folder.numItems; i++) {
+        item = folder.item(i);
 
         // CHECK
         var nameMatch = (filterItemsNames === undefined) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
@@ -33,6 +35,11 @@ function as_loopItems(func, args, filterItemsNames, filterItemsTypes) {
         // DO
         if(nameMatch && typeMatch) {
             results.push(func.apply(undefined, [item].concat(args)));
+        }
+
+        // SUBFOLDERS
+        if((item instanceof FolderItem) && intoSubfolders) {
+            results = results.concat(as_loopItemsRecursive(item, intoSubfolders, func, args, filterItemsNames, filterItemsTypes));
         }
     }
 
