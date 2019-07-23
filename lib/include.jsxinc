@@ -120,6 +120,7 @@
 #include "as_compSelectLayer.jsxinc";
 #include "as_compSetDuration.jsxinc";
 #include "as_compSetSize.jsxinc";
+#include "as_compSingleFont.jsxinc";
 #include "as_compTrueDuplicate.jsxinc";
 #include "as_effectAdd.jsxinc";
 #include "as_effectCopyProps.jsxinc";
