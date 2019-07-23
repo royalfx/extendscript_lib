@@ -66,6 +66,7 @@
 // EXPR
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/expr";
 #include "as_exprGetPropPath.jsxinc";
+#include "as_exprIsDisabled.jsxinc";
 
 // FILE
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
@@ -127,6 +128,7 @@
 #include "as_layerGetParentsDepth.jsxinc";
 #include "as_layerGetRealScale.jsxinc";
 #include "as_layerGetType.jsxinc";
+#include "as_layersBlurSet.jsxinc";
 #include "as_layerSetState.jsxinc";
 #include "as_projectFontsList.jsxinc";
 #include "as_projectSelectionList.jsxinc";

@@ -13,5 +13,5 @@ if(comp) {
     }
 
 } else {
-    alert("Select target property!");
+    alert("Select target comp!");
 }
