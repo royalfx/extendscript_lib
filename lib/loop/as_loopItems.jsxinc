@@ -14,7 +14,7 @@
  * @param {array} filterItemsNames 
  * @param {array} filterItemsTypes as_ItemType
  */
-function as_loopItemsRecursive(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
+function as_loopItems(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
     
     // CHECK ARGS
     if(args === undefined) {
@@ -42,7 +42,7 @@ function as_loopItemsRecursive(folder, intoSubfolders, func, args, filterItemsNa
 
         // SUBFOLDERS
         if((item instanceof FolderItem) && intoSubfolders) {
-            results = results.concat(as_loopItemsRecursive(item, intoSubfolders, func, args, filterItemsNames, filterItemsTypes));
+            results = results.concat(as_loopItems(item, intoSubfolders, func, args, filterItemsNames, filterItemsTypes));
         }
     }
 
