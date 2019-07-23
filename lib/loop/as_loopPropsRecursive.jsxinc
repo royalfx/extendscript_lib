@@ -2,8 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
+// version: 1.0.1
+// date: Jul 23 2019
 
  /**
   * @description Applies function for each property
@@ -30,7 +30,10 @@ function as_loopPropsRecursive(propGroup, func, args, filterMatchNames) {
 		if((filterMatchNames !== undefined) && (filterMatchNames.length > 0) && (as_arrayCheckValue(propGroup.matchName, filterMatchNames) == -1)) {
             return results;
 		}
-		results.push(func.apply(undefined, [propGroup].concat(args)));
+		var result = func.apply(undefined, [propGroup].concat(args));
+		if(result !== undefined) {
+			results.push(result);
+		}
 		
 	} else /*if ((propGroup.propertyType === PropertyType.INDEXED_GROUP) || (propGroup.propertyType === PropertyType.NAMED_GROUP))*/ {
 		for (var p = 1, prop; p <= propGroup.numProperties; p++) {

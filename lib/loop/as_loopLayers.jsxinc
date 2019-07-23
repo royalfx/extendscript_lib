@@ -2,8 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
+// version: 1.0.1
+// date: Jul 23 2019
 
 /**
  * 
@@ -31,7 +31,10 @@ function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
         
         // DO
         if(nameMatch && typeMatch) {
-            results.push(func.apply(undefined, [layer].concat(args)));
+            var result = func.apply(undefined, [layer].concat(args));
+            if(result !== undefined) {
+                results.push(result);
+            }
         }
     }
 
