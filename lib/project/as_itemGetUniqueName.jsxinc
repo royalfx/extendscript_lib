@@ -17,7 +17,7 @@
  * @param {boolean} intoSubfolders 
  * @param {string} separator 
  */
-function as_getUniqItemName(item, itemName, folder, startIndex, suffixLen, itemType, intoSubfolders, separator) {
+function as_itemGetUniqueName(item, itemName, folder, startIndex, suffixLen, itemType, intoSubfolders, separator) {
 
 	// CHECK ARGS
 	startIndex = startIndex || 1;

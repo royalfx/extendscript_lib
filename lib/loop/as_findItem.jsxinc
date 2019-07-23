@@ -18,6 +18,7 @@ function as_findItem(itemName, itemType, folder, intoSubfolders) {
 	itemType = (itemType === undefined) ? as_ItemType.COMPITEM : itemType;
 	folder = (folder === undefined) ? app.project.rootFolder : folder;
 
+	// LOOP ITEMS
 	for (var item, i = 1, len = folder.numItems; i <= len; i++) {
 		item = folder.item(i);
 		if ((item.name == itemName) && (as_itemGetType(item) == itemType)) {
