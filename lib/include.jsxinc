@@ -65,6 +65,7 @@
 
 // EXPR
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/expr";
+#include "as_effectNameUniversalized.jsxinc";
 #include "as_exprGetPropPath.jsxinc";
 #include "as_exprIsDisabled.jsxinc";
 
