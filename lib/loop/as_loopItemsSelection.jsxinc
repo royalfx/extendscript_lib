@@ -12,7 +12,7 @@
  * @param {array} filterItemsNames 
  * @param {array} filterItemsTypes as_ItemType
  */
-function as_loopItems(func, args, filterItemsNames, filterItemsTypes) {
+function as_loopItemsSelection(func, args, filterItemsNames, filterItemsTypes) {
 
     // CHECK ARGS
     if(args === undefined) {

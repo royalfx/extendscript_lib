@@ -5,13 +5,6 @@
 #include "as_getAeReleaseName.jsxinc";
 #include "as_getAeReleaseVersion.jsxinc";
 
-// BATCH
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/batch";
-#include "as_loopIPropsRecursive.jsxinc";
-#include "as_loopItemsRecursive.jsxinc";
-#include "as_loopItemsSelection.jsxinc";
-#include "as_loopLayers.jsxinc";
-
 // COLOR
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/color";
 #include "as_hexToRgb.jsxinc";
@@ -102,6 +95,13 @@
 #include "as_keysReflect.jsxinc";
 #include "as_keysRemove.jsxinc";
 
+// LOOP
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/loop";
+#include "as_loopItemsRecursive.jsxinc";
+#include "as_loopItemsSelection.jsxinc";
+#include "as_loopLayers.jsxinc";
+#include "as_loopPropsRecursive.jsxinc";
+
 // MARKER
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/marker";
 #include "as_addMarkerEach.jsxinc";
@@ -129,6 +129,7 @@
 #include "as_layerGetType.jsxinc";
 #include "as_layerSetState.jsxinc";
 #include "as_projectFontsList.jsxinc";
+#include "as_projectSelectionList.jsxinc";
 #include "as_projectSelectItem.jsxinc";
 #include "as_projectSelectItems.jsxinc";
 #include "as_projectSingleNull.jsxinc";
