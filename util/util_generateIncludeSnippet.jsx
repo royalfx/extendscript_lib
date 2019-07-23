@@ -16,6 +16,6 @@ for (var d = 0, dir; d < dirs.length; d++) {
         }
     }
 };
-var fileInclude = File(dirLib.fullName + "/" + "include.jsx");
+var fileInclude = File(dirLib.fullName + "/" + "include.jsxinc");
 as_fileWrite(fileInclude, lines.join("\n"), false);
 fileInclude.execute();
