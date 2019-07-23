@@ -2,7 +2,7 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
+// version: 1.0.2
 // date: Jul 23 2019
 
 /**
@@ -10,16 +10,14 @@
  * @param
  */
 function as_arrayMakeUnique(arr) {
-	var seen = {};
-	var out = [];
-	var len = arr.length;
-	var j = 0;
-	for (var item, i = 0; i < len; i++) {
+	var checked = {};
+	var arrNew = [];
+	for (var i = 0, len = arr.length, item; i < len; i++) {
 		item = arr[i];
-		if (seen[item] !== 1) {
-			seen[item] = 1;
-			out[j++] = item;
+		if (checked[item] !== 1) {
+			checked[item] = 1;
+			arrNew.push(item);
 		}
 	}
-	return out;
+	return arrNew;
 }
