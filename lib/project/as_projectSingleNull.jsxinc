@@ -18,6 +18,7 @@ function as_projectSingleNull() {
         var compTemp = app.project.items.addComp("temp", 100, 100, 1, 1, 30);
         var layerNull = compTemp.addNull(1);
         nullMaster = layerNull.source;
+        nullMaster.name = "Null";
         compTemp.remove();
     }
 
