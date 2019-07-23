@@ -127,6 +127,7 @@
 #include "as_elementRename.jsxinc";
 #include "as_itemGetPath.jsxinc";
 #include "as_itemGetType.jsxinc";
+#include "as_itemReplaceWithSolid.jsxinc";
 #include "as_itemsToProjects.jsxinc";
 #include "as_layerGetParentsDepth.jsxinc";
 #include "as_layerGetRealScale.jsxinc";
