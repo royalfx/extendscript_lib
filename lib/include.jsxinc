@@ -4,6 +4,7 @@
 #include "as_compareVersions.jsxinc";
 #include "as_getAeReleaseName.jsxinc";
 #include "as_getAeReleaseVersion.jsxinc";
+#include "effects.jsxinc";
 
 // COLOR
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/color";

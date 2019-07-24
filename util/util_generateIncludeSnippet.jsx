@@ -1,5 +1,4 @@
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
-#include "as_fileWrite.jsxinc";
+#include "/d/Google Drive/Adobe Scripting/ae_scripts/lib/include.jsxinc";
 
 var dirLib = Folder("/d/Google Drive/Adobe Scripting/ae_scripts/lib");
 var dirs = dirLib.getFiles();

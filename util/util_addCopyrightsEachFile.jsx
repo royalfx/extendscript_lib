@@ -1,6 +1,4 @@
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
-#include "as_fileWrite.jsxinc";
-#include "as_fileRead.jsxinc";
+#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/include.jsxinc";
 
 var strLic = "COPYRIGHT TEXT";
 var dirLib = Folder("/d/Google Drive/Adobe Scripting/ae_scripts/lib");

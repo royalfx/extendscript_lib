@@ -5,7 +5,7 @@
 // version: 1.0.0
 // date: Jul 23 2019
 
-#include "/d/Google Drive/Adobe Scripting/ae_scripts/util/effects.jsxinc";
+// #include "/d/Google Drive/Adobe Scripting/ae_scripts/app/effects.jsxinc";
 
 /**
  * 
@@ -22,15 +22,15 @@ function as_effectNameUniversalized(effect) {
     }
 
     // FIND EFFECT DATA
-    for (var n = 0; n < matchNames.length; n++) {
-        if((matchNames[n] == effect.matchName) && (displayNames[n] == effect.name)) {
+    for (var n = 0; n < ae_effects_matchNames.length; n++) {
+        if((ae_effects_matchNames[n] == effect.matchName) && (ae_effects_displayNames[n] == effect.name)) {
 
             // FIND UNIQUE NAME
             var inx = 1;
             var nameNew;
             var effectsGroup = effect.parentProperty;
             while((nameNew === undefined) || (effectsGroup(nameNew) != null)) {
-                nameNew = displayNames[n] + " " + inx;
+                nameNew = ae_effects_displayNames[n] + " " + inx;
                 inx++;
             }
 
