@@ -51,14 +51,19 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 							name: (elementName)
 						});
 						break;
+					case "button":
+						uiElement = elementContainer.add("button", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
 					case "iconbutton":
 						uiElement = elementContainer.add("iconbutton", dataElement.bounds, undefined, {
 							name: (elementName),
 							style: (dataElement.style || "toolbutton")
 						});
 						break;
-					case "button":
-						uiElement = elementContainer.add("button", dataElement.bounds, undefined, {
+					case "custombutton":
+						uiElement = elementContainer.add("custombutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
@@ -82,11 +87,6 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 						if (dataElement.justify !== undefined) {
 							uiElement.justify = dataElement.justify;
 						}
-						break;
-					case "custombutton":
-						uiElement = elementContainer.add("custombutton", dataElement.bounds, undefined, {
-							name: (elementName)
-						});
 						break;
 					case "group":
 						uiElement = elementContainer.add("group", dataElement.bounds, {
