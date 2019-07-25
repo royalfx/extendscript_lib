@@ -34,7 +34,7 @@ function as_PNGFilesToJSON(fileOfFolderPath) {
 
 			fileBin = as_fileToBinaryString(file);
 			if(fileBin !== null) {
-				jsonObj[file.displayName] = [fileBin];
+				jsonObj[file.displayName] = fileBin;
 			}
 		}
 	}

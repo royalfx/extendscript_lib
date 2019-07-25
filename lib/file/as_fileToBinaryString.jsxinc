@@ -16,7 +16,7 @@ function as_fileToBinaryString(file) {
 		file.encoding = "BINARY";
 		var bin = file.read();
 		file.close();
-		return bin.toSource().replace(/^\(new String\(/, "").replace(/\)\)$/, ""); //.substr(1, bin.length-2)
+		return eval(bin.toSource().replace(/^\(new String\(/, "").replace(/\)\)$/, ""));
 	} catch (err) {
 		alert(err.name + " at line " + err.line + " : " + err.message);
 		return null;

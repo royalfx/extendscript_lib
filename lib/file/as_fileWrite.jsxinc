@@ -8,7 +8,7 @@
 /**
  * 
  * @param {File} file 
- * @param {object} fileData 
+ * @param {string} fileData 
  * @param {boolean} isBinary 
  */
 function as_fileWrite(file, fileData, isBinary) {
@@ -23,7 +23,7 @@ function as_fileWrite(file, fileData, isBinary) {
 	}
 
 	// WRITE
-	if (!file.write(fileData)) {
+	if (!file.write(isBinary ? [fileData] : fileData)) {
 		alert("Could not write file: " + file.fsName + "\nmessage: " + file.error, true);
 		file.close();
 		return null;
