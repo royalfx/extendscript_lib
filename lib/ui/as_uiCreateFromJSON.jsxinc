@@ -144,7 +144,7 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 						});
 						break;
 					default:
-						alert(arguments.callee.name + " --> " + "unaccounted type .." + dataElement.type);
+						alert(arguments.callee.name + " --> " + "unaccounted type:" + dataElement.type + ", elementName:" + elementName);
 						break;
 				}
 

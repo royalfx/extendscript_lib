@@ -38,7 +38,7 @@ function as_uiCSVToJSON(fileCSV) {
 	for (var l = 2; l < arrLines.length; l++) {
 
 		// SKIP IF EMPTY LINE
-		if ((arrLines[l].indexOf(";") == -1) || (arrLines[l].split(";").length == 0)) {
+		if ((arrLines[l].indexOf(";") == -1) || (arrLines[l].split(";").join("").length == 0)) {
 			continue;
 		}
 
