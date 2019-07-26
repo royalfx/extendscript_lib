@@ -86,6 +86,7 @@
 #include "as_getTempFolder.jsxinc";
 #include "as_getUserDataFolder.jsxinc";
 #include "as_PNGFilesToJSON.jsxinc";
+#include "as_singleLibraryJSXINC.jsxinc";
 
 // KEYS
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/keys";
@@ -101,8 +102,11 @@
 
 // LOOP
 #includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/loop";
+#include "as_findFile.jsxinc";
 #include "as_findItem.jsxinc";
 #include "as_findLayer.jsxinc";
+#include "as_loopDirectories.jsxinc";
+#include "as_loopFiles.jsxinc";
 #include "as_loopItems.jsxinc";
 #include "as_loopItemsSelection.jsxinc";
 #include "as_loopLayers.jsxinc";
