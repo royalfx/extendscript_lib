@@ -29,8 +29,8 @@ function as_loopItems(folder, intoSubfolders, func, args, filterItemsNames, filt
         item = folder.item(i);
 
         // CHECK
-        var nameMatch = (filterItemsNames === undefined) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
-        var typeMatch = (filterItemsTypes === undefined) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
+        var nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
+        var typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
         
         // DO
         if(nameMatch && typeMatch) {

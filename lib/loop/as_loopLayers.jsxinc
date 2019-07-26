@@ -26,8 +26,8 @@ function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
         layer = comp.layer(l);
 
         // CHECK
-        var nameMatch = (filterLayerNames === undefined) || (as_arrayCheckValue(layer.name, filterLayerNames) >= 0);
-        var typeMatch = (filterLayerTypes === undefined) || (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) >= 0);
+        var nameMatch = (filterLayerNames === undefined) || (filterLayerNames.length == 0) || (as_arrayCheckValue(layer.name, filterLayerNames) >= 0);
+        var typeMatch = (filterLayerTypes === undefined) || (filterLayerTypes.length == 0) || (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) >= 0);
         
         // DO
         if(nameMatch && typeMatch) {
