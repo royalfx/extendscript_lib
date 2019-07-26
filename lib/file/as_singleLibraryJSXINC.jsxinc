@@ -1,0 +1,60 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.1
+// date: Jul 25 2019
+
+/**
+ * 
+ * @param {Folder} dir 
+ * @param {boolean} intoSubfolders 
+ * @param {Function} func 
+ * @param {array} args 
+ * @param {array} filterFilesNames files names
+ * @param {array} filterFilesExt files extensions
+ */
+function as_singleLibraryJSXINC(dirLibrary) {
+
+	// GET LIB DIRECTORY
+	if(dirLibrary === undefined) {
+		var rootFolder = Folder(new File($.fileName).path);
+		dirLibrary = rootFolder.selectDlg("Select .jsxinc library folder");
+		if(!dirLibrary) {
+			return null;
+		}
+	}
+
+	// VARS
+	var linesCollector = [];
+
+	function handleDirectory(dir, linesCollector) {
+		// CHECK
+		var arrFiles = dir.getFiles("*.jsxinc");
+		if((arrFiles.length > 0) && !((arrFiles.length == 1) && (arrFiles[0].displayName == "include.jsxinc"))) {
+			linesCollector.push("\n// " + dir.displayName.toUpperCase());
+			linesCollector.push("#includepath \"" + dir.fullName + "\";");
+		}
+		as_loopFiles(dir, false, handleFile, [linesCollector], undefined, ["jsxinc"]);
+	}
+
+	function handleFile(file, linesCollector) {
+		if(file.displayName != "include.jsxinc") {
+			linesCollector.push("#include \"" + file.displayName + "\";");
+		}
+	}
+
+	// DO
+	handleDirectory(dirLibrary, linesCollector);
+	as_loopDirectories(dirLibrary, true, handleDirectory, [linesCollector]);
+
+	// SAVE FILE
+	var fileInclude = File(dirLibrary.fullName + "/" + "include.jsxinc");
+	as_fileWrite(fileInclude, linesCollector.join("\n"), false);
+
+	// OPEN FILE
+	// fileInclude.execute();
+
+	// RETURN
+	return fileInclude;
+}
