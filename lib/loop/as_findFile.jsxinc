@@ -10,13 +10,13 @@
  * @param {Folder} dir 
  * @param {string} fileName 
  */
- function as_fileFind(dir, fileName) {
+ function as_findFile(dir, fileName) {
 	var tagetFile;
 	var files = dir.getFiles();
 	for (var f = 0, file; f < files.length; f++) {
 		file = files[f];
 		if(file instanceof Folder) {
-			tagetFile = as_fileFind(file, fileName);
+			tagetFile = as_findFile(file, fileName);
 			if(tagetFile) {
 				return tagetFile;
 			}
