@@ -1,0 +1,76 @@
+
+// COLOR
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/color";
+#include "as_hexToRgb.jsxinc";
+#include "as_hslToRgb.jsxinc";
+#include "as_nativeColorPicker.jsxinc";
+#include "as_normalizeRGB.jsxinc";
+#include "as_rgbToHex.jsxinc";
+#include "as_rgbToHsl.jsxinc";
+
+// CONST
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/const";
+#include "FileExtension.jsxinc";
+#include "FileFilter.jsxinc";
+#include "RegExpPattern.jsxinc";
+#include "VersionNum.jsxinc";
+
+// DATA
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/data";
+#include "as_arrayCheckValue.jsxinc";
+#include "as_arrayClone.jsxinc";
+#include "as_arrayMakeUnique.jsxinc";
+#include "as_arraysMerge.jsxinc";
+#include "as_clamp.jsxinc";
+#include "as_dataCheckEquals.jsxinc";
+#include "as_dataIsSameType.jsxinc";
+#include "as_linear.jsxinc";
+#include "as_nameIndexedCheck.jsxinc";
+#include "as_nameIndexedClear.jsxinc";
+#include "as_nameIndexedReplace.jsxinc";
+#include "as_nameIndexedSet.jsxinc";
+#include "as_objectClone.jsxinc";
+#include "as_objectGetPropName.jsxinc";
+#include "as_objectsGetLength.jsxinc";
+#include "as_objectsMerge.jsxinc";
+#include "as_stringCheckContainsChars.jsxinc";
+#include "as_stringCleanName.jsxinc";
+#include "as_stringClearFirstLastSpaces.jsxinc";
+#include "as_stringClearLineBreaks.jsxinc";
+#include "as_stringClearSpaces.jsxinc";
+#include "as_stringRemoveLineBreaks.jsxinc";
+#include "as_stringToArray.jsxinc";
+#include "as_stringToSingleLine.jsxinc";
+#include "as_stringUniqChars.jsxinc";
+#include "as_timeMillisecToString.jsxinc";
+#include "as_toString.jsxinc";
+#include "as_toStringArray.jsxinc";
+#include "as_toStringObject.jsxinc";
+
+// FILE
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
+#include "as_fileRead.jsxinc";
+#include "as_fileReadJSBinary.jsxinc";
+#include "as_fileReadJSON.jsxinc";
+#include "as_fileToBinaryString.jsxinc";
+#include "as_fileWrite.jsxinc";
+#include "as_fileWriteJSBinary.jsxinc";
+#include "as_fileWriteJSON.jsxinc";
+#include "as_getFileExtension.jsxinc";
+#include "as_getFileName.jsxinc";
+#include "as_getTempFolder.jsxinc";
+#include "as_getUserDataFolder.jsxinc";
+#include "as_PNGFilesToJSON.jsxinc";
+#include "as_singleLibraryJSXINC.jsxinc";
+
+// LOOP
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/loop";
+#include "as_findFile.jsxinc";
+#include "as_loopDirectories.jsxinc";
+#include "as_loopFiles.jsxinc";
+
+// SYSTEM
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/system";
+#include "as_copyToClipboard.jsxinc";
+#include "as_openURL.jsxinc";
+#include "as_osName.jsxinc";

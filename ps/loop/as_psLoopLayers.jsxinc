@@ -1,0 +1,41 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.0
+// date: Jul 29 2019
+
+/**
+ * @param {*} layerSet
+ * @param {Function} func
+ * @param {array} args 
+ */
+function as_psLoopLayers(layerSet, func, args){
+
+    // CHECK ARGS
+	if(args === undefined) {
+		args = [];
+	}
+
+	// VARS
+	var results = [];
+
+	// DO
+	if(layerSet.typename == "ArtLayer") {
+		var result = func.apply(undefined, [layerSet].concat(args));
+		if(result !== undefined) {
+			results.push(result);
+		}
+	} else {
+        // SETS
+        for(var l = 0, layer; l < layerSet.layers.length; l++) {
+            layer = layerSet.layers[l];
+            if(layer.typename == "LayerSet") {
+                as_psLoopLayers(layer, func, args);
+            }
+        }
+    }
+    
+	// RETURN
+	return results;
+}

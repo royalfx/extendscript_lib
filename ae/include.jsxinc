@@ -1,95 +1,40 @@
 
 // APP
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/app";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/app";
 #include "as_compareVersions.jsxinc";
 #include "as_getAeReleaseName.jsxinc";
 #include "as_getAeReleaseVersion.jsxinc";
 #include "effects.jsxinc";
 
-// COLOR
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/color";
-#include "as_hexToRgb.jsxinc";
-#include "as_hslToRgb.jsxinc";
-#include "as_nativeColorPicker.jsxinc";
-#include "as_normalizeRGB.jsxinc";
-#include "as_rgbToHex.jsxinc";
-#include "as_rgbToHsl.jsxinc";
-
 // CONST
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/const";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
-#include "FileExtension.jsxinc";
-#include "FileFilter.jsxinc";
 #include "ItemType.jsxinc";
 #include "LabelColor.jsxinc";
 #include "LayerType.jsxinc";
-#include "RegExpPattern.jsxinc";
 #include "StrokeLineCap.jsxinc";
 #include "StrokeLineJoin.jsxinc";
 #include "TextDocProperty.jsxinc";
-#include "VersionNum.jsxinc";
 
 // DATA
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/data";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/data";
 #include "as_alignToJustify.jsxinc";
-#include "as_arrayCheckValue.jsxinc";
-#include "as_arrayClone.jsxinc";
-#include "as_arrayMakeUnique.jsxinc";
-#include "as_arraysMerge.jsxinc";
-#include "as_clamp.jsxinc";
-#include "as_dataCheckEquals.jsxinc";
-#include "as_dataIsSameType.jsxinc";
 #include "as_justifyToAlign.jsxinc";
-#include "as_linear.jsxinc";
-#include "as_nameIndexedCheck.jsxinc";
-#include "as_nameIndexedClear.jsxinc";
-#include "as_nameIndexedReplace.jsxinc";
-#include "as_nameIndexedSet.jsxinc";
-#include "as_objectClone.jsxinc";
-#include "as_objectGetPropName.jsxinc";
-#include "as_objectsGetLength.jsxinc";
-#include "as_objectsMerge.jsxinc";
-#include "as_stringCheckContainsChars.jsxinc";
-#include "as_stringCleanName.jsxinc";
-#include "as_stringClearFirstLastSpaces.jsxinc";
-#include "as_stringClearLineBreaks.jsxinc";
-#include "as_stringClearSpaces.jsxinc";
-#include "as_stringRemoveLineBreaks.jsxinc";
-#include "as_stringToArray.jsxinc";
-#include "as_stringToSingleLine.jsxinc";
-#include "as_stringUniqChars.jsxinc";
-#include "as_timeMillisecToString.jsxinc";
-#include "as_toString.jsxinc";
-#include "as_toStringArray.jsxinc";
-#include "as_toStringObject.jsxinc";
 
 // EXPR
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/expr";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/expr";
 #include "as_effectNameUniversalized.jsxinc";
 #include "as_exprGetPropPath.jsxinc";
 #include "as_exprIsDisabled.jsxinc";
 #include "as_exprSet.jsxinc";
 
 // FILE
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/file";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/file";
 #include "as_checkSecurityPrefSet.jsxinc";
-#include "as_fileRead.jsxinc";
-#include "as_fileReadJSBinary.jsxinc";
-#include "as_fileReadJSON.jsxinc";
-#include "as_fileToBinaryString.jsxinc";
-#include "as_fileWrite.jsxinc";
-#include "as_fileWriteJSBinary.jsxinc";
-#include "as_fileWriteJSON.jsxinc";
-#include "as_getFileExtension.jsxinc";
-#include "as_getFileName.jsxinc";
-#include "as_getTempFolder.jsxinc";
-#include "as_getUserDataFolder.jsxinc";
-#include "as_PNGFilesToJSON.jsxinc";
-#include "as_singleLibraryJSXINC.jsxinc";
 
 // KEYS
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/keys";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/keys";
 #include "as_applyEasing.jsxinc";
 #include "as_fixInfluenceValue.jsxinc";
 #include "as_keyNearestLeft.jsxinc";
@@ -101,25 +46,22 @@
 #include "as_keysRemove.jsxinc";
 
 // LOOP
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/loop";
-#include "as_findFile.jsxinc";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/loop";
 #include "as_findItem.jsxinc";
 #include "as_findLayer.jsxinc";
-#include "as_loopDirectories.jsxinc";
-#include "as_loopFiles.jsxinc";
 #include "as_loopItems.jsxinc";
 #include "as_loopItemsSelection.jsxinc";
 #include "as_loopLayers.jsxinc";
 #include "as_loopProps.jsxinc";
 
 // MARKER
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/marker";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/marker";
 #include "as_addMarkerEach.jsxinc";
 #include "as_addMarkersChars.jsxinc";
 #include "as_getMarkersChars.jsxinc";
 
 // PROJECT
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/project";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/project";
 #include "as_clearRenderQueue.jsxinc";
 #include "as_compDeselectAll.jsxinc";
 #include "as_compSelectLayer.jsxinc";
@@ -159,20 +101,14 @@
 #include "as_textSetProperties.jsxinc";
 
 // SHAPE
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/shape";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/shape";
 #include "as_createEmptyShape.jsxinc";
 #include "as_shapeScale.jsxinc";
 #include "as_shapeToSpatial.jsxinc";
 #include "as_shapeTranslate.jsxinc";
 
-// SYSTEM
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/system";
-#include "as_copyToClipboard.jsxinc";
-#include "as_openURL.jsxinc";
-#include "as_osName.jsxinc";
-
 // UI
-#includepath "/d/Google Drive/Adobe Scripting/ae_scripts/lib/ui";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/ui";
 #include "as_uiCreateFromJSON.jsxinc";
 #include "as_uiCSVToJSON.jsxinc";
 #include "as_uiFindElement.jsxinc";
