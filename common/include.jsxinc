@@ -1,21 +1,16 @@
 
-// COLOR
+// COMMON > COLOR
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/color";
-#include "as_hexToRgb.jsxinc";
-#include "as_hslToRgb.jsxinc";
 #include "as_nativeColorPicker.jsxinc";
-#include "as_normalizeRGB.jsxinc";
-#include "as_rgbToHex.jsxinc";
-#include "as_rgbToHsl.jsxinc";
 
-// CONST
+// COMMON > CONST
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/const";
 #include "FileExtension.jsxinc";
 #include "FileFilter.jsxinc";
 #include "RegExpPattern.jsxinc";
 #include "VersionNum.jsxinc";
 
-// DATA
+// COMMON > DATA
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/data";
 #include "as_arrayCheckValue.jsxinc";
 #include "as_arrayClone.jsxinc";
@@ -47,7 +42,7 @@
 #include "as_toStringArray.jsxinc";
 #include "as_toStringObject.jsxinc";
 
-// FILE
+// COMMON > FILE
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
@@ -56,20 +51,17 @@
 #include "as_fileWrite.jsxinc";
 #include "as_fileWriteJSBinary.jsxinc";
 #include "as_fileWriteJSON.jsxinc";
+#include "as_findFile.jsxinc";
 #include "as_getFileExtension.jsxinc";
 #include "as_getFileName.jsxinc";
 #include "as_getTempFolder.jsxinc";
 #include "as_getUserDataFolder.jsxinc";
+#include "as_loopDirectories.jsxinc";
+#include "as_loopFiles.jsxinc";
 #include "as_PNGFilesToJSON.jsxinc";
 #include "as_singleLibraryJSXINC.jsxinc";
 
-// LOOP
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/loop";
-#include "as_findFile.jsxinc";
-#include "as_loopDirectories.jsxinc";
-#include "as_loopFiles.jsxinc";
-
-// SYSTEM
+// COMMON > SYSTEM
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/system";
 #include "as_copyToClipboard.jsxinc";
 #include "as_openURL.jsxinc";

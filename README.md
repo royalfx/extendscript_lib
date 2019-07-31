@@ -1,2 +1,2 @@
-# ae_snippets
-After Effects Scripting Snippets
+# extendscript_lib
+Adobe Extendscript Scripting Library

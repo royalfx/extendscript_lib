@@ -8,7 +8,16 @@
             "type": "extendscript-debug",
             "request": "launch",
             "targetSpecifier": "aftereffects-16.0",
-            "name": "launch",
+            "name": "AfterEffects",
+            "program": "${file}",
+            "stopOnEntry": false,
+            "trace": true
+        },
+        {
+            "type": "extendscript-debug",
+            "request": "launch",
+            "targetSpecifier": "photoshop-130.064",
+            "name": "Photoshop",
             "program": "${file}",
             "stopOnEntry": false,
             "trace": true

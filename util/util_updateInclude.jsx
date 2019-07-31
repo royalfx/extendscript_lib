@@ -14,3 +14,4 @@ as_singleLibraryJSXINC(Folder("/d/Google Drive/Adobe Scripting/extendscript_lib/
 as_singleLibraryJSXINC(Folder("/d/Google Drive/Adobe Scripting/extendscript_lib/ai"));
 as_singleLibraryJSXINC(Folder("/d/Google Drive/Adobe Scripting/extendscript_lib/ps"));
 as_singleLibraryJSXINC(Folder("/d/Google Drive/Adobe Scripting/extendscript_lib/common"));
+as_singleLibraryJSXINC(Folder("/d/Google Drive/Adobe Scripting/extendscript_lib"));

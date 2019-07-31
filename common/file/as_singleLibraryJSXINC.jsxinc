@@ -32,7 +32,8 @@ function as_singleLibraryJSXINC(dirLibrary) {
 		// CHECK
 		var arrFiles = dir.getFiles("*.jsxinc");
 		if((arrFiles.length > 0) && !((arrFiles.length == 1) && (arrFiles[0].displayName == "include.jsxinc"))) {
-			linesCollector.push("\n// " + dir.displayName.toUpperCase());
+			// linesCollector.push("\n// " + dir.displayName.toUpperCase());
+			linesCollector.push("\n// " + getDirPath(dir).toUpperCase());
 			linesCollector.push("#includepath \"" + dir.fullName + "\";");
 		}
 		as_loopFiles(dir, false, handleFile, [linesCollector], undefined, ["jsxinc"]);
@@ -42,6 +43,16 @@ function as_singleLibraryJSXINC(dirLibrary) {
 		if(file.displayName != "include.jsxinc") {
 			linesCollector.push("#include \"" + file.displayName + "\";");
 		}
+	}
+
+	function getDirPath(dir) {
+		var arrNames = [];
+		var dirParent = dir;
+		while(dirParent.fsName != dirLibrary.parent.fsName) {
+			arrNames.push(dirParent.displayName);
+			dirParent = dirParent.parent;
+		}
+		return arrNames.reverse().join(" > ");
 	}
 
 	// DO
