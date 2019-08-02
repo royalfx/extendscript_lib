@@ -38,15 +38,6 @@
 #include "as_exprIsDisabled.jsxinc";
 #include "as_exprSet.jsxinc";
 
-// EXTENDSCRIPT_LIB > AE > FILE
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/file";
-#include "as_findItem.jsxinc";
-#include "as_findLayer.jsxinc";
-#include "as_loopItems.jsxinc";
-#include "as_loopItemsSelection.jsxinc";
-#include "as_loopLayers.jsxinc";
-#include "as_loopProps.jsxinc";
-
 // EXTENDSCRIPT_LIB > AE > KEYS
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/keys";
 #include "as_applyEasing.jsxinc";
@@ -78,6 +69,8 @@
 #include "as_effectCopyProps.jsxinc";
 #include "as_effectIsControl.jsxinc";
 #include "as_elementRename.jsxinc";
+#include "as_findItem.jsxinc";
+#include "as_findLayer.jsxinc";
 #include "as_itemGetPath.jsxinc";
 #include "as_itemGetType.jsxinc";
 #include "as_itemGetUniqueName.jsxinc";
@@ -89,6 +82,10 @@
 #include "as_layerGetType.jsxinc";
 #include "as_layersBlurSet.jsxinc";
 #include "as_layerSetState.jsxinc";
+#include "as_loopItems.jsxinc";
+#include "as_loopItemsSelection.jsxinc";
+#include "as_loopLayers.jsxinc";
+#include "as_loopProps.jsxinc";
 #include "as_projectFontsList.jsxinc";
 #include "as_projectSelectionList.jsxinc";
 #include "as_projectSelectItem.jsxinc";
@@ -147,6 +144,7 @@
 #include "as_nameIndexedSet.jsxinc";
 #include "as_objectClone.jsxinc";
 #include "as_objectGetPropName.jsxinc";
+#include "as_objectKeysToArray.jsxinc";
 #include "as_objectsGetLength.jsxinc";
 #include "as_objectsMerge.jsxinc";
 #include "as_stringCheckContainsChars.jsxinc";
@@ -163,8 +161,20 @@
 #include "as_toStringArray.jsxinc";
 #include "as_toStringObject.jsxinc";
 
+// EXTENDSCRIPT_LIB > COMMON > DATE
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/date";
+#include "as_dateFromMonthNumber.jsxinc";
+#include "as_getMonthName.jsxinc";
+#include "as_getMonthNameShort.jsxinc";
+#include "as_getMonthNumber.jsxinc";
+#include "as_getMonthYearNameShort.jsxinc";
+#include "as_getWeekDayName.jsxinc";
+#include "as_parseCSVLineArr.jsxinc";
+#include "as_parseCSVLineObj.jsxinc";
+
 // EXTENDSCRIPT_LIB > COMMON > FILE
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
+#include "as_arrayToCSV.jsxinc";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
 #include "as_fileReadJSON.jsxinc";
@@ -177,6 +187,7 @@
 #include "as_getFileName.jsxinc";
 #include "as_getTempFolder.jsxinc";
 #include "as_getUserDataFolder.jsxinc";
+#include "as_loopCSVLines.jsxinc";
 #include "as_loopDirectories.jsxinc";
 #include "as_loopFiles.jsxinc";
 #include "as_PNGFilesToJSON.jsxinc";

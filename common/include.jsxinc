@@ -26,6 +26,7 @@
 #include "as_nameIndexedSet.jsxinc";
 #include "as_objectClone.jsxinc";
 #include "as_objectGetPropName.jsxinc";
+#include "as_objectKeysToArray.jsxinc";
 #include "as_objectsGetLength.jsxinc";
 #include "as_objectsMerge.jsxinc";
 #include "as_stringCheckContainsChars.jsxinc";
@@ -42,8 +43,20 @@
 #include "as_toStringArray.jsxinc";
 #include "as_toStringObject.jsxinc";
 
+// COMMON > DATE
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/date";
+#include "as_dateFromMonthNumber.jsxinc";
+#include "as_getMonthName.jsxinc";
+#include "as_getMonthNameShort.jsxinc";
+#include "as_getMonthNumber.jsxinc";
+#include "as_getMonthYearNameShort.jsxinc";
+#include "as_getWeekDayName.jsxinc";
+#include "as_parseCSVLineArr.jsxinc";
+#include "as_parseCSVLineObj.jsxinc";
+
 // COMMON > FILE
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
+#include "as_arrayToCSV.jsxinc";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
 #include "as_fileReadJSON.jsxinc";
@@ -56,6 +69,7 @@
 #include "as_getFileName.jsxinc";
 #include "as_getTempFolder.jsxinc";
 #include "as_getUserDataFolder.jsxinc";
+#include "as_loopCSVLines.jsxinc";
 #include "as_loopDirectories.jsxinc";
 #include "as_loopFiles.jsxinc";
 #include "as_PNGFilesToJSON.jsxinc";
