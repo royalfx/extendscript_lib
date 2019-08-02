@@ -38,15 +38,6 @@
 #include "as_exprIsDisabled.jsxinc";
 #include "as_exprSet.jsxinc";
 
-// AE > FILE
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/file";
-#include "as_findItem.jsxinc";
-#include "as_findLayer.jsxinc";
-#include "as_loopItems.jsxinc";
-#include "as_loopItemsSelection.jsxinc";
-#include "as_loopLayers.jsxinc";
-#include "as_loopProps.jsxinc";
-
 // AE > KEYS
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/ae/keys";
 #include "as_applyEasing.jsxinc";
@@ -78,6 +69,8 @@
 #include "as_effectCopyProps.jsxinc";
 #include "as_effectIsControl.jsxinc";
 #include "as_elementRename.jsxinc";
+#include "as_findItem.jsxinc";
+#include "as_findLayer.jsxinc";
 #include "as_itemGetPath.jsxinc";
 #include "as_itemGetType.jsxinc";
 #include "as_itemGetUniqueName.jsxinc";
@@ -89,6 +82,10 @@
 #include "as_layerGetType.jsxinc";
 #include "as_layersBlurSet.jsxinc";
 #include "as_layerSetState.jsxinc";
+#include "as_loopItems.jsxinc";
+#include "as_loopItemsSelection.jsxinc";
+#include "as_loopLayers.jsxinc";
+#include "as_loopProps.jsxinc";
 #include "as_projectFontsList.jsxinc";
 #include "as_projectSelectionList.jsxinc";
 #include "as_projectSelectItem.jsxinc";
