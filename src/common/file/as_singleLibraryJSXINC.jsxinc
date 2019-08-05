@@ -6,15 +6,12 @@
 // date: Jul 25 2019
 
 /**
- * 
- * @param {Folder} dir 
- * @param {boolean} intoSubfolders 
- * @param {Function} func 
- * @param {array} args 
- * @param {array} filterFilesNames files names
- * @param {array} filterFilesExt files extensions
+ * @description
+ * @param {Folder} dirLibrary Library directory
+ * @param {File} fileInclude Out file
+ * @returns {File}
  */
-function as_singleLibraryJSXINC(dirLibrary) {
+function as_singleLibraryJSXINC(dirLibrary, fileInclude) {
 
 	// GET LIB DIRECTORY
 	if(dirLibrary === undefined) {
@@ -60,7 +57,9 @@ function as_singleLibraryJSXINC(dirLibrary) {
 	as_loopDirectories(dirLibrary, true, handleDirectory, [linesCollector]);
 
 	// SAVE FILE
-	var fileInclude = File(dirLibrary.fullName + "/" + "include.jsxinc");
+	if(!fileInclude) {
+		fileInclude = File(dirLibrary.fullName + "/" + "include.jsxinc");
+	}
 	as_fileWrite(fileInclude, linesCollector.join("\n"), false);
 
 	// OPEN FILE
