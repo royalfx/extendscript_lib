@@ -1,17 +1,17 @@
 
 // COMMON > COLOR
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/color";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/color";
 #include "as_nativeColorPicker.jsxinc";
 
 // COMMON > CONST
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/const";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/const";
 #include "FileExtension.jsxinc";
 #include "FileFilter.jsxinc";
 #include "RegExpPattern.jsxinc";
 #include "VersionNum.jsxinc";
 
 // COMMON > DATA
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/data";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/data";
 #include "as_arrayCheckValue.jsxinc";
 #include "as_arrayClone.jsxinc";
 #include "as_arrayMakeUnique.jsxinc";
@@ -44,18 +44,16 @@
 #include "as_toStringObject.jsxinc";
 
 // COMMON > DATE
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/date";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/date";
 #include "as_dateFromMonthNumber.jsxinc";
 #include "as_getMonthName.jsxinc";
 #include "as_getMonthNameShort.jsxinc";
 #include "as_getMonthNumber.jsxinc";
 #include "as_getMonthYearNameShort.jsxinc";
 #include "as_getWeekDayName.jsxinc";
-#include "as_parseCSVLineArr.jsxinc";
-#include "as_parseCSVLineObj.jsxinc";
 
 // COMMON > FILE
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/file";
 #include "as_arrayToCSV.jsxinc";
 #include "as_fileRead.jsxinc";
 #include "as_fileReadJSBinary.jsxinc";
@@ -72,11 +70,13 @@
 #include "as_loopCSVLines.jsxinc";
 #include "as_loopDirectories.jsxinc";
 #include "as_loopFiles.jsxinc";
+#include "as_parseCSVLineArr.jsxinc";
+#include "as_parseCSVLineObj.jsxinc";
 #include "as_PNGFilesToJSON.jsxinc";
 #include "as_singleLibraryJSXINC.jsxinc";
 
 // COMMON > SYSTEM
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/system";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/system";
 #include "as_copyToClipboard.jsxinc";
 #include "as_openURL.jsxinc";
 #include "as_osName.jsxinc";

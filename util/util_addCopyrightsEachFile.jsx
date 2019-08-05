@@ -1,8 +1,8 @@
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/common/file";
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/file";
 #include "as_fileWrite.jsxinc";
 
 // var strLic = "COPYRIGHT TEXT";
-// var dirLib = Folder("/d/Google Drive/Adobe Scripting/extendscript_lib");
+// var dirLib = Folder("/d/Google Drive/Adobe Scripting/extendscript_lib/src");
 // var dirs = dirLib.getFiles();
 // for (var d = 0, dir; d < dirs.length; d++) {
 //     dir = dirs[d];
