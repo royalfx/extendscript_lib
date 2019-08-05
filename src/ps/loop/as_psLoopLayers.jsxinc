@@ -30,9 +30,7 @@ function as_psLoopLayers(layerSet, func, args){
         // SETS
         for(var l = 0, layer; l < layerSet.layers.length; l++) {
             layer = layerSet.layers[l];
-            if(layer.typename == "LayerSet") {
-                as_psLoopLayers(layer, func, args);
-            }
+            as_psLoopLayers(layer, func, args);
         }
     }
     
