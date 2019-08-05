@@ -21,13 +21,13 @@ function as_psLoopLayers(layerSet, func, args){
 	var results = [];
 
 	// DO
-	if(layerSet.typename == "ArtLayer") {
-		var result = func.apply(undefined, [layerSet].concat(args));
-		if(result !== undefined) {
-			results.push(result);
-		}
-	} else {
-        // SETS
+	var result = func.apply(undefined, [layerSet].concat(args));
+	if(result !== undefined) {
+		results.push(result);
+	}
+	
+	// SETS
+	if((layerSet.typename == "LayerSet") || (layerSet.typename == "Document")) {
         for(var l = 0, layer; l < layerSet.layers.length; l++) {
             layer = layerSet.layers[l];
             as_psLoopLayers(layer, func, args);
