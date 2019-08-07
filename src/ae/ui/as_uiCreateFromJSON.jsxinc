@@ -10,11 +10,11 @@
  * @param {Window} windowObj 
  * @param {object} dataUI 
  * @param {object} dataImages 
- * @param {object} folderImages 
- * @param {boolean} rewritefileImages 
+ * @param {Folder} dirImages 
+ * @param {boolean} rewriteFiles 
  */
-function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewritefileImages) {
-	
+function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFiles) {
+
 	// VARS
 	if (dataImages) {
 		var readyImages = {};
@@ -98,7 +98,6 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 						uiElement.selection = 0;
 						break;
 					case "scrollbar":
-						//add (Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В Р вЂ№Р В Р вЂ Р Р†Р вЂљРЎвЂєР РЋРЎвЂєscrollbarР В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В Р вЂ Р В РІР‚С™Р вЂ™Р’В Р В Р’В Р вЂ™Р’В Р В РІР‚в„ўР вЂ™Р’В Р В Р’В Р В РІР‚В Р В Р’В Р Р†Р вЂљРЎв„ўР В Р Р‹Р Р†РІР‚С›РЎС›Р В Р’В Р вЂ™Р’В Р В Р’В Р В РІР‚в„–Р В Р’В Р В Р вЂ№Р В Р Р‹Р Р†РІР‚С›РЎС› [, bounds, value, minvalue, maxvalue,{creation_properties}]);
 						uiElement = elementContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
@@ -149,31 +148,28 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, folderImages, rewrit
 				}
 
 				// STORE ELEMENT LINK IN WONDOW OBJ
-				if (elementContainer != windowObj) {
-					if (windowObj[elementName] !== undefined) {
-						alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
-					} else {
-						windowObj[elementName] = uiElement;
-					}
-				}
+				// if (elementContainer != windowObj) {
+				// 	if (windowObj[elementName] !== undefined) {
+				// 		alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
+				// 	} else {
+				// 		windowObj[elementName] = uiElement;
+				// 	}
+				// }
+
+				// STORE ELEMENT LINK IN PARENT GROUP
+				// if (elementContainer[elementName] !== undefined) {
+				// 	alert(arguments.callee.name + " --> " + "Can't set property \"" + as_toString(elementName) + "\". This key already used!");
+				// } else {
+				// 	elementContainer[elementName] = uiElement;
+				// }
 
 				// PREPARE IMAGES
 				if (dataElement.icon !== undefined) {
 					fileName = dataElement.icon;
-
-					// CREATE IMAGE FILE FROM BINARY
+					
 					if (readyImages[fileName] === undefined) {
-
-						// GET IMAGE FILE
-						imageBinary = dataImages[dataElement.icon];
-						fileImage = File(folderImages.fsName + "/" + dataElement.icon);
-						if (!fileImage.exists || rewritefileImages) {
-							fileImage = as_fileWrite(fileImage, imageBinary, true);
-						}
-
-						// TRY SET
 						try {
-							readyImages[fileName] = ScriptUI.newImage(fileImage);
+							readyImages[fileName] = as_uiImageFromBinary(dataImages[dataElement.icon], fileName, dirImages, rewriteFiles);
 						} catch (err) {
 							alert("ERROR | fileName : " + fileName + ", details: " + err.message);
 						}
