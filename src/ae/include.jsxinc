@@ -113,6 +113,8 @@
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/ui";
 #include "as_uiCreateFromJSON.jsxinc";
 #include "as_uiCSVToJSON.jsxinc";
+#include "as_uiExtendElement.jsxinc";
 #include "as_uiFindElement.jsxinc";
+#include "as_uiImageFromBinary.jsxinc";
 #include "as_uiPrefsApply.jsxinc";
 #include "as_uiPrefsGet.jsxinc";

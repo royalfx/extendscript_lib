@@ -1,0 +1,52 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+// version: 1.0.0
+// date: Aug 07 2019
+
+/**
+ * @description Extends UI Element
+ * @param {object} element UI Element
+ * @param {string} stateName Name of the state
+ * @param {object} stateProperties Properties object
+ */
+function as_uiExtendElement(element, stateName, stateProperties) {
+
+    // INIT
+    var needInit = (element.statesMap === undefined);
+    if(needInit) {
+        element.statesMap = {};
+        element.setState = function(stateName) {
+            var state = element.statesMap[stateName];
+
+            // CHECK
+            if (state === undefined) {
+                throw new Error("State \"" + stateName + "\" not found in \"" + element.properties.name + "\"!");
+            }
+
+            // SET
+            for (var prop in state) {
+                if (state.hasOwnProperty(prop)) {
+                    element[prop] = state[prop];
+                }
+            }
+            this.state = stateName;
+        }
+        element.getState = function () {
+            return this.state;
+        }
+    }
+
+    // STORE NEW STATE
+    if(element.statesMap[stateName] === undefined) {
+        element.statesMap[stateName] = stateProperties;
+    } else {
+        throw new Error("State with key \"" + stateName + "\" already defined!");
+    }
+
+    // SET DEFAULT STATE
+    if(needInit) {
+        element.setState(stateName);
+    }
+}
