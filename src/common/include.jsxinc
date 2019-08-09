@@ -15,6 +15,7 @@
 #include "as_arrayCheckValue.jsxinc";
 #include "as_arrayClone.jsxinc";
 #include "as_arrayMakeUnique.jsxinc";
+#include "as_arrayMaxValue.jsxinc";
 #include "as_arraysMerge.jsxinc";
 #include "as_clamp.jsxinc";
 #include "as_dataCheckEquals.jsxinc";
