@@ -7,8 +7,9 @@
 
 /**
  * 
- * @description List of selected items names
+ * @description Returns list of selected items names
  * @param
+ * @returns {array}
  */
 function as_projectSelectionList() {
 
