@@ -2,28 +2,22 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
+// version: 1.0.1
+// date: Aug 13 2019
 
 /**
  * 
  * @param {Window} windowObj 
- * @param {object} dataUI 
- * @param {object} dataImages 
- * @param {Folder} dirImages 
- * @param {boolean} rewriteFiles 
+ * @param {object} dataUI JSON data created by as_uiCSVToJSON()
+ * @param {object} dataImages JSON data with images binary (Optional)
+ * @param {Folder} dirImages Folder to save images (Optional)
+ * @param {boolean} rewriteFiles If false existing images will be used
  */
 function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFiles) {
-
-	// VARS
-	if (dataImages) {
-		var readyImages = {};
-	}
-
 	try {
 
 		// VARS
-		var uiElement, dataElement, elementContainer, fileImage, imageBinary, fileName;
+		var uiElement, dataElement, elementContainer, fileName;
 
 		// LOOP JSON
 		for (var elementName in dataUI) {
@@ -147,60 +141,45 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						break;
 				}
 
-				// STORE ELEMENT LINK IN WONDOW OBJ
-				// if (elementContainer != windowObj) {
-				// 	if (windowObj[elementName] !== undefined) {
-				// 		alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
-				// 	} else {
-				// 		windowObj[elementName] = uiElement;
-				// 	}
-				// }
-
-				// STORE ELEMENT LINK IN PARENT GROUP
-				// if (elementContainer[elementName] !== undefined) {
-				// 	alert(arguments.callee.name + " --> " + "Can't set property \"" + as_toString(elementName) + "\". This key already used!");
-				// } else {
-				// 	elementContainer[elementName] = uiElement;
-				// }
-
 				// PREPARE IMAGES
-				if (dataElement.icon !== undefined) {
-					fileName = dataElement.icon;
-					
-					if (readyImages[fileName] === undefined) {
-						try {
-							readyImages[fileName] = as_uiImageFromBinary(dataImages[dataElement.icon], fileName, dirImages, rewriteFiles);
-						} catch (err) {
-							alert("ERROR | fileName : " + fileName + ", details: " + err.message);
+				if(dataImages && dirImages) {
+					var imagesMap = {};
+					if (dataElement.icon !== undefined) {
+						fileName = dataElement.icon;
+						if (imagesMap[fileName] === undefined) {
+							imagesMap[fileName] = as_uiImageFromBinary(dataImages[dataElement.icon], fileName, dirImages, rewriteFiles);
 						}
 					}
-					dataElement.icon = readyImages[fileName];
 				}
-
-				// SET PROPERTIES
-				// Creation properties
+				
+				// SKIP CREATION PROPERTIES
 				var skipProps = ["name", "type", "bounds", "style", "multiline", "justify", "readonly", "items", "columnWidths", "columnTitles", "showHeaders", "numberOfColumns", "borderStyle"];
+				
+				// LOOP PROPERTIES
 				for (var propName in dataElement) {
 					if(dataElement.hasOwnProperty(propName)) {
-						if (as_arrayCheckValue(propName, skipProps) >= 0) {
-							// SKIP CREATION PROPERTIES
-						} else {
-							try {
-								uiElement[propName] = dataElement[propName];
-							} catch (err) {
-								alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message, false);
+
+						// CHECK SKIP
+						if (as_arrayCheckValue(propName, skipProps) < 0) {
+							var propValue = dataElement[propName];
+
+							// IF IMAGE
+							if(propName == "icon") {
+								if(imagesMap && imagesMap[propValue]) {
+									uiElement[propName] = imagesMap[propValue];
+								}
+
+							// IF ANY PROPERTY
+							} else {
+								uiElement[propName] = propValue;
 							}
 						}
-					} else {
-						alert(arguments.callee.name + " --> Inherited property in dataElement : " + propName, false);
 					}
 				}
-
-			} else {
-				alert(arguments.callee.name + " --> Inherited property in dataUI : " + elementName, false);
 			}
 		}
 	} catch (err) {
+		alert(propValue);
 		alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message);
 	}
 }
