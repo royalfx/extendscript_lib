@@ -9,9 +9,10 @@
  * @description
  * @param {Folder} dirLibrary Library directory
  * @param {File} fileInclude Out file
+ * @param {boolean} includeJS Include JS files
  * @returns {File}
  */
-function as_singleLibraryJSXINC(dirLibrary, fileInclude) {
+function as_singleLibraryJSXINC(dirLibrary, fileInclude, includeJS) {
 
 	// GET LIB DIRECTORY
 	if(dirLibrary === undefined) {
@@ -27,13 +28,16 @@ function as_singleLibraryJSXINC(dirLibrary, fileInclude) {
 
 	function handleDirectory(dir, linesCollector) {
 		// CHECK
-		var arrFiles = dir.getFiles("*.jsxinc");
+		var arrFiles = dir.getFiles(function (file) {
+			var ext = as_getFileExtension(file);
+			return (ext == "jsxinc") || (includeJS && (ext == "js"));
+		});
 		if((arrFiles.length > 0) && !((arrFiles.length == 1) && (arrFiles[0].displayName == "include.jsxinc"))) {
 			// linesCollector.push("\n// " + dir.displayName.toUpperCase());
 			linesCollector.push("\n// " + getDirPath(dir).toUpperCase());
 			linesCollector.push("#includepath \"" + dir.fullName + "\";");
 		}
-		as_loopFiles(dir, false, handleFile, [linesCollector], undefined, ["jsxinc"]);
+		as_loopFiles(dir, false, handleFile, [linesCollector], undefined, (includeJS ? ["jsxinc", "js"] : ["jsxinc"]));
 	}
 
 	function handleFile(file, linesCollector) {
