@@ -2,13 +2,17 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
+// version: 1.0.1
+// date: Aug 21 2019
 
 /**
  * 
  * @param {File} file 
  */
 function as_fileReadJSON(file) {
-	return JSON.parse(as_fileRead(file));
+	var fileData = as_fileRead(file);
+	if(fileData == "") {
+		fileData = JSON.stringify({});
+	}
+	return JSON.parse(fileData);
 }
