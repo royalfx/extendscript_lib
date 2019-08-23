@@ -7,6 +7,7 @@
 
 var as_RegExpPattern = {};
 as_RegExpPattern.NUMBERS = /[^0-9]/g;
+as_RegExpPattern.NUMBERS_NO_ZERO = /[^1-9]/g;
 as_RegExpPattern.NUMBERS_MINUS = /[^0-9\-]/g;
 as_RegExpPattern.NUMBERS_DOT = /[^0-9\.]/g;
 as_RegExpPattern.NUMBERS_DOT_MINUS = /[^0-9\.-]/g;
