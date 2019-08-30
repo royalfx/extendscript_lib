@@ -2,16 +2,33 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: 19 Nov 2017
+// version: 1.0.1
+// date: 29 Aug 2019
 
-var as_FileExtension = {};
-as_FileExtension.PNG = ".png";
-as_FileExtension.JPEG = ".jpg";
-as_FileExtension.AEP = ".aep";
-as_FileExtension.FFX = ".ffx";
-as_FileExtension.TXT = ".txt";
-as_FileExtension.JSX = ".jsx";
-as_FileExtension.JS = ".js";
-as_FileExtension.JSXINC = ".jsxinc";
-as_FileExtension.CSV = ".csv";
+function FileExtension() {
+	//
+}
+
+FileExtension.PNG = ".png";
+FileExtension.JPEG = ".jpg";
+FileExtension.AEP = ".aep";
+FileExtension.FFX = ".ffx";
+FileExtension.TXT = ".txt";
+FileExtension.JSX = ".jsx";
+FileExtension.JS = ".js";
+FileExtension.JSXINC = ".jsxinc";
+FileExtension.CSV = ".csv";
+
+FileExtension.getList = function() {
+	return [
+		FileExtension.PNG,
+		FileExtension.JPEG,
+		FileExtension.AEP,
+		FileExtension.FFX,
+		FileExtension.TXT,
+		FileExtension.JSX,
+		FileExtension.JS,
+		FileExtension.JSXINC,
+		FileExtension.CSV
+	];
+}

@@ -13,7 +13,7 @@
  * @param {FolderItem} folder 
  * @param {number} startIndex 
  * @param {number} suffixLen 
- * @param {string} itemType as_ItemType
+ * @param {string} itemType ItemType
  * @param {boolean} intoSubfolders 
  * @param {string} separator 
  */
@@ -22,7 +22,7 @@ function as_itemGetUniqueName(item, itemName, folder, startIndex, suffixLen, ite
 	// CHECK ARGS
 	startIndex = startIndex || 1;
 	suffixLen = suffixLen || 2;
-	itemType = itemType || as_ItemType.COMPITEM;
+	itemType = itemType || ItemType.COMP_ITEM;
 	separator = separator || " ";
 
 	// VARS

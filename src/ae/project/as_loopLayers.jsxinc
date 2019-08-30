@@ -9,7 +9,7 @@
  * 
  * @param {CompItem} comp 
  * @param {array} filterLayerNames 
- * @param {array} filterLayerTypes as_LayerType
+ * @param {array} filterLayerTypes LayerType
  */
 function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
 

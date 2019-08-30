@@ -23,7 +23,7 @@ function as_nameIndexedCheck(name) {
 		// Index not found
 		return -1;
 	}
-	var arrMatch = inxString.match(as_RegExpPattern.NUMBERS);
+	var arrMatch = inxString.match(RegExpPattern.NUMBERS);
 	if (arrMatch !== null) {
 		// Invalid index
 		return -1;

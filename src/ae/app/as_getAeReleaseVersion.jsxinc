@@ -12,12 +12,12 @@
  */
 function as_getAeReleaseVersion(version) {
 	var verMatch = null;
-	for (var n in as_AEVersion) {
-		if (as_AEVersion.hasOwnProperty(n)) {
-			var compare = as_compareVersions(version, as_AEVersion[n]);
+	for (var n in AEVersion) {
+		if (AEVersion.hasOwnProperty(n)) {
+			var compare = as_compareVersions(version, AEVersion[n]);
 			if (compare == 0) {
 				// FOUND
-				verMatch = as_AEVersion[n];
+				verMatch = AEVersion[n];
 				break;
 			}
 			else if (compare > 0) {
@@ -26,7 +26,7 @@ function as_getAeReleaseVersion(version) {
 			}
 			else {
 				// CONTINUE
-				verMatch = as_AEVersion[n];
+				verMatch = AEVersion[n];
 			}
 		} else {
 			//

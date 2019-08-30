@@ -8,19 +8,19 @@
 /**
  * 
  * @param {*} item
- * @return {string} as_ItemType
+ * @return {string} ItemType
  */
 function as_itemGetType(item) {
     if (item instanceof CompItem) {
-        return as_ItemType.COMPITEM;
+        return ItemType.COMP_ITEM;
     }
     
     if (item instanceof FolderItem) {
-        return as_ItemType.FOLDERITEM;
+        return ItemType.FOLDER_ITEM;
     }
 
     if (item instanceof FootageItem) {
-        return as_ItemType.FOOTAGEITEM;
+        return ItemType.FOOTAGE_ITEM;
     }
 
     return null;

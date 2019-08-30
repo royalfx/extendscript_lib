@@ -9,7 +9,7 @@
  * @description COMPARE VERSIONS
  * @param ver1 {string}
  * @param ver2 {string}
- * @param threshold {number} as_VersionNum.MAJOR | as_VersionNum.MINOR | as_VersionNum.PATCH (start from 0)
+ * @param threshold {number} VersionNum.MAJOR | VersionNum.MINOR | VersionNum.PATCH (start from 0)
  * @return 1 (ver2 > ver1) | -1 (ver2 < ver1) | 0 (ver2 == ver1)
  */
 function as_compareVersions(ver1, ver2, threshold) {

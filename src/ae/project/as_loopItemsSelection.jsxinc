@@ -10,7 +10,7 @@
  * @param {Function} func 
  * @param {array} args 
  * @param {array} filterItemsNames 
- * @param {array} filterItemsTypes as_ItemType
+ * @param {array} filterItemsTypes ItemType
  */
 function as_loopItemsSelection(func, args, filterItemsNames, filterItemsTypes) {
 

@@ -13,7 +13,7 @@
  */
 function as_compSingleFont(comp, fontName) {
 
-    var filterLayerTypes = [as_LayerType.TEXT];
+    var filterLayerTypes = [LayerType.TEXT];
     var results = as_loopLayers(comp, handleLayer, [fontName], undefined, filterLayerTypes)
     return results.length;
 

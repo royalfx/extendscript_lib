@@ -2,13 +2,27 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jan 31 2018
+// version: 1.0.1
+// date: 29 Aug 2019
 
-var as_TextDocProperty = {};
-as_TextDocProperty.FONT = "as_TextDocProperty.FONT";
-as_TextDocProperty.FONT_SIZE = "as_TextDocProperty.FONT_SIZE";
-as_TextDocProperty.TRACKING = "as_TextDocProperty.TRACKING";
-as_TextDocProperty.COLOR = "as_TextDocProperty.COLOR";
-as_TextDocProperty.JUSTIFICATION = "as_TextDocProperty.JUSTIFICATION";
-as_TextDocProperty.TEXT = "as_TextDocProperty.TEXT";
+function TextDocProperty(){
+	//
+}
+
+TextDocProperty.FONT = "FONT";
+TextDocProperty.FONT_SIZE = "FONT_SIZE";
+TextDocProperty.TRACKING = "TRACKING";
+TextDocProperty.COLOR = "COLOR";
+TextDocProperty.JUSTIFICATION = "JUSTIFICATION";
+TextDocProperty.TEXT = "TEXT";
+
+TextDocProperty.getList = function() {
+	return [
+		TextDocProperty.FONT,
+		TextDocProperty.FONT_SIZE,
+		TextDocProperty.TRACKING,
+		TextDocProperty.COLOR,
+		TextDocProperty.JUSTIFICATION,
+		TextDocProperty.TEXT
+	];
+}

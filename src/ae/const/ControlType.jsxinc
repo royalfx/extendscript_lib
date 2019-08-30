@@ -2,14 +2,30 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Fri Jul 20 2018
+// version: 1.0.1
+// date: 29 Aug 2019
 
-var as_ControlType = {};
-as_ControlType.SLIDER = "Slider";
-as_ControlType.ANGLE = "Angle";
-as_ControlType.POINT = "Point";
-as_ControlType.POINT3D = "Point3D";
-as_ControlType.CHECKBOX = "Checkbox";
-as_ControlType.COLOR = "Color";
-as_ControlType.LAYER = "Layer";
+function ControlType(){
+	//
+}
+
+var ControlType = {};
+ControlType.SLIDER = "Slider";
+ControlType.ANGLE = "Angle";
+ControlType.POINT = "Point";
+ControlType.POINT3D = "Point3D";
+ControlType.CHECKBOX = "Checkbox";
+ControlType.COLOR = "Color";
+ControlType.LAYER = "Layer";
+
+ControlType.getList = function() {
+	return [
+		ControlType.SLIDER,
+		ControlType.ANGLE,
+		ControlType.POINT,
+		ControlType.POINT3D,
+		ControlType.CHECKBOX,
+		ControlType.COLOR,
+		ControlType.LAYER
+	];
+}

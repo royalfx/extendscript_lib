@@ -8,7 +8,7 @@
 /**
  * @description CHANGE TEXT DOCUMENT
  * @param {Property} textProp 
- * @param {object} textDocProps Use as_TextDocProperty
+ * @param {object} textDocProps Use TextDocProperty
  * @param {number} time 
  */
 function as_textSetProperties(textProp, textDocProps, time) {
@@ -17,18 +17,18 @@ function as_textSetProperties(textProp, textDocProps, time) {
 	var textDoc = textProp.value;
 
 	// CHECK
-	if (textDocProps[as_TextDocProperty.FONT] !== undefined) {
-		textDoc.font = textDocProps[as_TextDocProperty.FONT];
-	} else if (textDocProps[as_TextDocProperty.JUSTIFICATION] !== undefined) {
-		textDoc.justification = textDocProps[as_TextDocProperty.JUSTIFICATION];
-	} else if (textDocProps[as_TextDocProperty.FONT_SIZE] !== undefined) {
-		textDoc.fontSize = textDocProps[as_TextDocProperty.FONT_SIZE];
-	} else if (textDocProps[as_TextDocProperty.TRACKING] !== undefined) {
-		textDoc.tracking = textDocProps[as_TextDocProperty.TRACKING];
-	} else if (textDocProps[as_TextDocProperty.COLOR] !== undefined) {
-		textDoc.fillColor = textDocProps[as_TextDocProperty.COLOR];
-	} else if (textDocProps[as_TextDocProperty.TEXT] !== undefined) {
-		textDoc.text = textDocProps[as_TextDocProperty.TEXT];
+	if (textDocProps[TextDocProperty.FONT] !== undefined) {
+		textDoc.font = textDocProps[TextDocProperty.FONT];
+	} else if (textDocProps[TextDocProperty.JUSTIFICATION] !== undefined) {
+		textDoc.justification = textDocProps[TextDocProperty.JUSTIFICATION];
+	} else if (textDocProps[TextDocProperty.FONT_SIZE] !== undefined) {
+		textDoc.fontSize = textDocProps[TextDocProperty.FONT_SIZE];
+	} else if (textDocProps[TextDocProperty.TRACKING] !== undefined) {
+		textDoc.tracking = textDocProps[TextDocProperty.TRACKING];
+	} else if (textDocProps[TextDocProperty.COLOR] !== undefined) {
+		textDoc.fillColor = textDocProps[TextDocProperty.COLOR];
+	} else if (textDocProps[TextDocProperty.TEXT] !== undefined) {
+		textDoc.text = textDocProps[TextDocProperty.TEXT];
 	}
 
 	// SET

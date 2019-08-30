@@ -8,14 +8,14 @@
 /**
  * @description FIND ITEM
  * @param {string} itemName 
- * @param {string} itemType as_ItemType
+ * @param {string} itemType ItemType
  * @param {Folder} folder 
  * @param {boolean} intoSubfolders 
  */
 function as_findItem(itemName, itemType, folder, intoSubfolders) {
 	
 	// CHECK ARGS
-	itemType = (itemType === undefined) ? as_ItemType.COMPITEM : itemType;
+	itemType = (itemType === undefined) ? ItemType.COMP_ITEM : itemType;
 	folder = (folder === undefined) ? app.project.rootFolder : folder;
 
 	// LOOP ITEMS

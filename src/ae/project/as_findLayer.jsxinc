@@ -9,7 +9,7 @@
  * @description FIND ITEM
  * @param {CompItem} comp 
  * @param {string} layerName 
- * @param {*} layerType as_LayerType
+ * @param {*} layerType LayerType
  */
 function as_findLayer(comp, layerName, layerType) {
 

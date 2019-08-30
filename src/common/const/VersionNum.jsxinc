@@ -2,10 +2,21 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: 06 Dec 2017
+// version: 1.0.1
+// date: 29 Aug 2019
 
-var as_VersionNum = {};
-as_VersionNum.MAJOR = 0;
-as_VersionNum.MINOR = 1;
-as_VersionNum.PATCH = 2;
+function VersionNum(){
+	//
+}
+
+VersionNum.MAJOR = 0;
+VersionNum.MINOR = 1;
+VersionNum.PATCH = 2;
+
+VersionNum.getList = function() {
+	return [
+		VersionNum.MAJOR,
+		VersionNum.MINOR,
+		VersionNum.PATCH
+	];
+}

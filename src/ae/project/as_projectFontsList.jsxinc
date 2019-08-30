@@ -16,11 +16,11 @@ function as_projectFontsList() {
     var arrFonts = [];
 
     // DO
-    as_loopItems(app.project.rootFolder, true, handleComp, [arrFonts], undefined, [as_ItemType.COMPITEM]);
+    as_loopItems(app.project.rootFolder, true, handleComp, [arrFonts], undefined, [ItemType.COMP_ITEM]);
 
     // FUNC FOR HANDLE COMPS
     function handleComp(comp, arrFonts) {
-        return as_loopLayers(comp, handleLayer, [arrFonts], undefined, [as_LayerType.TEXT]);
+        return as_loopLayers(comp, handleLayer, [arrFonts], undefined, [LayerType.TEXT]);
     }
 
     // FUNC FOR HANDLE LAYERS

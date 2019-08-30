@@ -13,7 +13,7 @@
 function as_projectSingleNull() {
 
     // GET NULL MASTER
-    var nullMaster = as_findItem("Null", as_ItemType.FOOTAGEITEM, app.project.rootFolder, true);
+    var nullMaster = as_findItem("Null", ItemType.FOOTAGE_ITEM, app.project.rootFolder, true);
     if(!nullMaster) {
         var compTemp = app.project.items.addComp("temp", 100, 100, 1, 1, 30);
         var layerNull = compTemp.addNull(1);
@@ -23,11 +23,11 @@ function as_projectSingleNull() {
     }
 
     // DO
-    as_loopItems(app.project.rootFolder, true, handleComp, [nullMaster], undefined, [as_ItemType.COMPITEM]);
+    as_loopItems(app.project.rootFolder, true, handleComp, [nullMaster], undefined, [ItemType.COMP_ITEM]);
 
     // FUNC FOR HANDLE COMPS
     function handleComp(comp, nullMaster) {
-        as_loopLayers(comp, handleLayer, [nullMaster], undefined, [as_LayerType.SOLID]);
+        as_loopLayers(comp, handleLayer, [nullMaster], undefined, [LayerType.SOLID]);
     }
 
     // FUNC FOR HANDLE LAYERS

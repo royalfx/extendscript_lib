@@ -2,14 +2,21 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: 22 Jul 2019
+// version: 1.0.1
+// date: 29 Aug 2019
 
-/**
- * 
- * @description Use as_itemGetType
- */
-var as_ItemType = {};
-as_ItemType.COMPITEM = "as_ItemType.COMPITEM";
-as_ItemType.FOOTAGEITEM = "as_ItemType.FOOTAGEITEM";
-as_ItemType.FOLDERITEM = "as_ItemType.FOLDERITEM";
+function ItemType(){
+	//
+}
+
+ItemType.COMP_ITEM = "COMP_ITEM";
+ItemType.FOOTAGE_ITEM = "FOOTAGE_ITEM";
+ItemType.FOLDER_ITEM = "FOLDER_ITEM";
+
+ItemType.getList = function() {
+	return [
+		ItemType.COMP_ITEM,
+		ItemType.FOOTAGE_ITEM,
+		ItemType.FOLDER_ITEM
+	];
+}

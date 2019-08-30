@@ -11,9 +11,9 @@
  */
 function as_getAeReleaseName(version) {
 	var verRelease = as_getAeReleaseVersion(version);
-	for (var n in as_AEVersion) {
-		if (as_AEVersion.hasOwnProperty(n)) {
-			if (as_compareVersions(verRelease, as_AEVersion[n]) >= 0) {
+	for (var n in AEVersion) {
+		if (AEVersion.hasOwnProperty(n)) {
+			if (as_compareVersions(verRelease, AEVersion[n]) >= 0) {
 				return n;
 			}
 		} else {

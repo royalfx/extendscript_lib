@@ -2,22 +2,45 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: 22 Jul 2019
+// version: 1.0.3
+// date: 29 Aug 2019
 
-var as_FileFilter = {};
-as_FileFilter.PNG = "PNG:*.png";
-as_FileFilter.JPEG = "JPEG:*.jpg;*.jpeg";
-as_FileFilter.AEP = "After Effects Project File:*.aep";
-as_FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
-as_FileFilter.TXT = "Plain Text:*.txt";
-as_FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
-as_FileFilter.JSXFILES = "Adobe JavaScript files:*.jsx;*jsxbin";
-as_FileFilter.JSX = "Adobe JavaScript:*.jsx";
-as_FileFilter.JS = "JavaScript files:*.js";
-as_FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
-as_FileFilter.JSXBIN = "Adobe JavaScript Binary files:*.jsxbin";
-as_FileFilter.JSON = "JavaScript JSON:*.json";
-as_FileFilter.ALL = "All files:*.*";
-as_FileFilter.CSV = "CSV (Comma delimited):*.csv";
-as_FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";
+function FileFilter(){
+	//
+}
+
+FileFilter.PNG = "PNG:*.png";
+FileFilter.JPEG = "JPEG:*.jpg;*.jpeg";
+FileFilter.AEP = "After Effects Project File:*.aep";
+FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
+FileFilter.TXT = "Plain Text:*.txt";
+FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
+FileFilter.JSXFILES = "Adobe JavaScript files:*.jsx;*jsxbin";
+FileFilter.JSX = "Adobe JavaScript:*.jsx";
+FileFilter.JS = "JavaScript files:*.js";
+FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
+FileFilter.JSXBIN = "Adobe JavaScript Binary files:*.jsxbin";
+FileFilter.JSON = "JavaScript JSON:*.json";
+FileFilter.ALL = "All files:*.*";
+FileFilter.CSV = "CSV (Comma delimited):*.csv";
+FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";
+
+FileFilter.getList = function() {
+	return [
+		FileFilter.PNG,
+		FileFilter.JPEG,
+		FileFilter.AEP,
+		FileFilter.FFX,
+		FileFilter.TXT,
+		FileFilter.JSFILES,
+		FileFilter.JSXFILES,
+		FileFilter.JSX,
+		FileFilter.JS,
+		FileFilter.JSXINC,
+		FileFilter.JSXBIN,
+		FileFilter.JSON,
+		FileFilter.ALL,
+		FileFilter.CSV,
+		FileFilter.TEXTFILES
+	];
+}

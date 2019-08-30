@@ -12,7 +12,7 @@
  * @param {Function} func 
  * @param {array} args 
  * @param {array} filterItemsNames 
- * @param {array} filterItemsTypes as_ItemType
+ * @param {array} filterItemsTypes ItemType
  */
 function as_loopItems(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
     
