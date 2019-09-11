@@ -12,8 +12,9 @@
  * @param {object} dataImages JSON data with images binary (Optional)
  * @param {Folder} dirImages Folder to save images (Optional)
  * @param {boolean} rewriteFiles If false existing images will be used
+ * @param {boolean} shortLinks If true, the window object will have direct links to UI elements.
  */
-function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFiles) {
+function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
 	try {
 
 		// VARS
@@ -173,6 +174,16 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 							} else {
 								uiElement[propName] = propValue;
 							}
+						}
+					}
+				}
+				// STORE ELEMENT LINK IN WONDOW OBJ
+				if (shortLinks) {
+					if (elementContainer != windowObj) {
+						if (windowObj[elementName] !== undefined) {
+							alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
+						} else {
+							windowObj[elementName] = uiElement;
 						}
 					}
 				}
