@@ -7,8 +7,8 @@
 
 /**
  * 
- * @param prop 
- * @param rootObj 
+ * @param {Property} prop 
+ * @param {string} rootObj
  */
 function as_exprGetPropPath(prop, rootObj) {
     if (prop === null) {
@@ -21,12 +21,23 @@ function as_exprGetPropPath(prop, rootObj) {
     // LOOP PROPS
     var name;
     while (prop.parentProperty !== null) {
+
+		// IF INDEXED_GROUP
         if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
-            name = "\"" + prop.name + "\"";
+			name = prop.name;
+			expr = "(\"" + name + "\")" + expr;
+
+		// ELSE IF EFFECTS GROUP
+		// If use matchName, expressions auto fixing when effect renamed in AE doesn't work. Use .effect("Effect Name") instead.
+		} else if (prop.matchName == "ADBE Effect Parade"){
+			name = "effect";
+			expr = "." + name + expr;
+
+		// ELSE (NAMED_GROUP or PROPERTY)
         } else {
-            name = "\"" + ((prop.matchName !== "") ? prop.matchName : prop.name) + "\"";
+			name = ((prop.matchName !== "") ? prop.matchName : prop.name);
+			expr = "(\"" + name + "\")" + expr;
         }
-        expr = "(" + name + ")" + expr;
         prop = prop.parentProperty;
     }
     
