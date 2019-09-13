@@ -10,7 +10,7 @@
  * @param {*} prop
  * @param {boolean} alertErrors
  */
-function as_exprSet(prop, alertErrors) {
+function as_exprSet(prop, expr, alertErrors) {
 	try {
 		app.beginSuppressDialogs();
 		prop.expression = expr;
