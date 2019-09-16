@@ -2,8 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: Aug 23 2019
+// version: 1.0.3
+// date: Sep 16 2019
 
 /**
  * @description
@@ -50,7 +50,7 @@ function as_singleLibraryJSXINC(dirLibrary, fileInclude, includeJS, skipDirs) {
 	}
 
 	function handleFile(file, linesCollector) {
-		if(file.displayName != "include.jsxinc") {
+		if ((file.displayName != "include.jsxinc") && (file.displayName != "include.js") && (file.displayName != "lib.js")) {
 			linesCollector.push("#include \"" + file.displayName + "\";");
 		}
 	}

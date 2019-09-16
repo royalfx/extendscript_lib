@@ -119,88 +119,103 @@
 #include "as_uiPrefsApply.jsxinc";
 #include "as_uiPrefsGet.jsxinc";
 
+// SRC > AI > COLOR
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ai/color";
+#include "as_aiGetRGB.js";
+
+// SRC > AI > DOC
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ai/doc";
+#include "as_aiCreateDocument.js";
+#include "as_aiRemoveEmptyLayers.js";
+#include "as_aiRenameLayers.js";
+#include "as_aiSetPathStyle.js";
+
+// SRC > COMMON
+#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common";
+
 // SRC > COMMON > COLOR
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/color";
-#include "as_nativeColorPicker.jsxinc";
+#include "as_nativeColorPicker.js";
 
 // SRC > COMMON > CONST
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/const";
-#include "FileExtension.jsxinc";
-#include "FileFilter.jsxinc";
-#include "RegExpPattern.jsxinc";
-#include "VersionNum.jsxinc";
+#include "FileExtension.js";
+#include "FileFilter.js";
+#include "RegExpPattern.js";
+#include "VersionNum.js";
 
 // SRC > COMMON > DATA
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/data";
-#include "as_arrayCheckValue.jsxinc";
-#include "as_arrayClone.jsxinc";
-#include "as_arrayMakeUnique.jsxinc";
-#include "as_arrayMaxValue.jsxinc";
-#include "as_arraysMerge.jsxinc";
-#include "as_clamp.jsxinc";
-#include "as_dataCheckEquals.jsxinc";
-#include "as_dataIsSameType.jsxinc";
-#include "as_linear.jsxinc";
-#include "as_nameIndexedCheck.jsxinc";
-#include "as_nameIndexedClear.jsxinc";
-#include "as_nameIndexedReplace.jsxinc";
-#include "as_nameIndexedSet.jsxinc";
-#include "as_objectClone.jsxinc";
-#include "as_objectGetPropName.jsxinc";
-#include "as_objectKeysToArray.jsxinc";
-#include "as_objectsGetLength.jsxinc";
-#include "as_objectsMerge.jsxinc";
-#include "as_stringCheckContainsChars.jsxinc";
-#include "as_stringCleanName.jsxinc";
-#include "as_stringClearFirstLastSpaces.jsxinc";
-#include "as_stringClearLineBreaks.jsxinc";
-#include "as_stringClearSpaces.jsxinc";
-#include "as_stringRemoveLineBreaks.jsxinc";
-#include "as_stringToArray.jsxinc";
-#include "as_stringToSingleLine.jsxinc";
-#include "as_stringUniqChars.jsxinc";
-#include "as_timeMillisecToString.jsxinc";
-#include "as_toString.jsxinc";
-#include "as_toStringArray.jsxinc";
-#include "as_toStringObject.jsxinc";
+#include "as_arrayCheckValue.js";
+#include "as_arrayClone.js";
+#include "as_arrayMakeUnique.js";
+#include "as_arrayMaxValue.js";
+#include "as_arraysMerge.js";
+#include "as_clamp.js";
+#include "as_dataCheckEquals.js";
+#include "as_dataIsSameType.js";
+#include "as_linear.js";
+#include "as_nameIndexedCheck.js";
+#include "as_nameIndexedClear.js";
+#include "as_nameIndexedReplace.js";
+#include "as_nameIndexedSet.js";
+#include "as_objectClone.js";
+#include "as_objectGetPropName.js";
+#include "as_objectKeysToArray.js";
+#include "as_objectsGetLength.js";
+#include "as_objectsMerge.js";
+#include "as_stringCheckContainsChars.js";
+#include "as_stringCleanName.js";
+#include "as_stringClearFirstLastSpaces.js";
+#include "as_stringClearLineBreaks.js";
+#include "as_stringClearSpaces.js";
+#include "as_stringRemoveLineBreaks.js";
+#include "as_stringToArray.js";
+#include "as_stringToSingleLine.js";
+#include "as_stringUniqChars.js";
+#include "as_timeMillisecToString.js";
+#include "as_toString.js";
+#include "as_toStringArray.js";
+#include "as_toStringObject.js";
 
 // SRC > COMMON > DATE
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/date";
-#include "as_dateFromMonthNumber.jsxinc";
-#include "as_getMonthName.jsxinc";
-#include "as_getMonthNameShort.jsxinc";
-#include "as_getMonthNumber.jsxinc";
-#include "as_getMonthYearNameShort.jsxinc";
-#include "as_getWeekDayName.jsxinc";
+#include "as_dateFromMonthNumber.js";
+#include "as_getMonthName.js";
+#include "as_getMonthNameShort.js";
+#include "as_getMonthNumber.js";
+#include "as_getMonthYearNameShort.js";
+#include "as_getWeekDayName.js";
 
 // SRC > COMMON > FILE
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/file";
-#include "as_arrayToCSV.jsxinc";
-#include "as_fileRead.jsxinc";
-#include "as_fileReadJSBinary.jsxinc";
-#include "as_fileReadJSON.jsxinc";
-#include "as_fileToBinaryString.jsxinc";
-#include "as_fileWrite.jsxinc";
-#include "as_fileWriteJSBinary.jsxinc";
-#include "as_fileWriteJSON.jsxinc";
-#include "as_findFile.jsxinc";
-#include "as_getFileExtension.jsxinc";
-#include "as_getFileName.jsxinc";
-#include "as_getTempFolder.jsxinc";
-#include "as_getUserDataFolder.jsxinc";
-#include "as_loopCSVLines.jsxinc";
-#include "as_loopDirectories.jsxinc";
-#include "as_loopFiles.jsxinc";
-#include "as_parseCSVLineArr.jsxinc";
-#include "as_parseCSVLineObj.jsxinc";
-#include "as_PNGFilesToJSON.jsxinc";
-#include "as_singleLibraryJSXINC.jsxinc";
+#include "as_arrayToCSV.js";
+#include "as_fileRead.js";
+#include "as_fileReadJSBinary.js";
+#include "as_fileReadJSON.js";
+#include "as_fileToBinaryString.js";
+#include "as_fileWrite.js";
+#include "as_fileWriteJSBinary.js";
+#include "as_fileWriteJSON.js";
+#include "as_findFile.js";
+#include "as_getFileExtension.js";
+#include "as_getFileName.js";
+#include "as_getTempFolder.js";
+#include "as_getUserDataFolder.js";
+#include "as_loopCSVLines.js";
+#include "as_loopDirectories.js";
+#include "as_loopFiles.js";
+#include "as_parseCSVLineArr.js";
+#include "as_parseCSVLineObj.js";
+#include "as_PNGFilesToJSON.js";
+#include "as_singleLibraryJS.js";
+#include "as_singleLibraryJSXINC.js";
 
 // SRC > COMMON > SYSTEM
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/system";
-#include "as_copyToClipboard.jsxinc";
-#include "as_openURL.jsxinc";
-#include "as_osName.jsxinc";
+#include "as_copyToClipboard.js";
+#include "as_openURL.js";
+#include "as_osName.js";
 
 // SRC > PS > DOC
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ps/doc";
