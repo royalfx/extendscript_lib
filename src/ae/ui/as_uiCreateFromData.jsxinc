@@ -2,23 +2,23 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Aug 13 2019
+// version: 1.0.2
+// date: Sep 19 2019
 
 /**
  * 
  * @param {Window} windowObj 
- * @param {object} dataUI JSON data created by as_uiCSVToJSON()
- * @param {object} dataImages JSON data with images binary (Optional)
+ * @param {object} dataUI JS data object created by as_parseCSV()
+ * @param {object} dataImages JS data object with images binary (Optional)
  * @param {Folder} dirImages Folder to save images (Optional)
  * @param {boolean} rewriteFiles If false existing images will be used
  * @param {boolean} shortLinks If true, the window object will have direct links to UI elements.
  */
-function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
+function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
 	try {
 
 		// VARS
-		var uiElement, dataElement, elementContainer, fileName;
+		var uiElement, dataElement, parentContainer, fileName;
 
 		// LOOP JSON
 		for (var elementName in dataUI) {
@@ -27,43 +27,43 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 
 				// GET CONTAINER
 				// If parent container is Window/Panel leave empty field in spreadsheet.
-				if (dataElement.container === undefined) {
-					elementContainer = windowObj;
+				if (dataElement.parent === undefined) {
+					parentContainer = windowObj;
 				} else {
-					elementContainer = as_uiFindElement(windowObj, dataElement.container);
+					parentContainer = as_uiFindElement(windowObj, dataElement.parent);
 				}
 
 				// CHECK CONTAINER
-				if (!elementContainer) {
-					alert(arguments.callee.name + " --> " + "Container " + dataElement.container + " not found!" + "\nElement: " + elementName);
+				if (!parentContainer) {
+					alert(arguments.callee.name + " --> " + "Container " + dataElement.parent + " not found!" + "\nElement: " + elementName);
 					continue;
 				}
 
 				// CREATE UI ELEMENT
 				switch (dataElement.type) {
 					case "image":
-						uiElement = elementContainer.add("image", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("image", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "button":
-						uiElement = elementContainer.add("button", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("button", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "iconbutton":
-						uiElement = elementContainer.add("iconbutton", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("iconbutton", dataElement.bounds, undefined, {
 							name: (elementName),
 							style: (dataElement.style || "toolbutton")
 						});
 						break;
 					case "custombutton":
-						uiElement = elementContainer.add("custombutton", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("custombutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "statictext":
-						uiElement = elementContainer.add("statictext", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("statictext", dataElement.bounds, undefined, {
 							name: (elementName),
 							multiline: (dataElement.multiline || false),
 							justify: (dataElement.justify || "left")
@@ -73,7 +73,7 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						}
 						break;
 					case "edittext":
-						uiElement = elementContainer.add("edittext", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("edittext", dataElement.bounds, undefined, {
 							name: (elementName),
 							multiline: (dataElement.multiline || false),
 							readonly: (dataElement.readonly || false),
@@ -84,27 +84,27 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						}
 						break;
 					case "group":
-						uiElement = elementContainer.add("group", dataElement.bounds, {
+						uiElement = parentContainer.add("group", dataElement.bounds, {
 							name: (elementName)
 						});
 						break;
 					case "dropdownlist":
-						uiElement = elementContainer.add("dropdownlist", dataElement.bounds, dataElement.items, { name: (elementName) });
+						uiElement = parentContainer.add("dropdownlist", dataElement.bounds, dataElement.items, { name: (elementName) });
 						uiElement.selection = 0;
 						break;
 					case "scrollbar":
-						uiElement = elementContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
+						uiElement = parentContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "progressbar":
 						//add (progressbar [, bounds, value, minvalue, maxvalue,{creation_properties}]);
-						uiElement = elementContainer.add("progressbar", dataElement.bounds, undefined, undefined, undefined, {
+						uiElement = parentContainer.add("progressbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "listbox":
-						uiElement = elementContainer.add("listbox", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("listbox", dataElement.bounds, undefined, {
 							name: (elementName),
 							numberOfColumns: (dataElement.numberOfColumns),
 							showHeaders: (dataElement.showHeaders),
@@ -113,27 +113,27 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						});
 						break;
 					case "checkbox":
-						uiElement = elementContainer.add("checkbox", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("checkbox", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "tabbedpanel":
-						uiElement = elementContainer.add("tabbedpanel", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("tabbedpanel", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "panel":
-						uiElement = elementContainer.add("panel", dataElement.bounds, undefined, { name: (elementName), borderStyle: "etched" });
+						uiElement = parentContainer.add("panel", dataElement.bounds, undefined, { name: (elementName), borderStyle: "etched" });
 						break;
 						// borderStyle: 
 						// black, etched, gray, raised, sunken. Default is etched
 					case "tab":
-						uiElement = elementContainer.add("tab", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("tab", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
 					case "radiobutton":
-						uiElement = elementContainer.add("radiobutton", dataElement.bounds, undefined, {
+						uiElement = parentContainer.add("radiobutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
@@ -179,7 +179,7 @@ function as_uiCreateFromJSON(windowObj, dataUI, dataImages, dirImages, rewriteFi
 				}
 				// STORE ELEMENT LINK IN WONDOW OBJ
 				if (shortLinks) {
-					if (elementContainer != windowObj) {
+					if (parentContainer != windowObj) {
 						if (windowObj[elementName] !== undefined) {
 							alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
 						} else {

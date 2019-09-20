@@ -12,7 +12,16 @@
             "program": "${file}",
             "stopOnEntry": false,
             "trace": true
-        },
+		},
+		{
+			"type": "extendscript-debug",
+			"request": "launch",
+			"targetSpecifier": "illustrator-23.064",
+			"name": "Illustrator - Current File",
+			"program": "${file}",
+			"stopOnEntry": false,
+			"trace": true
+		},
         {
             "type": "extendscript-debug",
             "request": "launch",
