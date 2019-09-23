@@ -204,7 +204,7 @@
 #include "as_loopCSVLines.js";
 #include "as_loopDirectories.js";
 #include "as_loopFiles.js";
-#include "as_parseCSV.jsxinc";
+#include "as_parseCSV.js";
 #include "as_parseCSVLineArr.js";
 #include "as_parseCSVLineObj.js";
 #include "as_PNGFilesToJSON.js";

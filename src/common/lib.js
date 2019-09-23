@@ -56,6 +56,7 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_loopCSVLines.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_loopDirectories.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_loopFiles.js"></script>');
+document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSV.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSVLineArr.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSVLineObj.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_PNGFilesToJSON.js"></script>');
