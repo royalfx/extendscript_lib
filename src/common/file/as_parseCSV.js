@@ -123,8 +123,8 @@ function as_parseCSV(fileCSV) {
 				// Check if object
 				if (vType == "object") {
 					if (vValue == "") {
-						// Skip line
-						break;
+						// Get prev line object
+						object = getPrevLineObject(ll, vv);
 					} else {
 						// Store next object in chain
 						object = object[vValue];
