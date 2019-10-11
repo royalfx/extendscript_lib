@@ -153,6 +153,7 @@
 #include "as_clamp.js";
 #include "as_dataCheckEquals.js";
 #include "as_dataIsSameType.js";
+#include "as_getFunctionName.js";
 #include "as_linear.js";
 #include "as_nameIndexedCheck.js";
 #include "as_nameIndexedClear.js";

@@ -40,7 +40,7 @@ function as_shapeToSpatial(comp, propSource, propTarget) {
 
 	// RETURN
 	if (propTarget.numKeys == 0) {
-		alert("as_shapeToSpatial: " + "Something wrong! > propTarget.numKeys = 0");
+		alert("as_shapeToSpatial: " + "Something went wrong! > propTarget.numKeys = 0");
 		return false;
 	} else {
 		return true;
