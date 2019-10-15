@@ -2,35 +2,38 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
+// version: 1.0.1
+// date: Oct 12 2019
 
 /**
  * 
- * @description GET AE RELEASE VERSION
- * @param version {string}
+ * @description Get AE release version
+ * @param version {string} AEVersion
  */
 function as_getAeReleaseVersion(version) {
+
+	// Define vars
 	var verMatch = null;
-	for (var n in AEVersion) {
-		if (AEVersion.hasOwnProperty(n)) {
-			var compare = as_compareVersions(version, AEVersion[n]);
-			if (compare == 0) {
-				// FOUND
-				verMatch = AEVersion[n];
-				break;
-			}
-			else if (compare > 0) {
-				// RETURN PREV
-				break;
-			}
-			else {
-				// CONTINUE
-				verMatch = AEVersion[n];
-			}
+	var versionsList = AEVersion.getList();
+
+	// Loop AE versions
+	for (var v = 0, ver; v < versionsList.length; v++) {
+		ver = versionsList[v];
+
+		// Compare
+		var compare = as_compareVersions(version, ver);
+		if (compare == 0) {
+			// Found
+			verMatch = ver;
+			break;
+		} else if (compare > 0) {
+			// Return prev
+			break;
 		} else {
-			//
+			// Continue
+			verMatch = ver;
 		}
 	}
+
 	return verMatch;
 }
