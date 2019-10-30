@@ -2,8 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 17 2019
+// version: 1.0.2
+// date: Oct 30 2019
 
 /**
  * 
@@ -12,15 +12,9 @@
  * @return {Array}
  */
 function as_getMarkersChars(propMarker) {
-
-	// VARS
 	var arr = [];
-
-	// GET
-	for (var k = 1; k <= propMarker.numKeys; k++) {
+	for (var k = 1, numKeys = propMarker.numKeys; k <= numKeys; k++) {
 		arr.push(propMarker.keyValue(k).comment);
 	}
-
-	// RETURN
 	return arr;
 }
