@@ -2,9 +2,10 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: 29 Aug 2019
-
+/**
+ * @version 1.0.2
+ * @date 11 Nov 2019
+ */
 function AEVersion(){
 	//
 }
@@ -32,6 +33,10 @@ AEVersion.CC2018_0_1 = "15.0.1";
 AEVersion.CC2018_1 = "15.1";
 
 AEVersion.CC2019 = "16.0";
+AEVersion.CC2019_0_1 = "16.0.1";
+AEVersion.CC2019_1 = "16.1";
+
+AEVersion.CC2020 = "17.0";
 
 AEVersion.getList = function() {
 	return [
@@ -52,7 +57,10 @@ AEVersion.getList = function() {
 		AEVersion.CC2018,
 		AEVersion.CC2018_0_1,
 		AEVersion.CC2018_1,
-		AEVersion.CC2019
+		AEVersion.CC2019,
+		AEVersion.CC2019_0_1,
+		AEVersion.CC2019_1,
+		AEVersion.CC2020
 	];
 }
 
@@ -74,4 +82,10 @@ CC 2017 (14.2.1)
 CC (15.0)
 CC (15.0.1)
 CC (15.1)
+CC (15.1.1)
+CC (15.1.2)
+CC (16.0)
+CC (16.0.1)
+16.1
+17
 */
