@@ -94,6 +94,8 @@
 #include "as_propCopy.jsxinc";
 #include "as_propGetContainingComp.jsxinc";
 #include "as_propGetContainingLayer.jsxinc";
+#include "as_propGetPath.jsxinc";
+#include "as_propGetPathIndexes.jsxinc";
 #include "as_propGetValueTime.jsxinc";
 #include "as_propIsEffect.jsxinc";
 #include "as_propIsEffectChild.jsxinc";

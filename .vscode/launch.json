@@ -7,7 +7,7 @@
         {
             "type": "extendscript-debug",
             "request": "launch",
-            "targetSpecifier": "aftereffects-16.0",
+            "targetSpecifier": "aftereffects-17.0",
             "name": "After Effects - Current File",
             "program": "${file}",
             "stopOnEntry": false,

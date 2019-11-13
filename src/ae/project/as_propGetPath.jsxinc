@@ -1,0 +1,25 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+/**
+ * @version 1.0.0
+ * @date Nov 13 2019
+ * @param {*} prop Layer or Property
+ * @returns {Array}
+ */
+function as_propGetPath(prop) {
+	var path = [];
+	while (prop.parentProperty !== null) {
+		if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
+			path.unshift(prop.name);
+		} else if (prop.parentProperty.propertyType === PropertyType.NAMED_GROUP) {
+			path.unshift(prop.matchName);
+		} else {
+			path.unshift(prop.matchName);
+		}
+		prop = prop.parentProperty;
+	}
+	path.unshift(prop.name);
+	return path;
+}

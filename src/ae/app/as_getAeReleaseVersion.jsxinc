@@ -12,7 +12,7 @@
  */
 function as_getAeReleaseVersion(version) {
 
-	// Define vars
+	// Declare vars
 	var verMatch = null;
 	var versionsList = AEVersion.getList();
 

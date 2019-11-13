@@ -31,7 +31,7 @@ function as_parseCSV(fileCSV) {
 	var csvString = fileCSV.read();
 	fileCSV.close();
 
-	// Define vars
+	// Declare vars
 	var linesArray = csvString.split("\n");
 	var namesArray = linesArray[0].split(";");
 	var typesArray = linesArray[1].split(";");
