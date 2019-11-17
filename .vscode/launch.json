@@ -30,6 +30,14 @@
             "program": "${file}",
             "stopOnEntry": false,
             "trace": true
+        },
+        {
+            "type": "extendscript-debug",
+            "request": "launch",
+            "name": "Ask app",
+            "program": "${file}",
+            "stopOnEntry": false
         }
+
     ]
 }

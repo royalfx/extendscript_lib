@@ -4,6 +4,7 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/const/RegExpPattern.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/const/VersionNum.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_arrayCheckValue.js"></script>');
+document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_arrayCheckValues.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_arrayClone.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_arrayMakeUnique.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_arrayMaxValue.js"></script>');

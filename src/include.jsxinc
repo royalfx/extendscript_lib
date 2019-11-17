@@ -91,6 +91,7 @@
 #include "as_projectSelectItem.jsxinc";
 #include "as_projectSelectItems.jsxinc";
 #include "as_projectSingleNull.jsxinc";
+#include "as_propByPath.jsxinc";
 #include "as_propCopy.jsxinc";
 #include "as_propGetContainingComp.jsxinc";
 #include "as_propGetContainingLayer.jsxinc";
@@ -148,6 +149,7 @@
 // SRC > COMMON > DATA
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/data";
 #include "as_arrayCheckValue.js";
+#include "as_arrayCheckValues.js";
 #include "as_arrayClone.js";
 #include "as_arrayMakeUnique.js";
 #include "as_arrayMaxValue.js";

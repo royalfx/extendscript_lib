@@ -1,0 +1,30 @@
+// Copyright (c) 2019 Oleksandr Semeniuk
+// This code is licensed under MIT license
+// See also http://www.opensource.org/licenses/mit-license.php
+
+/**
+ * @version 1.0.0
+ * @date Nov 15 2019
+ * @param {CompItem} comp
+ * @param {Array} path [string]
+ * @returns {*}
+ */
+function as_propByPath(comp, path) {
+    if(!(comp instanceof CompItem)) {
+        return null;
+    }
+    if(!(path instanceof Array) || (path.length == 0)) {
+        return null;
+    }
+    // Get layer
+    var prop = comp.layer(path[0]);
+    // Loop parents
+	for (var i = 1, len = path.length; i < len; i++) {
+        if(!prop) {
+            return null;
+        }
+        prop = prop(path[i]);
+    }
+
+	return prop;
+}

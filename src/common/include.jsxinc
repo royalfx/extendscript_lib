@@ -16,6 +16,7 @@
 // COMMON > DATA
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/common/data";
 #include "as_arrayCheckValue.js";
+#include "as_arrayCheckValues.js";
 #include "as_arrayClone.js";
 #include "as_arrayMakeUnique.js";
 #include "as_arrayMaxValue.js";

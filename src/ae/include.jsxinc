@@ -91,6 +91,7 @@
 #include "as_projectSelectItem.jsxinc";
 #include "as_projectSelectItems.jsxinc";
 #include "as_projectSingleNull.jsxinc";
+#include "as_propByPath.jsxinc";
 #include "as_propCopy.jsxinc";
 #include "as_propGetContainingComp.jsxinc";
 #include "as_propGetContainingLayer.jsxinc";

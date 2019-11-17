@@ -4,7 +4,7 @@
 
 /**
  * @version 1.0.0
- * @date Nov 13 2019
+ * @date Nov 15 2019
  * @param {*} prop Layer or Property
  * @requires {@link as_propIsLayer} 
  * @returns {Array}
