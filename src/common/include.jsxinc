@@ -28,6 +28,7 @@
 #include "as_linear.js";
 #include "as_nameIndexedCheck.js";
 #include "as_nameIndexedClear.js";
+#include "as_nameIndexedIncrement.js";
 #include "as_nameIndexedReplace.js";
 #include "as_nameIndexedSet.js";
 #include "as_objectClone.js";

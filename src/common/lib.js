@@ -16,6 +16,7 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_linear.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_nameIndexedCheck.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_nameIndexedClear.js"></script>');
+document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_nameIndexedIncrement.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_nameIndexedReplace.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_nameIndexedSet.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_objectClone.js"></script>');
