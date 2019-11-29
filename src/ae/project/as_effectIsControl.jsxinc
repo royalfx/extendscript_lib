@@ -10,6 +10,9 @@
  * @param {Effect} effect 
  */
 function as_effectIsControl(effect) {
+	if ((effect == null) || !isValid(effect)) {
+		return null;
+	}
 	if (!effect.isEffect) {
 		return false;
 	}
