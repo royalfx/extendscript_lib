@@ -42,6 +42,7 @@
 #include "as_stringClearLineBreaks.js";
 #include "as_stringClearSpaces.js";
 #include "as_stringRemoveLineBreaks.js";
+#include "as_stringRepeat.js";
 #include "as_stringToArray.js";
 #include "as_stringToSingleLine.js";
 #include "as_stringUniqChars.js";

@@ -30,6 +30,7 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringClearLineBreaks.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringClearSpaces.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringRemoveLineBreaks.js"></script>');
+document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringRepeat.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringToArray.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringToSingleLine.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/data/as_stringUniqChars.js"></script>');

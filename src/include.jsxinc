@@ -45,6 +45,8 @@
 #include "as_keyNearestLeft.jsxinc";
 #include "as_keyNearestRight.jsxinc";
 #include "as_keysCopy.jsxinc";
+#include "as_keysGetTimes.jsxinc";
+#include "as_keysGetValues.jsxinc";
 #include "as_keysHold.jsxinc";
 #include "as_keysRange.jsxinc";
 #include "as_keysReflect.jsxinc";
@@ -175,6 +177,7 @@
 #include "as_stringClearLineBreaks.js";
 #include "as_stringClearSpaces.js";
 #include "as_stringRemoveLineBreaks.js";
+#include "as_stringRepeat.js";
 #include "as_stringToArray.js";
 #include "as_stringToSingleLine.js";
 #include "as_stringUniqChars.js";
