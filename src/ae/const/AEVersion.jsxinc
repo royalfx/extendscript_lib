@@ -64,6 +64,32 @@ AEVersion.getList = function() {
 	];
 }
 
+AEVersion.getKeysList = function () {
+	return [
+		"CC",
+		"CC_1",
+		"CC_2",
+		"CC2014",
+		"CC2014_1",
+		"CC2014_2",
+		"CC2015",
+		"CC2015_1",
+		"CC2015_2",
+		"CC2015_3",
+		"CC2017",
+		"CC2017_1",
+		"CC2017_2",
+		"CC2017_2_1",
+		"CC2018",
+		"CC2018_0_1",
+		"CC2018_1",
+		"CC2019",
+		"CC2019_0_1",
+		"CC2019_1",
+		"CC2020"
+	];
+}
+
 /*
 CC (12.0)
 CC (12.1)
