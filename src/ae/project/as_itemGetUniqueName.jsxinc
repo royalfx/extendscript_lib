@@ -2,44 +2,47 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: 22 Jul 2019
-
 /**
- * 
- * @description GET UNIQUE ITEM NAME
+ * @version 1.0.1
+ * @date Dec 09 2019
+ *
+ * @description Get unique item name
  * @param {*} item 
  * @param {string} itemName 
  * @param {FolderItem} folder 
- * @param {number} startIndex 
- * @param {number} suffixLen 
- * @param {string} itemType ItemType
- * @param {boolean} intoSubfolders 
- * @param {string} separator 
+ * @param {number} startIndex Optional
+ * @param {number} suffixLen Optional
+ * @param {string} itemType {@link ItemTypeName} Optional
+ * @param {boolean} intoSubfolders Optional
+ * @param {string} separator Optional
+ * @returns {string}
  */
 function as_itemGetUniqueName(item, itemName, folder, startIndex, suffixLen, itemType, intoSubfolders, separator) {
 
-	// CHECK ARGS
+	// Check arguments
 	startIndex = startIndex || 1;
 	suffixLen = suffixLen || 2;
-	itemType = itemType || ItemType.COMP_ITEM;
+	itemType = (itemType || ItemTypeName.COMPOSITION);
 	separator = separator || " ";
 
-	// VARS
-	var i = startIndex, exist = true, newName, foundItem;
+	// Declare vars
+	var i = startIndex,
+		exist = true,
+		newName,
+		foundItem;
 
-	// LOOP
+	// Loop items
 	while (exist) {
 		if (!newName) {
-			// FIRST CHECK ORIGIN NAME
+			// First check origin name
 			newName = itemName;
 		} else {
-			// GET NEW NAME
+			// Get new name
 			suffixLen = Math.max(suffixLen, i.toString().length);
 			newName = (itemName + separator + ("00000000" + i).slice(-suffixLen));
 			i++;
 		}
-		// CHECK
+		// Check
 		foundItem = as_findItem(newName, itemType, folder, intoSubfolders);
 		exist = (foundItem != null) && ((item == undefined) || (foundItem != item));
 	}

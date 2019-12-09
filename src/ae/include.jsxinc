@@ -19,7 +19,7 @@
 #includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
-#include "ItemType.jsxinc";
+#include "ItemTypeName.jsxinc";
 #include "LabelColor.jsxinc";
 #include "LayerType.jsxinc";
 #include "StrokeLineCap.jsxinc";
@@ -74,7 +74,6 @@
 #include "as_findItem.jsxinc";
 #include "as_findLayer.jsxinc";
 #include "as_itemGetPath.jsxinc";
-#include "as_itemGetType.jsxinc";
 #include "as_itemGetUniqueName.jsxinc";
 #include "as_itemReplaceWithSolid.jsxinc";
 #include "as_itemsToComps.jsxinc";

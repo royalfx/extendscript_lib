@@ -2,43 +2,46 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 23 2019
-
 /**
- * 
+ * @version 1.0.2
+ * @date Dec 09 2019
+ *
  * @param {Function} func 
- * @param {array} args 
- * @param {array} filterItemsNames 
- * @param {array} filterItemsTypes ItemType
+ * @param {Array} args Optional
+ * @param {Array} filterItemsNames 
+ * @param {Array} filterItemsTypes {@link ItemTypeName}
+ * @returns {Array}
  */
 function as_loopItemsSelection(func, args, filterItemsNames, filterItemsTypes) {
 
-    // CHECK ARGS
-    if(args === undefined) {
-        args = [];
-    }
+	// Check arguments
+	if (args === undefined) {
+		args = [];
+	}
 
-    // VARS
-    var results = [];
+	// Declare vars
+	var results = [],
+		item,
+		nameMatch,
+		typeMatch,
+		result;
 
-    // LOOP ITEMS
-    for (var i = 0, item; i < app.project.selection.length; i++) {
+    // Loop items
+    for (var i = 0; i < app.project.selection.length; i++) {
         item = app.project.selection[i];
 
-        // CHECK
-        var nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
-        var typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
+        // Check
+        nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
+		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(item.typeName, filterItemsTypes) >= 0);
         
-        // DO
+        // Do
         if(nameMatch && typeMatch) {
-            var result = func.apply(undefined, [item].concat(args));
+            result = func.apply(undefined, [item].concat(args));
             if(result !== undefined) {
                 results.push(result);
             }
         }
     }
 
-    // RETURN
     return results;
 }

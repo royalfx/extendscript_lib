@@ -2,50 +2,53 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 23 2019
-
 /**
- * 
+ * @version 1.0.2
+ * @date Dec 09 2019
+ *  
  * @param {FolderItem} folder 
- * @param {boolean} intoSubfolders 
+ * @param {boolean} intoSubfolders Optional
  * @param {Function} func 
- * @param {array} args 
- * @param {array} filterItemsNames 
- * @param {array} filterItemsTypes ItemType
+ * @param {Array} args Optional
+ * @param {Array} filterItemsNames 
+ * @param {Array} filterItemsTypes {@link ItemTypeName}
+ * @returns {Array}
  */
 function as_loopItems(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
     
-    // CHECK ARGS
+    // Check arguments
     if(args === undefined) {
         args = [];
     }
 
-    // VARS
-    var results = [];
+	// Declare vars
+	var results = [],
+		item,
+		nameMatch,
+		typeMatch,
+		result;
 
-    // LOOP ITEMS
-    for (var i = 1, item; i <= folder.numItems; i++) {
+    // Loop items
+    for (var i = 1; i <= folder.numItems; i++) {
         item = folder.item(i);
 
-        // CHECK
-        var nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
-        var typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
+        // Check
+        nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
+		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(item.typeName, filterItemsTypes) >= 0);
         
-        // DO
+        // Du
         if(nameMatch && typeMatch) {
-            var result = func.apply(undefined, [item].concat(args));
+            result = func.apply(undefined, [item].concat(args));
             if(result !== undefined) {
                 results.push(result);
             }
         }
 
-        // SUBFOLDERS
+        // Subfolders
         if((item instanceof FolderItem) && intoSubfolders) {
             results = results.concat(as_loopItems(item, intoSubfolders, func, args, filterItemsNames, filterItemsTypes));
         }
     }
 
-    // RETURN
     return results;
 }
