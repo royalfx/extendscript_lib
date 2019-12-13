@@ -2,11 +2,9 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: Sep 19 2019
-
 /**
- * 
+ * @version 1.0.3
+ * @date Dec 13 2019
  * @param {Window} windowObj 
  * @param {object} dataUI JS data object created by as_parseCSV()
  * @param {object} dataImages JS data object with images binary (Optional)
@@ -17,15 +15,18 @@
 function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
 	try {
 
-		// VARS
-		var uiElement, dataElement, parentContainer, fileName;
+		// Declare vars
+		var uiElement,
+			dataElement,
+			parentContainer,
+			fileName;
 
-		// LOOP JSON
+		// Loop json
 		for (var elementName in dataUI) {
 			if (dataUI.hasOwnProperty(elementName)) {
 				dataElement = dataUI[elementName];
 
-				// GET CONTAINER
+				// Get container
 				// If parent container is Window/Panel leave empty field in spreadsheet.
 				if (dataElement.parent === undefined) {
 					parentContainer = windowObj;
@@ -33,13 +34,13 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 					parentContainer = as_uiFindElement(windowObj, dataElement.parent);
 				}
 
-				// CHECK CONTAINER
+				// Check container
 				if (!parentContainer) {
 					alert(arguments.callee.name + " --> " + "Container " + dataElement.parent + " not found!" + "\nElement: " + elementName);
 					continue;
 				}
 
-				// CREATE UI ELEMENT
+				// Create ui element
 				switch (dataElement.type) {
 					case "image":
 						uiElement = parentContainer.add("image", dataElement.bounds, undefined, {
@@ -99,9 +100,7 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						break;
 					case "progressbar":
 						//add (progressbar [, bounds, value, minvalue, maxvalue,{creation_properties}]);
-						uiElement = parentContainer.add("progressbar", dataElement.bounds, undefined, undefined, undefined, {
-							name: (elementName)
-						});
+						uiElement = parentContainer.add("progressbar", dataElement.bounds, undefined, undefined, { name: (elementName) });
 						break;
 					case "listbox":
 						uiElement = parentContainer.add("listbox", dataElement.bounds, undefined, {
@@ -142,7 +141,7 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						break;
 				}
 
-				// PREPARE IMAGES
+				// Prepare images
 				if(dataImages && dirImages) {
 					var imagesMap = {};
 					if (dataElement.icon !== undefined) {
@@ -153,31 +152,31 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 					}
 				}
 				
-				// SKIP CREATION PROPERTIES
+				// Skip creation properties
 				var skipProps = ["name", "type", "bounds", "style", "multiline", "justify", "readonly", "items", "columnWidths", "columnTitles", "showHeaders", "numberOfColumns", "borderStyle"];
 				
-				// LOOP PROPERTIES
+				// Loop properties
 				for (var propName in dataElement) {
 					if(dataElement.hasOwnProperty(propName)) {
 
-						// CHECK SKIP
+						// Check skip
 						if (as_arrayCheckValue(propName, skipProps) < 0) {
 							var propValue = dataElement[propName];
 
-							// IF IMAGE
+							// If image
 							if(propName == "icon") {
 								if(imagesMap && imagesMap[propValue]) {
 									uiElement[propName] = imagesMap[propValue];
 								}
 
-							// IF ANY PROPERTY
+							// If any property
 							} else {
 								uiElement[propName] = propValue;
 							}
 						}
 					}
 				}
-				// STORE ELEMENT LINK IN WONDOW OBJ
+				// Store element link in wondow obj
 				if (shortLinks) {
 					if (parentContainer != windowObj) {
 						if (windowObj[elementName] !== undefined) {
