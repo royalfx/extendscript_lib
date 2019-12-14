@@ -215,7 +215,7 @@
 #include "as_parseCSV.js";
 #include "as_parseCSVLineArr.js";
 #include "as_parseCSVLineObj.js";
-#include "as_PNGFilesToJSON.js";
+#include "as_filesToBinaryData.js";
 #include "as_singleLibraryJS.js";
 #include "as_singleLibraryJSXINC.js";
 
