@@ -74,6 +74,7 @@
 #include "as_findItem.jsxinc";
 #include "as_findLayer.jsxinc";
 #include "as_itemGetPath.jsxinc";
+#include "as_itemGetType.jsxinc";
 #include "as_itemGetUniqueName.jsxinc";
 #include "as_itemReplaceWithSolid.jsxinc";
 #include "as_itemsToComps.jsxinc";
@@ -96,6 +97,7 @@
 #include "as_propCopy.jsxinc";
 #include "as_propGetContainingComp.jsxinc";
 #include "as_propGetContainingLayer.jsxinc";
+#include "as_propGetExprData.jsxinc";
 #include "as_propGetPath.jsxinc";
 #include "as_propGetPathIndexes.jsxinc";
 #include "as_propGetValueTime.jsxinc";
@@ -103,6 +105,7 @@
 #include "as_propIsEffectChild.jsxinc";
 #include "as_propIsLayer.jsxinc";
 #include "as_propIsSimpleType.jsxinc";
+#include "as_propSetExprData.jsxinc";
 #include "as_textCheckAutoLeading.jsxinc";
 #include "as_textSetProperties.jsxinc";
 
@@ -200,6 +203,7 @@
 #include "as_fileRead.js";
 #include "as_fileReadJSBinary.js";
 #include "as_fileReadJSON.js";
+#include "as_filesToBinaryData.js";
 #include "as_fileToBinaryString.js";
 #include "as_fileWrite.js";
 #include "as_fileWriteJSBinary.js";
@@ -215,7 +219,6 @@
 #include "as_parseCSV.js";
 #include "as_parseCSVLineArr.js";
 #include "as_parseCSVLineObj.js";
-#include "as_filesToBinaryData.js";
 #include "as_singleLibraryJS.js";
 #include "as_singleLibraryJSXINC.js";
 

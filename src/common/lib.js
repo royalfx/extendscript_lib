@@ -48,6 +48,7 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileRead.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileReadJSBinary.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileReadJSON.js"></script>');
+document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_filesToBinaryData.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileToBinaryString.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileWrite.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_fileWriteJSBinary.js"></script>');
@@ -63,7 +64,6 @@ document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Script
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSV.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSVLineArr.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_parseCSVLineObj.js"></script>');
-document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_filesToBinaryData.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_singleLibraryJS.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/file/as_singleLibraryJSXINC.js"></script>');
 document.write('<script type="text/javascript" src="D:/Google Drive/Adobe Scripting/extendscript_lib/src/common/system/as_copyToClipboard.js"></script>');

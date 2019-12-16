@@ -66,6 +66,7 @@
 #include "as_fileRead.js";
 #include "as_fileReadJSBinary.js";
 #include "as_fileReadJSON.js";
+#include "as_filesToBinaryData.js";
 #include "as_fileToBinaryString.js";
 #include "as_fileWrite.js";
 #include "as_fileWriteJSBinary.js";
@@ -81,7 +82,6 @@
 #include "as_parseCSV.js";
 #include "as_parseCSVLineArr.js";
 #include "as_parseCSVLineObj.js";
-#include "as_filesToBinaryData.js";
 #include "as_singleLibraryJS.js";
 #include "as_singleLibraryJSXINC.js";
 
