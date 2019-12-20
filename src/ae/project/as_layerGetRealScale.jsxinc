@@ -7,7 +7,7 @@
 
 /**
  * 
- * @param {AVLayer} layer 
+ * @param {*} layer 
  * @param {boolean} preExpression 
  */
 function as_layerGetRealScale(layer, preExpression) {

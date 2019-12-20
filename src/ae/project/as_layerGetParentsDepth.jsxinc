@@ -7,7 +7,7 @@
 
 /**
  * @description GET LAYER PARENTS DEPTH
- * @param {AVLayer} layer 
+ * @param {*} layer 
  */
 function as_layerGetParentsDepth(layer) {
 	var depth = 0;

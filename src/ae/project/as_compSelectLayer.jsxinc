@@ -7,7 +7,7 @@
 
 /**
  * @description Select comp layer
- * @param {AVLayer} layer 
+ * @param {*} layer 
  */
 function as_compSelectLayer(layer) {
 	var comp = layer.containingComp;
