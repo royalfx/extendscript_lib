@@ -2,51 +2,74 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Aug 07 2019
-
 /**
- * @description Extends UI Element
+ * @version 1.0.1
+ * @date Dec 30 2019
  * @param {object} element UI Element
  * @param {string} stateName Name of the state
- * @param {object} stateProperties Properties object
+ * @param {object} stateData State properties data object
+ * @description Extends UI Element
  */
-function as_uiExtendElement(element, stateName, stateProperties) {
+function as_uiExtendElement(element, stateName, stateData) {
 
-    // INIT
-    var needInit = (element.statesMap === undefined);
-    if(needInit) {
-        element.statesMap = {};
+    // Init
+    var inited = (element.statesMap != null);
+    if (!inited) {
+
+		/**
+		 * @public
+		 * @type {object}
+		 * @description States properties data map
+		 */
+		element.statesMap = {};
+		
+		/**
+		 * @public
+		 * @param {string} stateName
+		 * @returns {void}
+		 */
         element.setState = function(stateName) {
-            var state = element.statesMap[stateName];
 
-            // CHECK
-            if (state === undefined) {
+			// Check arguments
+			if (typeof stateName !== "string") {
+				throw new Error("State name is not valid.");
+			}
+
+            // Retrieve state properties data
+			var stateData = element.statesMap[stateName];
+            if (stateData === undefined) {
                 throw new Error("State \"" + stateName + "\" not found in \"" + element.properties.name + "\"!");
             }
 
-            // SET
-            for (var prop in state) {
-                if (state.hasOwnProperty(prop)) {
-                    element[prop] = state[prop];
+            // Set state properties
+            for (var prop in stateData) {
+                if (stateData.hasOwnProperty(prop)) {
+                    element[prop] = stateData[prop];
                 }
-            }
+			}
+			
+			// Set current state
             this.state = stateName;
-        }
+		}
+		
+		/**
+		 * @public
+		 * @returns {string}
+		 */
         element.getState = function () {
             return this.state;
         }
     }
 
-    // STORE NEW STATE
-    if(element.statesMap[stateName] === undefined) {
-        element.statesMap[stateName] = stateProperties;
+    // Store new state
+    if (element.statesMap[stateName] === undefined) {
+        element.statesMap[stateName] = stateData;
     } else {
-        throw new Error("State with key \"" + stateName + "\" already defined!");
+        throw new Error("State with key \"" + stateName + "\" already added!");
     }
 
-    // SET DEFAULT STATE
-    if(needInit) {
+    // Set default state
+    if (!inited) {
         element.setState(stateName);
     }
 }
