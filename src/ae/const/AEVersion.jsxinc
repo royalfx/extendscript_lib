@@ -38,6 +38,11 @@ AEVersion.CC2019_1 = "16.1";
 
 AEVersion.CC2020 = "17.0";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 AEVersion.getList = function() {
 	return [
 		AEVersion.CC,
@@ -64,6 +69,11 @@ AEVersion.getList = function() {
 	];
 }
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 AEVersion.getKeysList = function () {
 	return [
 		"CC",

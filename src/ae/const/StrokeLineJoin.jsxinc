@@ -13,6 +13,11 @@ StrokeLineJoin.MITER_JOIN = 1;
 StrokeLineJoin.ROUND_JOIN = 2;
 StrokeLineJoin.BEVEL_JOIN = 3;
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 StrokeLineJoin.getList = function() {
 	return [
 		StrokeLineJoin.MITER_JOIN,

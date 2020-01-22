@@ -3,8 +3,8 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.3
- * @date Dec 13 2019
+ * @version 1.0.4
+ * @date Jan 20 2020
  * @param {Window} windowObj 
  * @param {object} dataUI JS data object created by as_parseCSV()
  * @param {object} dataImages JS data object with images binary (Optional)
@@ -13,13 +13,15 @@
  * @param {boolean} shortLinks If true, the window object will have direct links to UI elements.
  */
 function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
+	
 	try {
 
 		// Declare vars
 		var uiElement,
 			dataElement,
 			parentContainer,
-			fileName;
+			fileName,
+			elementsMap = {};
 
 		// Loop json
 		for (var elementName in dataUI) {
@@ -30,6 +32,10 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 				// If parent container is Window/Panel leave empty field in spreadsheet.
 				if (dataElement.parent === undefined) {
 					parentContainer = windowObj;
+
+				} else if (elementsMap[dataElement.parent]) {
+					parentContainer = elementsMap[dataElement.parent];
+					
 				} else {
 					parentContainer = as_uiFindElement(windowObj, dataElement.parent);
 				}
@@ -47,22 +53,26 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 							name: (elementName)
 						});
 						break;
+
 					case "button":
 						uiElement = parentContainer.add("button", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "iconbutton":
 						uiElement = parentContainer.add("iconbutton", dataElement.bounds, undefined, {
 							name: (elementName),
 							style: (dataElement.style || "toolbutton")
 						});
 						break;
+
 					case "custombutton":
 						uiElement = parentContainer.add("custombutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "statictext":
 						uiElement = parentContainer.add("statictext", dataElement.bounds, undefined, {
 							name: (elementName),
@@ -73,6 +83,7 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 							uiElement.justify = dataElement.justify;
 						}
 						break;
+
 					case "edittext":
 						uiElement = parentContainer.add("edittext", dataElement.bounds, undefined, {
 							name: (elementName),
@@ -84,24 +95,29 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 							uiElement.justify = dataElement.justify;
 						}
 						break;
+						
 					case "group":
 						uiElement = parentContainer.add("group", dataElement.bounds, {
 							name: (elementName)
 						});
 						break;
+
 					case "dropdownlist":
 						uiElement = parentContainer.add("dropdownlist", dataElement.bounds, dataElement.items, { name: (elementName) });
 						uiElement.selection = 0;
 						break;
+
 					case "scrollbar":
 						uiElement = parentContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "progressbar":
 						//add (progressbar [, bounds, value, minvalue, maxvalue,{creation_properties}]);
 						uiElement = parentContainer.add("progressbar", dataElement.bounds, undefined, undefined, { name: (elementName) });
 						break;
+
 					case "listbox":
 						uiElement = parentContainer.add("listbox", dataElement.bounds, undefined, {
 							name: (elementName),
@@ -111,31 +127,37 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 							columnWidths: (dataElement.columnWidths)
 						});
 						break;
+
 					case "checkbox":
 						uiElement = parentContainer.add("checkbox", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "tabbedpanel":
 						uiElement = parentContainer.add("tabbedpanel", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "panel":
 						uiElement = parentContainer.add("panel", dataElement.bounds, undefined, { name: (elementName), borderStyle: "etched" });
 						break;
 						// borderStyle: 
 						// black, etched, gray, raised, sunken. Default is etched
+
 					case "tab":
 						uiElement = parentContainer.add("tab", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					case "radiobutton":
 						uiElement = parentContainer.add("radiobutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
 						break;
+
 					default:
 						alert(arguments.callee.name + " --> " + "unaccounted type:" + dataElement.type + ", elementName:" + elementName);
 						break;
@@ -176,6 +198,7 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						}
 					}
 				}
+
 				// Store element link in wondow obj
 				if (shortLinks) {
 					if (parentContainer != windowObj) {
@@ -187,7 +210,10 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 					}
 				}
 			}
+
+			elementsMap[elementName] = uiElement;
 		}
+		
 	} catch (err) {
 		alert(propValue);
 		alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message);

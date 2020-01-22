@@ -18,6 +18,11 @@ LayerType.SHAPE = "ShapeLayer";
 LayerType.AUDIO = "AudioLayer";
 LayerType.PRECOMP = "PrecompLayer";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 LayerType.getList = function() {
 	return [
 		LayerType.CAMERA,

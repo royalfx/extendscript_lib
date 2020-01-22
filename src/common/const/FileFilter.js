@@ -25,6 +25,11 @@ FileFilter.ALL = "All files:*.*";
 FileFilter.CSV = "CSV (Comma delimited):*.csv";
 FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 FileFilter.getList = function() {
 	return [
 		FileFilter.PNG,

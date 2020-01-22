@@ -16,6 +16,11 @@ TextDocProperty.COLOR = "COLOR";
 TextDocProperty.JUSTIFICATION = "JUSTIFICATION";
 TextDocProperty.TEXT = "TEXT";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 TextDocProperty.getList = function() {
 	return [
 		TextDocProperty.FONT,

@@ -16,8 +16,6 @@ function as_getAeReleaseName(version) {
 			if (as_compareVersions(verRelease, AEVersion[n]) >= 0) {
 				return n;
 			}
-		} else {
-			//
 		}
 	}
 	return null;

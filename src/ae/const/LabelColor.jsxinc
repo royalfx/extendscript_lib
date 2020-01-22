@@ -27,6 +27,11 @@ LabelColor.CYAN = 14;
 LabelColor.SANDSTONE = 15;
 LabelColor.DARKGREEN = 16;
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 LabelColor.getList = function() {
 	return [
 		LabelColor.NONE,

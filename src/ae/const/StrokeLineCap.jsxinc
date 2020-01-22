@@ -13,6 +13,11 @@ StrokeLineCap.BUTT_CAP = 1;
 StrokeLineCap.ROUND_CAP = 2;
 StrokeLineCap.PROJECTING_CAP = 3;
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 StrokeLineCap.getList = function() {
 	return [
 		StrokeLineCap.BUTT_CAP,

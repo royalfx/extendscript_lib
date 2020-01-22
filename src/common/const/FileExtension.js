@@ -21,6 +21,11 @@ FileExtension.JSON = ".json";
 FileExtension.JSXINC = ".jsxinc";
 FileExtension.CSV = ".csv";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 FileExtension.getList = function() {
 	return [
 		FileExtension.PNG,

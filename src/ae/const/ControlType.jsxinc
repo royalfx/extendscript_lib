@@ -18,6 +18,11 @@ ControlType.CHECKBOX = "Checkbox";
 ControlType.COLOR = "Color";
 ControlType.LAYER = "Layer";
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 ControlType.getList = function() {
 	return [
 		ControlType.SLIDER,

@@ -13,6 +13,11 @@ VersionNum.MAJOR = 0;
 VersionNum.MINOR = 1;
 VersionNum.PATCH = 2;
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 VersionNum.getList = function() {
 	return [
 		VersionNum.MAJOR,

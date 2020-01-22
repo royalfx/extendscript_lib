@@ -21,6 +21,11 @@ RegExpPattern.NUMBERS_CHARS_SPACE = /[^a-zA-Z0-9\ ]/g;
 RegExpPattern.CHARS = /[^a-zA-Z]/g;
 RegExpPattern.CHARS_SPACE = /[^a-zA-Z\ ]/g;
 
+/**
+ * @public
+ * @static
+ * @returns {Array}
+ */
 RegExpPattern.getList = function() {
 	return [
 		RegExpPattern.NUMBERS,
