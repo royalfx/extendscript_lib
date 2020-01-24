@@ -2,24 +2,31 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 17 2019
-
 /**
+ * @version 1.0.2
+ * @date Jan 23 2020
  * 
- * @param prop {Property}
- * @param keyTimesArray {Array}
- * @param easeInArray {Array}
- * @param easeOutArray {Array}
- * @param keyInterpolationArray {Array}
+ * @param {Property} prop
+ * @param {Array} keyTimesArray
+ * @param {Array} easeInArray
+ * @param {Array} easeOutArray
+ * @param {Array} keyInterpolationArray
  */
 function as_applyEasing(prop, keyTimesArray, easeInArray, easeOutArray, keyInterpolationArray) {
 	
-	// VARS
-	var k, easeIn0, easeOut0, easeIn1, easeOut1, easeIn2, easeOut2, len = keyTimesArray.length, inx;
+	// Declare vars
+	var k,
+		len = keyTimesArray.length,
+		inx,
+		easeIn0,
+		easeOut0,
+		easeIn1,
+		easeOut1,
+		easeIn2,
+		easeOut2;
 
-	// CHECK
-	if (prop.propValueType === PropertyValueType.TwoD) {
+	// TwoD
+	if (prop.propertyValueType === PropertyValueType.TwoD) {
 		for (k = 0; k < len; k++) {
 			inx = prop.nearestKeyIndex(keyTimesArray[k]);
 			easeIn0 = new KeyframeEase(easeInArray[0][k][0], easeInArray[1][k][0]);
@@ -29,7 +36,9 @@ function as_applyEasing(prop, keyTimesArray, easeInArray, easeOutArray, keyInter
 			prop.setTemporalEaseAtKey(inx, [easeIn0, easeIn1], [easeOut0, easeOut1]);
 			prop.setInterpolationTypeAtKey(inx, keyInterpolationArray[0][k], keyInterpolationArray[1][k]);
 		}
-	} else if (prop.propValueType === PropertyValueType.ThreeD) {
+
+	// ThreeD
+	} else if (prop.propertyValueType === PropertyValueType.ThreeD) {
 		for (k = 0; k < len; k++) {
 			inx = prop.nearestKeyIndex(keyTimesArray[k]);
 			easeIn0 = new KeyframeEase(easeInArray[0][k][0], easeInArray[1][k][0]);
@@ -41,6 +50,7 @@ function as_applyEasing(prop, keyTimesArray, easeInArray, easeOutArray, keyInter
 			prop.setTemporalEaseAtKey(inx, [easeIn0, easeIn1, easeIn2], [easeOut0, easeOut1, easeOut2]);
 			prop.setInterpolationTypeAtKey(inx, keyInterpolationArray[0][k], keyInterpolationArray[1][k]);
 		}
+
 	} else {
 		for (k = 0; k < len; k++) {
 			inx = prop.nearestKeyIndex(keyTimesArray[k]);
@@ -48,9 +58,10 @@ function as_applyEasing(prop, keyTimesArray, easeInArray, easeOutArray, keyInter
 			// alert("easeOut0 : " + easeOutArray[0][k].toString() + " | " + easeOutArray[1][k].toString());
 			easeIn0 = new KeyframeEase(easeInArray[0][k], easeInArray[1][k]);
 			easeOut0 = new KeyframeEase(easeOutArray[0][k], easeOutArray[1][k]);
-			if (keyInterpolationArray[1][k] !== KeyframeInterpolationType.HOLD) //6614
-			{
+
+			if (keyInterpolationArray[1][k] !== KeyframeInterpolationType.HOLD) {
 				prop.setTemporalEaseAtKey(inx, [easeIn0], [easeOut0]);
+
 			} else {
 				try {
 					prop.setTemporalEaseAtKey(inx, [easeIn0]);
