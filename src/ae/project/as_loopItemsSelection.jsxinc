@@ -32,7 +32,7 @@ function as_loopItemsSelection(func, args, filterItemsNames, filterItemsTypes) {
 
         // Check
         nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
-		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(item.typeName, filterItemsTypes) >= 0);
+		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
         
         // Do
         if(nameMatch && typeMatch) {

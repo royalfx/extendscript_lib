@@ -21,7 +21,7 @@ function as_findItem(itemName, itemType, folder, intoSubfolders) {
 	// Loop items
 	for (var item, i = 1, len = folder.numItems; i <= len; i++) {
 		item = folder.item(i);
-		if ((item.name == itemName) && (item.typeName == itemType)) {
+		if ((item.name == itemName) && (as_itemGetType(item) == itemType)) {
 			return item;
 		}
 		if ((item instanceof FolderItem) && intoSubfolders) {
