@@ -16,7 +16,7 @@
 		{
 			"type": "extendscript-debug",
 			"request": "launch",
-			"targetSpecifier": "illustrator-23.064",
+			"targetSpecifier": "illustrator-24.064",
 			"name": "Illustrator - Current File",
 			"program": "${file}",
 			"stopOnEntry": false,
