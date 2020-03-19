@@ -1,6 +1,6 @@
 
 // AE > APP
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/app";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/app";
 #include "as_checkSecurityPrefSet.jsxinc";
 #include "as_compareVersions.jsxinc";
 #include "as_getAeReleaseName.jsxinc";
@@ -8,7 +8,7 @@
 #include "effects.jsxinc";
 
 // AE > COLOR
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/color";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/color";
 #include "as_hexToRgb.jsxinc";
 #include "as_hslToRgb.jsxinc";
 #include "as_normalizeRGB.jsxinc";
@@ -16,7 +16,7 @@
 #include "as_rgbToHsl.jsxinc";
 
 // AE > CONST
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/const";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
 #include "ItemTypeName.jsxinc";
@@ -27,19 +27,19 @@
 #include "TextDocProperty.jsxinc";
 
 // AE > DATA
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/data";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/data";
 #include "as_alignToJustify.jsxinc";
 #include "as_justifyToAlign.jsxinc";
 
 // AE > EXPR
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/expr";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/expr";
 #include "as_effectNameUniversalized.jsxinc";
 #include "as_exprGetPropPath.jsxinc";
 #include "as_exprIsDisabled.jsxinc";
 #include "as_exprSet.jsxinc";
 
 // AE > KEYS
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/keys";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/keys";
 #include "as_applyEasing.jsxinc";
 #include "as_fixInfluenceValue.jsxinc";
 #include "as_keyNearestLeft.jsxinc";
@@ -53,13 +53,13 @@
 #include "as_keysRemove.jsxinc";
 
 // AE > MARKER
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/marker";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/marker";
 #include "as_addMarkerEach.jsxinc";
 #include "as_addMarkersChars.jsxinc";
 #include "as_getMarkersChars.jsxinc";
 
 // AE > PROJECT
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/project";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/project";
 #include "as_clearRenderQueue.jsxinc";
 #include "as_compDeselectAll.jsxinc";
 #include "as_compSelectLayer.jsxinc";
@@ -110,14 +110,14 @@
 #include "as_textSetProperties.jsxinc";
 
 // AE > SHAPE
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/shape";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/shape";
 #include "as_createEmptyShape.jsxinc";
 #include "as_shapeScale.jsxinc";
 #include "as_shapeToSpatial.jsxinc";
 #include "as_shapeTranslate.jsxinc";
 
 // AE > UI
-#includepath "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/ui";
+#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/ui";
 #include "as_uiCreateFromData.jsxinc";
 #include "as_uiExtendElement.jsxinc";
 #include "as_uiFindElement.jsxinc";

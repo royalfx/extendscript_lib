@@ -1,4 +1,4 @@
-﻿#include "/d/Google Drive/Adobe Scripting/extendscript_lib/src/ae/include.jsxinc";
+﻿#include "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/include.jsxinc";
 
 var items = app.project.selection;
 as_itemsToComps(items);
