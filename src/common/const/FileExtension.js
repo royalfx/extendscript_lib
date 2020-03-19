@@ -13,6 +13,7 @@ FileExtension.PNG = ".png";
 FileExtension.JPEG = ".jpg";
 FileExtension.AEP = ".aep";
 FileExtension.AI = ".ai";
+FileExtension.EPS = ".eps";
 FileExtension.FFX = ".ffx";
 FileExtension.TXT = ".txt";
 FileExtension.JSX = ".jsx";
@@ -31,6 +32,8 @@ FileExtension.getList = function() {
 		FileExtension.PNG,
 		FileExtension.JPEG,
 		FileExtension.AEP,
+		FileExtension.AI,
+		FileExtension.EPS,
 		FileExtension.FFX,
 		FileExtension.TXT,
 		FileExtension.JSX,
