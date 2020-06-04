@@ -14,7 +14,7 @@
 function as_effectCopyProps(effectFrom, effectTo) {
 	var errs = [];
 	var err = "";
-	for (var prop, propNext, i = 1, len = effectFrom.numProperties; i <= len; i++) {
+	for (var i = 1, len = effectFrom.numProperties; i <= len; i++) {
 		err = as_propCopy(effectFrom(i), effectTo(i));
 		if (err.length > 0) {
 			errs[errs.length] = err;

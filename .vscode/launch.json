@@ -11,7 +11,7 @@
             "name": "After Effects - Current File",
             "program": "${file}",
             "stopOnEntry": false,
-            "trace": true
+            "trace": false
 		},
 		{
 			"type": "extendscript-debug",
@@ -20,7 +20,7 @@
 			"name": "Illustrator - Current File",
 			"program": "${file}",
 			"stopOnEntry": false,
-			"trace": true
+			"trace": false
 		},
         {
             "type": "extendscript-debug",
@@ -29,7 +29,7 @@
             "name": "Photoshop - Current File",
             "program": "${file}",
             "stopOnEntry": false,
-            "trace": true
+            "trace": false
         },
         {
             "type": "extendscript-debug",

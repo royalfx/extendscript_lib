@@ -2,8 +2,8 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: 14 Sep 2019
+// version: 1.0.3
+// date: 16 May 2020
 
 function FileExtension() {
 	//
@@ -21,6 +21,7 @@ FileExtension.JS = ".js";
 FileExtension.JSON = ".json";
 FileExtension.JSXINC = ".jsxinc";
 FileExtension.CSV = ".csv";
+FileExtension.EXR = ".exr";
 
 /**
  * @public
@@ -40,6 +41,7 @@ FileExtension.getList = function() {
 		FileExtension.JS,
 		FileExtension.JSON,
 		FileExtension.JSXINC,
-		FileExtension.CSV
+		FileExtension.CSV,
+		FileExtension.EXR
 	];
 }

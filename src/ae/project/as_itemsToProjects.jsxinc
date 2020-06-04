@@ -57,3 +57,6 @@ function as_itemsToProjects(items, dirTarget) {
 	}
 	
 }
+
+// as_itemsToProjects(app.project.selection);
+// alert("Done!");

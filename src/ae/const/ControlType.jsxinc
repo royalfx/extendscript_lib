@@ -9,7 +9,6 @@ function ControlType(){
 	//
 }
 
-var ControlType = {};
 ControlType.SLIDER = "Slider";
 ControlType.ANGLE = "Angle";
 ControlType.POINT = "Point";

@@ -55,8 +55,8 @@
 // AE > MARKER
 #includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/marker";
 #include "as_addMarkerEach.jsxinc";
-#include "as_addMarkersChars.jsxinc";
-#include "as_getMarkersChars.jsxinc";
+#include "as_addMarkerComments.jsxinc";
+#include "as_getMarkerComments.jsxinc";
 
 // AE > PROJECT
 #includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/project";

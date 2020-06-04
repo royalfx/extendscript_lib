@@ -2,10 +2,11 @@
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Aug 21 2019
 
 /**
+ * @version 1.0.1
+ * @date Aug 21 2019
+ * @requires as_fileRead
  * 
  * @param {File} file 
  */
