@@ -9,9 +9,9 @@
  * @returns {Array}
  */
 function as_keysGetTimes(prop) {
-	var arrTimes = [];
+	var list = [];
 	for (var k = 1, numKeys = prop.numKeys; k <= numKeys; k++) {
-		arrTimes.push(prop.keyTime(k));
+		list.push(prop.keyTime(k));
 	}
-	return arrTimes;
+	return list;
 }

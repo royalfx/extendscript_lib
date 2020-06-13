@@ -141,7 +141,10 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						break;
 
 					case "panel":
-						uiElement = parentContainer.add("panel", dataElement.bounds, undefined, { name: (elementName), borderStyle: "etched" });
+						uiElement = parentContainer.add("panel", dataElement.bounds, undefined, {
+							name: (elementName),
+							borderStyle: (dataElement.borderStyle || "etched")
+						});
 						break;
 						// borderStyle: 
 						// black, etched, gray, raised, sunken. Default is etched
