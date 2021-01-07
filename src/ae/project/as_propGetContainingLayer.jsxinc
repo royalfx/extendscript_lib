@@ -1,12 +1,11 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
-
 /**
- * @description GET PROP LAYER
+ * @version 1.0.1
+ * @date Jan 06 2021
+ * @description Get property layer
  * @param {*} prop 
  */
 function as_propGetContainingLayer(prop) {
@@ -17,6 +16,7 @@ function as_propGetContainingLayer(prop) {
 		return null;
 	}
 	var layer;
+	var propOriginal = prop;
 	while (prop) {
 		if (as_propIsLayer(prop)) {
 			layer = prop;
@@ -24,5 +24,11 @@ function as_propGetContainingLayer(prop) {
 		}
 		prop = prop.parentProperty;
 	}
+
+	// markerProperty - parent is comp
+	if (layer && (propOriginal.matchName == "ADBE Marker") && (layer.containingComp.markerProperty == propOriginal)) {
+		return null;
+	}
+
 	return layer;
 }
