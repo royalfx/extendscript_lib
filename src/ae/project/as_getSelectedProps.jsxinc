@@ -1,22 +1,22 @@
-// Copyright (c) 2020 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.0
- * @date Jun 12 2020
- * @param {CompItem} comp (Optional)
+ * @version 1.0.1
+ * @date Jan 04 2021
+ * @param {CompItem} compOrLayer
  * @requires as_propGetPath
  * @description Returns only selected properties without parent groups
  * @returns {Array}
  */
-function as_compGetSelectedProps(comp) {
+function as_getSelectedProps(compOrLayer) {
 
-	if (comp === undefined) {
-		comp = app.project.activeItem;
+	if (compOrLayer == null) {
+		return null;
 	}
 
-	var selection = comp.selectedProperties;
+	var selection = compOrLayer.selectedProperties;
 	if (selection.length <= 1) {
 		return selection;
 
