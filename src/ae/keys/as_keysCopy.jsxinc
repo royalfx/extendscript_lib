@@ -25,6 +25,7 @@ function as_keysCopy(propSource, propTarget, timeStartTarget, scaleTime, keyStar
 	keyStartSource = keyStartSource || 1;
 	numKeyframes = numKeyframes || (propSource.numKeys - keyStartSource + 1);
 	scaleTime = scaleTime || 1;
+	timeStartTarget = timeStartTarget || 0;
 
 	// VARS
 	var timeStartSource = propSource.keyTime(keyStartSource);
