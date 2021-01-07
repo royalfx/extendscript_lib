@@ -1,20 +1,22 @@
 
 // COMMON
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common";
 
 // COMMON > COLOR
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/color";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/color";
 #include "as_nativeColorPicker.js";
 
 // COMMON > CONST
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/const";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/const";
+#include "BrushThemeName.js";
 #include "FileExtension.js";
 #include "FileFilter.js";
+#include "PenThemeName.js";
 #include "RegExpPattern.js";
 #include "VersionNum.js";
 
 // COMMON > DATA
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/data";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data";
 #include "as_arrayCheckValue.js";
 #include "as_arrayCheckValues.js";
 #include "as_arrayClone.js";
@@ -52,16 +54,17 @@
 #include "as_toStringObject.js";
 
 // COMMON > DATE
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/date";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/date";
+#include "as_dateFromDayNumber.js";
 #include "as_dateFromMonthNumber.js";
+#include "as_getDayNumber.js";
 #include "as_getMonthName.js";
 #include "as_getMonthNameShort.js";
 #include "as_getMonthNumber.js";
-#include "as_getMonthYearNameShort.js";
 #include "as_getWeekDayName.js";
 
 // COMMON > FILE
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/file";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/file";
 #include "as_arrayToCSV.js";
 #include "as_fileRead.js";
 #include "as_fileReadJSBinary.js";
@@ -86,7 +89,7 @@
 #include "as_singleLibraryJSXINC.js";
 
 // COMMON > SYSTEM
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/system";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/system";
 #include "as_copyToClipboard.js";
 #include "as_openURL.js";
 #include "as_osName.js";

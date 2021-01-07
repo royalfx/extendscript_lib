@@ -1,15 +1,15 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
-
 /**
- * @description COMPARE VERSIONS
+ * @version 1.0.0
+ * @date Jul 22 2019
+ * 
  * @param ver1 {string}
  * @param ver2 {string}
  * @param threshold {number} VersionNum.MAJOR | VersionNum.MINOR | VersionNum.PATCH (start from 0)
+ * @description COMPARE VERSIONS
  * @return 1 (ver2 > ver1) | -1 (ver2 < ver1) | 0 (ver2 == ver1)
  */
 function as_compareVersions(ver1, ver2, threshold) {

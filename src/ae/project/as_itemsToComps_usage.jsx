@@ -1,4 +1,10 @@
-﻿#include "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/include.jsxinc";
+﻿{
+	(function func() {
+		
+		#include "../../../src/ae/include.jsxinc";
 
-var items = app.project.selection;
-as_itemsToComps(items);
+		var items = app.project.selection;
+		as_itemsToComps(items);
+		
+	})();
+}

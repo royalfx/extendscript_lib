@@ -1,20 +1,17 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.3
-// date: Mon Feb 05 2018
-
 /**
- * 
- * @description
+ * @version 1.0.3
+ * @date Mon Feb 05 2018
  * 
  * @param arrMain {array}
  * @param arrNew {array}
  */
 function as_arraysMerge(arrMain, arrNew) {
 	
-	// CHECLK ARGS
+	// Check arguments
 	if (!(arrMain instanceof Array)) {
 		throw new Error("Property \"arrMain\" is not an Array");
 	}
@@ -22,7 +19,7 @@ function as_arraysMerge(arrMain, arrNew) {
 		return arrMain;
 	}
 
-	// CLONE
+	// Clone
 	var margedArr = as_objectClone(arrMain);
 	for (var v = 0, val1, val2, vlen = arrNew.length; v < vlen; v++) {
 		val1 = margedArr[v];

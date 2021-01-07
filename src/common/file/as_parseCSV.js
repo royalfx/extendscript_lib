@@ -1,11 +1,11 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Sep 19 2019
-
 /**
+ * @version 1.0.1
+ * @date Sep 19 2019
+ * 
  * @description Convert CSV to JS object
  * First value (first column) always must have object type
  * When iterating over properties, if "object" type is found, all next properties will be assigned to this new object.

@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
-
 /**
+ * @version 1.0.0
+ * @date Jul 22 2019
  * 
  * @param {File} file 
  */
@@ -17,24 +16,25 @@ function as_fileRead(file) {
 	} else {
 		try {
 
-			// OPEN
+			// Open
 			if (!file.open("r")) {
 				alert("Could not read file: " + file.fsName + "\nmessage: " + file.error, true);
 				return null;
 			}
 
-			// READ
+			// Read
 			var fileData = file.read();
 			file.close();
 
-			// CHECK ERROR
+			// Check error
 			if (file.error != "") {
 				alert(file.error, true);
 				return null;
 			}
 
-			// RETURN
+			// Return
 			return fileData;
+			
 		} catch (err) {
 			alert("Could not read file: " + file.fsName + "\nmessage: " + err.message, true);
 			return null;

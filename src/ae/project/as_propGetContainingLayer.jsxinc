@@ -5,6 +5,7 @@
 /**
  * @version 1.0.1
  * @date Jan 06 2021
+ * 
  * @description Get property layer
  * @param {*} prop 
  */

@@ -5,6 +5,7 @@
 /**
  * @version 1.0.1
  * @date Jan 05 2021
+ * 
  * @param {CompItem} comp
  * @param {Array} path [string]
  * @description The first value in the array must be the layer name.

@@ -1,11 +1,11 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.3
-// date: Sep 16 2019
-
 /**
+ * @version 1.0.3
+ * @date Sep 16 2019
+ * 
  * @description
  * @param {Folder} dirLibrary Library directory
  * @param {File} fileInclude Out file
@@ -15,7 +15,7 @@
  */
 function as_singleLibraryJSXINC(dirLibrary, fileInclude, includeJS, skipDirs) {
 
-	// GET LIB DIRECTORY
+	// Get lib directory
 	if(dirLibrary === undefined) {
 		var rootFolder = Folder(new File($.fileName).path);
 		dirLibrary = rootFolder.selectDlg("Select .jsxinc library folder");
@@ -24,22 +24,22 @@ function as_singleLibraryJSXINC(dirLibrary, fileInclude, includeJS, skipDirs) {
 		}
 	}
 
-	// VARS
+	// Vars
 	var linesCollector = [];
 
 	function handleDirectory(dir, linesCollector) {
 
-		// CHECK
+		// Check
 		var nameMatch = (skipDirs === undefined) || (skipDirs.length == 0) || (as_arrayCheckValue(dir.name, skipDirs) == -1);
 		if(nameMatch) {
 
-			// GET FILES
+			// Get files
 			var arrFiles = dir.getFiles(function (file) {
 				var ext = as_getFileExtension(file);
 				return (ext == "jsxinc") || (includeJS && (ext == "js"));
 			});
 
-			// ADD INCLUDEPATH
+			// Add includepath
 			var validFolder = (arrFiles.length > 0) && !((arrFiles.length == 1) && (arrFiles[0].displayName == "include.jsxinc"));
 			if(validFolder) {
 				linesCollector.push("\n// " + getDirPath(dir).toUpperCase());
@@ -65,18 +65,18 @@ function as_singleLibraryJSXINC(dirLibrary, fileInclude, includeJS, skipDirs) {
 		return arrNames.reverse().join(" > ");
 	}
 
-	// DO
+	// Do
 	as_loopDirectories(dirLibrary, true, handleDirectory, [linesCollector]);
 
-	// SAVE FILE
+	// Save file
 	if(!fileInclude) {
 		fileInclude = File(dirLibrary.fullName + "/" + "include.jsxinc");
 	}
 	as_fileWrite(fileInclude, linesCollector.join("\n"), false);
 
-	// OPEN FILE
+	// Open file
 	// fileInclude.execute();
 
-	// RETURN
+	// Return
 	return fileInclude;
 }

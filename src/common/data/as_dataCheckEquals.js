@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.3
-// date: Mon Feb 05 2018
-
 /**
+ * @version 1.0.3
+ * @date Mon Feb 05 2018
  * 
  * @param {any} v1 
  * @param {any} v2 
@@ -15,13 +14,13 @@
  */
 function as_dataCheckEquals(v1, v2, threshold) {
 
-	// CHECK ARGS
+	// Check arguments
 	threshold = threshold || 0.0000000000001;
 	if (typeof (v1) != typeof (v2)) {
 		return false;
 	}
 
-	// CHECK TYPE
+	// Check type
 	if (typeof (v1) == "string") {
 		// STRING
 		return v1 == v2;

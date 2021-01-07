@@ -5,6 +5,7 @@
 /**
  * @version 1.0.1
  * @date Jan 07 2021
+ * 
  * @param {Array} valuesArr 
  * @param {Array} array
  * @returns {number} Number of found values

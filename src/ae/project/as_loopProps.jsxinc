@@ -1,21 +1,21 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 23 2019
-
  /**
-  * @description Applies function for each property
-  * @param propGroup Property or property group
-  * @param func {Function} First argument always is target property!
-  * @param args {array} Arguments for function
-  * @param filterMatchNames {array}
-  * @returns Array with results
-  */
+ * @version 1.0.1
+ * @date Jul 23 2019
+ * 
+ * @description Applies function for each property
+ * @param propGroup Property or property group
+ * @param func {Function} First argument always is target property!
+ * @param args {array} Arguments for function
+ * @param filterMatchNames {array}
+ * @returns Array with results
+ */
 function as_loopProps(propGroup, func, args, filterMatchNames) {
 
-	// CHECK ARGS
+	// Check arguments
 	if(args === undefined) {
     	args = [];
 	}
@@ -42,6 +42,6 @@ function as_loopProps(propGroup, func, args, filterMatchNames) {
 		}
 	}
 
-	// RETURN
+	// Return
 	return results;
 }

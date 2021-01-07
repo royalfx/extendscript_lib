@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Aug 23 2019
-
 /**
+ * @version 1.0.1
+ * @date Aug 23 2019
  * 
  * @param {Folder} dir 
  * @param {boolean} intoSubDirs 
@@ -15,13 +14,13 @@
  */
 function as_loopDirectories(dir, intoSubDirs, func, args, filterDirsNames) {
 
-    // VARS
+    // Vars
     var results = [];
 	
-	// CHECK
+	// Check
 	var nameMatch = (filterDirsNames === undefined) || (filterDirsNames.length == 0) || (as_arrayCheckValue(dir.name, filterDirsNames) >= 0);
 
-	// DO
+	// Do
 	if(nameMatch) {
 		var result = func.apply(undefined, [dir].concat(args || []));
 		if(result !== undefined) {
@@ -29,19 +28,19 @@ function as_loopDirectories(dir, intoSubDirs, func, args, filterDirsNames) {
 		}
 	}
 
-	// LOOP CHILD DIRS
+	// Loop child dirs
 	if(intoSubDirs) {
 		var arrSubDirs = dir.getFiles();
 		for (var d = 0, subDir, result; d < arrSubDirs.length; d++) {
 			subDir = arrSubDirs[d];
 	
-			// CHECK IS FOLDER
+			// Check is folder
 			if(subDir instanceof Folder) {
 				results = results.concat(as_loopDirectories(subDir, intoSubDirs, func, args, filterDirsNames));
 			}
 		}
 	}
 
-    // RETURN
+    // Return
     return results;
 }

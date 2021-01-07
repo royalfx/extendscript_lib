@@ -1,23 +1,23 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 17 2019
-
 /**
+ * @version 1.0.1
+ * @date Jul 17 2019
  * 
  * @param shape {Shape} Shape object
  * @param scale {number} 0-1
  * @returns {Shape} Result shape
  */
 function as_shapeScale(shape, scale) {
-	// VARS
+
+	// Vars
 	var vectricesNew = [];
 	var inTangentsNew = [];
 	var outTangentsNew = [];
 
-	// SCALE PROPS
+	// Scale props
 	for (var v = 0; v < shape.vertices.length; v++) {
 		vectricesNew.push(shape.vertices[v] * scale);
 	}
@@ -28,13 +28,12 @@ function as_shapeScale(shape, scale) {
 		outTangentsNew.push(shape.outTangents[v] * scale);
 	}
 	
-	// CREATE NEW
+	// Create new
 	var shapeNew = new Shape();
 	shapeNew.vertices = vectricesNew;
 	shapeNew.inTangents = inTangentsNew;
 	shapeNew.outTangents = outTangentsNew;
 	shapeNew.closed = shape.closed;
 
-	// RETURN
 	return shapeNew;
 }

@@ -1,23 +1,23 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 29 2019
-
 /**
+ * @version 1.0.0
+ * @date Jul 29 2019
+ * 
  * @param {*} layerSet
  * @param {Function} func
  * @param {array} args 
  */
 function as_psLoopSets(layerSet, func, args){
 
-	// CHECK ARGS
+	// Check arguments
 	if(args === undefined) {
 		args = [];
 	}
 
-	// VARS
+	// Vars
 	var results = [];
 
 	// DO
@@ -28,7 +28,7 @@ function as_psLoopSets(layerSet, func, args){
 		}
 	}
 	
-	// SUBSETS
+	// Subsets
 	var len = 0;
 	try{
 		len = layerSet.layers.length;
@@ -42,6 +42,6 @@ function as_psLoopSets(layerSet, func, args){
 		}
 	}
 
-	// RETURN
+	// Return
 	return results;
 }

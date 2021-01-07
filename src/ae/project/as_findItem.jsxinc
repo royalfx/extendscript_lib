@@ -1,4 +1,4 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
@@ -7,9 +7,9 @@
  * @date Dec 09 2019
  * 
  * @param {string} itemName 
- * @param {string} itemType {@link ItemTypeName} Optional
- * @param {Folder} folder Optional
- * @param {boolean} intoSubfolders
+ * @param {string} itemType {@link ItemTypeName} (Optional)
+ * @param {Folder} folder (Optional)
+ * @param {boolean} intoSubfolders (Optional)
  * @returns {Item}
  */
 function as_findItem(itemName, itemType, folder, intoSubfolders) {

@@ -5,6 +5,7 @@
 /**
  * @version 1.0.1
  * @date Jan 04 2021
+ * 
  * @param {CompItem} compOrLayer
  * @requires as_propGetPath
  * @description Returns only selected properties without parent groups

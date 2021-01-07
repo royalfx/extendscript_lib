@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 17 2019
-
 /**
+ * @version 1.0.1
+ * @date Jul 17 2019
  * 
  * @param comp {CompItem}
  * @param propSource {Property}
@@ -13,7 +12,7 @@
  */
 function as_shapeToSpatial(comp, propSource, propTarget) {
 
-	// CHECK ARGS
+	// Check arguments
 	if ((propSource.matchName !== "ADBE Vector Shape") && (propSource.matchName !== "ADBE Mask Shape")) {
 		throw new Error("Property type mismatch! propSource.matchName: " + propSource.matchName);
 	}
@@ -21,24 +20,24 @@ function as_shapeToSpatial(comp, propSource, propTarget) {
 		throw new Error("Property type mismatch! propTarget.propertyValueType: " + propTarget.propertyValueType);
 	}
 
-	// OPEN COMP
+	// Open comp
 	comp.openInViewer();
 
-	// SELECT TEMP PATH LAYER
+	// Select temp path layer
 	as_compDeselectAll(comp);
 	propSource.selected = true;
 
-	// EXECUTE COPY
+	// Execute copy
 	app.executeCommand(19);
 
-	// SELECT TEMP POSITION PROP
+	// Select temp position prop
 	as_compDeselectAll(comp);
 	propTarget.selected = true;
 
-	// EXECUTE PASTE
+	// Execute paste
 	app.executeCommand(20);
 
-	// RETURN
+	// Return
 	if (propTarget.numKeys == 0) {
 		alert("as_shapeToSpatial: " + "Something went wrong! > propTarget.numKeys = 0");
 		return false;

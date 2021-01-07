@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Aug 02 2019
-
 /**
+ * @version 1.0.0
+ * @date Aug 02 2019
  * 
  * @param {File} file 
  * @param {Function} func 
@@ -13,31 +12,31 @@
  */
 function as_loopCSVLines(file, func, args) {
 
-	// CHECK ARGS
+	// Check arguments
 	if (args === undefined) {
 		args = [];
 	}
 
-	// READ
+	// Read
 	var strCSV = as_fileRead(file);
 
-	// PARSE
+	// Parse
 	var lines = strCSV.split("\n");
 
-	// VARS
+	// Vars
 	var results = [];
 
-	// LOOP LAYERS
+	// Loop layers
 	for (var l = 0, len = lines.length, line, result; l < len; l++) {
 		line = lines[l];
 
-		// DO
+		// Do
 		result = func.apply(undefined, [line].concat(args));
 		if (result !== undefined) {
 			results.push(result);
 		}
 	}
 
-	// RETURN
+	// Return
 	return results;
 }

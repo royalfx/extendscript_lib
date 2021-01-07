@@ -1,23 +1,22 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 22 2019
-
 /**
+ * @version 1.0.0
+ * @date Jul 22 2019
  * 
  * @param {string} folderName 
  * @param {string} subFolderName 
  */
 function as_getUserDataFolder(folderName, subFolderName) {
 	
-	// CHECK ARGS
+	// Check arguments
 	if (!folderName) {
 		throw new Error("Folder name required!");
 	}
 
-	// TEMP FOLDER
+	// Temp folder
 	var userDataFolder = Folder(Folder.userData.fsName + "/" + folderName);
 	if (!userDataFolder.exists) {
 		if (!userDataFolder.create()) {
@@ -26,7 +25,7 @@ function as_getUserDataFolder(folderName, subFolderName) {
 		}
 	}
 
-	// SUBFOLDER
+	// Subfolder
 	if (subFolderName) {
 		var subFolder = Folder(userDataFolder.fsName + "/" + subFolderName);
 		if (!subFolder.exists) {

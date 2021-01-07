@@ -1,24 +1,23 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.1
-// date: Jul 17 2019
-
 /**
+ * @version 1.0.1
+ * @date Jul 17 2019
  * 
-  * @description If scale roving keys result may be different!
-  * 
-  * @param propSource		{Property}
-  * @param propTarget		{Property}
-  * @param timeStartTarget	{number}
-  * @param scaleTime		{number}
-  * @param keyStartSource	{number}
-  * @param numKeyframes		{number}
-  */
+ * @description If scale roving keys result may be different!
+ * 
+ * @param propSource		{Property}
+ * @param propTarget		{Property}
+ * @param timeStartTarget	{number}
+ * @param scaleTime		{number}
+ * @param keyStartSource	{number}
+ * @param numKeyframes		{number}
+ */
 function as_keysCopy(propSource, propTarget, timeStartTarget, scaleTime, keyStartSource, numKeyframes) {
 	
-	// CHECK ARGS
+	// Check arguments
 	if (propSource.propertyValueType !== propTarget.propertyValueType) {
 		throw new Error("Property type mismatch!");
 	}

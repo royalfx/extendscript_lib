@@ -1,32 +1,32 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Jul 29 2019
-
 /**
+ * @version 1.0.0
+ * @date Jul 29 2019
+ * 
  * @param {*} layerSet
  * @param {Function} func
  * @param {array} args 
  */
 function as_psLoopLayers(layerSet, func, args){
 
-    // CHECK ARGS
+    // Check arguments
 	if(args === undefined) {
 		args = [];
 	}
 
-	// VARS
+	// Vars
 	var results = [];
 
-	// DO
+	// Do
 	var result = func.apply(undefined, [layerSet].concat(args));
 	if(result !== undefined) {
 		results.push(result);
 	}
 	
-	// SETS
+	// Sets
 	if((layerSet.typename == "LayerSet") || (layerSet.typename == "Document")) {
         for(var l = 0, layer; l < layerSet.layers.length; l++) {
             layer = layerSet.layers[l];
@@ -34,6 +34,6 @@ function as_psLoopLayers(layerSet, func, args){
         }
     }
     
-	// RETURN
+	// Return
 	return results;
 }

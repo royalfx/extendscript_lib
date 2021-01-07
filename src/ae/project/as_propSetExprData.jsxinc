@@ -5,6 +5,7 @@
 /**
  * @version 1.0.1
  * @date Jun 10 2020
+ * 
  * @param {Property} prop
  * @param {*} value
  * @returns {*}

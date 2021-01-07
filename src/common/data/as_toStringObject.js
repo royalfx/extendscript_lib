@@ -1,11 +1,10 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: Jul 16 2019
-
 /**
+ * @version 1.0.2
+ * @date Jul 16 2019
  * 
  * @param obj 
  */
@@ -15,7 +14,7 @@ function as_toStringObject(obj) {
 		return new Error("Property \"obj\" is not an Object");
 	}
 	
-	// CHECK OBJECT TYPE
+	// Check object type
 	var n = obj.reflect.name;
 	if (n != "Object") {
 		if(obj.name) {
@@ -25,7 +24,7 @@ function as_toStringObject(obj) {
 		}
 	}
 
-	// LOOP PROPS
+	// Loop props
 	var vs = [], v, s;
 	try {
 		for (var p in obj) {

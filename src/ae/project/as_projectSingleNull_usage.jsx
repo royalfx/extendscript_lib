@@ -1,8 +1,14 @@
-#include "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/include.jsxinc";
+{
+	(function func() {
+		
+		#include "../../../src/include.jsxinc";
 
-// DO
-if(app.project) {
-    as_projectSingleNull();
-} else {
-    alert("Open the project!");
+		// DO
+		if(app.project) {
+			as_projectSingleNull();
+		} else {
+			alert("Open the project!");
+		}
+
+	})();
 }

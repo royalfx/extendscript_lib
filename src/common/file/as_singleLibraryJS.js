@@ -1,11 +1,11 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.0
-// date: Sep 16 2019
-
 /**
+ * @version 1.0.0
+ * @date Sep 16 2019
+ * 
  * @description
  * @param {Folder} dirLibrary Library directory
  * @param {File} filLib Out file
@@ -64,6 +64,6 @@ function as_singleLibraryJS(dirLibrary, dirRoot, filLib, skipDirs) {
 	}
 	as_fileWrite(filLib, linesCollector.join("\n"), false);
 
-	// RETURN
+	// Return
 	return filLib;
 }

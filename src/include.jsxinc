@@ -1,6 +1,6 @@
 
 // SRC > AE > APP
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/app";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/app";
 #include "as_checkSecurityPrefSet.jsxinc";
 #include "as_compareVersions.jsxinc";
 #include "as_getAeReleaseName.jsxinc";
@@ -8,7 +8,7 @@
 #include "effects.jsxinc";
 
 // SRC > AE > COLOR
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/color";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/color";
 #include "as_hexToRgb.jsxinc";
 #include "as_hslToRgb.jsxinc";
 #include "as_normalizeRGB.jsxinc";
@@ -16,7 +16,7 @@
 #include "as_rgbToHsl.jsxinc";
 
 // SRC > AE > CONST
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/const";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/const";
 #include "AEVersion.jsxinc";
 #include "ControlType.jsxinc";
 #include "ItemTypeName.jsxinc";
@@ -27,19 +27,19 @@
 #include "TextDocProperty.jsxinc";
 
 // SRC > AE > DATA
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/data";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/data";
 #include "as_alignToJustify.jsxinc";
 #include "as_justifyToAlign.jsxinc";
 
 // SRC > AE > EXPR
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/expr";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/expr";
 #include "as_effectNameUniversalized.jsxinc";
 #include "as_exprGetPropPath.jsxinc";
 #include "as_exprIsDisabled.jsxinc";
 #include "as_exprSet.jsxinc";
 
 // SRC > AE > KEYS
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/keys";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/keys";
 #include "as_applyEasing.jsxinc";
 #include "as_fixInfluenceValue.jsxinc";
 #include "as_keyNearestLeft.jsxinc";
@@ -53,13 +53,13 @@
 #include "as_keysRemove.jsxinc";
 
 // SRC > AE > MARKER
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/marker";
-#include "as_addMarkerEach.jsxinc";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/marker";
 #include "as_addMarkerComments.jsxinc";
+#include "as_addMarkerEach.jsxinc";
 #include "as_getMarkerComments.jsxinc";
 
 // SRC > AE > PROJECT
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/project";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/project";
 #include "as_clearRenderQueue.jsxinc";
 #include "as_compDeselectAll.jsxinc";
 #include "as_compSelectLayer.jsxinc";
@@ -73,6 +73,7 @@
 #include "as_elementRename.jsxinc";
 #include "as_findItem.jsxinc";
 #include "as_findLayer.jsxinc";
+#include "as_getSelectedProps.jsxinc";
 #include "as_itemGetPath.jsxinc";
 #include "as_itemGetType.jsxinc";
 #include "as_itemGetUniqueName.jsxinc";
@@ -110,14 +111,14 @@
 #include "as_textSetProperties.jsxinc";
 
 // SRC > AE > SHAPE
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/shape";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/shape";
 #include "as_createEmptyShape.jsxinc";
 #include "as_shapeScale.jsxinc";
 #include "as_shapeToSpatial.jsxinc";
 #include "as_shapeTranslate.jsxinc";
 
 // SRC > AE > UI
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ae/ui";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ae/ui";
 #include "as_uiCreateFromData.jsxinc";
 #include "as_uiExtendElement.jsxinc";
 #include "as_uiFindElement.jsxinc";
@@ -126,32 +127,38 @@
 #include "as_uiPrefsGet.jsxinc";
 
 // SRC > AI > COLOR
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ai/color";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ai/color";
 #include "as_aiGetRGB.js";
 
 // SRC > AI > DOC
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ai/doc";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ai/doc";
 #include "as_aiCreateDocument.js";
+#include "as_aiGetTopParentLayer.js";
 #include "as_aiRemoveEmptyLayers.js";
 #include "as_aiRenameLayers.js";
+#include "as_aiSetDocVisibility.js";
+#include "as_aiSetItemState.js";
+#include "as_aiSetLayerState.js";
 #include "as_aiSetPathStyle.js";
 
 // SRC > COMMON
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common";
 
 // SRC > COMMON > COLOR
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/color";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/color";
 #include "as_nativeColorPicker.js";
 
 // SRC > COMMON > CONST
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/const";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/const";
+#include "BrushThemeName.js";
 #include "FileExtension.js";
 #include "FileFilter.js";
+#include "PenThemeName.js";
 #include "RegExpPattern.js";
 #include "VersionNum.js";
 
 // SRC > COMMON > DATA
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/data";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data";
 #include "as_arrayCheckValue.js";
 #include "as_arrayCheckValues.js";
 #include "as_arrayClone.js";
@@ -189,16 +196,17 @@
 #include "as_toStringObject.js";
 
 // SRC > COMMON > DATE
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/date";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/date";
+#include "as_dateFromDayNumber.js";
 #include "as_dateFromMonthNumber.js";
+#include "as_getDayNumber.js";
 #include "as_getMonthName.js";
 #include "as_getMonthNameShort.js";
 #include "as_getMonthNumber.js";
-#include "as_getMonthYearNameShort.js";
 #include "as_getWeekDayName.js";
 
 // SRC > COMMON > FILE
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/file";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/file";
 #include "as_arrayToCSV.js";
 #include "as_fileRead.js";
 #include "as_fileReadJSBinary.js";
@@ -223,16 +231,16 @@
 #include "as_singleLibraryJSXINC.js";
 
 // SRC > COMMON > SYSTEM
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/common/system";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/system";
 #include "as_copyToClipboard.js";
 #include "as_openURL.js";
 #include "as_osName.js";
 
 // SRC > PS > DOC
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ps/doc";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ps/doc";
 #include "as_psHideAll.jsxinc";
 
 // SRC > PS > LOOP
-#includepath "/d/Dropbox/Adobe Scripting/scripts/extendscript_lib/src/ps/loop";
+#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ps/loop";
 #include "as_psLoopLayers.jsxinc";
 #include "as_psLoopSets.jsxinc";
