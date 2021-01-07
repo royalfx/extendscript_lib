@@ -1,20 +1,25 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2020 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.0
- * @date Nov 15 2019
+ * @version 1.0.1
+ * @date Jun 13 2020
  * @param {*} prop Layer or Property
+ * @param {boolean} pseudoEffectMatchName Use matchName for pseudo effect properties (Optional)
  * @returns {Array}
  */
-function as_propGetPath(prop) {
+function as_propGetPath(prop, pseudoEffectMatchName) {
 	var path = [];
 	while (prop.parentProperty !== null) {
 		if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
 			path.unshift(prop.name);
 		} else if (prop.parentProperty.propertyType === PropertyType.NAMED_GROUP) {
-			path.unshift(prop.matchName);
+			if ((prop.matchName.indexOf("Pseudo/") == 0) && !pseudoEffectMatchName) {
+				path.unshift(prop.name);
+			} else {
+				path.unshift(prop.matchName);
+			}
 		} else {
 			path.unshift(prop.matchName);
 		}
