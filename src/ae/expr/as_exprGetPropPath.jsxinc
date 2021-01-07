@@ -1,39 +1,38 @@
-// Copyright (c) 2019 Oleksandr Semeniuk
+// Copyright (c) 2021 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
-// version: 1.0.2
-// date: Jul 16 2019
-
 /**
- * 
+ * @version 1.0.3
+ * @date Jan 06 2021
  * @param {Property} prop 
  * @param {string} rootObj
+ * @returns {string}
  */
 function as_exprGetPropPath(prop, rootObj) {
     if (prop === null) {
         return;
     }
     
-    // VARS
+    // Declare vars
     var expr = "";
     
-    // LOOP PROPS
+    // loop props
     var name;
     while (prop.parentProperty !== null) {
 
-		// IF INDEXED_GROUP
+		// INDEXED_GROUP
         if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
 			name = prop.name;
 			expr = "(\"" + name + "\")" + expr;
 
-		// ELSE IF EFFECTS GROUP
+		// EFFECTS GROUP
 		// If use matchName, expressions auto fixing when effect renamed in AE doesn't work. Use .effect("Effect Name") instead.
 		} else if (prop.matchName == "ADBE Effect Parade"){
 			name = "effect";
 			expr = "." + name + expr;
 
-		// ELSE (NAMED_GROUP or PROPERTY)
+		// NAMED_GROUP or PROPERTY
         } else {
 			name = ((prop.matchName !== "") ? prop.matchName : prop.name);
 			expr = "(\"" + name + "\")" + expr;
@@ -41,14 +40,14 @@ function as_exprGetPropPath(prop, rootObj) {
         prop = prop.parentProperty;
     }
     
-    // ROOT
+    // Root
     name = "\"" + prop.name + "\""; // layer name
     if (rootObj == "layer") {
         expr = "thisLayer" + expr;
     } else if (rootObj == "comp") {
         expr = "thisComp.layer(" + name + ")" + expr;
     } else if (rootObj == "project") {
-        expr = "comp(\"" + app.project.activeItem.name + "\").layer(" + name + ")" + expr;
+        expr = "comp(\"" + as_propGetContainingComp(prop).name + "\").layer(" + name + ")" + expr;
     } else {
         //
     }
