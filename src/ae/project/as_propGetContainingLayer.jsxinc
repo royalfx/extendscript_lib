@@ -3,8 +3,8 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.1
- * @date Jan 06 2021
+ * @version 1.0.2
+ * @date Feb 04 2021
  * 
  * @description Get property layer
  * @param {*} prop 
@@ -23,7 +23,14 @@ function as_propGetContainingLayer(prop) {
 			layer = prop;
 			break;
 		}
-		prop = prop.parentProperty;
+
+		// It looks like in recent versions of AE the removed property is still valid.
+		// But the parent property is not valid.
+		if (isValid(prop.parentProperty)) {
+			prop = prop.parentProperty;
+		} else {
+			return null;
+		}
 	}
 
 	// markerProperty - parent is comp
