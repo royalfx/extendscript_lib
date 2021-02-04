@@ -3,54 +3,62 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.3
- * @date Jan 06 2021
+ * @version 1.0.4
+ * @date Feb 04 2021
  * @param {Property} prop 
- * @param {string} rootObj
+ * @param {string} rootLevel
  * @returns {string}
  */
-function as_exprGetPropPath(prop, rootObj) {
+function as_exprGetPropPath(prop, rootLevel) {
     if (prop === null) {
-        return;
-    }
+        return null;
+	}
+	if (!isValid(prop)) {
+		return null;
+	}
     
     // Declare vars
     var expr = "";
     
-    // loop props
-    var name;
+	// Loop while parentProperty isn't layer
     while (prop.parentProperty !== null) {
 
 		// INDEXED_GROUP
         if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
-			name = prop.name;
-			expr = "(\"" + name + "\")" + expr;
+			expr = "(" + JSON.stringify(prop.name) + ")" + expr;
 
 		// EFFECTS GROUP
 		// If use matchName, expressions auto fixing when effect renamed in AE doesn't work. Use .effect("Effect Name") instead.
 		} else if (prop.matchName == "ADBE Effect Parade"){
-			name = "effect";
-			expr = "." + name + expr;
+			expr = ".effect" + expr;
 
 		// NAMED_GROUP or PROPERTY
         } else {
-			name = ((prop.matchName !== "") ? prop.matchName : prop.name);
-			expr = "(\"" + name + "\")" + expr;
+			expr = "(" + JSON.stringify(((prop.matchName !== "") ? prop.matchName : prop.name)) + ")" + expr;
         }
         prop = prop.parentProperty;
     }
     
-    // Root
-    name = "\"" + prop.name + "\""; // layer name
-    if (rootObj == "layer") {
-        expr = "thisLayer" + expr;
-    } else if (rootObj == "comp") {
-        expr = "thisComp.layer(" + name + ")" + expr;
-    } else if (rootObj == "project") {
-        expr = "comp(\"" + as_propGetContainingComp(prop).name + "\").layer(" + name + ")" + expr;
+	var layer = prop;
+
+	// Root is layer
+    if (rootLevel == "layer") {
+		expr = "thisLayer" + expr;
+
+	// Root is comp
+    } else if (rootLevel == "comp") {
+		expr = "thisComp.layer(" + JSON.stringify(layer.name) + ")" + expr;
+
+	// Root is project
+    } else if (rootLevel == "project") {
+		expr = "comp(" + JSON.stringify(as_propGetContainingComp(layer).name) + ").layer(" + JSON.stringify(layer.name) + ")" + expr;
+
     } else {
-        //
-    }
+        // err
+	}
+	
+	// Short marker ref
+	expr = expr.split("(\"ADBE Marker\")").join(".marker");
 
     return expr;
 }
