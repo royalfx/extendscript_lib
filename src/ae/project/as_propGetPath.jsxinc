@@ -12,20 +12,33 @@
  */
 function as_propGetPath(prop, pseudoEffectMatchName) {
 	var path = [];
+
+	// Loop parents
 	while (prop.parentProperty !== null) {
+
+		// INDEXED_GROUP
 		if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
 			path.unshift(prop.name);
+			
+		// NAMED_GROUP
 		} else if (prop.parentProperty.propertyType === PropertyType.NAMED_GROUP) {
+
+			// Pseudo
 			if ((prop.matchName.indexOf("Pseudo/") == 0) && !pseudoEffectMatchName) {
 				path.unshift(prop.name);
+
 			} else {
 				path.unshift(prop.matchName);
 			}
+
+		// PROPERTY
 		} else {
 			path.unshift(prop.matchName);
 		}
+
 		prop = prop.parentProperty;
 	}
+
 	path.unshift(prop.name);
 	return path;
 }

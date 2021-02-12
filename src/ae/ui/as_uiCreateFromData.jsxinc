@@ -72,6 +72,7 @@ function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFi
 						uiElement = parentContainer.add("custombutton", dataElement.bounds, undefined, {
 							name: (elementName)
 						});
+						parentContainer[elementName] = uiElement;
 						break;
 
 					case "statictext":
