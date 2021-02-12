@@ -26,6 +26,7 @@ document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScr
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_objectKeysToArray.js"></script>');
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_objectsGetLength.js"></script>');
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_objectsMerge.js"></script>');
+document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_stringCapitalWords.js"></script>');
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_stringCheckContainsChars.js"></script>');
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_stringCleanName.js"></script>');
 document.write('<script type="text/javascript" src="D:/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/common/data/as_stringClearFirstLastSpaces.js"></script>');

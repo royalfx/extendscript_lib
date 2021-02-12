@@ -38,6 +38,7 @@
 #include "as_objectKeysToArray.js";
 #include "as_objectsGetLength.js";
 #include "as_objectsMerge.js";
+#include "as_stringCapitalWords.js";
 #include "as_stringCheckContainsChars.js";
 #include "as_stringCleanName.js";
 #include "as_stringClearFirstLastSpaces.js";
