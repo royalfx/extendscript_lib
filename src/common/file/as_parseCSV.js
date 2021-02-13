@@ -3,8 +3,8 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.1
- * @date Sep 19 2019
+ * @version 1.0.2
+ * @date Feb 13 2021
  * 
  * @description Convert CSV to JS object
  * First value (first column) always must have object type
@@ -78,6 +78,7 @@ function as_parseCSV(fileCSV) {
 					currentObject = currentObject[propValue] = {};
 					break;
 				case "string":
+					propValue = propValue.replace("\\n", "\n");
 					currentObject[propName] = propValue;
 					break;
 				case "array_string":
