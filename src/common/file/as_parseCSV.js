@@ -78,7 +78,7 @@ function as_parseCSV(fileCSV) {
 					currentObject = currentObject[propValue] = {};
 					break;
 				case "string":
-					propValue = propValue.replace("\\n", "\n");
+					propValue = propValue.replace(/\\n/g, "\n");
 					currentObject[propName] = propValue;
 					break;
 				case "array_string":
