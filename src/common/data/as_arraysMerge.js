@@ -6,8 +6,8 @@
  * @version 1.0.3
  * @date Mon Feb 05 2018
  * 
- * @param arrMain {array}
- * @param arrNew {array}
+ * @param arrMain {Array}
+ * @param arrNew {Array}
  */
 function as_arraysMerge(arrMain, arrNew) {
 	

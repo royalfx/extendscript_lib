@@ -8,7 +8,7 @@
  * 
  * @param {string} fileOfFolder
  * @param {string} fileFilter (Optional)
- * @returns {object}
+ * @returns {Object}
  */
 function as_filesToBinaryData(fileOfFolder, fileFilter) {
 	

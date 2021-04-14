@@ -7,7 +7,7 @@
  * @date Aug 02 2019
  * 
  * @description Stringify array
- * @param {array} arr 
+ * @param {Array} arr 
  */
 function as_arrayToCSV(arr, separator) {
     if(separator === undefined){

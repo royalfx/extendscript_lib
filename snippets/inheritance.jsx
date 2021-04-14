@@ -4,17 +4,17 @@
 function Animal(name) {
 	this.name = name;
 	this.speed = 0;
-	alert("New animal created" + name);
+	alert("New animal created : " + name);
 }
 
 Animal.prototype.stop = function() {
 	this.speed = 0;
-	alert( this.name + " stopped" );
+	alert(this.name + " : stopped" );
 }
 
 Animal.prototype.run = function(speed) {
 	this.speed += speed;
-	alert( this.name + " run, speed " + this.speed );
+	alert(this.name + " : run, speed : " + this.speed );
 };
 
 
@@ -25,13 +25,19 @@ function Rabbit(name) {
 	Animal.apply(this, arguments);
 }
 
-// Inheritance
+// Inheritance V1
 Rabbit.prototype = new Animal;
 Rabbit.prototype.constructor = Rabbit;
 
+// Inheritance V2
+// var Transitive = new Function;
+// Transitive.prototype = Animal.prototype;
+// Rabbit.prototype = new Transitive;
+// Rabbit.prototype.constructor = Rabbit;
+
 Rabbit.prototype.jump = function() {
 	this.speed++;
-	alert( this.name + " jump, speed " + this.speed );
+	alert(this.name + " : jump, speed : " + this.speed);
 }
 
 // Overriding
@@ -46,3 +52,4 @@ var rabbit = new Rabbit("Tom");
 // rabbit.stop();
 
 // alert(Animal.prototype.isPrototypeOf(rabbit));
+alert(rabbit instanceof Animal);

@@ -3,17 +3,18 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.0
- * @date Jul 25 2019
+ * @version 1.0.2
+ * @date Mar 20 2021
  * 
  * @param {Folder} dir 
  * @param {boolean} intoSubfolders 
  * @param {Function} func 
- * @param {array} args 
- * @param {array} filterFilesNames files names
- * @param {array} filterFilesExt files extensions
+ * @param {Array} args
+ * @param {Array} filterFileExt ["js", "jsxinc"] (Optional)
+ * @param {Array} skipFiles ["filename.js"] (Optional)
+ * @returns {Array}
  */
-function as_loopFiles(dir, intoSubfolders, func, args, filterFilesNames, filterFilesExt) {
+function as_loopFiles(dir, intoSubfolders, func, args, filterFileExt, skipFiles) {
     
     // Check arguments
     if(args === undefined) {
@@ -23,30 +24,45 @@ function as_loopFiles(dir, intoSubfolders, func, args, filterFilesNames, filterF
     // Vars
     var results = [];
 
-    // Loop
-    var arrFiles = dir.getFiles();
-    for (var f = 0, file, nameMatch, extMatch, result; f < arrFiles.length; f++) {
-        file = arrFiles[f];
+	// Get content
+    var content = dir.getFiles();
+	var files = [];
+	var subdirs = [];
+	for (var i = 0; i < content.length; i++) {
+		var item = content[i];
+		if (item instanceof Folder) {
+			subdirs.push(item);
+		} else {
+			files.push(item);
+		}
+	}
+	subdirs.sort();
+	files.sort();
 
-        // Check is file or folder
-        if((file instanceof Folder) && intoSubfolders) {
-            results = results.concat(as_loopFiles(file, intoSubfolders, func, args, filterFilesNames, filterFilesExt));
-        } else {
+	// Loop sudirs
+	if (intoSubfolders) {
+		for (var i = 0, subdir; i < subdirs.length; i++) {
+			subdir = subdirs[i]
+			results = results.concat(as_loopFiles(subdir, intoSubfolders, func, args, filterFileExt, skipFiles));
+		}
+	}
+	
+    // Loop files
+	for (var i = 0, file, skipFile, extMatch, result; i < files.length; i++) {
+		file = files[i];
 
-            // Check
-            nameMatch = (filterFilesNames === undefined) || (filterFilesNames.length == 0) || (as_arrayCheckValue(file.name, filterFilesNames) >= 0);
-            extMatch = (filterFilesExt === undefined) || (filterFilesExt.length == 0) || (as_arrayCheckValue(as_getFileExtension(file), filterFilesExt) >= 0);
+		// Check
+		skipFile = (skipFiles !== undefined) && (skipFiles.length > 0) && (as_arrayCheckValue(file.name, skipFiles) >= 0);
+		extMatch = (filterFileExt === undefined) || (filterFileExt.length == 0) || (as_arrayCheckValue(as_getFileExtension(file), filterFileExt) >= 0);
 
-            // Do
-            if(nameMatch && extMatch) {
-                result = func.apply(undefined, [file].concat(args));
-                if(result !== undefined) {
-                    results.push(result);
-                }
-            }
-        }
+		// Do
+		if (!skipFile && extMatch) {
+			result = func.apply(undefined, [file].concat(args));
+			if (result !== undefined) {
+				results.push(result);
+			}
+		}
     }
 
-    // Return
     return results;
 }

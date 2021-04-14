@@ -9,8 +9,8 @@
  * @description Merge objects
  * Works only with one level objects
  * 
- * @param objMain {object}
- * @param objNew {object}
+ * @param objMain {Object}
+ * @param objNew {Object}
  * @param skipNull {boolean}
  */
 function as_objectsMerge(objMain, objNew, skipNull) {

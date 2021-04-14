@@ -25,7 +25,8 @@ function as_toString(obj) {
 		} else if (typeof(obj) === "function") {
 			return "{ Function }";
 			// return obj.toString();
-		} else { // "object"
+		// "object"
+		} else {
 			if (obj === null) {
 				return "null";
 			} else if (obj instanceof Array) {

@@ -1,9 +1,9 @@
 /**
  * @description Parse csv line to json object
  * @param {string} strLine
- * @param {array} arrNames
+ * @param {Array} arrNames
  * @param {string} separator
- * @returns {object}
+ * @returns {Object}
  */
 function as_parseCSVLineObj(strLine, arrNames, separator) {
     var arrLine = as_parseCSVLineArr(strLine, separator);

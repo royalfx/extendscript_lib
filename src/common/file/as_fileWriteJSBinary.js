@@ -7,7 +7,7 @@
  * @date Jul 22 2019
  * 
  * @param {File} file 
- * @param {object} dataObject 
+ * @param {Object} dataObject 
  * @param {string} tab 
  * @param {boolean} saveBackup 
  */

@@ -7,7 +7,7 @@
  * @date Aug 09 2019
  * 
  * @description Only one level array with numbers
- * @param arr {array}
+ * @param arr {Array}
  * @returns {number} Max number
  */
 function as_arrayMaxValue(arr) {

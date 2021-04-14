@@ -12,7 +12,7 @@
  * @requires as_getFileExtension
  * 
  * @param {File} file 
- * @param {object} dataObject 
+ * @param {Object} dataObject 
  * @param {string} tab 
  * @param {boolean} saveBackup 
  */

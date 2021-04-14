@@ -1,9 +1,0 @@
-
-// PS > DOC
-#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ps/doc";
-#include "as_psHideAll.jsxinc";
-
-// PS > LOOP
-#includepath "/d/Dropbox/Library/ExtendScript/scripts/extendscript_lib/src/ps/loop";
-#include "as_psLoopLayers.jsxinc";
-#include "as_psLoopSets.jsxinc";

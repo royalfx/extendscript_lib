@@ -8,7 +8,7 @@
  * 
  * @param {File} file 
  * @param {Function} func 
- * @param {array} args
+ * @param {Array} args
  */
 function as_loopCSVLines(file, func, args) {
 

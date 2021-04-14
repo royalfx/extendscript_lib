@@ -7,7 +7,7 @@
  * @date OCt 29 2019
  * 
  * @description Clone array
- * @param arr {array}
+ * @param arr {Array}
  */
 function as_arrayClone(arr) {
 	return arr.slice(0);

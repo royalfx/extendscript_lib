@@ -11,7 +11,7 @@
  * When iterating over properties, if "object" type is found, all next properties will be assigned to this new object.
  * If empty value found with type "object" all next properties will be assigned to object from previous line.
  * @param {File} fileCSV
- * @returns {object} Result object
+ * @returns {Object} Result object
  */
 function as_parseCSV(fileCSV) {
 

@@ -1,0 +1,3486 @@
+
+function as_nativeColorPicker() {
+	var picker = $.colorPicker();
+	if (picker >= 0) {
+		var bigint = parseInt(picker.toString(16), 16);
+		var r = ((bigint >> 16) & 255) / 255;
+		var g = ((bigint >> 8) & 255) / 255;
+		var b = (bigint & 255) / 255;
+		return [r, g, b, 1];
+	} else {
+		return null;
+	}
+}
+
+
+function BrushThemeName(){
+}
+BrushThemeName.BACKGROUND = "background";
+BrushThemeName.DISABLED_BACKGROUND = "disabledBackground";
+BrushThemeName.SELECTION = "selection";
+BrushThemeName.FOCUS_RING = "focusRing";
+BrushThemeName.getList = function() {
+	return [
+		BrushThemeName.BACKGROUND,
+		BrushThemeName.DISABLED_BACKGROUND,
+		BrushThemeName.SELECTION,
+		BrushThemeName.FOCUS_RING
+	];
+}
+
+function FileExtension() {
+}
+FileExtension.PNG = ".png";
+FileExtension.JPEG = ".jpg";
+FileExtension.AEP = ".aep";
+FileExtension.AI = ".ai";
+FileExtension.EPS = ".eps";
+FileExtension.FFX = ".ffx";
+FileExtension.TXT = ".txt";
+FileExtension.JSX = ".jsx";
+FileExtension.JS = ".js";
+FileExtension.JSON = ".json";
+FileExtension.JSXINC = ".jsxinc";
+FileExtension.CSV = ".csv";
+FileExtension.EXR = ".exr";
+FileExtension.getList = function() {
+	return [
+		FileExtension.PNG,
+		FileExtension.JPEG,
+		FileExtension.AEP,
+		FileExtension.AI,
+		FileExtension.EPS,
+		FileExtension.FFX,
+		FileExtension.TXT,
+		FileExtension.JSX,
+		FileExtension.JS,
+		FileExtension.JSON,
+		FileExtension.JSXINC,
+		FileExtension.CSV,
+		FileExtension.EXR
+	];
+}
+
+function FileFilter(){
+}
+FileFilter.PNG = "PNG:*.png";
+FileFilter.JPEG = "JPEG:*.jpg;*.jpeg";
+FileFilter.AEP = "After Effects Project File:*.aep";
+FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
+FileFilter.TXT = "Plain Text:*.txt";
+FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
+FileFilter.JSXFILES = "Adobe JavaScript files:*.jsx;*jsxbin";
+FileFilter.JSX = "Adobe JavaScript:*.jsx";
+FileFilter.JS = "JavaScript files:*.js";
+FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
+FileFilter.JSXBIN = "Adobe JavaScript Binary files:*.jsxbin";
+FileFilter.JSON = "JavaScript JSON:*.json";
+FileFilter.ALL = "All files:*.*";
+FileFilter.CSV = "CSV (Comma delimited):*.csv";
+FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";
+FileFilter.getList = function() {
+	return [
+		FileFilter.PNG,
+		FileFilter.JPEG,
+		FileFilter.AEP,
+		FileFilter.FFX,
+		FileFilter.TXT,
+		FileFilter.JSFILES,
+		FileFilter.JSXFILES,
+		FileFilter.JSX,
+		FileFilter.JS,
+		FileFilter.JSXINC,
+		FileFilter.JSXBIN,
+		FileFilter.JSON,
+		FileFilter.ALL,
+		FileFilter.CSV,
+		FileFilter.TEXTFILES
+	];
+}
+
+function PenThemeName(){
+}
+PenThemeName.FOREGROUND = "foreground";
+PenThemeName.DISABLED_FOREGROUND = "disabledForeground";
+PenThemeName.SELECTION = "selection";
+PenThemeName.getList = function() {
+	return [
+		PenThemeName.FOREGROUND,
+		PenThemeName.DISABLED_FOREGROUND,
+		PenThemeName.SELECTION
+	];
+}
+
+function RegExpPattern(){
+}
+RegExpPattern.NUMBERS = /[^0-9]/g;
+RegExpPattern.NUMBERS_NO_ZERO = /[^1-9]/g;
+RegExpPattern.NUMBERS_MINUS = /[^0-9\-]/g;
+RegExpPattern.NUMBERS_DOT = /[^0-9\.]/g;
+RegExpPattern.NUMBERS_DOT_MINUS = /[^0-9\.-]/g;
+RegExpPattern.NUMBERS_DOT_AUTO = /[^0-9\.auto]/g;
+RegExpPattern.NUMBERS_CHARS = /[^a-zA-Z0-9]/g;
+RegExpPattern.NUMBERS_CHARS_HASH = /[^a-zA-Z0-9+\#]/g;
+RegExpPattern.NUMBERS_CHARS_SPACE = /[^a-zA-Z0-9\ ]/g;
+RegExpPattern.CHARS = /[^a-zA-Z]/g;
+RegExpPattern.CHARS_SPACE = /[^a-zA-Z\ ]/g;
+RegExpPattern.getList = function() {
+	return [
+		RegExpPattern.NUMBERS,
+		RegExpPattern.NUMBERS_NO_ZERO,
+		RegExpPattern.NUMBERS_MINUS,
+		RegExpPattern.NUMBERS_DOT,
+		RegExpPattern.NUMBERS_DOT_MINUS,
+		RegExpPattern.NUMBERS_DOT_AUTO,
+		RegExpPattern.NUMBERS_CHARS,
+		RegExpPattern.NUMBERS_CHARS_HASH,
+		RegExpPattern.NUMBERS_CHARS_SPACE,
+		RegExpPattern.CHARS,
+		RegExpPattern.CHARS_SPACE
+	];
+}
+
+function VersionNum(){
+}
+VersionNum.MAJOR = 0;
+VersionNum.MINOR = 1;
+VersionNum.PATCH = 2;
+VersionNum.getList = function() {
+	return [
+		VersionNum.MAJOR,
+		VersionNum.MINOR,
+		VersionNum.PATCH
+	];
+}
+
+function as_arrayCheckValue(val, arr) {
+	for (var i = 0, len = arr.length; i < len; i++) {
+		if (val == arr[i]) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+function as_arrayCheckValues(valuesArr, array) {
+	if (!(valuesArr instanceof Array)) {
+		throw "An array is expected."
+	}
+	if (!(array instanceof Array)) {
+		throw "An array is expected."
+	}
+	var counter = 0;
+	for (var i = 0, iLen = array.length; i < iLen; i++) {
+		for (var v = 0, vLen = valuesArr.length; v < vLen; v++) {
+			if (valuesArr[v] == array[i]) {
+				counter++;
+			}
+		}
+	}
+	return counter;
+}
+
+
+function as_arrayClone(arr) {
+	return arr.slice(0);
+}
+
+
+function as_arrayMakeUnique(arr) {
+	var checked = {};
+	var arrNew = [];
+	for (var i = 0, len = arr.length, item; i < len; i++) {
+		item = arr[i];
+		if (checked[item] !== 1) {
+			checked[item] = 1;
+			arrNew.push(item);
+		}
+	}
+	return arrNew;
+}
+
+function as_arrayMaxValue(arr) {
+	var max = 0, i, len = arr.length;
+	for (i = 0; i < len; i++) {
+		max = Math.max(max, arr[i]);
+	}
+	return max;
+}
+
+
+function as_arraysMerge(arrMain, arrNew) {
+	if (!(arrMain instanceof Array)) {
+		throw new Error("Property \"arrMain\" is not an Array");
+	}
+	if (!(arrNew instanceof Array)) {
+		return arrMain;
+	}
+	var margedArr = as_objectClone(arrMain);
+	for (var v = 0, val1, val2, vlen = arrNew.length; v < vlen; v++) {
+		val1 = margedArr[v];
+		val2 = arrNew[v];
+		if (val2 !== undefined) {
+			if (typeof (val2) == typeof (val1)) {
+				if (typeof (val2) == "object") {
+					if (val1 instanceof Array) {
+						if ((val2 instanceof Array)) {
+							margedArr[v] = as_arraysMerge(val1, val2);
+						}
+						else {
+							margedArr[v] = val2;
+						}
+					}
+					else if (val1 === null) {
+						margedArr[v] = val2;
+					}
+					else {
+						margedArr[v] = as_objectsMerge(val1, val2);
+					}
+				}
+				else {
+					margedArr[v] = val2;
+				}
+			}
+			else {
+				margedArr[v] = val2;
+			}
+		}
+	}
+	return margedArr;
+}
+
+
+function as_clamp(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}
+
+
+function as_dataCheckEquals(v1, v2, threshold) {
+	threshold = threshold || 0.0000000000001;
+	if (typeof (v1) != typeof (v2)) {
+		return false;
+	}
+	if (typeof (v1) == "string") {
+		return v1 == v2;
+	} else if (typeof (v1) == "number") {
+		return (Math.abs(v1 - v2) < threshold);
+	} else if (typeof (v1) == "boolean") {
+		return v1 == v2;
+	} else if (typeof (v1) == "object") {
+		if ((v1 instanceof Array) && (v2 instanceof Array)) {
+			if (v1.length != v2.length) {
+				return false;
+			}
+			for (var i = 0; i < v1.length; i++) {
+				if (!as_dataCheckEquals(v1[i], v2[i], threshold)) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return v1 === v2;
+	} else {
+		return false;
+	}
+}
+
+
+function as_dataIsSameType(value1, value2) {
+	if (typeof(value1) !== typeof(value2)) {
+		return false;
+	} else if (typeof(value1) == "object") {
+		if ((value1 instanceof Date) != (value2 instanceof Date)) {
+			return false;
+		} else if ((value1 instanceof Array) != (value2 instanceof Array)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function as_getFunctionName(func) {
+	var val = func.toString();
+	val = val.substr(("function ").length);
+	val = val.substr(0, val.indexOf("("));
+	return val;
+}
+
+
+function as_linear(t, tMin, tMax, a, b) {
+	if (arguments.length == 3) {
+		a = tMin;
+		b = tMax;
+	} else {
+		if (tMin == tMax) {
+			t = tMin;
+		} else {
+			t = (as_clamp(t, tMin, tMax) - tMin) / (tMax - tMin);
+		}
+	}
+	return a + t * (b - a);
+}
+
+
+function as_nameIndexedCheck(name) {
+	var splitAt = Math.max(name.lastIndexOf("_"), name.lastIndexOf(" "));
+	if (splitAt == -1) {
+		return -1;
+	}
+	var inxString = name.substr(splitAt + 1);
+	if (inxString.length == 0) {
+		return -1;
+	}
+	var arrMatch = inxString.match(RegExpPattern.NUMBERS);
+	if (arrMatch !== null) {
+		return -1;
+	}
+	return splitAt;
+}
+
+
+function as_nameIndexedClear(name) {
+	var splitAt = as_nameIndexedCheck(name);
+	if (splitAt > 0) {
+		return name.substr(0, splitAt);
+	} else {
+		return name;
+	}
+}
+
+
+function as_nameIndexedIncrement(name, checkFunc, len, delimiter) {
+	if (typeof name !== "string") {
+		return null;
+	}
+	if (typeof checkFunc !== "function") {
+		return null;
+	}
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var index,
+		suffix = name.split(delimiter).pop();
+	if (suffix && (suffix != "") && (suffix.match(RegExpPattern.NUMBERS) === null)) {
+		index = parseInt(suffix);
+	} else {
+		index = 2;
+	}
+	var nameNew = name;
+	var clearName = as_nameIndexedClear(name);
+	while (checkFunc.apply(null, [nameNew])) {
+		nameNew = (clearName + delimiter + ("000000000" + index).substr(-len));
+		index++;
+		len = Math.max(len, index.toString().length);
+	}
+	return nameNew;
+}
+
+
+function as_nameIndexedReplace(n, inx, len, delimiter) {
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var splitAt = as_nameIndexedCheck(n);
+	if (splitAt > 0) {
+		return n.substr(0, splitAt + 1) + ("000000000" + inx).substr(-len);
+	} else {
+		return n;
+	}
+}
+
+
+function as_nameIndexedSet(n, inx, len, delimiter) {
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var splitAt = as_nameIndexedCheck(n);
+	if (splitAt > 0) {
+		return as_nameIndexedReplace(n, inx, len, delimiter);
+	} else {
+		return n + delimiter + ("000000000" + inx).substr(-len);
+	}
+}
+
+
+function as_objectClone(obj) {
+	var copy;
+	if (null == obj || ("object" != typeof (obj))) {
+		return obj;
+	}
+	if (obj instanceof Date) {
+		copy = new Date();
+		copy.setTime(obj.getTime());
+		return copy;
+	}
+	if (obj instanceof Array) {
+		copy = [];
+		for (var i = 0, len = obj.length; i < len; i++) {
+			copy[i] = as_objectClone(obj[i]);
+		}
+		return copy;
+	}
+	if (obj instanceof Object) {
+		copy = {};
+		for (var attr in obj) {
+			if (obj.hasOwnProperty(attr)) {
+				copy[attr] = as_objectClone(obj[attr]);
+			}
+		}
+		return copy;
+	}
+	throw new Error("Unable to clone object! Object type not supported.");
+}
+
+
+function as_objectGetPropName(propValue, obj) {
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            if (obj[p] == propValue) {
+                return p;
+            }
+        }
+    }
+    return null;
+}
+
+
+function  as_objectKeysToArray(obj){
+    var arr = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            arr[arr.length] = key;
+        }
+    }
+    return arr;
+}
+
+function as_objectsGetLength(obj) {
+	var len = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			len++;
+		}
+	}
+	return len;
+}
+
+
+function as_objectsMerge(objMain, objNew, skipNull) {
+	if ((objMain == null) || (typeof (objMain) != "object") || (objMain instanceof Array)) {
+		throw new Error("Property \"objMain\" is not an Object");
+	}
+	if ((objNew == null) || (typeof (objNew) != "object") || (objNew instanceof Array)) {
+		throw new Error("Property \"objNew\" is not an Object");
+	}
+	var objMerge = as_objectClone(objMain);
+	var valPrev, valNew;
+	for (var attr in objNew) {
+		if (objNew.hasOwnProperty(attr)) {
+			valPrev = objMerge[attr];
+			valNew = objNew[attr];
+			if (!skipNull || (valNew !== null)) {
+				if (objMerge.hasOwnProperty(attr)) {
+					if (!as_dataIsSameType(valPrev, valNew)) {
+						objMerge[attr] = valNew;
+					} else if (valNew instanceof Array) {
+						objMerge[attr] = as_arraysMerge(valPrev, valNew);
+					} else {
+						objMerge[attr] = valNew;
+					}
+				} else {
+					objMerge[attr] = objNew[attr];
+				}
+			} else {
+			}
+		} else {
+		}
+	}
+	return objMerge;
+}
+
+
+function as_stringCapitalWords(str) {
+	return str.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
+		return a.toUpperCase();
+	});
+}
+
+
+function as_stringCheckContainsChars(str, chars) {
+	for (var i = 0, iLen = chars.length; i < iLen; i++) {
+		if (str.indexOf(chars.charAt(i)) == -1) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function as_stringCleanName(str) {
+	return str.replace(RegExp("[^a-z 0-9]", "gi"), "");
+}
+
+
+function as_stringClearComments(text) {
+	text = text.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, "");
+	text = text.replace(/^\t+$/gm, "");
+	while (text.match(/\n\n/gi) != null) {
+		text = text.replace(/\n\n/gi, "\n");
+	}
+	return text;
+}
+
+
+function as_stringClearFirstLastSpaces(str) {
+	while (check(str.charAt(0))) {
+		str = str.substr(1);
+	}
+	while (check(str.charAt(str.length - 1))) {
+		str = str.substr(0, str.length - 1);
+	}
+	return str;
+	function check(chr) {
+		return (chr === " ") || (chr === "\n") || (chr === "\r") || (chr === "\t");
+	}
+}
+
+
+function as_stringClearLineBreaks(str) {
+	return str.replace(new RegExp("\r", "g"), "\n");
+}
+
+
+function as_stringClearSpaces(str) {
+	return as_stringToSingleLine(str).replace(new RegExp(" ", "g"), "");
+}
+
+
+function as_stringRemoveLineBreaks(str) {
+	return str.replace(/[\n|\r]/g, "");
+}
+
+
+function as_stringRepeat(str, times) {
+	if (typeof times !== "number") {
+		return null;
+	}
+	var repeatedString = "";
+	while (times > 0) {
+		repeatedString += str;
+		times--;
+	}
+	return repeatedString;
+}
+
+
+function as_stringToArray(str) {
+	str = as_stringRemoveLineBreaks(str);
+	if (str.indexOf(",") == -1) {
+		str = as_stringClearFirstLastSpaces(str);
+		if (str == "") {
+			return [];
+		} else {
+			return [str];
+		}
+	} else {
+		var strArr = str.split(",");
+		for (var i = 0; i < strArr.length; i++) {
+			strArr[i] = as_stringClearFirstLastSpaces(strArr[i]);
+			if (strArr[i] == "") {
+				strArr.splice(i, 1);
+				i--;
+			}
+		}
+		return strArr;
+	}
+}
+
+
+function as_stringToSingleLine(str) {
+	return as_stringClearLineBreaks(str).replace(new RegExp("\n", "g"), " ");
+}
+
+
+function as_stringUniqChars(str) {
+	var strUniq = "";
+	var len = str.length;
+	for (var i = 0; i < len; i++) {
+		var c = str.charAt(i);
+		if (strUniq.indexOf(c) < 0) {
+			strUniq += c;
+		}
+	}
+	return strUniq;
+}
+
+
+function as_timeMillisecToString(ms) {
+	var arr = [];
+	var msS = 1000;
+	var msM = msS * 60;
+	var msH = msM * 60;
+	var msD = msH * 24;
+	var days = Math.floor(ms / msD);
+	if (days > 0) {
+		arr.push(("000" + days).substr(-3) + " days");
+	}
+	ms -= days * msD;
+	var hours = Math.floor(ms / msH);
+	if (hours > 0) {
+		arr.push(("00" + hours).substr(-2) + " hours");
+	}
+	ms -= hours * msH;
+	var minutes = Math.floor(ms / msM);
+	if (minutes > 0) {
+		arr.push(("00" + minutes).substr(-2) + " min");
+	}
+	ms -= minutes * msM;
+	var seconds = Math.floor(ms / msS);
+	if (seconds > 0) {
+		arr.push(("00" + seconds).substr(-2) + " sec");
+	}
+	ms -= seconds * msS;
+	arr.push(("0000" + Math.floor(ms)).substr(-4) + " ms");
+	return arr.join(" ");
+}
+
+
+function as_toString(obj) {
+	try {
+		if (typeof(obj) == "string") {
+			return "\"" + obj + "\"";
+		} else if (typeof(obj) === "undefined") {
+			return "undefined";
+		} else if (typeof(obj) === "number") {
+			return obj.toString();
+		} else if (typeof(obj) === "boolean") {
+			return obj.toString();
+		} else if (typeof(obj) === "function") {
+			return "{ Function }";
+		} else {
+			if (obj === null) {
+				return "null";
+			} else if (obj instanceof Array) {
+				return as_toStringArray(obj);
+			} else {
+				return as_toStringObject(obj);
+			}
+		}
+	} catch(err) {
+		return err.message;
+	}
+}
+
+function as_toStringArray(arr) {
+	if (!(arr instanceof Array)) {
+		return new Error("Property \"arr\" is not an Array");
+	}
+	var vs = [];
+	try {
+		for (var i = 0, v, s, len = arr.length; i < len; i++) {
+			v = arr[i];
+			if (typeof(v) === "object") {
+				if (v instanceof Array) {
+					s = as_toStringArray(v);
+				} else if (v === null) {
+					s = "null";
+				} else {
+					s = as_toStringObject(v);
+				}
+			} else {
+				s = as_toString(v);
+			}
+			vs[vs.length] = s;
+		}
+	} catch (err) {
+		return "[" + err.message + "]";
+	}
+	if(vs.length > 0) {
+		return "[" + vs.join(", ") + "]";
+	} else {
+		return "[]";
+	}
+}
+
+function as_toStringObject(obj) {
+	if ((typeof(obj) !== "object") || (obj instanceof Array)) {
+		return new Error("Property \"obj\" is not an Object");
+	}
+	var n = obj.reflect.name;
+	if (n != "Object") {
+		if(obj.name) {
+			return "{" + n + ": " + obj.name + "}";
+		} else {
+			return "{Object " + n + "}"
+		}
+	}
+	var vs = [], v, s;
+	try {
+		for (var p in obj) {
+			if(obj.hasOwnProperty(p)) {
+				v = obj[p];
+				s = "\"" + p + "\"" + ": ";
+				if (typeof(v) === "object") {
+					if (v instanceof Array) {
+						s += as_toStringArray(v);
+					} else if (v === null) {
+						s += "null";
+					} else {
+						s += as_toStringObject(v);
+					}
+				} else {
+					s += as_toString(v);
+				}
+				vs[vs.length] = s;
+			}
+		}
+	} catch (err) {
+		return "{" + err.message + "}";
+	}
+	if(vs.length > 0) {
+		return "{" + vs.join(", ") + "}";
+	} else {
+		return "{}";
+	}
+}
+
+function as_dateFromDayNumber(dayNum) {
+	return dayNum * 8.64e7;
+}
+
+function as_dateFromMonthNumber(monthNum) {
+    var year = Math.floor(monthNum / 12) + 1970;
+    var month = (monthNum % 12) - 1;
+    return new Date(year, month, 1, 0, 0, 0, 0, 0);
+}
+
+
+function as_getDayNumber(date) {
+	return Math.floor(date.getTime() / 8.64e7);
+}
+
+function as_getMonthName(date) {
+	var m = date.getMonth();
+	var array = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	];
+	var name = array[m];
+	return name;
+   
+}
+
+function as_getMonthNameShort(date) {
+    return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][date.getMonth()];
+}
+
+
+function as_getMonthNumber(date) {
+    return (date.getFullYear() - 1970) * 12 + date.getMonth() + 1;
+}
+
+
+function as_getWeekDayName(date) {
+    return ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"][date.getDay()];
+}
+
+
+function as_arrayToCSV(arr, separator) {
+    if(separator === undefined){
+        separator = ",";
+    }
+	for (var l = 0; l < arr.length; l++) {
+        arr[l] = "\"" + arr[l].join("\"" + separator + "\"") + "\"";
+    }
+    return arr.join("\n");
+}
+
+function as_convertFilePath(path, rootDir, absolute) {
+   
+    path = path.replace(/\\/g, "/");
+	path = path.replace("D:/", "/d/");
+	path = path.replace("C:/", "/c/");
+	if (absolute) {
+		path = path.replace("..", rootDir.fullName);
+	} else {
+		path = path.replace(rootDir.fullName, "..");
+	}
+    
+    return path;
+}
+
+function as_convertFilePathJS(path, rootDir, absolute) {
+   
+    path = path.replace(/\\/g, "/");
+	if (path.indexOf("/d/") == 0) {
+		path = path.replace("/d/", "D:/");
+	}
+	if (path.indexOf("/c/") == 0) {
+		path = path.replace("/c/", "C:/");
+	}
+	if (absolute) {
+		path = path.replace("..", rootDir.fsName.replace(/\\/g, "/"));
+	} else {
+		path = path.replace(rootDir.fsName.replace(/\\/g, "/"), "..");
+	}
+    
+    return path;
+}
+
+function as_fileCollectIncludes(dirsAndFiles, rootDir, intoSubfolders, filterFileExt) {
+	var collector = [];
+    for (var i = 0, item; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var filePath = as_convertFilePath(file.fullName, rootDir, true);
+		collector.push("#include \"" + filePath + "\";");
+	}
+	return collector.join("\n");
+}
+
+function as_fileCollectIncludesJS(dirsAndFiles, rootDir, intoSubfolders, filterFileExt) {
+	var collector = [];
+	for (var i = 0, item; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var filePath = as_convertFilePathJS(file.fullName, rootDir, true);
+		collector.push("document.write(\'<script type=\"text/javascript\" src=\"" + filePath + "\"></script>\');");
+	}
+	return collector.join("\n");
+}
+
+function as_fileCollectLib(dirsAndFiles, intoSubfolders, filterFileExt, skipFiles) {
+	var collector = [];
+	for (var i = 0; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt, skipFiles);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var text = as_fileRead(file);
+		text = as_stringClearComments(text);
+		collector.push(text);
+	}
+	return collector.join("\n");
+}
+
+function as_fileRead(file) {
+	if (!file.exists) {
+		alert("File: " + file.fsName + " does not exist!", true);
+		return null;
+	} else {
+		try {
+			if (!file.open("r")) {
+				alert("Could not read file: " + file.fsName + "\nmessage: " + file.error, true);
+				return null;
+			}
+			var fileData = file.read();
+			file.close();
+			if (file.error != "") {
+				alert(file.error, true);
+				return null;
+			}
+			return fileData;
+		} catch (err) {
+			alert("Could not read file: " + file.fsName + "\nmessage: " + err.message, true);
+			return null;
+		}
+	}
+}
+
+
+function as_fileReadJSBinary(file) {
+	if (!file.exists) {
+		return null;
+	} else {
+		return $.evalFile(file.fsName);
+	}
+}
+
+
+function as_fileReadJSON(file) {
+	var fileData = as_fileRead(file);
+	if(fileData == "") {
+		fileData = JSON.stringify({});
+	}
+	return JSON.parse(fileData);
+}
+
+
+function as_fileToBinaryString(file) {
+	try {
+		file.open("r");
+		file.encoding = "BINARY";
+		var bin = file.read();
+		file.close();
+		return eval(bin.toSource().replace(/^\(new String\(/, "").replace(/\)\)$/, ""));
+	} catch (err) {
+		alert(err.name + " at line " + err.line + " : " + err.message);
+		return null;
+	}
+}
+
+
+function as_fileWrite(file, fileData, isBinary) {
+	file.encoding = isBinary ? "BINARY" : "UTF-8";
+	if (!file.open("w")) {
+		alert("Could not open file: " + file.fsName + "\nmessage: " + file.error, true);
+		return null;
+	}
+	if (!file.write(isBinary ? [fileData] : fileData)) {
+		alert("Could not write file: " + file.fsName + "\nmessage: " + file.error, true);
+		file.close();
+		return null;
+	}
+	file.close();
+	if (file.error != "") {
+		alert(file.error, true);
+		return null;
+	}
+	return file;
+}
+
+
+function as_fileWriteJSBinary(file, dataObject, tab, saveBackup) {
+	if (saveBackup && file.exists) {
+		var dirBackup = Folder(file.parent.fsName + "/.backup");
+		if (!dirBackup.exists) {
+			dirBackup.create();
+		}
+		var fileBackup = new File(dirBackup.fsName + "/" + as_getFileName(file) + "_backup_" + Math.floor(Math.random() * 1000000).toString() + "." + as_getFileExtension(file));
+		as_fileWrite(fileBackup, as_fileRead(file), false);
+	}
+	var stringData = "(function (){return " + JSON.stringify(dataObject, undefined, tab ? "\t" : undefined) + "\n})()";
+	return as_fileWrite(file, stringData, false);
+}
+
+
+function as_fileWriteJSON(file, dataObject, tab, saveBackup) {
+	if (saveBackup && file.exists) {
+		var dirBackup = Folder(file.parent.fsName + "/.backup");
+		if (!dirBackup.exists) {
+			dirBackup.create();
+		}
+		var fileBackup = new File(dirBackup.fsName + "/" + as_getFileName(file) + "_backup_" + Math.floor(Math.random() * 1000000).toString() + "." + as_getFileExtension(file));
+		as_fileWrite(fileBackup, as_fileRead(file), false);
+	}
+	return as_fileWrite(file, JSON.stringify(dataObject, undefined, tab ? "\t" : undefined), false);
+}
+
+
+function as_filesToBinaryData(fileOfFolder, fileFilter) {
+	if (!fileOfFolder.exists) {
+		alert("File of Folder \"" + fileOfFolder + "\" does not exist.", true);
+		return null;
+	}
+	var data = {};
+	var filesList;
+	if (fileOfFolder instanceof File) {
+		filesList = [fileOfFolder];
+	} else if (fileOfFolder instanceof Folder) {
+		filesList = fileOfFolder.getFiles(fileFilter || "*");
+	}
+	for (var i = 0, file, fileBin, len = filesList.length; i < len; i++) {
+		file = filesList[i];
+		fileBin = as_fileToBinaryString(file);
+		if (fileBin !== null) {
+			data[file.displayName] = fileBin;
+		}
+	}
+	return data;
+}
+
+
+ function as_findFile(dir, fileName) {
+	var tagetFile;
+	var files = dir.getFiles();
+	for (var f = 0, file; f < files.length; f++) {
+		file = files[f];
+		if(file instanceof Folder) {
+			tagetFile = as_findFile(file, fileName);
+			if(tagetFile) {
+				return tagetFile;
+			}
+		} else if(file.displayName == fileName) {
+			return file;
+		}
+	}
+	return null;
+}
+
+function as_getFileExtension(file) {
+	if (file == null) {
+		return null;
+	}
+	var i = file.displayName.lastIndexOf(".");
+	return i < 0 ? "" : file.displayName.substring(i + 1);
+}
+
+
+function as_getFileName(file) {
+	var i = file.displayName.lastIndexOf(".");
+	return i < 0 ? file.displayName : file.displayName.substring(0, i);
+}
+
+
+function as_getTempFolder(folderName, subFolderName) {
+	if (!folderName) {
+		throw new Error("Folder name required!");
+	}
+	var tempFolder = Folder(Folder.temp.fsName + "/" + folderName);
+	if (!tempFolder.exists) {
+		if (!tempFolder.create()) {
+			alert("Error creating new folder in this location:\n" + tempFolder.fsName, true);
+			return null;
+		}
+	}
+	if (subFolderName) {
+		var subFolder = Folder(tempFolder.fsName + "/" + subFolderName);
+		if (!subFolder.exists) {
+			if (!subFolder.create()) {
+				alert("Error creating new folder in this location:\n" + subFolder.fsName, true);
+				return null;
+			}
+		}
+		return subFolder;
+	} else {
+		return tempFolder;
+	}
+}
+
+
+function as_getUserDataFolder(folderName, subFolderName) {
+	if (!folderName) {
+		throw new Error("Folder name required!");
+	}
+	var userDataFolder = Folder(Folder.userData.fsName + "/" + folderName);
+	if (!userDataFolder.exists) {
+		if (!userDataFolder.create()) {
+			alert("Error creating new folder in this location:\n" + userDataFolder.fsName, true);
+			return null;
+		}
+	}
+	if (subFolderName) {
+		var subFolder = Folder(userDataFolder.fsName + "/" + subFolderName);
+		if (!subFolder.exists) {
+			if (!subFolder.create()) {
+				alert("Error creating new folder in this location:\n" + subFolder.fsName, true);
+				return null;
+			}
+		}
+		return subFolder;
+	}
+	else {
+		return userDataFolder;
+	}
+}
+
+
+function as_loopCSVLines(file, func, args) {
+	if (args === undefined) {
+		args = [];
+	}
+	var strCSV = as_fileRead(file);
+	var lines = strCSV.split("\n");
+	var results = [];
+	for (var l = 0, len = lines.length, line, result; l < len; l++) {
+		line = lines[l];
+		result = func.apply(undefined, [line].concat(args));
+		if (result !== undefined) {
+			results.push(result);
+		}
+	}
+	return results;
+}
+
+function as_loopDirectories(dir, intoSubDirs, func, args, skipDirs) {
+   
+    var results = [];
+	var skipFile = (skipDirs !== undefined) && (skipDirs.length > 0) && (as_arrayCheckValue(dir.name, skipDirs) >= 0);
+	if (!skipFile) {
+		var result = func.apply(undefined, [dir].concat(args || []));
+		if(result !== undefined) {
+			results.push(result);
+		}
+	}
+	if(intoSubDirs) {
+		var arrSubDirs = dir.getFiles();
+		for (var d = 0, subDir, result; d < arrSubDirs.length; d++) {
+			subDir = arrSubDirs[d];
+			if(subDir instanceof Folder) {
+				results = results.concat(as_loopDirectories(subDir, intoSubDirs, func, args, skipDirs));
+			}
+		}
+	}
+   
+    return results;
+}
+
+function as_loopFiles(dir, intoSubfolders, func, args, filterFileExt, skipFiles) {
+    
+   
+    if(args === undefined) {
+        args = [];
+    }
+   
+    var results = [];
+    var content = dir.getFiles();
+	var files = [];
+	var subdirs = [];
+	for (var i = 0; i < content.length; i++) {
+		var item = content[i];
+		if (item instanceof Folder) {
+			subdirs.push(item);
+		} else {
+			files.push(item);
+		}
+	}
+	subdirs.sort();
+	files.sort();
+	if (intoSubfolders) {
+		for (var i = 0, subdir; i < subdirs.length; i++) {
+			subdir = subdirs[i]
+			results = results.concat(as_loopFiles(subdir, intoSubfolders, func, args, filterFileExt, skipFiles));
+		}
+	}
+   
+	for (var i = 0, file, skipFile, extMatch, result; i < files.length; i++) {
+		file = files[i];
+		skipFile = (skipFiles !== undefined) && (skipFiles.length > 0) && (as_arrayCheckValue(file.name, skipFiles) >= 0);
+		extMatch = (filterFileExt === undefined) || (filterFileExt.length == 0) || (as_arrayCheckValue(as_getFileExtension(file), filterFileExt) >= 0);
+		if (!skipFile && extMatch) {
+			result = func.apply(undefined, [file].concat(args));
+			if (result !== undefined) {
+				results.push(result);
+			}
+		}
+    }
+    return results;
+}
+
+function as_parseCSV(fileCSV) {
+	if(fileCSV == null) {
+		return null;
+	}
+	if (!fileCSV.exists) {
+		alert("File \"" + fileCSV.fsName + "\" does not exist!", true);
+		return null;
+	}
+	fileCSV.open("r");
+	var csvString = fileCSV.read();
+	fileCSV.close();
+	var linesArray = csvString.split("\n");
+	var namesArray = linesArray[0].split(";");
+	var typesArray = linesArray[1].split(";");
+	var valuesArray;
+	var propType, propName, propValue;
+	var mainObject = {};
+	var currentObject = mainObject;
+	for (var l = 2; l < linesArray.length; l++) {
+		if ((linesArray[l].indexOf(";") == -1) || (linesArray[l].split(";").join("").length == 0)) {
+			continue;
+		}
+		valuesArray = linesArray[l].split(";");
+		for (var v = 0; v < valuesArray.length; v++) {
+			propType = typesArray[v];
+			propName = namesArray[v];
+			propValue = valuesArray[v];
+			if (propValue == "") {
+				if (propType == "object") {
+					currentObject = getPrevLineObject(l, v);
+					if (!currentObject) {
+						throw new Error("as_parseCSV > Parent object not found.")
+					}
+				}
+				continue;
+			}
+			switch (propType) {
+				case "object":
+					currentObject = currentObject[propValue] = {};
+					break;
+				case "string":
+					propValue = propValue.replace(/\\n/g, "\n");
+					currentObject[propName] = propValue;
+					break;
+				case "array_string":
+					currentObject[propName] = propValue.split(",");
+					break;
+				case "array_number":
+					currentObject[propName] = eval("[" + propValue + "]");
+					break;
+				case "number":
+					currentObject[propName] = parseFloat(propValue);
+					break;
+				case "boolean":
+					currentObject[propName] = (propValue == "true");
+					break;
+				default:
+					alert(arguments.callee.name + " --> " + "Unrecognized property type : " + propType + ", propName: " + propName + ", linesArray[l]: " + linesArray[l] + ", l: " + l, true);
+					break;
+			}
+		}
+		currentObject = mainObject;
+	}
+	function getPrevLineObject(lineIndex, valueIndex) {
+		var object;
+		for (var ll = (lineIndex - 1), vvArray; ll >= 2; ll--) {
+			object = mainObject;
+			vvArray = linesArray[ll].split(";");
+			for (var vv = 0, vValue, vType; vv <= valueIndex; vv++) {
+				vValue = vvArray[vv];
+				vType = typesArray[vv];
+				if (vType == "object") {
+					if (vValue == "") {
+						object = getPrevLineObject(ll, vv);
+					} else {
+						object = object[vValue];
+					}
+				}
+				if ((vv == valueIndex) && (vValue != "")) {
+					return object;
+				}
+			}
+		}
+		return null;
+	}
+	return mainObject;
+}
+
+function as_parseCSVLineArr(line, separator) {
+    return line.substr(1, line.length - 2).split("\"" + separator + "\"");
+}
+
+
+function as_parseCSVLineObj(strLine, arrNames, separator) {
+    var arrLine = as_parseCSVLineArr(strLine, separator);
+    var objLine = {};
+    for (var i = 0; i < arrNames.length; i++) {
+        try {
+            objLine[arrNames[i]] = arrLine[i];
+        } catch (err) {
+            alert(err.message + "\nprop:" + arrLine[i]);
+        }
+    }
+    return objLine;
+}
+
+
+function as_copyToClipboard(str) {
+	system.callSystem("cmd.exe /c cmd.exe /c \"echo " + str + " | clip\""); 
+}
+
+function as_openURL(url) {
+	var isPrefSet = as_checkSecurityPrefSet();
+	if (isPrefSet === true) {
+		if (as_osName() == "Win") {
+			system.callSystem("cmd.exe /c\"start " + url + "\"");
+		} else {
+			system.callSystem("open \"" + url + "\"");
+		}
+	} else {
+		alert(isPrefSet);
+	}
+}
+
+function as_osName() {
+	var os = system.osName;
+	if (!os.length) {
+		os = $.os;
+	}
+	var app_os = (os.indexOf("Win") != -1) ? "Win" : "Mac";
+	return app_os;
+}
+
+
+function as_checkSecurityPrefSet() {
+	var securitySetting = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
+	if (securitySetting == 1) {
+		return true;
+	} else {
+		return "This script requires the scripting security preference to be set. Go to the \"General\" panel of the application preferences and make sure \"Allow Scripts to Write Files and Access Network\" is checked.";
+	}
+}
+
+
+function as_compareVersions(ver1, ver2, threshold) {
+	if (ver1 == ver2) {
+		return 0;
+	}
+	var ver1Arr = ver1.split(".");
+	var ver2Arr = ver2.split(".");
+	threshold = (threshold === undefined) ? Math.max(ver1Arr.length, ver2Arr.length) - 1 : threshold;
+	for (var i = 0, v1, v2; i <= threshold; i++) {
+		v1 = parseInt(ver1Arr[i]) || 0;
+		v2 = parseInt(ver2Arr[i]) || 0;
+		if (v1 == v2) {
+			continue;
+		}
+		return (v2 > v1) ? 1 : -1;
+	}
+	return 0;
+}
+
+
+function as_getAeReleaseName(version) {
+	var verRelease = as_getAeReleaseVersion(version);
+	for (var n in AEVersion) {
+		if (AEVersion.hasOwnProperty(n)) {
+			if (as_compareVersions(verRelease, AEVersion[n]) >= 0) {
+				return n;
+			}
+		}
+	}
+	return null;
+}
+
+
+function as_getAeReleaseVersion(version) {
+	var verMatch = null;
+	var versionsList = AEVersion.getList();
+	for (var v = 0, ver; v < versionsList.length; v++) {
+		ver = versionsList[v];
+		var compare = as_compareVersions(version, ver);
+		if (compare == 0) {
+			verMatch = ver;
+			break;
+		} else if (compare > 0) {
+			break;
+		} else {
+			verMatch = ver;
+		}
+	}
+	return verMatch;
+}
+
+
+function as_getAllAEEffects() {
+	var displayNames = [];
+	var matchNames = [];
+	for (var e = 0, len = app.effects.length; e < len; e++) {
+		displayNames.push(app.effects[e].displayName);
+		matchNames.push(app.effects[e].matchName);
+	}
+	return [displayNames, matchNames];
+}
+
+function as_hexToRgb(hex) {
+	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+		return r + r + g + g + b + b;
+	});
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result ? [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255] : null;
+}
+
+
+function as_hslToRgb(hsl) {
+	var r, g, b, h = hsl[0], s = hsl[1], l = hsl[2];
+	if (s == 0) {
+		r = g = b = l;
+	} else {
+		var hue2rgb = function hue2rgb(p, q, t) {
+			if (t < 0) {
+                t += 1;
+            }
+			if (t > 1) {
+				t -= 1;
+            }
+			if (t < 1 / 6) {
+				return p + (q - p) * 6 * t;
+            }
+			if (t < 1 / 2) {
+				return q;
+            }
+			if (t < 2 / 3) {
+				return p + (q - p) * (2 / 3 - t) * 6;
+            }
+			return p;
+		};
+		var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+		var p = 2 * l - q;
+		r = hue2rgb(p, q, h + 1 / 3);
+		g = hue2rgb(p, q, h);
+		b = hue2rgb(p, q, h - 1 / 3);
+	}
+	return as_normalizeRGB([r, g, b]);
+}
+
+
+function as_normalizeRGB(rgb) {
+	for (var i = 0; i < rgb.length; i++) {
+		rgb[i] = as_clamp(rgb[i], 0, 1);
+	}
+	rgb[3] = 1;
+	return rgb;
+}
+
+
+function as_rgbToHex(rgb) {
+	return ((1 << 24) + (rgb[0] * 255 << 16) + (rgb[1] * 255 << 8) + rgb[2] * 255).toString(16).slice(1).toUpperCase();
+}
+
+
+function as_rgbToHsl(rgb) {
+	var r = rgb[0] * 255, g = rgb[1] * 255, b = rgb[2] * 255;
+	r /= 255, g /= 255, b /= 255;
+	var max = Math.max(r, g, b), min = Math.min(r, g, b);
+	var h, s, l = (max + min) / 2;
+	if (max == min) {
+		h = s = 0;
+	} else {
+		var d = max - min;
+		s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+		switch (max) {
+			case r:
+				h = (g - b) / d + (g < b ? 6 : 0);
+				break;
+			case g:
+				h = (b - r) / d + 2;
+				break;
+			case b:
+				h = (r - g) / d + 4;
+				break;
+		}
+		h /= 6;
+	}
+	return [h, s, l];
+}
+
+
+function AEVersion(){
+}
+AEVersion.CC = "12.0";
+AEVersion.CC_1 = "12.1";
+AEVersion.CC_2 = "12.2";
+AEVersion.CC2014 = "13.0";
+AEVersion.CC2014_1 = "13.1";
+AEVersion.CC2014_2 = "13.2";
+AEVersion.CC2015 = "13.5.0.347";
+AEVersion.CC2015_1 = "13.6.0";
+AEVersion.CC2015_2 = "13.7.0";
+AEVersion.CC2015_3 = "13.8.0";
+AEVersion.CC2017 = "14.0";
+AEVersion.CC2017_1 = "14.1";
+AEVersion.CC2017_2 = "14.2";
+AEVersion.CC2017_2_1 = "14.2.1";
+AEVersion.CC2018 = "15.0";
+AEVersion.CC2018_0_1 = "15.0.1";
+AEVersion.CC2018_1 = "15.1";
+AEVersion.CC2019 = "16.0";
+AEVersion.CC2019_0_1 = "16.0.1";
+AEVersion.CC2019_1 = "16.1";
+AEVersion.CC2020 = "17.0";
+AEVersion.getList = function() {
+	return [
+		AEVersion.CC,
+		AEVersion.CC_1,
+		AEVersion.CC_2,
+		AEVersion.CC2014,
+		AEVersion.CC2014_1,
+		AEVersion.CC2014_2,
+		AEVersion.CC2015,
+		AEVersion.CC2015_1,
+		AEVersion.CC2015_2,
+		AEVersion.CC2015_3,
+		AEVersion.CC2017,
+		AEVersion.CC2017_1,
+		AEVersion.CC2017_2,
+		AEVersion.CC2017_2_1,
+		AEVersion.CC2018,
+		AEVersion.CC2018_0_1,
+		AEVersion.CC2018_1,
+		AEVersion.CC2019,
+		AEVersion.CC2019_0_1,
+		AEVersion.CC2019_1,
+		AEVersion.CC2020
+	];
+}
+AEVersion.getKeysList = function () {
+	return [
+		"CC",
+		"CC_1",
+		"CC_2",
+		"CC2014",
+		"CC2014_1",
+		"CC2014_2",
+		"CC2015",
+		"CC2015_1",
+		"CC2015_2",
+		"CC2015_3",
+		"CC2017",
+		"CC2017_1",
+		"CC2017_2",
+		"CC2017_2_1",
+		"CC2018",
+		"CC2018_0_1",
+		"CC2018_1",
+		"CC2019",
+		"CC2019_0_1",
+		"CC2019_1",
+		"CC2020"
+	];
+}
+
+
+function ControlType(){
+}
+ControlType.SLIDER = "Slider";
+ControlType.ANGLE = "Angle";
+ControlType.POINT = "Point";
+ControlType.POINT3D = "Point3D";
+ControlType.CHECKBOX = "Checkbox";
+ControlType.COLOR = "Color";
+ControlType.LAYER = "Layer";
+ControlType.getList = function() {
+	return [
+		ControlType.SLIDER,
+		ControlType.ANGLE,
+		ControlType.POINT,
+		ControlType.POINT3D,
+		ControlType.CHECKBOX,
+		ControlType.COLOR,
+		ControlType.LAYER
+	];
+}
+
+function ItemTypeName(){
+}
+ItemTypeName.COMPOSITION = "Composition";
+ItemTypeName.FOOTAGE = "Footage";
+ItemTypeName.FOLDER = "Folder";
+ItemTypeName.getList = function() {
+	return [
+		ItemTypeName.COMPOSITION,
+		ItemTypeName.FOOTAGE,
+		ItemTypeName.FOLDER
+	];
+}
+
+function LabelColor(){
+}
+LabelColor.NONE = 0;
+LabelColor.RED = 1;
+LabelColor.YELLOW = 2;
+LabelColor.AQUA = 3;
+LabelColor.PINK = 4;
+LabelColor.LAVENDER = 5;
+LabelColor.PEACH = 6;
+LabelColor.SEAFORM = 7;
+LabelColor.BLUE = 8;
+LabelColor.GREEN = 9;
+LabelColor.PURPLE = 10;
+LabelColor.ORANGE = 11;
+LabelColor.BROWN = 12;
+LabelColor.FUCHSIA = 13;
+LabelColor.CYAN = 14;
+LabelColor.SANDSTONE = 15;
+LabelColor.DARKGREEN = 16;
+LabelColor.getList = function() {
+	return [
+		LabelColor.NONE,
+		LabelColor.RED,
+		LabelColor.YELLOW,
+		LabelColor.AQUA,
+		LabelColor.PINK,
+		LabelColor.LAVENDER,
+		LabelColor.PEACH,
+		LabelColor.SEAFORM,
+		LabelColor.BLUE,
+		LabelColor.GREEN,
+		LabelColor.PURPLE,
+		LabelColor.ORANGE,
+		LabelColor.BROWN,
+		LabelColor.FUCHSIA,
+		LabelColor.CYAN,
+		LabelColor.SANDSTONE,
+		LabelColor.DARKGREEN
+	];
+}
+
+function LayerType(){
+}
+LayerType.CAMERA = "CameraLayer";
+LayerType.LIGHT = "LightLayer";
+LayerType.SOLID = "SolidLayer";
+LayerType.FOOTAGE = "FootageLayer";
+LayerType.TEXT = "TextLayer";
+LayerType.SHAPE = "ShapeLayer";
+LayerType.AUDIO = "AudioLayer";
+LayerType.PRECOMP = "PrecompLayer";
+LayerType.getList = function() {
+	return [
+		LayerType.CAMERA,
+		LayerType.LIGHT,
+		LayerType.SOLID,
+		LayerType.FOOTAGE,
+		LayerType.TEXT,
+		LayerType.SHAPE,
+		LayerType.AUDIO,
+		LayerType.PRECOMP
+	];
+}
+
+function StrokeLineCap(){
+}
+StrokeLineCap.BUTT_CAP = 1;
+StrokeLineCap.ROUND_CAP = 2;
+StrokeLineCap.PROJECTING_CAP = 3;
+StrokeLineCap.getList = function() {
+	return [
+		StrokeLineCap.BUTT_CAP,
+		StrokeLineCap.ROUND_CAP,
+		StrokeLineCap.PROJECTING_CAP
+	];
+}
+
+function StrokeLineJoin(){
+}
+StrokeLineJoin.MITER_JOIN = 1;
+StrokeLineJoin.ROUND_JOIN = 2;
+StrokeLineJoin.BEVEL_JOIN = 3;
+StrokeLineJoin.getList = function() {
+	return [
+		StrokeLineJoin.MITER_JOIN,
+		StrokeLineJoin.ROUND_JOIN,
+		StrokeLineJoin.BEVEL_JOIN
+	];
+}
+
+function TextDocProperty(){
+}
+TextDocProperty.FONT = "FONT";
+TextDocProperty.FONT_SIZE = "FONT_SIZE";
+TextDocProperty.TRACKING = "TRACKING";
+TextDocProperty.COLOR = "COLOR";
+TextDocProperty.JUSTIFICATION = "JUSTIFICATION";
+TextDocProperty.TEXT = "TEXT";
+TextDocProperty.getList = function() {
+	return [
+		TextDocProperty.FONT,
+		TextDocProperty.FONT_SIZE,
+		TextDocProperty.TRACKING,
+		TextDocProperty.COLOR,
+		TextDocProperty.JUSTIFICATION,
+		TextDocProperty.TEXT
+	];
+}
+
+function as_alignToJustify(align) {
+	return [ParagraphJustification.LEFT_JUSTIFY, ParagraphJustification.CENTER_JUSTIFY, ParagraphJustification.RIGHT_JUSTIFY][align];
+}
+
+
+function as_justifyToAlign(justification) {
+	switch (justification) {
+		case ParagraphJustification.LEFT_JUSTIFY:
+			return 0;
+		case ParagraphJustification.CENTER_JUSTIFY:
+			return 1;
+		case ParagraphJustification.RIGHT_JUSTIFY:
+			return 2;
+		default:
+			return null;
+	}
+}
+
+
+function as_effectNameUniversalized(effect) {
+    if (effect === null) {
+        return false;
+    }
+    if(!as_propIsEffect(effect)) {
+        return new Error("Property \"effect\" is not an effect.");
+    }
+   
+    for (var n = 0; n < ae_effects_matchNames.length; n++) {
+        if((ae_effects_matchNames[n] == effect.matchName) && (ae_effects_displayNames[n] == effect.name)) {
+           
+            var inx = 1;
+            var nameNew;
+            var effectsGroup = effect.parentProperty;
+            while((nameNew === undefined) || (effectsGroup(nameNew) != null)) {
+                nameNew = ae_effects_displayNames[n] + " " + inx;
+                inx++;
+            }
+           
+            as_elementRename(effect, effect.name, nameNew);
+            return true;
+        }
+    }
+    return false;
+}
+
+
+function as_exprGetPropPath(prop, rootLevel) {
+    if (prop === null) {
+        return null;
+	}
+	if (!isValid(prop)) {
+		return null;
+	}
+    
+   
+    var expr = "";
+    
+    while (prop.parentProperty !== null) {
+        if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
+			expr = "(" + JSON.stringify(prop.name) + ")" + expr;
+		} else if (prop.matchName == "ADBE Effect Parade"){
+			expr = ".effect" + expr;
+        } else {
+			expr = "(" + JSON.stringify(((prop.matchName !== "") ? prop.matchName : prop.name)) + ")" + expr;
+        }
+        prop = prop.parentProperty;
+    }
+    
+	var layer = prop;
+    if (rootLevel == "layer") {
+		expr = "thisLayer" + expr;
+    } else if (rootLevel == "comp") {
+		expr = "thisComp.layer(" + JSON.stringify(layer.name) + ")" + expr;
+    } else if (rootLevel == "project") {
+		expr = "comp(" + JSON.stringify(as_propGetContainingComp(layer).name) + ").layer(" + JSON.stringify(layer.name) + ")" + expr;
+    } else {
+       
+	}
+	expr = expr.split("(\"ADBE Marker\")").join(".marker");
+    return expr;
+}
+
+
+function as_exprIsDisabled(prop) {
+    if (prop === null) {
+        return null;
+    }
+    
+    if (prop.canSetExpression && (prop.expression != "")) {
+        if (!prop.expressionEnabled) {
+            return true;
+        } else if (prop.expressionError.length > 0) {
+            return false;
+        }
+    }
+    return false;
+}
+
+function as_exprSet(prop, expr, alertErrors) {
+	try {
+		app.beginSuppressDialogs();
+		prop.expression = expr;
+		app.endSuppressDialogs(false);
+	} catch (err) {
+		if(alertErrors) {
+			alert(err.message);
+		}
+	}
+}
+
+function as_applyEasing(prop, keyTimesArray, easeInArray, easeOutArray, keyInterpolationArray) {
+	var k,
+		len = keyTimesArray.length,
+		inx,
+		easeIn0,
+		easeOut0,
+		easeIn1,
+		easeOut1,
+		easeIn2,
+		easeOut2;
+	if (prop.propertyValueType === PropertyValueType.TwoD) {
+		for (k = 0; k < len; k++) {
+			inx = prop.nearestKeyIndex(keyTimesArray[k]);
+			easeIn0 = new KeyframeEase(easeInArray[0][k][0], easeInArray[1][k][0]);
+			easeOut0 = new KeyframeEase(easeOutArray[0][k][0], easeOutArray[1][k][0]);
+			easeIn1 = new KeyframeEase(easeInArray[0][k][1], easeInArray[1][k][1]);
+			easeOut1 = new KeyframeEase(easeOutArray[0][k][1], easeOutArray[1][k][1]);
+			prop.setTemporalEaseAtKey(inx, [easeIn0, easeIn1], [easeOut0, easeOut1]);
+			prop.setInterpolationTypeAtKey(inx, keyInterpolationArray[0][k], keyInterpolationArray[1][k]);
+		}
+	} else if (prop.propertyValueType === PropertyValueType.ThreeD) {
+		for (k = 0; k < len; k++) {
+			inx = prop.nearestKeyIndex(keyTimesArray[k]);
+			easeIn0 = new KeyframeEase(easeInArray[0][k][0], easeInArray[1][k][0]);
+			easeOut0 = new KeyframeEase(easeOutArray[0][k][0], easeOutArray[1][k][0]);
+			easeIn1 = new KeyframeEase(easeInArray[0][k][1], easeInArray[1][k][1]);
+			easeOut1 = new KeyframeEase(easeOutArray[0][k][1], easeOutArray[1][k][1]);
+			easeIn2 = new KeyframeEase(easeInArray[0][k][2], easeInArray[1][k][2]);
+			easeOut2 = new KeyframeEase(easeOutArray[0][k][2], easeOutArray[1][k][2]);
+			prop.setTemporalEaseAtKey(inx, [easeIn0, easeIn1, easeIn2], [easeOut0, easeOut1, easeOut2]);
+			prop.setInterpolationTypeAtKey(inx, keyInterpolationArray[0][k], keyInterpolationArray[1][k]);
+		}
+	} else {
+		for (k = 0; k < len; k++) {
+			inx = prop.nearestKeyIndex(keyTimesArray[k]);
+			easeIn0 = new KeyframeEase(easeInArray[0][k], easeInArray[1][k]);
+			easeOut0 = new KeyframeEase(easeOutArray[0][k], easeOutArray[1][k]);
+			if (keyInterpolationArray[1][k] !== KeyframeInterpolationType.HOLD) {
+				prop.setTemporalEaseAtKey(inx, [easeIn0], [easeOut0]);
+			} else {
+				try {
+					prop.setTemporalEaseAtKey(inx, [easeIn0]);
+				} catch (err) {
+					alert(err.message, true);
+				}
+			}
+			prop.setInterpolationTypeAtKey(inx, keyInterpolationArray[0][k], keyInterpolationArray[1][k]);
+		}
+	}
+}
+
+
+function as_fixInfluenceValue(influenceValue, prop, keyIndex, direction) {
+	var valNew = influenceValue;
+	if (direction === "in") {
+		if (prop.keyInInterpolationType(keyIndex) !== KeyframeInterpolationType.HOLD) {
+			if (influenceValue < 0.100000) {
+				valNew = 0.100000;
+			} else if (influenceValue > 100) {
+				valNew = 100;
+			}
+		}
+	} else if (direction === "out") {
+		if (prop.keyOutInterpolationType(keyIndex) !== KeyframeInterpolationType.HOLD) {
+			if (influenceValue < 0.100000) {
+				valNew = 0.100000;
+			} else if (influenceValue > 100) {
+				valNew = 100;
+			}
+		}
+	}
+	return valNew;
+}
+
+
+function as_keyNearestLeft(prop, t, threshold, alertError) {
+	threshold = threshold || 0.00005;
+	if (prop.numKeys == 0) {
+		if (alertError) {
+			alert("Error. No keyframes found in property " + prop.name, true);
+		}
+		return null;
+	}
+	if (prop.keyTime(1) > t) {
+		if (alertError) {
+			alert("Error. No keyframes before time: " + t + ", in property " + prop.name + ".", true);
+		}
+		return null;
+	}
+	var keyIndex = prop.nearestKeyIndex(t);
+	if (prop.keyTime(keyIndex) > (t + threshold)) {
+		keyIndex -= 1;
+	}
+	return keyIndex;
+}
+
+
+function as_keyNearestRight(prop, t, threshold, alertError) {
+	threshold = threshold || 0.00005;
+	if (prop.numKeys == 0) {
+		if (alertError) {
+			alert("Error. No keyframes found in property " + prop.name, true);
+		}
+		return null;
+	}
+	if (prop.keyTime(prop.numKeys) < t) {
+		if (alertError) {
+			alert("Error. No keyframes after time: " + t + ", in property " + prop.name + ".", true);
+		}
+		return null;
+	}
+	var keyIndex = prop.nearestKeyIndex(t);
+	if (prop.keyTime(keyIndex) < (t - threshold)) {
+		keyIndex += 1;
+	}
+	return keyIndex;
+}
+
+
+function as_keysCopy(propSource, propTarget, timeStartTarget, scaleTime, keyStartSource, numKeyframes) {
+	if (propSource.propertyValueType !== propTarget.propertyValueType) {
+		throw new Error("Property type mismatch!");
+	}
+	keyStartSource = keyStartSource || 1;
+	numKeyframes = numKeyframes || (propSource.numKeys - keyStartSource + 1);
+	scaleTime = scaleTime || 1;
+	timeStartTarget = timeStartTarget || 0;
+	var timeStartSource = propSource.keyTime(keyStartSource);
+	var arrTimes = [];
+	var arrValues = [];
+	for (var k = 0; k < numKeyframes; k++) {
+		arrTimes.push(timeStartTarget + (propSource.keyTime(keyStartSource + k) - timeStartSource) * scaleTime);
+		arrValues.push(propSource.keyValue(keyStartSource + k));
+	}
+	propTarget.setValuesAtTimes(arrTimes, arrValues);
+	var inxKeyStartTarget = propTarget.nearestKeyIndex(arrTimes[0]);
+	for (var k = 0, inxKeySource, inxKeyTarget; k < numKeyframes; k++) {
+		inxKeySource = keyStartSource + k;
+		inxKeyTarget = inxKeyStartTarget + k;
+		propTarget.setTemporalContinuousAtKey(inxKeyTarget, propSource.keyTemporalContinuous(inxKeySource));
+		propTarget.setTemporalAutoBezierAtKey(inxKeyTarget, propSource.keyTemporalAutoBezier(inxKeySource));
+		propTarget.setTemporalEaseAtKey(inxKeyTarget, propSource.keyInTemporalEase(inxKeySource), propSource.keyOutTemporalEase(inxKeySource));
+		propTarget.setInterpolationTypeAtKey(inxKeyTarget, propSource.keyInInterpolationType(inxKeySource), propSource.keyOutInterpolationType(inxKeySource));
+		if (propSource.isSpatial) {
+			propTarget.setSpatialContinuousAtKey(inxKeyTarget, propSource.keySpatialContinuous(inxKeySource));
+			propTarget.setSpatialAutoBezierAtKey(inxKeyTarget, propSource.keySpatialAutoBezier(inxKeySource));
+			propTarget.setSpatialTangentsAtKey(inxKeyTarget, propSource.keyInSpatialTangent(inxKeySource), propSource.keyOutSpatialTangent(inxKeySource));
+		}
+	}
+	if (propSource.isSpatial) {
+		for (var k = 0; k < numKeyframes; k++) {
+			propTarget.setRovingAtKey(inxKeyStartTarget + k, propSource.keyRoving(keyStartSource + k));
+		}
+	}
+}
+
+
+function as_keysGetTimes(prop) {
+	var list = [];
+	for (var k = 1, numKeys = prop.numKeys; k <= numKeys; k++) {
+		list.push(prop.keyTime(k));
+	}
+	return list;
+}
+
+
+function as_keysGetValues(prop) {
+	var arrValues = [];
+	for (var k = 1, numKeys = prop.numKeys; k <= numKeys; k++) {
+		arrValues.push(prop.keyValue(k));
+	}
+	return arrValues;
+}
+
+
+function as_keysHold(prop, keyStart, numKeyframes) {
+	keyStart = (keyStart === undefined) ? 1 : keyStart;
+	numKeyframes = (numKeyframes === undefined) ? prop.numKeys : numKeyframes;
+	for (var k = 0; k < numKeyframes; k++) {
+		prop.setInterpolationTypeAtKey(keyStart + k, KeyframeInterpolationType.HOLD, KeyframeInterpolationType.HOLD);
+	}
+}
+
+
+function as_keysRange(prop, timeStart, timeEnd, threshold, alertError) {
+	threshold = threshold || 0.00005;
+	if (prop.numKeys == 0) {
+		if (alertError) {
+			alert("Error. No keyframes found in property: " + as_toString(prop));
+		}
+		return null;
+	}
+	if (timeStart > timeEnd) {
+		if (alertError) {
+			alert("Error. Wrong time range! timeStart more than timeEnd. Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, true);
+		}
+		return null;
+	}
+	if (Math.abs(timeStart - timeEnd) <= threshold) {
+		var middleKeyIndex = prop.nearestKeyIndex(timeStart + (timeEnd - timeStart) * 0.5);
+		if (Math.abs(prop.keyTime(middleKeyIndex) - timeStart) > threshold) {
+			if (alertError) {
+				alert("Error. No keyframes in time range! Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd, true);
+			}
+			return null;
+		} else {
+			return [middleKeyIndex, 1];
+		}
+	}
+	var middleKeyIndex = prop.nearestKeyIndex(timeStart + (timeEnd - timeStart) * 0.5);
+	if ((prop.keyTime(middleKeyIndex) < timeStart) || (prop.keyTime(middleKeyIndex) > timeEnd)) {
+		if (alertError) {
+			alert("Error. No keyframes in time range! Property: " + as_toString(prop) + ", timeStart: " + timeStart + ", timeEnd: " + timeEnd);
+		}
+		return null;
+	}
+	var inxStart = as_keyNearestRight(prop, timeStart, threshold);
+	var inxEnd = as_keyNearestLeft(prop, timeEnd, threshold);
+	return [inxStart, inxEnd - inxStart + 1];
+}
+
+
+function as_keysReflect(propSource, propTarget, timeMirror, scaleTime, keyStart, numKeyframes) {
+	if (propSource.propertyValueType !== propTarget.propertyValueType) {
+		throw new Error("Property type mismatch!");
+	}
+	keyStart = keyStart || 1;
+	numKeyframes = numKeyframes || (propSource.numKeys - keyStart + 1);
+	scaleTime = scaleTime || 1;
+	var inxKeyEndSource = keyStart + numKeyframes - 1;
+	var timeKeyEndSource = propSource.keyTime(keyStart + numKeyframes - 1);
+	if (timeKeyEndSource > timeMirror) {
+		return null;
+	}
+	var space = timeMirror - timeKeyEndSource;
+	var arrTimes = [];
+	var arrValues = [];
+	var inxKeySource, inxKeyTarget;
+	for (var k = 0; k < numKeyframes; k++) {
+		inxKeySource = inxKeyEndSource - k;
+		arrTimes.push(timeMirror + space + (timeMirror - propSource.keyTime(inxKeySource) - space) * scaleTime);
+		arrValues.push(propSource.keyValue(inxKeyEndSource - k));
+	}
+	propTarget.setValuesAtTimes(arrTimes, arrValues);
+	var inxKeyStartTarget = propTarget.nearestKeyIndex(arrTimes[0]);
+	var easeIn, easeOut;
+	for (var k = 0; k < numKeyframes; k++) {
+		inxKeySource = inxKeyEndSource - k;
+		inxKeyTarget = inxKeyStartTarget + k;
+		propTarget.setTemporalContinuousAtKey(inxKeyTarget, propSource.keyTemporalContinuous(inxKeySource));
+		propTarget.setTemporalAutoBezierAtKey(inxKeyTarget, propSource.keyTemporalAutoBezier(inxKeySource));
+		easeIn = propSource.keyInTemporalEase(inxKeySource);
+		easeOut = propSource.keyOutTemporalEase(inxKeySource);
+		if (propSource.propertyValueType === PropertyValueType.OneD) {
+			for (var i = 0; i < easeIn.length; i++) {
+				easeIn[i].speed = easeIn[i].speed * -1;
+				easeOut[i].speed = easeOut[i].speed * -1;
+			}
+		}
+		propTarget.setTemporalEaseAtKey(inxKeyTarget, easeOut, easeIn);
+		propTarget.setInterpolationTypeAtKey(inxKeyTarget, propSource.keyOutInterpolationType(inxKeySource), propSource.keyInInterpolationType(inxKeySource));
+		if (propSource.isSpatial) {
+			propTarget.setSpatialContinuousAtKey(inxKeyTarget, propSource.keySpatialContinuous(inxKeySource));
+			propTarget.setSpatialAutoBezierAtKey(inxKeyTarget, propSource.keySpatialAutoBezier(inxKeySource));
+			propTarget.setSpatialTangentsAtKey(inxKeyTarget, propSource.keyOutSpatialTangent(inxKeySource), propSource.keyInSpatialTangent(inxKeySource));
+		}
+	}
+	if (propSource.isSpatial) {
+		for (var k = 0; k < numKeyframes; k++) {
+			propTarget.setRovingAtKey(inxKeyStartTarget + k, propSource.keyRoving(inxKeyEndSource - k));
+		}
+	}
+}
+
+
+function as_keysRemove(prop, keyStart, numKeyframes) {
+	keyStart = (keyStart === undefined) ? 1 : keyStart;
+	numKeyframes = (numKeyframes === undefined) ? prop.numKeys : numKeyframes;
+	for (var k = 0; k < numKeyframes; k++) {
+		prop.removeKey(keyStart);
+	}
+}
+
+
+function as_addMarkerComments(markerProp, comments, step, replaceAll) {
+	var t = 0;
+	if (replaceAll) {
+		while (markerProp.numKeys > 0) {
+			markerProp.removeKey(markerProp.numKeys);
+		}
+	} else {
+		if (markerProp.numKeys > 0) {
+			t = markerProp.keyTime(markerProp.numKeys) + step;
+		}
+	}
+	for (var c = 0, len = comments.length; c < len; c++) {
+		markerProp.setValueAtTime(t + c * step, new MarkerValue(comments[c]));
+	}
+}
+
+
+function as_addMarkerEach(markerProp, comment, step, count, fromTime, replaceAll) {
+	var t;
+	if (replaceAll) {
+		t = fromTime;
+		while (markerProp.numKeys > 0) {
+			markerProp.removeKey(markerProp.numKeys);
+		}
+	} else {
+		if (markerProp.numKeys > 0) {
+			t = markerProp.keyTime(markerProp.numKeys) + step;
+		} else {
+			t = fromTime;
+		}
+	}
+	for (var c = 0; c < count; c++) {
+		markerProp.setValueAtTime(t + c * step, new MarkerValue(comment));
+	}
+}
+
+
+function as_getMarkerComments(markerProp) {
+	var list = [];
+	for (var k = 1, numKeys = markerProp.numKeys; k <= numKeys; k++) {
+		list.push(markerProp.keyValue(k).comment);
+	}
+	return list;
+}
+
+
+function as_clearRenderQueue() {
+	while (app.project.renderQueue.numItems > 0) {
+		var rqi = app.project.renderQueue.item(1);
+		rqi.remove();
+	}
+}
+
+
+function as_compDeselectAll(comp) {
+	for (var i = 1; i <= comp.numLayers; i++) {
+		comp.layer(i).selected = false;
+	}
+	var props = comp.selectedProperties;
+	for (var i = 0; i < props.length; i++) {
+		props[i].selected = false;
+	}
+}
+
+
+function as_compSelectLayer(layer) {
+	var comp = layer.containingComp;
+	as_compDeselectAll(comp);
+	layer.selected = true;
+}
+
+function as_compSetDuration(comp, duration) {
+	var isExtend = duration > comp.duration;
+	var layersLocked = [];
+	var timeLastFrame = comp.duration - comp.frameDuration;
+	comp.duration = duration;
+	for (var i = 1, layer; i <= comp.numLayers; i++) {
+		layer = comp.layer(i);
+		if (layer.locked) {
+			layer.locked = false;
+			layersLocked.push(layer);
+		}
+	}
+	if (isExtend) {
+		for (var i = 1, layer; i <= comp.numLayers; i++) {
+			layer = comp.layer(i);
+			if (layer.source instanceof CompItem) {
+				var durationMin = duration - layer.startTime;
+				if (layer.source.duration < durationMin) {
+					as_compSetDuration(layer.source, durationMin);
+				}
+			}
+			if (layer.outPoint >= timeLastFrame) {
+				layer.outPoint = duration;
+			}
+		}
+	}
+	for (var i = 0; i < layersLocked.length; i++) {
+		layersLocked[i].locked = true;
+	}
+}
+
+
+function as_compSetSize(comp, width, height) {
+	if (isNaN(width)) {
+		alert("Invalid width!");
+		return false;
+	}
+	if (isNaN(height)) {
+		alert("Invalid height!");
+		return false;
+	}
+	if ((comp.width != width) || (comp.height != height)) {
+		var widthDiff = width - comp.width;
+		var heightDiff = height - comp.height;
+		comp.width = width;
+		comp.height = height;
+		for (var l = 1, layer, len = comp.numLayers; l <= len; l++) {
+			layer = comp.layer(l);
+			if (!layer.parent) {
+				moveLayerProp(layer("ADBE Transform Group")("ADBE Position"), [widthDiff, heightDiff], comp.time);
+				if (layer instanceof CameraLayer) {
+					moveLayerProp(layer("ADBE Transform Group")("ADBE Anchor Point"), [widthDiff, heightDiff], comp.time);
+				}
+			}
+		}
+	}
+	function moveLayerProp(prop, diff, compTime) {
+		try {
+			if (prop.numKeys > 0) {
+				for (var k = 1, t, p; k <= prop.numKeys; k++) {
+					t = prop.keyTime(k);
+					p = prop.valueAtTime(t, true) + diff * 0.5;
+					prop.setValueAtTime(t, p);
+				}
+			} else {
+				prop.setValue(prop.valueAtTime(compTime, true) + diff * 0.5);
+			}
+		} catch (err) {
+			if (err.message.indexOf("hidden") == -1) {
+			}
+		}
+	}
+	return true;
+}
+
+
+function as_compSingleFont(comp, fontName) {
+    var filterLayerTypes = [LayerType.TEXT];
+    var results = as_loopLayers(comp, handleLayer, [fontName], undefined, filterLayerTypes)
+    return results.length;
+    function handleLayer(layer, fontName) {
+        var changed = false;
+        var propText = layer("ADBE Text Properties")("ADBE Text Document");
+        var textDoc;
+        if(propText.numKeys > 0) {
+            for (var k = 1; k <= propText.numKeys; k++) {
+                textDoc = propText.keyValue(k);
+                if(textDoc.font != fontName) {
+                    textDoc.font = fontName;
+                    propText.setValueAtKey(k, textDoc);
+                    changed = true;
+                }
+            }
+        } else {
+            textDoc = propText.value;
+            if(textDoc.font != fontName) {
+                textDoc.font = fontName;
+                propText.setValue(textDoc);
+                changed = true;
+            }
+        }
+    }
+   
+    if(changed) {
+        return 1;
+    }
+}
+
+function as_compTrueDuplicate(comp) {
+	return duplicateComp(comp, {});
+	function duplicateComp(comp, compsCollector) {
+		var compDuplicated = comp.duplicate();
+		compsCollector[comp.id] = compDuplicated;
+		duplicatePrecomps(compDuplicated, compsCollector);
+		return compDuplicated;
+	}
+	function duplicatePrecomps(comp, compsCollector) {
+		for (var i = 1, layer; i <= comp.numLayers; i++) {
+			layer = comp.layer(i);
+			if (layer.source instanceof CompItem) {
+				var sourceDuplicated;
+				if (compsCollector[layer.source.id]) {
+					sourceDuplicated = compsCollector[layer.source.id];
+				}
+				else {
+					sourceDuplicated = duplicateComp(layer.source, compsCollector);
+				}
+				layer.replaceSource(sourceDuplicated, true);
+			}
+		}
+	}
+}
+
+
+function as_effectAdd(layer, matchName, effectName, value01, enabled) {
+	var effect = layer("ADBE Effect Parade").addProperty(matchName);
+	effect.name = effectName;
+	if (value01 !== undefined) {
+		effect(1).setValue(value01);
+	}
+	if (enabled !== undefined) {
+		effect.enabled = enabled;
+	}
+	return effect;
+}
+
+
+function as_effectCopyProps(effectFrom, effectTo) {
+	var errs = [];
+	var err = "";
+	for (var i = 1, len = Math.min(effectFrom.numProperties, effectTo.numProperties); i <= len; i++) {
+		err = as_propCopy(effectFrom(i), effectTo(i));
+		if (err.length > 0) {
+			errs[errs.length] = err;
+		}
+	}
+	return errs;
+}
+
+
+function as_effectIsControl(effect) {
+	if ((effect == null) || !isValid(effect)) {
+		return null;
+	}
+	if (!effect.isEffect) {
+		return false;
+	}
+	if (("ADBE Slider Control, ADBE Point Control, ADBE Angle Control, ADBE Checkbox Control, ADBE Layer Control, ADBE Point3D Control, ADBE Color Control").indexOf(effect.matchName) >= 0) {
+		return true;
+	}
+	return false;
+}
+
+
+function as_elementRename(element, nameOld, nameNew) {
+	element.name = nameNew;
+	app.project.autoFixExpressions(nameOld, nameNew);
+}
+
+
+function as_findItem(itemName, itemType, folder, intoSubfolders) {
+	itemType = (itemType || ItemTypeName.COMPOSITION);
+	folder = (folder || app.project.rootFolder);
+	for (var item, i = 1, len = folder.numItems; i <= len; i++) {
+		item = folder.item(i);
+		if ((item.name == itemName) && (as_itemGetType(item) == itemType)) {
+			return item;
+		}
+		if ((item instanceof FolderItem) && intoSubfolders) {
+			item = as_findItem(itemName, itemType, item, true);
+			if (item !== null) {
+				return item;
+			}
+		}
+	}
+	return null;
+}
+
+
+function as_findLayer(comp, layerName, layerType) {
+   
+    for (var l = 1, layer, len = comp.numLayers; l <= len; l++) {
+        layer = comp.layer(l);
+		if((layer.name == layerName) && ((filterLayerTypes === undefined) || (as_layerGetType(layer) == layerType))) {
+			return layer;
+		}
+    }
+   
+    return null;
+}
+
+
+function as_getSelectedProps(compOrLayer) {
+	if (compOrLayer == null) {
+		return null;
+	}
+	var selection = compOrLayer.selectedProperties;
+	if (selection.length <= 1) {
+		return selection;
+	} else {
+		var list = [];
+		var paths = [];
+		for (var i = (selection.length - 1), prop, propPath, skip; i >= 0; i--) {
+			prop = selection[i];
+			propPath = as_propGetPath(prop).join("/");
+			if (prop.propertyType === PropertyType.PROPERTY) {
+				list.unshift(prop);
+				paths.push(propPath);
+			} else {
+				skip = false;
+				for (var j = 0; j < paths.length; j++) {
+					if (paths[j].indexOf(propPath) == 0) {
+						skip = true;
+						break;
+					}
+				}
+				if (skip) {
+					continue;
+				} else {
+					list.unshift(prop);
+				}
+			}
+		}
+		return list;
+	}
+}
+
+function as_itemGetPath(item) {
+	var folder = item.parentFolder;
+	var itemPath = "";
+	while (folder != app.project.rootFolder) {
+		if (itemPath == "") {
+			itemPath = folder.name;
+		} else {
+			itemPath = folder.name + "/" + itemPath;
+		}
+		folder = folder.parentFolder;
+	}
+	return itemPath;
+}
+
+
+function as_itemGetType(item) {
+	if (item instanceof CompItem) {
+		return ItemTypeName.COMPOSITION;
+	}
+	if (item instanceof FootageItem) {
+		return ItemTypeName.FOOTAGE;
+	}
+	if (item instanceof FolderItem) {
+		return ItemTypeName.FOLDER;
+	}
+	return null;
+}
+
+function as_itemGetUniqueName(item, itemName, folder, startIndex, suffixLen, itemType, intoSubfolders, separator) {
+	startIndex = startIndex || 1;
+	suffixLen = suffixLen || 2;
+	itemType = (itemType || ItemTypeName.COMPOSITION);
+	separator = separator || " ";
+	var i = startIndex,
+		exist = true,
+		newName,
+		foundItem;
+	while (exist) {
+		if (!newName) {
+			newName = itemName;
+		} else {
+			suffixLen = Math.max(suffixLen, i.toString().length);
+			newName = (itemName + separator + ("00000000" + i).slice(-suffixLen));
+			i++;
+		}
+		foundItem = as_findItem(newName, itemType, folder, intoSubfolders);
+		exist = (foundItem != null) && ((item == undefined) || (foundItem != item));
+	}
+	return newName;
+}
+
+
+function as_itemReplaceWithSolid(item, color) {
+	if(color === undefined) {
+		color = [53 / 255, 59 / 255, 70 / 255];
+	}
+	if ((item instanceof FootageItem) ) {
+		var n = item.name;
+		item.replaceWithSolid(color, "temp", item.width, item.height, item.pixelAspect);
+		item.name = n;
+		return true;
+	}
+	return false;
+}
+
+
+function as_itemsToComps(items) {
+	var comps = [];
+	var width = 1920, height = 1080, pixelAspect = 1, duration = 1, frameRate = 30;
+	for (var i = 0, item, comp; i < items.length; i++) {
+		item = items[i];
+		if (item instanceof FootageItem) {
+			comp = app.project.items.addComp(item.name, item.width, item.height, item.pixelAspect, (item.duration == 0) ? duration : item.duration, frameRate);
+		} else {
+			comp = app.project.items.addComp(item.name, width, height, pixelAspect, duration, frameRate);
+		}
+		comp.layers.add(item);
+		comps.push(comp);
+	}
+	return comps;
+}
+
+function as_itemsToProjects(items, dirTarget) {
+	if(app.project && app.project.file) {
+		if(items.length > 0) {
+			if(!dirTarget) {
+				dirTarget = Folder(app.project.file.path);
+			}
+			var fileMain = File(app.project.file.fsName);
+			var ids = [];
+			for (var i = 0; i < items.length; i++) {
+				ids.push(items[i].id);
+			}
+			app.project.save();
+			for (var i = 0, item; i < ids.length; i++) {
+				item = app.project.itemByID(ids[i]);
+				app.project.reduceProject([item]);
+				var fileNew = File(dirTarget.fsName + "/" + item.name + ".aep");
+				app.project.save(fileNew);
+				app.project.close(CloseOptions.DO_NOT_SAVE_CHANGES);
+				app.open(fileMain);
+			}
+		} else {
+			alert("Open the project!")
+		}
+	} else {
+		alert("Open the project!");
+	}
+}
+
+
+function as_layerGetParentsDepth(layer) {
+	var depth = 0;
+	var layerParent = layer.parent;
+	while (layerParent) {
+		depth++;
+		layerParent = layerParent.parent;
+	}
+	return depth;
+}
+
+
+function as_layerGetRealScale(layer, preExpression) {
+	var t = layer.containingComp.time;
+	var s = layer("ADBE Transform Group")("ADBE Scale").valueAtTime(t, preExpression);
+	var scaleX = s[0];
+	var scaleY = s[1];
+	var scaleZ = s[2] || 100;
+	var layerParent = layer.parent;
+	while (layerParent) {
+		s = layerParent("ADBE Transform Group")("ADBE Scale").valueAtTime(t, preExpression);
+		scaleX = scaleX * s[0] * 0.01;
+		scaleY = scaleY * s[1] * 0.01;
+		scaleZ = scaleZ * (s[2] || 100) * 0.01;
+		layerParent = layerParent.parent;
+	}
+	return [scaleX, scaleY, scaleZ];
+}
+
+
+function as_layerGetType(layer) {
+    if (layer instanceof TextLayer) {
+        return LayerType.TEXT;
+    }
+    
+    if (layer instanceof LightLayer) {
+        return LayerType.LIGHT;
+    }
+    if (layer instanceof CameraLayer) {
+        return LayerType.CAMERA;
+    }
+    if (layer instanceof ShapeLayer) {
+        return LayerType.SHAPE;
+    }
+    if (layer.source instanceof CompItem) {
+        return LayerType.PRECOMP;
+    }
+    if (layer.source instanceof FootageItem) {
+        if (layer.source.mainSource instanceof SolidSource) {
+            return LayerType.SOLID;
+        }
+        if (!layer.hasVideo) {
+            return LayerType.AUDIO;
+        }
+        return LayerType.FOOTAGE;
+    }
+    return null;
+}
+
+function as_layerSetState(layer, enabled, shy, guideLayer, locked, label) {
+	locked = (locked !== undefined) ? locked : layer.locked;
+	layer.locked = false;
+	if (enabled !== undefined) {
+		layer.enabled = enabled;
+	}
+	if (shy !== undefined) {
+		layer.shy = shy;
+	}
+	if (guideLayer !== undefined) {
+		layer.guideLayer = guideLayer;
+	}
+	if (label !== undefined) {
+		layer.label = label;
+	}
+	layer.locked = locked;
+}
+
+
+function as_layersBlurSet(comp, isOn) {
+    
+   
+    function handleLayer(layer) {
+        if (layer.nullLayer || (layer instanceof CameraLayer) || (layer instanceof LightLayer)) {
+            return;
+        }
+        layer.motionBlur = isOn;
+    }
+   
+    as_loopLayers(comp, handleLayer);
+}
+
+function as_loopItems(folder, intoSubfolders, func, args, filterItemsNames, filterItemsTypes) {
+    
+   
+    if(args === undefined) {
+        args = [];
+    }
+	var results = [],
+		item,
+		nameMatch,
+		typeMatch,
+		result;
+   
+    for (var i = 1; i <= folder.numItems; i++) {
+        item = folder.item(i);
+       
+        nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
+		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
+        
+       
+        if(nameMatch && typeMatch) {
+            result = func.apply(undefined, [item].concat(args));
+            if(result !== undefined) {
+                results.push(result);
+            }
+        }
+       
+        if((item instanceof FolderItem) && intoSubfolders) {
+            results = results.concat(as_loopItems(item, intoSubfolders, func, args, filterItemsNames, filterItemsTypes));
+        }
+    }
+    return results;
+}
+
+function as_loopItemsSelection(func, args, filterItemsNames, filterItemsTypes) {
+	if (args === undefined) {
+		args = [];
+	}
+	var results = [],
+		item,
+		nameMatch,
+		typeMatch,
+		result;
+   
+    for (var i = 0; i < app.project.selection.length; i++) {
+        item = app.project.selection[i];
+       
+        nameMatch = (filterItemsNames === undefined) || (filterItemsNames.length == 0) || (as_arrayCheckValue(item.name, filterItemsNames) >= 0);
+		typeMatch = (filterItemsTypes === undefined) || (filterItemsTypes.length == 0) || (as_arrayCheckValue(as_itemGetType(item), filterItemsTypes) >= 0);
+        
+       
+        if(nameMatch && typeMatch) {
+            result = func.apply(undefined, [item].concat(args));
+            if(result !== undefined) {
+                results.push(result);
+            }
+        }
+    }
+    return results;
+}
+
+function as_loopLayers(comp, func, args, filterLayerNames, filterLayerTypes) {
+   
+    if(args === undefined) {
+        args = [];
+    }
+   
+    var results = [];
+   
+    for (var l = 1, layer; l <= comp.numLayers; l++) {
+        layer = comp.layer(l);
+       
+        var nameMatch = (filterLayerNames === undefined) || (filterLayerNames.length == 0) || (as_arrayCheckValue(layer.name, filterLayerNames) >= 0);
+        var typeMatch = (filterLayerTypes === undefined) || (filterLayerTypes.length == 0) || (as_arrayCheckValue(as_layerGetType(layer), filterLayerTypes) >= 0);
+        
+       
+        if(nameMatch && typeMatch) {
+            var result = func.apply(undefined, [layer].concat(args));
+            if(result !== undefined) {
+                results.push(result);
+            }
+        }
+    }
+   
+    return results;
+}
+
+ 
+function as_loopProps(propGroup, func, args, filterMatchNames) {
+	if(args === undefined) {
+    	args = [];
+	}
+	var results = [];
+	if (propGroup.propertyType === PropertyType.PROPERTY) {
+		if((filterMatchNames !== undefined) && (filterMatchNames.length > 0) && (as_arrayCheckValue(propGroup.matchName, filterMatchNames) == -1)) {
+            return results;
+		}
+		var result = func.apply(undefined, [propGroup].concat(args));
+		if(result !== undefined) {
+			results.push(result);
+		}
+	} else  {
+		for (var p = 1, prop; p <= propGroup.numProperties; p++) {
+			prop = propGroup.property(p);
+			results = results.concat(as_loopProps(prop, func, args));
+		}
+	}
+	return results;
+}
+
+
+function as_projectFontsList() {
+   
+    var arrFonts = [];
+   
+    as_loopItems(app.project.rootFolder, true, handleComp, [arrFonts], undefined, [ItemTypeName.COMPOSITION]);
+   
+    function handleComp(comp, arrFonts) {
+        return as_loopLayers(comp, handleLayer, [arrFonts], undefined, [LayerType.TEXT]);
+    }
+   
+    function handleLayer(layer, arrFonts) {
+        var propText = layer("ADBE Text Properties")("ADBE Text Document");
+        if(propText.numKeys > 0) {
+            for (var k = 1; k <= propText.numKeys; k++) {
+                arrFonts.push(propText.keyValue(k).font);
+            }
+        } else {
+            arrFonts.push(propText.value.font);
+        }
+        return arrFonts;
+    }
+    return as_arrayMakeUnique(arrFonts);
+}
+
+function as_projectSelectItem(item) {
+	while (app.project.selection.length > 0) {
+		app.project.selection[0].selected = false;
+	}
+	item.selected = true;
+}
+
+
+function as_projectSelectItems(items) {
+	while (app.project.selection.length > 0) {
+		app.project.selection[0].selected = false;
+	}
+	for (var i = 0; i < items.length; i++) {
+		items[i].selected = true;
+	}
+}
+
+
+function as_projectSelectionList() {
+   
+    function handleItem(item) {
+        return item.name;
+    }
+   
+    return as_loopItemsSelection(handleItem);
+}
+
+function as_projectSingleNull() {
+   
+    var nullMaster = as_findItem("Null", ItemTypeName.FOOTAGE, app.project.rootFolder, true);
+    if(!nullMaster) {
+        var compTemp = app.project.items.addComp("temp", 100, 100, 1, 1, 30);
+		var layerNull = compTemp.layers.addNull();
+        nullMaster = layerNull.source;
+        nullMaster.name = "Null";
+        compTemp.remove();
+    }
+   
+    as_loopItems(app.project.rootFolder, true, handleComp, [nullMaster], undefined, [ItemTypeName.COMPOSITION]);
+   
+    function handleComp(comp, nullMaster) {
+        as_loopLayers(comp, handleLayer, [nullMaster], undefined, [LayerType.SOLID]);
+    }
+   
+    function handleLayer(layer, nullMaster) {
+        if (layer.nullLayer && (layer.source != nullMaster)) {
+            var sourceOld = layer.source;
+            layer.replaceSource(nullMaster, false);
+           
+            if(sourceOld.usedIn == 0) {
+                sourceOld.remove();
+            }
+        }
+    }
+}
+
+function as_propByPath(comp, path) {
+    if (!(comp instanceof CompItem)) {
+        return null;
+	}
+	if (!(path instanceof Array)) {
+        throw "An array is expected."
+    }
+    if (path.length == 0) {
+        return null;
+    }
+   
+    var prop = comp.layer(path[0]);
+   
+	for (var i = 1, len = path.length; i < len; i++) {
+        if(!prop) {
+            return null;
+        }
+        prop = prop(path[i]);
+    }
+	return prop;
+}
+
+function as_propCopy(propOriginal, propTarget) {
+	var err = "";
+    
+	if ((propOriginal.propertyType === PropertyType.PROPERTY) && (propOriginal.propertyValueType !== PropertyValueType.NO_VALUE)) {
+		if ((propTarget.propertyType === PropertyType.PROPERTY) && (propTarget.propertyValueType !== PropertyValueType.NO_VALUE)) {
+			if (propOriginal.propertyValueType === propTarget.propertyValueType) {
+				if (propTarget.canSetExpression) {
+					propTarget.expression = "";
+				}
+				while (propTarget.numKeys > 0) {
+					propTarget.removeKey(1);
+				}
+				if (propOriginal.numKeys > 0) {
+					for (var k = 1; k <= propOriginal.numKeys; k++) {
+						propTarget.setValueAtTime(propOriginal.keyTime(k), propOriginal.keyValue(k));
+						propTarget.setTemporalContinuousAtKey(k, propOriginal.keyTemporalContinuous(k));
+						propTarget.setTemporalAutoBezierAtKey(k, propOriginal.keyTemporalAutoBezier(k));
+						propTarget.setTemporalEaseAtKey(k, propOriginal.keyInTemporalEase(k), propOriginal.keyOutTemporalEase(k));
+						propTarget.setInterpolationTypeAtKey(k, propOriginal.keyInInterpolationType(k), propOriginal.keyOutInterpolationType(k));
+						if (propOriginal.isSpatial) {
+							if ((propOriginal.propertyValueType == PropertyValueType.TwoD_SPATIAL) || (propOriginal.propertyValueType == PropertyValueType.ThreeD_SPATIAL)) {
+								propTarget.setSpatialContinuousAtKey(k, propOriginal.keySpatialContinuous(k));
+								propTarget.setSpatialAutoBezierAtKey(k, propOriginal.keySpatialAutoBezier(k));
+								propTarget.setSpatialTangentsAtKey(k, propOriginal.keyInSpatialTangent(k), propOriginal.keyOutSpatialTangent(k));
+							}
+						}
+					}
+					if (propOriginal.isSpatial) {
+						if ((propOriginal.propertyValueType == PropertyValueType.TwoD_SPATIAL) || (propOriginal.propertyValueType == PropertyValueType.ThreeD_SPATIAL)) {
+							for (var k = 1; k <= propOriginal.numKeys; k++) {
+								propTarget.setRovingAtKey(k, propOriginal.keyRoving(k));
+							}
+						}
+					}
+				} else {
+					propTarget.setValue(propOriginal.valueAtTime(0, true));
+				}
+				if (propOriginal.expressionEnabled) {
+					if (propTarget.canSetExpression) {
+						err = propTarget.expression = propOriginal.expression;
+					} else {
+						err = "Cant't set expression to property \"" + propTarget.name + "\"!";
+					}
+				}
+			} else {
+				err = "PropertyValueType's do not match!";
+			}
+		} else {
+			err = "Property \"" + propTarget.name + "\" is not valid property!";
+		}
+	} else {
+		err = "Property \"" + propOriginal.name + "\" is not valid property!";
+	}
+	return err;
+}
+
+
+function as_propGetContainingComp(prop) {
+	if (!isValid(prop)) {
+		return null;
+	}
+	if (!prop) {
+		return null;
+	}
+	var layer;
+	while (prop) {
+		if (as_propIsLayer(prop)) {
+			layer = prop;
+			break;
+		}
+		prop = prop.parentProperty;
+	}
+	if (layer) {
+		return layer.containingComp;
+	} else {
+		return null;
+	}
+}
+
+
+function as_propGetContainingLayer(prop) {
+	if (!isValid(prop)) {
+		return null;
+	}
+	if (!prop) {
+		return null;
+	}
+	var layer;
+	var propOriginal = prop;
+	while (prop) {
+		if (as_propIsLayer(prop)) {
+			layer = prop;
+			break;
+		}
+		if (isValid(prop.parentProperty)) {
+			prop = prop.parentProperty;
+		} else {
+			return null;
+		}
+	}
+	if (layer && (propOriginal.matchName == "ADBE Marker") && (layer.containingComp.markerProperty == propOriginal)) {
+		return null;
+	}
+	return layer;
+}
+
+
+function as_propGetExprData(prop) {
+	if (prop == null) {
+		return null;
+	} else if (prop.expression.indexOf("value;/" + "/") == -1) {
+		return null;
+	} else {
+		try {
+			var str = prop.expression.split("value;/" + "/")[1];
+			if (str == "") {
+				return null;
+			}
+			return eval(str);
+		} catch (error) {
+			return null;
+		}
+	}
+}
+
+function as_propGetPath(prop, pseudoEffectMatchName) {
+	var path = [];
+	while (prop.parentProperty !== null) {
+		if (prop.parentProperty.propertyType === PropertyType.INDEXED_GROUP) {
+			path.unshift(prop.name);
+		} else if (prop.parentProperty.propertyType === PropertyType.NAMED_GROUP) {
+			if ((prop.matchName.indexOf("Pseudo/") == 0) && !pseudoEffectMatchName) {
+				path.unshift(prop.name);
+			} else {
+				path.unshift(prop.matchName);
+			}
+		} else {
+			path.unshift(prop.matchName);
+		}
+		prop = prop.parentProperty;
+	}
+	path.unshift(prop.name);
+	return path;
+}
+
+function as_propGetPathIndexes(prop) {
+	var path = [];
+	while (prop) {
+		if (as_propIsLayer(prop)) {
+			path.unshift(prop.index);
+		} else {
+			path.unshift(prop.propertyIndex);
+		}
+		prop = prop.parentProperty;
+	}
+	return path;
+}
+
+function as_propGetValueTime(prop, valueToFind, timeStart, timeEnd, preExpression, valueThreshold, timeThreshold) {
+	valueThreshold = (valueThreshold === undefined) ? 0.025 : valueThreshold;
+	timeThreshold = (timeThreshold === undefined) ? 0.00000001 : timeThreshold;
+	var stack = 0;
+	var stackLimit = 200;
+	if (timeStart > timeEnd) {
+		return null;
+	}
+	if (Math.abs(timeStart - timeEnd) <= timeThreshold) {
+		var t = timeStart + (timeEnd - timeStart) * 0.5;
+		var v = prop.valueAtTime(t, preExpression);
+		var diff = Math.abs(v2 - v1);
+		if (diff > valueThreshold) {
+			return null;
+		}
+	}
+	var v1 = prop.valueAtTime(timeStart + 0.00005, preExpression);
+	var v2 = prop.valueAtTime(timeEnd - 0.00005, preExpression);
+	if (Math.abs(v1 - valueToFind) <= valueThreshold) {
+		alert("as_propGetValueTime -->> Return timeStart!");
+		return timeStart + 0.00005;
+	}
+	if (Math.abs(v2 - valueToFind) <= valueThreshold) {
+		alert("as_propGetValueTime -->> Return timeEnd!");
+		return timeEnd - 0.00005;
+	}
+	var dir = v2 > v1 ? 1 : -1;
+	var t, v, diff = Math.abs(v2 - v1);
+	var tStart = timeStart, tEnd = timeEnd;
+	while (diff > valueThreshold) {
+		t = tStart + (tEnd - tStart) * 0.5;
+		v = prop.valueAtTime(t, preExpression);
+		if (v > valueToFind) {
+			if (dir == 1) {
+				tEnd = t;
+			}
+			else {
+				tStart = t;
+			}
+		}
+		else {
+			if (dir == 1) {
+				tStart = t;
+			}
+			else {
+				tEnd = t;
+			}
+		}
+		diff = Math.abs(v - valueToFind);
+        
+		stack++;
+		if (stack > stackLimit) {
+			return null;
+		}
+	}
+	return t;
+}
+
+
+function as_propIsEffect(prop) {
+	if(!isValid(prop) || !prop) {
+		return false;
+	}
+	return (prop.parentProperty && (prop.parentProperty.matchName == "ADBE Effect Parade"));
+}
+
+function as_propIsEffectChild(prop) {
+	if (!isValid(prop) || !prop) {
+		return false;
+	}
+	if (as_propIsEffect(prop)) {
+		return true;
+	}
+	while (prop.parentProperty) {
+		if (prop.parentProperty.matchName == "ADBE Effect Parade") {
+			return prop;
+		}
+		prop = prop.parentProperty;
+	}
+	return false;
+}
+
+
+function as_propIsLayer(prop) {
+	if(!isValid(prop)) {
+		return false;
+	}
+	if(!prop) {
+		return false;
+	}
+	if ((prop instanceof AVLayer) || (prop instanceof CameraLayer) || (prop instanceof LightLayer) || (prop instanceof TextLayer) || (prop instanceof ShapeLayer)) {
+		return true;
+	}
+	return false;
+}
+
+function as_propIsSimpleType(prop) {
+	if (prop.propertyType == PropertyType.PROPERTY) {
+		if (!prop.elided) {
+			if ((prop.matchName != "ADBE Position_0") && (prop.matchName != "ADBE Position_1") && (prop.matchName != "ADBE Position_2")) {
+				var validTypes = [];
+				validTypes.push(PropertyValueType.ThreeD);
+				validTypes.push(PropertyValueType.ThreeD_SPATIAL);
+				validTypes.push(PropertyValueType.TwoD);
+				validTypes.push(PropertyValueType.TwoD_SPATIAL);
+				validTypes.push(PropertyValueType.OneD);
+				validTypes.push(PropertyValueType.COLOR);
+				validTypes.push(PropertyValueType.TEXT_DOCUMENT);
+				var valueType = prop.propertyValueType;
+				for (var i = 0; i < validTypes.length; i++) {
+					if (valueType == validTypes[i]) {
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+}
+
+
+function as_propSetExprData(prop, value) {
+	if ((prop == null) || (value === undefined)) {
+		return false;
+	} else {
+		prop.expression = "value;/" + "/" + JSON.stringify(value);
+		return true;
+	}
+}
+
+function as_textCheckAutoLeading(leading, fontSize) {
+	var threshold = 0.1;
+	return Math.abs(fontSize * 1.2 - leading) <= threshold;
+}
+
+
+function as_textSetProperties(textProp, textDocProps, time) {
+	var textDoc = textProp.value;
+	if (textDocProps[TextDocProperty.FONT] !== undefined) {
+		textDoc.font = textDocProps[TextDocProperty.FONT];
+	} else if (textDocProps[TextDocProperty.JUSTIFICATION] !== undefined) {
+		textDoc.justification = textDocProps[TextDocProperty.JUSTIFICATION];
+	} else if (textDocProps[TextDocProperty.FONT_SIZE] !== undefined) {
+		textDoc.fontSize = textDocProps[TextDocProperty.FONT_SIZE];
+	} else if (textDocProps[TextDocProperty.TRACKING] !== undefined) {
+		textDoc.tracking = textDocProps[TextDocProperty.TRACKING];
+	} else if (textDocProps[TextDocProperty.COLOR] !== undefined) {
+		textDoc.fillColor = textDocProps[TextDocProperty.COLOR];
+	} else if (textDocProps[TextDocProperty.TEXT] !== undefined) {
+		textDoc.text = textDocProps[TextDocProperty.TEXT];
+	}
+	if (textProp.numKeys > 0) {
+		textProp.setValueAtTime(time, textDoc);
+	} else {
+		textProp.setValue(textDoc);
+	}
+}
+
+
+function as_createEmptyShape() {
+	var shape = new Shape();
+	shape.vertices = [[0, 0]];
+	shape.inTangents = [[0, 0]];
+	shape.outTangents = [[0, 0]];
+	shape.closed = false;
+	return shape;
+}
+
+
+function as_shapeScale(shape, scale) {
+	var vectricesNew = [];
+	var inTangentsNew = [];
+	var outTangentsNew = [];
+	for (var v = 0; v < shape.vertices.length; v++) {
+		vectricesNew.push(shape.vertices[v] * scale);
+	}
+	for (var v = 0; v < shape.inTangents.length; v++) {
+		inTangentsNew.push(shape.inTangents[v] * scale);
+	}
+	for (var v = 0; v < shape.outTangents.length; v++) {
+		outTangentsNew.push(shape.outTangents[v] * scale);
+	}
+	var shapeNew = new Shape();
+	shapeNew.vertices = vectricesNew;
+	shapeNew.inTangents = inTangentsNew;
+	shapeNew.outTangents = outTangentsNew;
+	shapeNew.closed = shape.closed;
+	return shapeNew;
+}
+
+
+function as_shapeToSpatial(comp, propSource, propTarget) {
+	if ((propSource.matchName !== "ADBE Vector Shape") && (propSource.matchName !== "ADBE Mask Shape")) {
+		throw new Error("Property type mismatch! propSource.matchName: " + propSource.matchName);
+	}
+	if ((propTarget.propertyValueType !== PropertyValueType.TwoD_SPATIAL) && (propTarget.propertyValueType !== PropertyValueType.ThreeD_SPATIAL)) {
+		throw new Error("Property type mismatch! propTarget.propertyValueType: " + propTarget.propertyValueType);
+	}
+	comp.openInViewer();
+	as_compDeselectAll(comp);
+	propSource.selected = true;
+	app.executeCommand(19);
+	as_compDeselectAll(comp);
+	propTarget.selected = true;
+	app.executeCommand(20);
+	if (propTarget.numKeys == 0) {
+		alert("as_shapeToSpatial: " + "Something went wrong! > propTarget.numKeys = 0");
+		return false;
+	} else {
+		return true;
+	}
+}
+
+
+function as_shapeTranslate(shape, delta) {
+	var verticesNew = [];
+	for (var v = 0; v < shape.vertices.length; v++) {
+		verticesNew.push(shape.vertices[v] + delta);
+	}
+	var shapeNew = new Shape();
+	shapeNew.vertices = verticesNew;
+	shapeNew.inTangents = shape.inTangents;
+	shapeNew.outTangents = shape.outTangents;
+	shapeNew.closed = shape.closed;
+	return shapeNew;
+}
+
+
+function as_uiCreateFromData(windowObj, dataUI, dataImages, dirImages, rewriteFiles, shortLinks) {
+	try {
+		var uiElement,
+			dataElement,
+			parentContainer,
+			fileName,
+			elementsMap = {};
+		for (var elementName in dataUI) {
+			if (dataUI.hasOwnProperty(elementName)) {
+				dataElement = dataUI[elementName];
+				if (dataElement.parent === undefined) {
+					parentContainer = windowObj;
+				} else if (elementsMap[dataElement.parent]) {
+					parentContainer = elementsMap[dataElement.parent];
+				} else {
+					parentContainer = as_uiFindElement(windowObj, dataElement.parent);
+				}
+				if (!parentContainer) {
+					alert(arguments.callee.name + " --> " + "Container " + dataElement.parent + " not found!" + "\nElement: " + elementName);
+					continue;
+				}
+				switch (dataElement.type) {
+					case "image":
+						uiElement = parentContainer.add("image", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "button":
+						uiElement = parentContainer.add("button", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "iconbutton":
+						uiElement = parentContainer.add("iconbutton", dataElement.bounds, undefined, {
+							name: (elementName),
+							style: (dataElement.style || "toolbutton")
+						});
+						break;
+					case "custombutton":
+						uiElement = parentContainer.add("custombutton", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						parentContainer[elementName] = uiElement;
+						break;
+					case "statictext":
+						uiElement = parentContainer.add("statictext", dataElement.bounds, undefined, {
+							name: (elementName),
+							multiline: (dataElement.multiline || false),
+							justify: (dataElement.justify || "left")
+						});
+						if (dataElement.justify !== undefined) {
+							uiElement.justify = dataElement.justify;
+						}
+						break;
+					case "edittext":
+						uiElement = parentContainer.add("edittext", dataElement.bounds, undefined, {
+							name: (elementName),
+							multiline: (dataElement.multiline || false),
+							readonly: (dataElement.readonly || false),
+							justify: (dataElement.justify || "left")
+						});
+						if (dataElement.justify !== undefined) {
+							uiElement.justify = dataElement.justify;
+						}
+						break;
+					case "group":
+						uiElement = parentContainer.add("group", dataElement.bounds, {
+							name: (elementName)
+						});
+						break;
+					case "dropdownlist":
+						uiElement = parentContainer.add("dropdownlist", dataElement.bounds, dataElement.items, { name: (elementName) });
+						uiElement.selection = 0;
+						break;
+					case "scrollbar":
+						uiElement = parentContainer.add("scrollbar", dataElement.bounds, undefined, undefined, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "progressbar":
+						uiElement = parentContainer.add("progressbar", dataElement.bounds, undefined, undefined, { name: (elementName) });
+						break;
+					case "listbox":
+						uiElement = parentContainer.add("listbox", dataElement.bounds, undefined, {
+							name: (elementName),
+							multiselect: (dataElement.multiselect),
+							numberOfColumns: (dataElement.numberOfColumns),
+							showHeaders: (dataElement.showHeaders),
+							columnTitles: (dataElement.columnTitles),
+							columnWidths: (dataElement.columnWidths)
+						});
+						break;
+					case "checkbox":
+						uiElement = parentContainer.add("checkbox", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "tabbedpanel":
+						uiElement = parentContainer.add("tabbedpanel", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "panel":
+						uiElement = parentContainer.add("panel", dataElement.bounds, undefined, {
+							name: (elementName),
+							borderStyle: (dataElement.borderStyle || "etched")
+						});
+						break;
+					case "tab":
+						uiElement = parentContainer.add("tab", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					case "radiobutton":
+						uiElement = parentContainer.add("radiobutton", dataElement.bounds, undefined, {
+							name: (elementName)
+						});
+						break;
+					default:
+						alert(arguments.callee.name + " --> " + "unaccounted type:" + dataElement.type + ", elementName:" + elementName);
+						break;
+				}
+				if(dataImages && dirImages) {
+					var imagesMap = {};
+					if (dataElement.icon !== undefined) {
+						fileName = dataElement.icon;
+						if (imagesMap[fileName] === undefined) {
+							imagesMap[fileName] = as_uiImageFromBinary(dataImages[dataElement.icon], fileName, dirImages, rewriteFiles);
+						}
+					}
+				}
+				var skipProps = ["name", "type", "bounds", "style", "multiline", "justify", "readonly", "items", "columnWidths", "columnTitles", "showHeaders", "numberOfColumns", "borderStyle"];
+				for (var propName in dataElement) {
+					if(dataElement.hasOwnProperty(propName)) {
+						if (as_arrayCheckValue(propName, skipProps) < 0) {
+							var propValue = dataElement[propName];
+							if(propName == "icon") {
+								if(imagesMap && imagesMap[propValue]) {
+									uiElement[propName] = imagesMap[propValue];
+								}
+							} else {
+								uiElement[propName] = propValue;
+							}
+						}
+					}
+				}
+				if (shortLinks) {
+					if (parentContainer != windowObj) {
+						if (windowObj[elementName] !== undefined) {
+							alert(arguments.callee.name + " --> " + "Can't set window property \"" + as_toString(elementName) + "\". This key already used!");
+						} else {
+							windowObj[elementName] = uiElement;
+						}
+					}
+				}
+			}
+			elementsMap[elementName] = uiElement;
+		}
+	} catch (err) {
+		alert(propValue);
+		alert(arguments.callee.name + " --> " + err.name + " at line " + err.line + " : " + err.message);
+	}
+}
+
+
+function as_uiExtendElement(element, stateName, stateData) {
+   
+    var inited = (element.statesMap != null);
+    if (!inited) {
+		element.statesMap = {};
+        element.setState = function(stateName) {
+			if (typeof stateName !== "string") {
+				throw new Error("State name is not valid.");
+			}
+           
+			var stateData = element.statesMap[stateName];
+            if (stateData === undefined) {
+                throw new Error("State \"" + stateName + "\" not found in \"" + element.properties.name + "\"!");
+            }
+           
+            for (var prop in stateData) {
+                if (stateData.hasOwnProperty(prop)) {
+                    element[prop] = stateData[prop];
+                }
+			}
+            this.state = stateName;
+		}
+        element.getState = function () {
+            return this.state;
+        }
+    }
+   
+    if (element.statesMap[stateName] === undefined) {
+        element.statesMap[stateName] = stateData;
+    } else {
+        throw new Error("State with key \"" + stateName + "\" already added!");
+    }
+   
+    if (!inited) {
+        element.setState(stateName);
+    }
+}
+
+function as_uiFindElement(elementContainer, elementName) {
+	var children = elementContainer.children;
+	for (var i = 0, child, child2; i < children.length; i++) {
+		child = children[i];
+		if (child.properties && (child.properties.name == elementName)) {
+			return child;
+		} else if (child.children) {
+			child2 = as_uiFindElement(child, elementName);
+			if (child2) {
+				return child2;
+			}
+		}
+	}
+	return null;
+}
+
+
+function as_uiImageFromBinary(imageBinary, fileName, dirImages, rewriteFiles) {
+    var fileImage = File(dirImages.fsName + "/" + fileName);
+    if (!fileImage.exists || rewriteFiles) {
+        fileImage = as_fileWrite(fileImage, imageBinary, true);
+    }
+    return ScriptUI.newImage(fileImage);
+}
+
+function as_uiPrefsApply(windowObj, dataPrefs) {
+	for (var elementName in dataPrefs) {
+		if (dataPrefs.hasOwnProperty(elementName)) {
+			var element = windowObj[elementName];
+			if(element) {
+				if(element.items !== undefined) {
+					element.removeAll();
+					for (var i = 0; i < dataPrefs[elementName].items.length; i++) {
+						element.add("item", dataPrefs[elementName].items[i]);
+					}
+					element.selection = dataPrefs[elementName].selection;
+				}
+				if (element.value !== undefined) {
+					element.value = dataPrefs[elementName].value;
+				}
+				if (element.text !== undefined) {
+					element.text = dataPrefs[elementName].text;
+				}
+			}
+		}
+	}
+}
+
+
+function as_uiPrefsGet(windowObj, listElements) {
+	var dataPrefs = {};
+	function recursiveLoopElements(element) {
+		if (element.properties && (as_arrayCheckValue(element.properties.name, listElements) >= 0)) {
+			var dataElement = dataPrefs[element.properties.name] = {};
+			if(element.items !== undefined) {
+				dataElement.items = [];
+				for (var i = 0, item; i < element.items.length; i++) {
+					dataElement.items.push(element.items[i].text)
+				}
+				dataElement.selection = element.selection ? element.selection.index : null;
+			}
+			if (element.value !== undefined) {
+				dataElement.value = element.value;
+			}
+			if (element.text !== undefined) {
+				dataElement.text = element.text;
+			}
+		}
+		if (element.children && (element.children.length > 0)) {
+			for (var e = 0, elementChild; e < element.children.length; e++) {
+				elementChild = element.children[e];
+				recursiveLoopElements(elementChild);
+			}
+		}
+	}
+	recursiveLoopElements(windowObj);
+	return dataPrefs;
+}

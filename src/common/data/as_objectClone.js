@@ -7,7 +7,7 @@
  * @date Mon Feb 05 2018
  * 
  * @description
- * @param obj {object}
+ * @param obj {Object}
  */
 function as_objectClone(obj) {
 	

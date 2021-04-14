@@ -1,7 +1,7 @@
 /**
  * @description
- * @param {object}
- * @returns {array} 
+ * @param {Object}
+ * @returns {Array} 
  */
 function  as_objectKeysToArray(obj){
     var arr = [];

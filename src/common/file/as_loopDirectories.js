@@ -3,25 +3,25 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.1
- * @date Aug 23 2019
+ * @version 1.0.2
+ * @date Mar 20 2021
  * 
  * @param {Folder} dir 
  * @param {boolean} intoSubDirs 
  * @param {Function} func 
- * @param {array} args 
- * @param {array} filterDirsNames directories valid names
+ * @param {Array} args
+ * @param {Array} skipDirs ["foldername"] (Optional)
  */
-function as_loopDirectories(dir, intoSubDirs, func, args, filterDirsNames) {
+function as_loopDirectories(dir, intoSubDirs, func, args, skipDirs) {
 
     // Vars
     var results = [];
 	
 	// Check
-	var nameMatch = (filterDirsNames === undefined) || (filterDirsNames.length == 0) || (as_arrayCheckValue(dir.name, filterDirsNames) >= 0);
+	var skipFile = (skipDirs !== undefined) && (skipDirs.length > 0) && (as_arrayCheckValue(dir.name, skipDirs) >= 0);
 
 	// Do
-	if(nameMatch) {
+	if (!skipFile) {
 		var result = func.apply(undefined, [dir].concat(args || []));
 		if(result !== undefined) {
 			results.push(result);
@@ -36,7 +36,7 @@ function as_loopDirectories(dir, intoSubDirs, func, args, filterDirsNames) {
 	
 			// Check is folder
 			if(subDir instanceof Folder) {
-				results = results.concat(as_loopDirectories(subDir, intoSubDirs, func, args, filterDirsNames));
+				results = results.concat(as_loopDirectories(subDir, intoSubDirs, func, args, skipDirs));
 			}
 		}
 	}
