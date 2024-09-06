@@ -1,43 +1,63 @@
-// Copyright (c) 2021 Oleksandr Semeniuk
-// This code is licensed under MIT license
-// See also http://www.opensource.org/licenses/mit-license.php
+(function replaceComps() {
+    var project = app.project;
+    var oldFolder = findFolder("old");
+    var newFolder = findFolder("new");
 
-/**
- * @version 1.0.1
- * @date Dec 13 2019
- * 
- * @description Single null item in project
- */
-function as_projectSingleNull() {
-
-    // Get null master
-    var nullMaster = as_findItem("Null", ItemTypeName.FOOTAGE, app.project.rootFolder, true);
-    if(!nullMaster) {
-        var compTemp = app.project.items.addComp("temp", 100, 100, 1, 1, 30);
-		var layerNull = compTemp.layers.addNull();
-        nullMaster = layerNull.source;
-        nullMaster.name = "Null";
-        compTemp.remove();
+    if (!oldFolder || !newFolder) {
+        alert("One or both specified folders do not exist in the project.");
+        return;
     }
 
-    // Do
-    as_loopItems(app.project.rootFolder, true, handleComp, [nullMaster], undefined, [ItemTypeName.COMPOSITION]);
+    app.beginUndoGroup("Replace Compositions");
+    processFolder(oldFolder);
+    app.endUndoGroup();
 
-    // Func for handle comps
-    function handleComp(comp, nullMaster) {
-        as_loopLayers(comp, handleLayer, [nullMaster], undefined, [LayerType.SOLID]);
-    }
-
-    // Func for handle layers
-    function handleLayer(layer, nullMaster) {
-        if (layer.nullLayer && (layer.source != nullMaster)) {
-            var sourceOld = layer.source;
-            layer.replaceSource(nullMaster, false);
-
-            // Remove
-            if(sourceOld.usedIn == 0) {
-                sourceOld.remove();
+    function processFolder(folder) {
+        for (var i = 1; i <= folder.numItems; i++) {
+            var item = folder.item(i);
+            if (item instanceof CompItem) {
+                var newComp = findCompInFolder(newFolder, item.name);
+                if (newComp) {
+                    replaceComp(item, newComp);
+                }
+            } else if (item instanceof FolderItem) {
+                processFolder(item); // Recursively process subfolders
             }
         }
     }
-}
+
+    function findFolder(folderName) {
+        for (var i = 1; i <= project.numItems; i++) {
+            if (project.item(i) instanceof FolderItem && project.item(i).name === folderName) {
+                return project.item(i);
+            }
+        }
+        return null;
+    }
+
+    function findCompInFolder(folder, compName) {
+        for (var i = 1; i <= folder.numItems; i++) {
+            var item = folder.item(i);
+            if (item instanceof CompItem && item.name === compName) {
+                return item;
+            } else if (item instanceof FolderItem) {
+                var foundComp = findCompInFolder(item, compName); // Recursive search
+                if (foundComp) return foundComp;
+            }
+        }
+        return null;
+    }
+
+    function replaceComp(oldComp, newComp) {
+        var usingComps = oldComp.usedIn;
+        for (var i = 0; i < usingComps.length; i++) {
+            var comp = usingComps[i];
+            for (var j = 1; j <= comp.numLayers; j++) {
+                var layer = comp.layer(j);
+                if (layer.source === oldComp) {
+                    layer.replaceSource(newComp, true);
+                }
+            }
+        }
+    }
+})();
