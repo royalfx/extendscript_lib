@@ -5,7 +5,7 @@
  * @param {Array} dirsAndFiles [File/Folder]
  * @param {Folder} rootDir
  * @param {boolean} intoSubfolders
- * @param {Array} filterFileExt [string] (Optional)
+ * @param {Array} filterFileExt [string] ["js", "jsxinc"] (Optional)
  * 
  * @description Only absolute paths
  * @returns {string}
