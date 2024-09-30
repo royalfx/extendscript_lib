@@ -20,7 +20,7 @@
 		#include "as_stringClearComments.js";
 
 		// Versions
-		var ae_version = "1.0.0";
+		var ae_version = "1.0.1";
 		var ai_version = "1.0.0";
 		var ps_version = "1.0.0";
 
@@ -32,16 +32,16 @@
 		var psDir = Folder(rootDir.fullName + "/src/ps");
 
 		// Remove prev files
-		var binDir = Folder(rootDir.fullName + "/bin");
-		while (binDir.getFiles().length > 0) {
-			binDir.getFiles()[0].remove();
-		}
+		// var binDir = Folder(rootDir.fullName + "/dist");
+		// while (binDir.getFiles().length > 0) {
+		// 	binDir.getFiles()[0].remove();
+		// }
 
 		// Do
 		var filterFileExt = ["js"];
-		as_fileWrite(File(rootDir.fullName + "/bin/eslib_ae_" + ae_version + ".jsxinc"), as_fileCollectLib([commonDir, aeDir], true, filterFileExt));
-		as_fileWrite(File(rootDir.fullName + "/bin/eslib_ai_" + ai_version + ".jsxinc"), as_fileCollectLib([commonDir, aiDir], true, filterFileExt));
-		as_fileWrite(File(rootDir.fullName + "/bin/eslib_ps_" + ps_version + ".jsxinc"), as_fileCollectLib([commonDir, psDir], true, filterFileExt));
+		as_fileWrite(File(rootDir.fullName + "/dist/eslib_ae_" + ae_version + ".jsxinc"), as_fileCollectLib([commonDir, aeDir], true, filterFileExt));
+		as_fileWrite(File(rootDir.fullName + "/dist/eslib_ai_" + ai_version + ".jsxinc"), as_fileCollectLib([commonDir, aiDir], true, filterFileExt));
+		as_fileWrite(File(rootDir.fullName + "/dist/eslib_ps_" + ps_version + ".jsxinc"), as_fileCollectLib([commonDir, psDir], true, filterFileExt));
 
 		as_fileWrite(File(rootDir.fullName + "/include/include_eslib_ae.jsxinc"), as_fileCollectIncludes([commonDir, aeDir], rootDir, true, filterFileExt));
 		as_fileWrite(File(rootDir.fullName + "/include/include_eslib_ai.jsxinc"), as_fileCollectIncludes([commonDir, aiDir], rootDir, true, filterFileExt));
