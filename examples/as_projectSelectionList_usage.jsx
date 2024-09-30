@@ -1,7 +1,7 @@
 {
 	(function func() {
 		
-		#include "../../../src/ae/include.jsxinc";
+		#include "d:/Dropbox/Projects/Tools and Scripts/ExtendScript Library/include/include_eslib_ae.jsxinc";
 
 		// DO
 		if(app.project) {
@@ -13,4 +13,3 @@
 
 	})();
 }
-
