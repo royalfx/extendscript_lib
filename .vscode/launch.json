@@ -1,35 +1,25 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
     "configurations": [
         {
             "name": "After Effects - Current File",
             "type": "extendscript-debug",
             "request": "launch",
-            "targetSpecifier": "aftereffects-18.0",
-            "program": "${file}",
-            "stopOnEntry": false,
-            "trace": false
+            "hostAppSpecifier": "aftereffects-24.0",
+            "script": "${file}"
 		},
 		{
 			"name": "Illustrator - Current File",
 			"type": "extendscript-debug",
 			"request": "launch",
-			"targetSpecifier": "illustrator-24.064",
-			"program": "${file}",
-			"stopOnEntry": false,
-			"trace": false
+			"hostAppSpecifier": "illustrator-24.064",
+			"script": "${file}"
 		},
         {
             "name": "Photoshop - Current File",
             "type": "extendscript-debug",
             "request": "launch",
-            "targetSpecifier": "photoshop-130.064",
-            "program": "${file}",
-            "stopOnEntry": false,
-            "trace": false
+            "hostAppSpecifier": "photoshop-130.064",
+            "script": "${file}"
         }
     ]
 }
