@@ -1,0 +1,1367 @@
+
+function as_nativeColorPicker() {
+	var picker = $.colorPicker();
+	if (picker >= 0) {
+		var bigint = parseInt(picker.toString(16), 16);
+		var r = ((bigint >> 16) & 255) / 255;
+		var g = ((bigint >> 8) & 255) / 255;
+		var b = (bigint & 255) / 255;
+		return [r, g, b, 1];
+	} else {
+		return null;
+	}
+}
+
+
+function BrushThemeName(){
+}
+BrushThemeName.BACKGROUND = "background";
+BrushThemeName.DISABLED_BACKGROUND = "disabledBackground";
+BrushThemeName.SELECTION = "selection";
+BrushThemeName.FOCUS_RING = "focusRing";
+BrushThemeName.getList = function() {
+	return [
+		BrushThemeName.BACKGROUND,
+		BrushThemeName.DISABLED_BACKGROUND,
+		BrushThemeName.SELECTION,
+		BrushThemeName.FOCUS_RING
+	];
+}
+
+function FileExtension() {
+}
+FileExtension.PNG = ".png";
+FileExtension.JPEG = ".jpg";
+FileExtension.AEP = ".aep";
+FileExtension.AI = ".ai";
+FileExtension.EPS = ".eps";
+FileExtension.FFX = ".ffx";
+FileExtension.TXT = ".txt";
+FileExtension.JSX = ".jsx";
+FileExtension.JS = ".js";
+FileExtension.JSON = ".json";
+FileExtension.JSXINC = ".jsxinc";
+FileExtension.CSV = ".csv";
+FileExtension.EXR = ".exr";
+FileExtension.getList = function() {
+	return [
+		FileExtension.PNG,
+		FileExtension.JPEG,
+		FileExtension.AEP,
+		FileExtension.AI,
+		FileExtension.EPS,
+		FileExtension.FFX,
+		FileExtension.TXT,
+		FileExtension.JSX,
+		FileExtension.JS,
+		FileExtension.JSON,
+		FileExtension.JSXINC,
+		FileExtension.CSV,
+		FileExtension.EXR
+	];
+}
+
+function FileFilter(){
+}
+FileFilter.PNG = "PNG:*.png";
+FileFilter.JPEG = "JPEG:*.jpg;*.jpeg";
+FileFilter.AEP = "After Effects Project File:*.aep";
+FileFilter.FFX = "Adobe After Effects Preset:*.ffx";
+FileFilter.TXT = "Plain Text:*.txt";
+FileFilter.JSFILES = "JavaScript files:*.jsx;*.js;*jsxinc";
+FileFilter.JSXFILES = "Adobe JavaScript files:*.jsx;*jsxbin";
+FileFilter.JSX = "Adobe JavaScript:*.jsx";
+FileFilter.JS = "JavaScript files:*.js";
+FileFilter.JSXINC = "Adobe JavaScript Include files:*.jsxinc";
+FileFilter.JSXBIN = "Adobe JavaScript Binary files:*.jsxbin";
+FileFilter.JSON = "JavaScript JSON:*.json";
+FileFilter.ALL = "All files:*.*";
+FileFilter.CSV = "CSV (Comma delimited):*.csv";
+FileFilter.TEXTFILES = "Text Files:*.jsx;*.js;*jsxinc;*.txt;*.csv";
+FileFilter.getList = function() {
+	return [
+		FileFilter.PNG,
+		FileFilter.JPEG,
+		FileFilter.AEP,
+		FileFilter.FFX,
+		FileFilter.TXT,
+		FileFilter.JSFILES,
+		FileFilter.JSXFILES,
+		FileFilter.JSX,
+		FileFilter.JS,
+		FileFilter.JSXINC,
+		FileFilter.JSXBIN,
+		FileFilter.JSON,
+		FileFilter.ALL,
+		FileFilter.CSV,
+		FileFilter.TEXTFILES
+	];
+}
+
+function PenThemeName(){
+}
+PenThemeName.FOREGROUND = "foreground";
+PenThemeName.DISABLED_FOREGROUND = "disabledForeground";
+PenThemeName.SELECTION = "selection";
+PenThemeName.getList = function() {
+	return [
+		PenThemeName.FOREGROUND,
+		PenThemeName.DISABLED_FOREGROUND,
+		PenThemeName.SELECTION
+	];
+}
+
+function RegExpPattern(){
+}
+RegExpPattern.NUMBERS = /[^0-9]/g;
+RegExpPattern.NUMBERS_NO_ZERO = /[^1-9]/g;
+RegExpPattern.NUMBERS_MINUS = /[^0-9\-]/g;
+RegExpPattern.NUMBERS_DOT = /[^0-9\.]/g;
+RegExpPattern.NUMBERS_DOT_MINUS = /[^0-9\.-]/g;
+RegExpPattern.NUMBERS_DOT_AUTO = /[^0-9\.auto]/g;
+RegExpPattern.NUMBERS_CHARS = /[^a-zA-Z0-9]/g;
+RegExpPattern.NUMBERS_CHARS_HASH = /[^a-zA-Z0-9+\#]/g;
+RegExpPattern.NUMBERS_CHARS_SPACE = /[^a-zA-Z0-9\ ]/g;
+RegExpPattern.CHARS = /[^a-zA-Z]/g;
+RegExpPattern.CHARS_SPACE = /[^a-zA-Z\ ]/g;
+RegExpPattern.getList = function() {
+	return [
+		RegExpPattern.NUMBERS,
+		RegExpPattern.NUMBERS_NO_ZERO,
+		RegExpPattern.NUMBERS_MINUS,
+		RegExpPattern.NUMBERS_DOT,
+		RegExpPattern.NUMBERS_DOT_MINUS,
+		RegExpPattern.NUMBERS_DOT_AUTO,
+		RegExpPattern.NUMBERS_CHARS,
+		RegExpPattern.NUMBERS_CHARS_HASH,
+		RegExpPattern.NUMBERS_CHARS_SPACE,
+		RegExpPattern.CHARS,
+		RegExpPattern.CHARS_SPACE
+	];
+}
+
+function VersionNum(){
+}
+VersionNum.MAJOR = 0;
+VersionNum.MINOR = 1;
+VersionNum.PATCH = 2;
+VersionNum.getList = function() {
+	return [
+		VersionNum.MAJOR,
+		VersionNum.MINOR,
+		VersionNum.PATCH
+	];
+}
+
+function as_arrayCheckValue(val, arr) {
+	for (var i = 0, len = arr.length; i < len; i++) {
+		if (val == arr[i]) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+function as_arrayCheckValues(valuesArr, array) {
+	if (!(valuesArr instanceof Array)) {
+		throw "An array is expected."
+	}
+	if (!(array instanceof Array)) {
+		throw "An array is expected."
+	}
+	var counter = 0;
+	for (var i = 0, iLen = array.length; i < iLen; i++) {
+		for (var v = 0, vLen = valuesArr.length; v < vLen; v++) {
+			if (valuesArr[v] == array[i]) {
+				counter++;
+			}
+		}
+	}
+	return counter;
+}
+
+
+function as_arrayClone(arr) {
+	return arr.slice(0);
+}
+
+
+function as_arrayMakeUnique(arr) {
+	var checked = {};
+	var arrNew = [];
+	for (var i = 0, len = arr.length, item; i < len; i++) {
+		item = arr[i];
+		if (checked[item] !== 1) {
+			checked[item] = 1;
+			arrNew.push(item);
+		}
+	}
+	return arrNew;
+}
+
+function as_arrayMaxValue(arr) {
+	var max = 0, i, len = arr.length;
+	for (i = 0; i < len; i++) {
+		max = Math.max(max, arr[i]);
+	}
+	return max;
+}
+
+
+function as_arraysMerge(arrMain, arrNew) {
+	if (!(arrMain instanceof Array)) {
+		throw new Error("Property \"arrMain\" is not an Array");
+	}
+	if (!(arrNew instanceof Array)) {
+		return arrMain;
+	}
+	var margedArr = as_objectClone(arrMain);
+	for (var v = 0, val1, val2, vlen = arrNew.length; v < vlen; v++) {
+		val1 = margedArr[v];
+		val2 = arrNew[v];
+		if (val2 !== undefined) {
+			if (typeof (val2) == typeof (val1)) {
+				if (typeof (val2) == "object") {
+					if (val1 instanceof Array) {
+						if ((val2 instanceof Array)) {
+							margedArr[v] = as_arraysMerge(val1, val2);
+						}
+						else {
+							margedArr[v] = val2;
+						}
+					}
+					else if (val1 === null) {
+						margedArr[v] = val2;
+					}
+					else {
+						margedArr[v] = as_objectsMerge(val1, val2);
+					}
+				}
+				else {
+					margedArr[v] = val2;
+				}
+			}
+			else {
+				margedArr[v] = val2;
+			}
+		}
+	}
+	return margedArr;
+}
+
+
+function as_clamp(value, min, max) {
+	return Math.min(Math.max(value, min), max);
+}
+
+
+function as_dataCheckEquals(v1, v2, threshold) {
+	threshold = threshold || 0.0000000000001;
+	if (typeof (v1) != typeof (v2)) {
+		return false;
+	}
+	if (typeof (v1) == "string") {
+		return v1 == v2;
+	} else if (typeof (v1) == "number") {
+		return (Math.abs(v1 - v2) < threshold);
+	} else if (typeof (v1) == "boolean") {
+		return v1 == v2;
+	} else if (typeof (v1) == "object") {
+		if ((v1 instanceof Array) && (v2 instanceof Array)) {
+			if (v1.length != v2.length) {
+				return false;
+			}
+			for (var i = 0; i < v1.length; i++) {
+				if (!as_dataCheckEquals(v1[i], v2[i], threshold)) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return v1 === v2;
+	} else {
+		return false;
+	}
+}
+
+
+function as_dataIsSameType(value1, value2) {
+	if (typeof(value1) !== typeof(value2)) {
+		return false;
+	} else if (typeof(value1) == "object") {
+		if ((value1 instanceof Date) != (value2 instanceof Date)) {
+			return false;
+		} else if ((value1 instanceof Array) != (value2 instanceof Array)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function as_getFunctionName(func) {
+	var val = func.toString();
+	val = val.substr(("function ").length);
+	val = val.substr(0, val.indexOf("("));
+	return val;
+}
+
+
+function as_linear(t, tMin, tMax, a, b) {
+	if (arguments.length == 3) {
+		a = tMin;
+		b = tMax;
+	} else {
+		if (tMin == tMax) {
+			t = tMin;
+		} else {
+			t = (as_clamp(t, tMin, tMax) - tMin) / (tMax - tMin);
+		}
+	}
+	return a + t * (b - a);
+}
+
+
+function as_nameIndexedCheck(name) {
+	var splitAt = Math.max(name.lastIndexOf("_"), name.lastIndexOf(" "));
+	if (splitAt == -1) {
+		return -1;
+	}
+	var inxString = name.substr(splitAt + 1);
+	if (inxString.length == 0) {
+		return -1;
+	}
+	var arrMatch = inxString.match(RegExpPattern.NUMBERS);
+	if (arrMatch !== null) {
+		return -1;
+	}
+	return splitAt;
+}
+
+
+function as_nameIndexedClear(name) {
+	var splitAt = as_nameIndexedCheck(name);
+	if (splitAt > 0) {
+		return name.substr(0, splitAt);
+	} else {
+		return name;
+	}
+}
+
+
+function as_nameIndexedIncrement(name, checkFunc, len, delimiter) {
+	if (typeof name !== "string") {
+		return null;
+	}
+	if (typeof checkFunc !== "function") {
+		return null;
+	}
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var index,
+		suffix = name.split(delimiter).pop();
+	if (suffix && (suffix != "") && (suffix.match(RegExpPattern.NUMBERS) === null)) {
+		index = parseInt(suffix);
+	} else {
+		index = 2;
+	}
+	var nameNew = name;
+	var clearName = as_nameIndexedClear(name);
+	while (checkFunc.apply(null, [nameNew])) {
+		nameNew = (clearName + delimiter + ("000000000" + index).substr(-len));
+		index++;
+		len = Math.max(len, index.toString().length);
+	}
+	return nameNew;
+}
+
+
+function as_nameIndexedReplace(n, inx, len, delimiter) {
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var splitAt = as_nameIndexedCheck(n);
+	if (splitAt > 0) {
+		return n.substr(0, splitAt + 1) + ("000000000" + inx).substr(-len);
+	} else {
+		return n;
+	}
+}
+
+
+function as_nameIndexedSet(n, inx, len, delimiter) {
+	delimiter = (delimiter === undefined) ? "_" : delimiter;
+	len = (len === undefined) ? 2 : len;
+	var splitAt = as_nameIndexedCheck(n);
+	if (splitAt > 0) {
+		return as_nameIndexedReplace(n, inx, len, delimiter);
+	} else {
+		return n + delimiter + ("000000000" + inx).substr(-len);
+	}
+}
+
+
+function as_objectClone(obj) {
+	var copy;
+	if (null == obj || ("object" != typeof (obj))) {
+		return obj;
+	}
+	if (obj instanceof Date) {
+		copy = new Date();
+		copy.setTime(obj.getTime());
+		return copy;
+	}
+	if (obj instanceof Array) {
+		copy = [];
+		for (var i = 0, len = obj.length; i < len; i++) {
+			copy[i] = as_objectClone(obj[i]);
+		}
+		return copy;
+	}
+	if (obj instanceof Object) {
+		copy = {};
+		for (var attr in obj) {
+			if (obj.hasOwnProperty(attr)) {
+				copy[attr] = as_objectClone(obj[attr]);
+			}
+		}
+		return copy;
+	}
+	throw new Error("Unable to clone object! Object type not supported.");
+}
+
+
+function as_objectGetPropName(propValue, obj) {
+    for (var p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            if (obj[p] == propValue) {
+                return p;
+            }
+        }
+    }
+    return null;
+}
+
+
+function  as_objectKeysToArray(obj){
+    var arr = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            arr[arr.length] = key;
+        }
+    }
+    return arr;
+}
+
+function as_objectsGetLength(obj) {
+	var len = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) {
+			len++;
+		}
+	}
+	return len;
+}
+
+
+function as_objectsMerge(objMain, objNew, skipNull) {
+	if ((objMain == null) || (typeof (objMain) != "object") || (objMain instanceof Array)) {
+		throw new Error("Property \"objMain\" is not an Object");
+	}
+	if ((objNew == null) || (typeof (objNew) != "object") || (objNew instanceof Array)) {
+		throw new Error("Property \"objNew\" is not an Object");
+	}
+	var objMerge = as_objectClone(objMain);
+	var valPrev, valNew;
+	for (var attr in objNew) {
+		if (objNew.hasOwnProperty(attr)) {
+			valPrev = objMerge[attr];
+			valNew = objNew[attr];
+			if (!skipNull || (valNew !== null)) {
+				if (objMerge.hasOwnProperty(attr)) {
+					if (!as_dataIsSameType(valPrev, valNew)) {
+						objMerge[attr] = valNew;
+					} else if (valNew instanceof Array) {
+						objMerge[attr] = as_arraysMerge(valPrev, valNew);
+					} else {
+						objMerge[attr] = valNew;
+					}
+				} else {
+					objMerge[attr] = objNew[attr];
+				}
+			} else {
+			}
+		} else {
+		}
+	}
+	return objMerge;
+}
+
+
+function as_stringCapitalWords(str) {
+	return str.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
+		return a.toUpperCase();
+	});
+}
+
+
+function as_stringCheckContainsChars(str, chars) {
+	for (var i = 0, iLen = chars.length; i < iLen; i++) {
+		if (str.indexOf(chars.charAt(i)) == -1) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+function as_stringCleanName(str) {
+	return str.replace(RegExp("[^a-z 0-9]", "gi"), "");
+}
+
+
+function as_stringClearComments(text) {
+	text = text.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, "");
+	text = text.replace(/^\t+$/gm, "");
+	while (text.match(/\n\n/gi) != null) {
+		text = text.replace(/\n\n/gi, "\n");
+	}
+	return text;
+}
+
+
+function as_stringClearFirstLastSpaces(str) {
+	while (check(str.charAt(0))) {
+		str = str.substr(1);
+	}
+	while (check(str.charAt(str.length - 1))) {
+		str = str.substr(0, str.length - 1);
+	}
+	return str;
+	function check(chr) {
+		return (chr === " ") || (chr === "\n") || (chr === "\r") || (chr === "\t");
+	}
+}
+
+
+function as_stringClearLineBreaks(str) {
+	return str.replace(new RegExp("\r", "g"), "\n");
+}
+
+
+function as_stringClearSpaces(str) {
+	return as_stringToSingleLine(str).replace(new RegExp(" ", "g"), "");
+}
+
+
+function as_stringRemoveLineBreaks(str) {
+	return str.replace(/[\n|\r]/g, "");
+}
+
+
+function as_stringRepeat(str, times) {
+	if (typeof times !== "number") {
+		return null;
+	}
+	var repeatedString = "";
+	while (times > 0) {
+		repeatedString += str;
+		times--;
+	}
+	return repeatedString;
+}
+
+
+function as_stringToArray(str) {
+	str = as_stringRemoveLineBreaks(str);
+	if (str.indexOf(",") == -1) {
+		str = as_stringClearFirstLastSpaces(str);
+		if (str == "") {
+			return [];
+		} else {
+			return [str];
+		}
+	} else {
+		var strArr = str.split(",");
+		for (var i = 0; i < strArr.length; i++) {
+			strArr[i] = as_stringClearFirstLastSpaces(strArr[i]);
+			if (strArr[i] == "") {
+				strArr.splice(i, 1);
+				i--;
+			}
+		}
+		return strArr;
+	}
+}
+
+
+function as_stringToSingleLine(str) {
+	return as_stringClearLineBreaks(str).replace(new RegExp("\n", "g"), " ");
+}
+
+
+function as_stringUniqChars(str) {
+	var strUniq = "";
+	var len = str.length;
+	for (var i = 0; i < len; i++) {
+		var c = str.charAt(i);
+		if (strUniq.indexOf(c) < 0) {
+			strUniq += c;
+		}
+	}
+	return strUniq;
+}
+
+
+function as_timeMillisecToString(ms) {
+	var arr = [];
+	var msS = 1000;
+	var msM = msS * 60;
+	var msH = msM * 60;
+	var msD = msH * 24;
+	var days = Math.floor(ms / msD);
+	if (days > 0) {
+		arr.push(("000" + days).substr(-3) + " days");
+	}
+	ms -= days * msD;
+	var hours = Math.floor(ms / msH);
+	if (hours > 0) {
+		arr.push(("00" + hours).substr(-2) + " hours");
+	}
+	ms -= hours * msH;
+	var minutes = Math.floor(ms / msM);
+	if (minutes > 0) {
+		arr.push(("00" + minutes).substr(-2) + " min");
+	}
+	ms -= minutes * msM;
+	var seconds = Math.floor(ms / msS);
+	if (seconds > 0) {
+		arr.push(("00" + seconds).substr(-2) + " sec");
+	}
+	ms -= seconds * msS;
+	arr.push(("0000" + Math.floor(ms)).substr(-4) + " ms");
+	return arr.join(" ");
+}
+
+
+function as_toString(obj) {
+	try {
+		if (typeof(obj) == "string") {
+			return "\"" + obj + "\"";
+		} else if (typeof(obj) === "undefined") {
+			return "undefined";
+		} else if (typeof(obj) === "number") {
+			return obj.toString();
+		} else if (typeof(obj) === "boolean") {
+			return obj.toString();
+		} else if (typeof(obj) === "function") {
+			return "{ Function }";
+		} else {
+			if (obj === null) {
+				return "null";
+			} else if (obj instanceof Array) {
+				return as_toStringArray(obj);
+			} else {
+				return as_toStringObject(obj);
+			}
+		}
+	} catch(err) {
+		return err.message;
+	}
+}
+
+function as_toStringArray(arr) {
+	if (!(arr instanceof Array)) {
+		return new Error("Property \"arr\" is not an Array");
+	}
+	var vs = [];
+	try {
+		for (var i = 0, v, s, len = arr.length; i < len; i++) {
+			v = arr[i];
+			if (typeof(v) === "object") {
+				if (v instanceof Array) {
+					s = as_toStringArray(v);
+				} else if (v === null) {
+					s = "null";
+				} else {
+					s = as_toStringObject(v);
+				}
+			} else {
+				s = as_toString(v);
+			}
+			vs[vs.length] = s;
+		}
+	} catch (err) {
+		return "[" + err.message + "]";
+	}
+	if(vs.length > 0) {
+		return "[" + vs.join(", ") + "]";
+	} else {
+		return "[]";
+	}
+}
+
+function as_toStringObject(obj) {
+	if ((typeof(obj) !== "object") || (obj instanceof Array)) {
+		return new Error("Property \"obj\" is not an Object");
+	}
+	var n = obj.reflect.name;
+	if (n != "Object") {
+		if(obj.name) {
+			return "{" + n + ": " + obj.name + "}";
+		} else {
+			return "{Object " + n + "}"
+		}
+	}
+	var vs = [], v, s;
+	try {
+		for (var p in obj) {
+			if(obj.hasOwnProperty(p)) {
+				v = obj[p];
+				s = "\"" + p + "\"" + ": ";
+				if (typeof(v) === "object") {
+					if (v instanceof Array) {
+						s += as_toStringArray(v);
+					} else if (v === null) {
+						s += "null";
+					} else {
+						s += as_toStringObject(v);
+					}
+				} else {
+					s += as_toString(v);
+				}
+				vs[vs.length] = s;
+			}
+		}
+	} catch (err) {
+		return "{" + err.message + "}";
+	}
+	if(vs.length > 0) {
+		return "{" + vs.join(", ") + "}";
+	} else {
+		return "{}";
+	}
+}
+
+function as_dateFromDayNumber(dayNum) {
+	return dayNum * 8.64e7;
+}
+
+function as_dateFromMonthNumber(monthNum) {
+    var year = Math.floor(monthNum / 12) + 1970;
+    var month = (monthNum % 12) - 1;
+    return new Date(year, month, 1, 0, 0, 0, 0, 0);
+}
+
+
+function as_getDayNumber(date) {
+	return Math.floor(date.getTime() / 8.64e7);
+}
+
+function as_getMonthName(date) {
+	var m = date.getMonth();
+	var array = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December"
+	];
+	var name = array[m];
+	return name;
+   
+}
+
+function as_getMonthNameShort(date) {
+    return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][date.getMonth()];
+}
+
+
+function as_getMonthNumber(date) {
+    return (date.getFullYear() - 1970) * 12 + date.getMonth() + 1;
+}
+
+
+function as_getWeekDayName(date) {
+    return ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"][date.getDay()];
+}
+
+
+function as_arrayToCSV(arr, separator) {
+    if(separator === undefined){
+        separator = ",";
+    }
+	for (var l = 0; l < arr.length; l++) {
+        arr[l] = "\"" + arr[l].join("\"" + separator + "\"") + "\"";
+    }
+    return arr.join("\n");
+}
+
+function as_convertFilePath(path, rootDir, absolute) {
+   
+    path = path.replace(/\\/g, "/");
+	path = path.replace("D:/", "/d/");
+	path = path.replace("C:/", "/c/");
+	if (absolute) {
+		path = path.replace("..", rootDir.fullName);
+	} else {
+		path = path.replace(rootDir.fullName, "..");
+	}
+    
+    return path;
+}
+
+function as_convertFilePathJS(path, rootDir, absolute) {
+   
+    path = path.replace(/\\/g, "/");
+	if (path.indexOf("/d/") == 0) {
+		path = path.replace("/d/", "D:/");
+	}
+	if (path.indexOf("/c/") == 0) {
+		path = path.replace("/c/", "C:/");
+	}
+	if (absolute) {
+		path = path.replace("..", rootDir.fsName.replace(/\\/g, "/"));
+	} else {
+		path = path.replace(rootDir.fsName.replace(/\\/g, "/"), "..");
+	}
+    
+    return path;
+}
+
+function as_fileCollectIncludes(dirsAndFiles, rootDir, intoSubfolders, filterFileExt) {
+	var collector = [];
+    for (var i = 0, item; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var filePath = as_convertFilePath(file.fullName, rootDir, true);
+		collector.push("#include \"" + filePath + "\";");
+	}
+	collector = as_arrayMakeUnique(collector);
+	return collector.join("\n");
+}
+
+function as_fileCollectIncludesJS(dirsAndFiles, rootDir, intoSubfolders, filterFileExt) {
+	var collector = [];
+	for (var i = 0, item; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var filePath = as_convertFilePathJS(file.fullName, rootDir, true);
+		collector.push("document.write(\'<script type=\"text/javascript\" src=\"" + filePath + "\"></script>\');");
+	}
+	return collector.join("\n");
+}
+
+function as_fileCollectLib(dirsAndFiles, intoSubfolders, filterFileExt, skipFiles) {
+	var collector = [];
+	for (var i = 0; i < dirsAndFiles.length; i++) {
+		item = dirsAndFiles[i];
+		if (item instanceof File) {
+			handleFile(item, collector);
+		} else if (item instanceof Folder) {
+			as_loopFiles(item, intoSubfolders, handleFile, [collector], filterFileExt, skipFiles);
+		} else {
+		}
+	}
+	function handleFile(file, collector) {
+		var text = as_fileRead(file);
+		text = as_stringClearComments(text);
+		collector.push(text);
+	}
+	return collector.join("\n");
+}
+
+function as_fileRead(file) {
+	if (!file.exists) {
+		alert("File: " + file.fsName + " does not exist!", true);
+		return null;
+	} else {
+		try {
+			if (!file.open("r")) {
+				alert("Could not read file: " + file.fsName + "\nmessage: " + file.error, true);
+				return null;
+			}
+			var fileData = file.read();
+			file.close();
+			if (file.error != "") {
+				alert(file.error, true);
+				return null;
+			}
+			return fileData;
+		} catch (err) {
+			alert("Could not read file: " + file.fsName + "\nmessage: " + err.message, true);
+			return null;
+		}
+	}
+}
+
+
+function as_fileReadJSBinary(file) {
+	if (!file.exists) {
+		return null;
+	} else {
+		return $.evalFile(file.fsName);
+	}
+}
+
+
+function as_fileReadJSON(file) {
+	var fileData = as_fileRead(file);
+	if(fileData == "") {
+		fileData = JSON.stringify({});
+	}
+	return JSON.parse(fileData);
+}
+
+
+function as_fileToBinaryString(file) {
+	try {
+		file.open("r");
+		file.encoding = "BINARY";
+		var bin = file.read();
+		file.close();
+		return eval(bin.toSource().replace(/^\(new String\(/, "").replace(/\)\)$/, ""));
+	} catch (err) {
+		alert(err.name + " at line " + err.line + " : " + err.message);
+		return null;
+	}
+}
+
+
+function as_fileWrite(file, fileData, isBinary) {
+	file.encoding = isBinary ? "BINARY" : "UTF-8";
+	if (!file.open("w")) {
+		alert("Could not open file: " + file.fsName + "\nmessage: " + file.error, true);
+		return null;
+	}
+	if (!file.write(isBinary ? [fileData] : fileData)) {
+		alert("Could not write file: " + file.fsName + "\nmessage: " + file.error, true);
+		file.close();
+		return null;
+	}
+	file.close();
+	if (file.error != "") {
+		alert(file.error, true);
+		return null;
+	}
+	return file;
+}
+
+
+function as_fileWriteJSBinary(file, dataObject, tab, saveBackup) {
+	if (saveBackup && file.exists) {
+		var dirBackup = Folder(file.parent.fsName + "/.backup");
+		if (!dirBackup.exists) {
+			dirBackup.create();
+		}
+		var fileBackup = new File(dirBackup.fsName + "/" + as_getFileName(file) + "_backup_" + Math.floor(Math.random() * 1000000).toString() + "." + as_getFileExtension(file));
+		as_fileWrite(fileBackup, as_fileRead(file), false);
+	}
+	var stringData = "(function (){return " + JSON.stringify(dataObject, undefined, tab ? "\t" : undefined) + "\n})()";
+	return as_fileWrite(file, stringData, false);
+}
+
+
+function as_fileWriteJSON(file, dataObject, tab, saveBackup) {
+	if (saveBackup && file.exists) {
+		var dirBackup = Folder(file.parent.fsName + "/.backup");
+		if (!dirBackup.exists) {
+			dirBackup.create();
+		}
+		var fileBackup = new File(dirBackup.fsName + "/" + as_getFileName(file) + "_backup_" + Math.floor(Math.random() * 1000000).toString() + "." + as_getFileExtension(file));
+		as_fileWrite(fileBackup, as_fileRead(file), false);
+	}
+	return as_fileWrite(file, JSON.stringify(dataObject, undefined, tab ? "\t" : undefined), false);
+}
+
+
+function as_filesToBinaryData(fileOfFolder, fileFilter) {
+	if (!fileOfFolder.exists) {
+		alert("File of Folder \"" + fileOfFolder + "\" does not exist.", true);
+		return null;
+	}
+	var data = {};
+	var filesList;
+	if (fileOfFolder instanceof File) {
+		filesList = [fileOfFolder];
+	} else if (fileOfFolder instanceof Folder) {
+		filesList = fileOfFolder.getFiles(fileFilter || "*");
+	}
+	for (var i = 0, file, fileBin, len = filesList.length; i < len; i++) {
+		file = filesList[i];
+		fileBin = as_fileToBinaryString(file);
+		if (fileBin !== null) {
+			data[file.displayName] = fileBin;
+		}
+	}
+	return data;
+}
+
+
+ function as_findFile(dir, fileName) {
+	var tagetFile;
+	var files = dir.getFiles();
+	for (var f = 0, file; f < files.length; f++) {
+		file = files[f];
+		if(file instanceof Folder) {
+			tagetFile = as_findFile(file, fileName);
+			if(tagetFile) {
+				return tagetFile;
+			}
+		} else if(file.displayName == fileName) {
+			return file;
+		}
+	}
+	return null;
+}
+
+function as_getFileExtension(file) {
+	if (file == null) {
+		return null;
+	}
+	var i = file.displayName.lastIndexOf(".");
+	return i < 0 ? "" : file.displayName.substring(i + 1);
+}
+
+
+function as_getFileName(file) {
+	var i = file.displayName.lastIndexOf(".");
+	return i < 0 ? file.displayName : file.displayName.substring(0, i);
+}
+
+
+function as_getTempFolder(folderName, subFolderName) {
+	if (!folderName) {
+		throw new Error("Folder name required!");
+	}
+	var tempFolder = Folder(Folder.temp.fsName + "/" + folderName);
+	if (!tempFolder.exists) {
+		if (!tempFolder.create()) {
+			alert("Error creating new folder in this location:\n" + tempFolder.fsName, true);
+			return null;
+		}
+	}
+	if (subFolderName) {
+		var subFolder = Folder(tempFolder.fsName + "/" + subFolderName);
+		if (!subFolder.exists) {
+			if (!subFolder.create()) {
+				alert("Error creating new folder in this location:\n" + subFolder.fsName, true);
+				return null;
+			}
+		}
+		return subFolder;
+	} else {
+		return tempFolder;
+	}
+}
+
+
+function as_getUserDataFolder(folderName, subFolderName) {
+	if (!folderName) {
+		throw new Error("Folder name required!");
+	}
+	var userDataFolder = Folder(Folder.userData.fsName + "/" + folderName);
+	if (!userDataFolder.exists) {
+		if (!userDataFolder.create()) {
+			alert("Error creating new folder in this location:\n" + userDataFolder.fsName, true);
+			return null;
+		}
+	}
+	if (subFolderName) {
+		var subFolder = Folder(userDataFolder.fsName + "/" + subFolderName);
+		if (!subFolder.exists) {
+			if (!subFolder.create()) {
+				alert("Error creating new folder in this location:\n" + subFolder.fsName, true);
+				return null;
+			}
+		}
+		return subFolder;
+	}
+	else {
+		return userDataFolder;
+	}
+}
+
+
+function as_loopCSVLines(file, func, args) {
+	if (args === undefined) {
+		args = [];
+	}
+	var strCSV = as_fileRead(file);
+	var lines = strCSV.split("\n");
+	var results = [];
+	for (var l = 0, len = lines.length, line, result; l < len; l++) {
+		line = lines[l];
+		result = func.apply(undefined, [line].concat(args));
+		if (result !== undefined) {
+			results.push(result);
+		}
+	}
+	return results;
+}
+
+function as_loopDirectories(dir, intoSubDirs, func, args, skipDirs) {
+   
+    var results = [];
+	var skipFile = (skipDirs !== undefined) && (skipDirs.length > 0) && (as_arrayCheckValue(dir.name, skipDirs) >= 0);
+	if (!skipFile) {
+		var result = func.apply(undefined, [dir].concat(args || []));
+		if(result !== undefined) {
+			results.push(result);
+		}
+	}
+	if(intoSubDirs) {
+		var arrSubDirs = dir.getFiles();
+		for (var d = 0, subDir, result; d < arrSubDirs.length; d++) {
+			subDir = arrSubDirs[d];
+			if(subDir instanceof Folder) {
+				results = results.concat(as_loopDirectories(subDir, intoSubDirs, func, args, skipDirs));
+			}
+		}
+	}
+   
+    return results;
+}
+
+function as_loopFiles(dir, intoSubfolders, func, args, filterFileExt, skipFiles) {
+    
+   
+    if(args === undefined) {
+        args = [];
+    }
+   
+    var results = [];
+    var content = dir.getFiles();
+	var files = [];
+	var subdirs = [];
+	for (var i = 0; i < content.length; i++) {
+		var item = content[i];
+		if (item instanceof Folder) {
+			subdirs.push(item);
+		} else {
+			files.push(item);
+		}
+	}
+	subdirs.sort();
+	files.sort();
+	if (intoSubfolders) {
+		for (var i = 0, subdir; i < subdirs.length; i++) {
+			subdir = subdirs[i]
+			results = results.concat(as_loopFiles(subdir, intoSubfolders, func, args, filterFileExt, skipFiles));
+		}
+	}
+   
+	for (var i = 0, file, skipFile, extMatch, result; i < files.length; i++) {
+		file = files[i];
+		skipFile = (skipFiles !== undefined) && (skipFiles.length > 0) && (as_arrayCheckValue(file.name, skipFiles) >= 0);
+		extMatch = (filterFileExt === undefined) || (filterFileExt.length == 0) || (as_arrayCheckValue(as_getFileExtension(file), filterFileExt) >= 0);
+		if (!skipFile && extMatch) {
+			result = func.apply(undefined, [file].concat(args));
+			if (result !== undefined) {
+				results.push(result);
+			}
+		}
+    }
+    return results;
+}
+
+function as_parseCSV(fileCSV) {
+	if(fileCSV == null) {
+		return null;
+	}
+	if (!fileCSV.exists) {
+		alert("File \"" + fileCSV.fsName + "\" does not exist!", true);
+		return null;
+	}
+	fileCSV.open("r");
+	var csvString = fileCSV.read();
+	fileCSV.close();
+	var linesArray = csvString.split("\n");
+	var namesArray = linesArray[0].split(";");
+	var typesArray = linesArray[1].split(";");
+	var valuesArray;
+	var propType, propName, propValue;
+	var mainObject = {};
+	var currentObject = mainObject;
+	for (var l = 2; l < linesArray.length; l++) {
+		if ((linesArray[l].indexOf(";") == -1) || (linesArray[l].split(";").join("").length == 0)) {
+			continue;
+		}
+		valuesArray = linesArray[l].split(";");
+		for (var v = 0; v < valuesArray.length; v++) {
+			propType = typesArray[v];
+			propName = namesArray[v];
+			propValue = valuesArray[v];
+			if (propValue == "") {
+				if (propType == "object") {
+					currentObject = getPrevLineObject(l, v);
+					if (!currentObject) {
+						throw new Error("as_parseCSV > Parent object not found.")
+					}
+				}
+				continue;
+			}
+			switch (propType) {
+				case "object":
+					currentObject = currentObject[propValue] = {};
+					break;
+				case "string":
+					propValue = propValue.replace(/\\n/g, "\n");
+					currentObject[propName] = propValue;
+					break;
+				case "array_string":
+					currentObject[propName] = propValue.split(",");
+					break;
+				case "array_number":
+					currentObject[propName] = eval("[" + propValue + "]");
+					break;
+				case "number":
+					currentObject[propName] = parseFloat(propValue);
+					break;
+				case "boolean":
+					currentObject[propName] = (propValue == "true");
+					break;
+				default:
+					alert(arguments.callee.name + " --> " + "Unrecognized property type : " + propType + ", propName: " + propName + ", linesArray[l]: " + linesArray[l] + ", l: " + l, true);
+					break;
+			}
+		}
+		currentObject = mainObject;
+	}
+	function getPrevLineObject(lineIndex, valueIndex) {
+		var object;
+		for (var ll = (lineIndex - 1), vvArray; ll >= 2; ll--) {
+			object = mainObject;
+			vvArray = linesArray[ll].split(";");
+			for (var vv = 0, vValue, vType; vv <= valueIndex; vv++) {
+				vValue = vvArray[vv];
+				vType = typesArray[vv];
+				if (vType == "object") {
+					if (vValue == "") {
+						object = getPrevLineObject(ll, vv);
+					} else {
+						object = object[vValue];
+					}
+				}
+				if ((vv == valueIndex) && (vValue != "")) {
+					return object;
+				}
+			}
+		}
+		return null;
+	}
+	return mainObject;
+}
+
+function as_parseCSVLineArr(line, separator) {
+    return line.substr(1, line.length - 2).split("\"" + separator + "\"");
+}
+
+
+function as_parseCSVLineObj(strLine, arrNames, separator) {
+    var arrLine = as_parseCSVLineArr(strLine, separator);
+    var objLine = {};
+    for (var i = 0; i < arrNames.length; i++) {
+        try {
+            objLine[arrNames[i]] = arrLine[i];
+        } catch (err) {
+            alert(err.message + "\nprop:" + arrLine[i]);
+        }
+    }
+    return objLine;
+}
+
+
+function as_copyToClipboard(str) {
+	system.callSystem("cmd.exe /c cmd.exe /c \"echo " + str + " | clip\""); 
+}
+
+function as_openURL(url) {
+	var isPrefSet = as_checkSecurityPrefSet();
+	if (isPrefSet === true) {
+		if (as_osName() == "Win") {
+			system.callSystem("cmd.exe /c\"start " + url + "\"");
+		} else {
+			system.callSystem("open \"" + url + "\"");
+		}
+	} else {
+		alert(isPrefSet);
+	}
+}
+
+function as_osName() {
+	var os = system.osName;
+	if (!os.length) {
+		os = $.os;
+	}
+	var app_os = (os.indexOf("Win") != -1) ? "Win" : "Mac";
+	return app_os;
+}
+
+
+
+function as_psLoopLayers(layerSet, func, args){
+   
+	if(args === undefined) {
+		args = [];
+	}
+	var results = [];
+	var result = func.apply(undefined, [layerSet].concat(args));
+	if(result !== undefined) {
+		results.push(result);
+	}
+	if((layerSet.typename == "LayerSet") || (layerSet.typename == "Document")) {
+        for(var l = 0, layer; l < layerSet.layers.length; l++) {
+            layer = layerSet.layers[l];
+            as_psLoopLayers(layer, func, args);
+        }
+    }
+    
+	return results;
+}
+
+function as_psLoopSets(layerSet, func, args){
+	if(args === undefined) {
+		args = [];
+	}
+	var results = [];
+	if(layerSet.typename == "LayerSet") {
+		var result = func.apply(undefined, [layerSet].concat(args));
+		if(result !== undefined) {
+			results.push(result);
+		}
+	}
+	var len = 0;
+	try{
+		len = layerSet.layers.length;
+	} catch(err) {
+	}
+	for(var l = 0, lset; l < len; l++) {
+		lset = layerSet.layers[l];
+		if(lset.typename == "LayerSet") {
+			results = results.concat(as_psLoopSets(lset, func, args));
+		}
+	}
+	return results;
+}

@@ -1,6 +1,6 @@
 /**
- * @version 1.0.1
- * @date Mar 21 2021
+ * @version 1.0.2
+ * @date Oct 09 2024
  * 
  * @param {Array} dirsAndFiles [File/Folder]
  * @param {Folder} rootDir
@@ -36,5 +36,6 @@ function as_fileCollectIncludes(dirsAndFiles, rootDir, intoSubfolders, filterFil
 		collector.push("#include \"" + filePath + "\";");
 	}
 
+	collector = as_arrayMakeUnique(collector);
 	return collector.join("\n");
 }

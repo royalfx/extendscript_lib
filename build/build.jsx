@@ -20,9 +20,9 @@
 		#include "as_stringClearComments.js";
 
 		// Versions
-		var ae_version = "1.0.1";
-		var ai_version = "1.0.0";
-		var ps_version = "1.0.0";
+		var ae_version = "1.0.2";
+		var ai_version = "1.0.1";
+		var ps_version = "1.0.1";
 
 		// Directories
 		var rootDir = Folder(new File($.fileName).path).parent;
