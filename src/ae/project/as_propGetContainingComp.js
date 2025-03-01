@@ -3,32 +3,25 @@
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.1
- * @date Jan 06 2021
+ * @version 1.0.2
+ * @date Jan 03 2025
  * 
  * @description Get prop comp
  * @param {*} prop 
  */
 function as_propGetContainingComp(prop) {
 
-	if (!isValid(prop)) {
-		return null;
+	// Early validation
+    if (!prop || !isValid(prop)) {
+        return null;
+    }
+
+	// Navigate up to find the layer
+	var currentProp = prop;
+	while (currentProp.parentProperty) {
+		currentProp = currentProp.parentProperty;
 	}
-	if (!prop) {
-		return null;
-	}
-	var layer;
-	while (prop) {
-		if (as_propIsLayer(prop)) {
-			layer = prop;
-			break;
-		}
-		prop = prop.parentProperty;
-	}
-	
-	if (layer) {
-		return layer.containingComp;
-	} else {
-		return null;
-	}
+
+	// At this point, currentProp should be a layer
+	return currentProp.containingComp || null;
 }

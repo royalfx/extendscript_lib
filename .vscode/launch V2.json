@@ -4,22 +4,22 @@
             "name": "After Effects - Current File",
             "type": "extendscript-debug",
             "request": "launch",
-            "targetSpecifier": "aftereffects-25.0",
-            "program": "${file}"
+            "hostAppSpecifier": "aftereffects-24.0",
+            "script": "${file}"
 		},
 		{
 			"name": "Illustrator - Current File",
 			"type": "extendscript-debug",
 			"request": "launch",
-			"targetSpecifier": "illustrator-24.064",
-			"program": "${file}"
+			"hostAppSpecifier": "illustrator-24.064",
+			"script": "${file}"
 		},
         {
             "name": "Photoshop - Current File",
             "type": "extendscript-debug",
             "request": "launch",
-            "targetSpecifier": "photoshop-130.064",
-            "program": "${file}"
+            "hostAppSpecifier": "photoshop-130.064",
+            "script": "${file}"
         }
     ]
 }

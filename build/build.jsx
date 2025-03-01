@@ -18,9 +18,10 @@
 		#includepath "../src/common/data";
 		#include "as_arrayCheckValue.js";
 		#include "as_stringClearComments.js";
+		#include "as_arrayMakeUnique.js";
 
 		// Versions
-		var ae_version = "1.0.2";
+		var ae_version = "1.0.3";
 		var ai_version = "1.0.1";
 		var ps_version = "1.0.1";
 

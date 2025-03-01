@@ -1,19 +1,18 @@
-// Copyright (c) 2021 Oleksandr Semeniuk
+// Copyright (c) 2025 Oleksandr Semeniuk
 // This code is licensed under MIT license
 // See also http://www.opensource.org/licenses/mit-license.php
 
 /**
- * @version 1.0.1
- * @date Jan 05 2021
- * 
+ * @version 1.0.2
+ * @date Jan 03 2025
  * @param {CompItem} comp
  * @param {Array} path [string]
  * @description The first value in the array must be the layer name.
- * @returns {*}
+ * @returns {Property}
  */
 function as_propByPath(comp, path) {
     if (!(comp instanceof CompItem)) {
-        return null;
+        throw new Error("CompItem is expected");
 	}
 	if (!(path instanceof Array)) {
         throw "An array is expected."
@@ -28,7 +27,7 @@ function as_propByPath(comp, path) {
         if(!prop) {
             return null;
         }
-        prop = prop(path[i]);
+        prop = prop.property(path[i]);
     }
 
 	return prop;
